@@ -1,0 +1,16 @@
+﻿@charset "UTF-8";
+
+@font-face{
+font-family:nanumbarungothic;
+src:url('NanumBarunGothic.eot');
+src:local(※), 
+	url('NanumBarunGothic.woff') format('woff');
+}
+
+
+.nanumbarungothic{
+	font-family: nanumbarungothic
+	font-weight: normal;
+	margin: 0;
+	padding: 10px;
+}

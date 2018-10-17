@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="emp001m">
+
+	<select id= "selectByEmn" resultType="kr.co.ibk.itep.dto.EmpJoinedDep" parameterType="string">
+		select emn, emm, blng_brcd, auth_cd, brcd, krn_brm from TB_IEP_EMP001M e, TB_IEP_BRI001M b where e.blng_brcd = b.brcd and emn=#{emn}	
+
+	</select>
+	
+	<insert id="insertAll" parameterType="java.util.Map">
+		insert all
+        <foreach collection="list" item="item" separator=" ">
+        into TB_IEP_EMP001M(emn, emm, blng_brcd, auth_cd, reg_id, reg_dt, chg_id, chg_dt )
+        values
+            (#{item.emn}, #{item.emm}, #{item.blng_brcd}, #{item.auth_cd}, #{item.reg_id}, #{item.reg_dt}, #{item.chg_id}, #{item.chg_dt} )
+        </foreach>
+        
+        select * from dual
+ 	</insert>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<delete id= "deleteAll" >
+ 		delete from TB_IEP_EMP001M
+
+	</delete>
+	
+
+	
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu001m">
+
+	<select id= "selectAll" resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
+		SELECT HIGH_CLS, 
+        MID_CLS, 
+        LOW_CLS,
+        COURSE_NM,
+        EDU_HOUR,
+        REG_ST_DT,
+        REG_ED_DT,
+        EDU_ST_DT,
+        EDU_ED_DT,
+        EDU_COST,
+        ORG_NM,
+        LOC,
+        REFUND_YN
+		FROM TB_IEP_ECD001M a, TB_IEP_ECD002M b, TB_IEP_EDU001M c	
+		WHERE a.CLS_CD = c.CLS_CD AND b.ORG_CD = c.ORG_CD
+	</select>
+	
+	<select id= "selectDDayEdu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
+		select TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) as dday , a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt, a.svr_img_file_nm, a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M b
+		where a.org_cd = b.org_cd
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) &lt; 7 
+		order by dday
+	</select>
+
+<select id= "selectTop8Edu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
+		select rownum, course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt, svr_img_file_nm, img_file_type from
+    			(select course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt,svr_img_file_nm,img_file_type, count(emn)
+    			from 
+        			(select c.emn, a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt, a.svr_img_file_nm, a.img_file_type
+        			from tb_iep_edu001m a,TB_IEP_ECD002M b,TB_IEP_EDU002R c
+        			where a.org_cd = b.org_cd (+)
+        			and a.course_cd = c.course_cd (+)
+        			and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt)
+    				group by course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt,svr_img_file_nm,img_file_type
+    				order by count(emn) desc)
+			where rownum &lt; 9
+	</select>
+	
+	<select id= "selectCategoryEdu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
+		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
+		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+		where a.org_cd = b.org_cd
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and high_cls_cd = '1'
+		and rownum &lt;5
+		
+		union all 
+		
+		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
+		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+		where a.org_cd = b.org_cd
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and high_cls_cd = '2'
+		and rownum &lt;5
+		
+		union all
+		
+		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
+		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+		where a.org_cd = b.org_cd
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and high_cls_cd = '3'
+		and rownum &lt;5
+	</select>
+ 	
+ 	<delete id= "deleteAll" >
+ 		delete from TB_IEP_EDU001M
+
+	</delete>
+	
+
+	
+</mapper>

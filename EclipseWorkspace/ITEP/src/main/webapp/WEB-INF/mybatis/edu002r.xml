@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu002r">
+	
+	<select id="selectAll" resultType="kr.co.ibk.itep.dto.EduApproval">
+		SELECT EDU002R.EMN, ECD002M.ORG_NM, ECD007M.LOW_CLS_NM, EDU001M.COURSE_NM, EDU001M.EDU_HOUR, EDU001M.REG_ST_DT,
+               EDU001M.REG_ED_DT, EDU001M.EDU_ST_DT, EDU001M.EDU_ED_DT, EDU001M.EDU_COST, EDU001M.LOC, EDU001M.REFUND_YN,
+               ECD003M.STEP_NM
+		  FROM TB_IEP_EDU001M EDU001M, TB_IEP_EDU002R EDU002R, TB_IEP_ECD002M ECD002M, TB_IEP_ECD007M ECD007M,
+               TB_IEP_ECD003M ECD003M
+		 WHERE EDU001M.COURSE_CD = EDU002R.COURSE_CD
+           AND EDU001M.ORG_CD = ECD002M.ORG_CD
+           AND EDU001M.LOW_CLS_CD = ECD007M.LOW_CLS_CD   
+           AND EDU002R.STEP_CD IN ('30')
+           AND EDU002R.STEP_CD = ECD003M.STEP_CD
+	</select>
+	
+	<select id="selectDep" resultType="kr.co.ibk.itep.dto.EduApproval" parameterType="String">
+		SELECT EDU002R.EMN, ECD002M.ORG_NM, ECD007M.LOW_CLS_NM, EDU001M.COURSE_NM, EDU001M.EDU_HOUR, EDU001M.REG_ST_DT,
+               EDU001M.REG_ED_DT, EDU001M.EDU_ST_DT, EDU001M.EDU_ED_DT, EDU001M.EDU_COST, EDU001M.LOC, EDU001M.REFUND_YN,
+               ECD003M.STEP_NM
+		  FROM TB_IEP_EDU001M EDU001M, TB_IEP_EDU002R EDU002R, TB_IEP_ECD002M ECD002M, TB_IEP_ECD007M ECD007M,
+               TB_IEP_ECD003M ECD003M		  
+		 WHERE EDU001M.COURSE_CD = EDU002R.COURSE_CD
+           AND EDU001M.ORG_CD = ECD002M.ORG_CD
+           AND EDU001M.LOW_CLS_CD = ECD007M.LOW_CLS_CD   
+           AND EDU002R.STEP_CD = ECD003M.STEP_CD           
+           AND EMN IN (SELECT EMN
+		                 FROM TB_IEP_EMP001M
+		                WHERE BLNG_BRCD in (SELECT DISTINCT BLNG_BRCD
+		                                 FROM TB_IEP_EMP001M
+		                                WHERE EMN = #{emn}))
+		   AND EDU002R.STEP_CD in (SELECT CASE WHEN AUTH_CD = '03' THEN '10'
+                                       WHEN AUTH_CD = '02' THEN '20'
+                                       WHEN AUTH_CD = '01' THEN '30'
+                                       END
+                                       FROM TB_IEP_EMP001M
+                                       WHERE EMN = #{emn})              
+	</select>
+	
+	<update id="updateFirstApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '20'
+		 WHERE EMN = #{edulist.emn}
+		   AND COURSE_CD = #{edulist.course_cd}
+	</update>
+
+	<update id="updateSecondApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '30'
+		 WHERE EMN = #{edulist.emn}
+		   AND COURSE_CD = #{edulist.course_cd}
+	</update>
+	
+	<update id="updateFinalApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '40'
+		 WHERE EMN = #{edulist.emn}
+		   AND COURSE_CD = #{edulist.course_cd}
+	</update>	
+</mapper>
