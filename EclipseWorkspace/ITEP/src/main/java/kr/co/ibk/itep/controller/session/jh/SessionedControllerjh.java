@@ -50,7 +50,7 @@ public class SessionedControllerjh {
 	@RequestMapping("/authority")
 	public ModelAndView list(@RequestParam(defaultValue="title")String searchOption, @RequestParam(defaultValue="") String keyword) {
 		ModelAndView mv = new ModelAndView();
-		
+		logger.info("test Info");
 		List<Ath001m> list = service.selectAuthorityList(searchOption, keyword);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>(); 
