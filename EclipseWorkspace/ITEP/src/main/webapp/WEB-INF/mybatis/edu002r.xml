@@ -43,21 +43,21 @@
 	
 	<update id="updateFirstApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
 		UPDATE TB_IEP_EDU002R
-		   SET STAT_CD = '20'
+		   SET STEP_CD = '20'
 		 WHERE EMN = #{edulist.emn}
 		   AND COURSE_CD = #{edulist.course_cd}
 	</update>
 
 	<update id="updateSecondApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
 		UPDATE TB_IEP_EDU002R
-		   SET STAT_CD = '30'
+		   SET STEP_CD = '30'
 		 WHERE EMN = #{edulist.emn}
 		   AND COURSE_CD = #{edulist.course_cd}
 	</update>
 	
 	<update id="updateFinalApproval" parameterType="kr.co.ibk.itep.dto.Edu002r">	
 		UPDATE TB_IEP_EDU002R
-		   SET STAT_CD = '40'
+		   SET STEP_CD = '40'
 		 WHERE EMN = #{edulist.emn}
 		   AND COURSE_CD = #{edulist.course_cd}
 	</update>	

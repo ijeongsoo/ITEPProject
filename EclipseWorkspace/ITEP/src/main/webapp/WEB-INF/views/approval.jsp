@@ -46,83 +46,54 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 </head>
-	<script>
-		$(document).ready( function () {
+	<script type="text/javascript">
+		$( function () {
 	    	$('#approvalTable').DataTable();
 	    	
-	        $("#adminPM").on("click", function(e){ //결재하기 버튼
-	            e.preventDefault();
-	            fn_pmApproval();
-	        });
-		} );
-		
+	    	$("#allCheck").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우 
+	    		if($("#allCheck").prop("checked")) { //해당화면에 전체 checkbox들을 체크해준다
+	    			$("input[type=checkbox]").prop("checked",true); // 전체선택 체크박스가 해제된 경우
+	    			} else { //해당화면에 모든 checkbox들의 체크를해제시킨다. 
+	    				$("input[type=checkbox]").prop("checked",false); } 
+	    	})
+	
+	    	
+	    	
+		});
+			
 		function fn_pmApproval(){
-		    var comSubmit = new ComSubmit("approvalTable");
+			checkboxArr();
+		    //var comSubmit = new ComSubmit("approvalTable");
 		    //comSubmit.setUrl("<c:url value='/updateApproval' />");
-		    comSubmit.submit();
+		    //comSubmit.submit();
+			//location.href="approval.jsp";
+
 		}
+		
+		function checkboxArr(){
+
+		    var chk_obj = document.getElementsByName("listCheckbox");
+		    var chk_use = false;
+		    
+		    for (i=0; i < chk_obj.length; i++) {
+		        if (chk_obj[i].checked == true) { 
+		        	chk_use = true;
+		            alert(chk_obj[i].value);    // 선택된 순서대로 값을 출력
+		        }
+		    }
+		    
+		    if(chk_use == false){
+		    	alert("선택하신 강의가 없습니다.");
+		    }
+
+		}
+		
 		
 	</script>
 	
 <body>
   <!-- container section start -->
   <section id="container" class="">
-
-
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-	
-	  <!-- 관리자 페이지 로고 부분 20181015 이기석 -->
-      <!--logo start-->
-      <a href="approval" class="logo">IT교육포털 <span class="lite">관리자 페이지</span></a>
-      <!--logo end-->
-	  
-    </header>
-    <!--header end-->
-
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="admin">
-                          <i class="icon_house_alt"></i>
-                          <span>대시보드</span>
-                      </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>교육관리</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_component.html" --%>>교육일괄등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육수정</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="" href="approval"> 
-                          <i class="icon_desktop"></i>
-                          <span>결재함</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" <%--href="<%=application.getContextPath()%>/resources/admin_page_resource/widgets.html"--%>>
-                          <i class="icon_genius"></i>
-                          <span>권한관리</span>
-                      </a>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
-
     <!--main content start-->
     <!-- 대시보드 메인 구성 20181015 이기석 -->
     <section id="main-content">
@@ -132,13 +103,13 @@
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-laptop"></i>결재</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="<%=application.getContextPath()%>/resources/admin_page_resource/index.html">Home</a></li>
+              <li><i class="fa fa-home"></i><a href="home">Home</a></li>
               <li><i class="fa fa-laptop"></i>결재</li>
             </ol>
           </div>
         </div>
  		<div class="container" align="right" style="height:40px;">
- 			<input id="adminPM" type="button" value="결재">
+ 			<input id="adminPM" type="button" value="결재" onclick="fn_pmApproval()">
  		</div>
  		<div class="container">
 			<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
@@ -163,7 +134,7 @@
 				<tbody>
 					<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
 						<tr>
-							<td><input type='checkbox' name="listCheckbox" onClick="selectCheckBox(tdis, 'listCheckbox');"></td>
+							<td><input type='checkbox' name="listCheckbox" value="${adminApprovalList.course_nm}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
 							<td align="center">${adminApprovalList.emn}</td>
 							<td align="center">${adminApprovalList.org_nm}</td>
 							<td align="center">${adminApprovalList.low_cls_nm}</td>
