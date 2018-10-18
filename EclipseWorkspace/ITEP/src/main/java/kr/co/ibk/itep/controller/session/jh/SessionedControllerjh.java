@@ -63,6 +63,15 @@ public class SessionedControllerjh {
 		return "authority";
 	} 
 	
+	
+//	@RequestMapping("/authority")
+//	public String delete_auth(Model model, AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
+		
+//		List<AthJoinedEmpJoinedBri> auth_cha = new ArrayList<>();
+//		auth_cha = service.changeAuthList(athJoinedEmpJoinedBri);
+		
+//		return "authority";
+//	}
 
 	
 }

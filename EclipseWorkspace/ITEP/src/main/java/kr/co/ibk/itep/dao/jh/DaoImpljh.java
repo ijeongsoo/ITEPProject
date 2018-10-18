@@ -25,6 +25,12 @@ public class DaoImpljh implements Dao {
 		return list;
 	}
 
+//	@Override
+//	public List<AthJoinedEmpJoinedBri> changeAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 
 
 }

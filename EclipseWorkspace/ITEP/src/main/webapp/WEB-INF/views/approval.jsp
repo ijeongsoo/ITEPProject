@@ -134,7 +134,7 @@
 				<tbody>
 					<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
 						<tr>
-							<td><input type='checkbox' name="listCheckbox" value="${adminApprovalList.course_nm}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
+							<td align="center"><input type='checkbox' name="listCheckbox" value="${adminApprovalList.course_nm}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
 							<td align="center">${adminApprovalList.emn}</td>
 							<td align="center">${adminApprovalList.org_nm}</td>
 							<td align="center">${adminApprovalList.low_cls_nm}</td>

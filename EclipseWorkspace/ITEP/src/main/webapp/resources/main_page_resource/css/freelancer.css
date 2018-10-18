@@ -72,8 +72,9 @@ hr.star-edu:after {
   background-color: #fdfde9;
 }
 
+/*헤더 위쪽 페딩 0으로 수정 20181018 정재희 
 section {
-  padding: 6rem 0;
+  padding: 0;  
 }
 
 section h2 {
@@ -92,6 +93,8 @@ section h2 {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;
 }
+
+*/
 
 .btn-social {
   width: 3.25rem;
