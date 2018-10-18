@@ -51,7 +51,6 @@ public class SessionedControllerjh {
 	@RequestMapping("/authority")
 	public String authority( Model model, AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
 		List<AthJoinedEmpJoinedBri> auth_list = new ArrayList<>();
-		logger.info( " ####################정재희 꺼어어어어어어어어어어어ㅓ " );
 		
 		logger.info( athJoinedEmpJoinedBri.getKeyword());
 
