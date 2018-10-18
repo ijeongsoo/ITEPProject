@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.ibk.itep.dao.jh.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri;
 import kr.co.ibk.itep.dto.Bri001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.Emp001m;
@@ -32,12 +33,14 @@ public class ServiceImpljh implements Service {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceImpljh.class);
 	@Autowired
 	private Dao dao;
-
 	@Override
-	public List<Ath001m> selectAuthorityList(String searchOption, String keyword) {
+	public List<AthJoinedEmpJoinedBri> getAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
 		// TODO Auto-generated method stub
-		return null;
+		List<AthJoinedEmpJoinedBri> list = dao.selectAuthorityList(athJoinedEmpJoinedBri);
+		
+		return list;
 	}
+
 
 
 }
