@@ -16,7 +16,7 @@ public class DaoImplbh implements Dao{
 	private SqlSessionTemplate sst;
 	
 	
-	//IT기획부 관리자 교육 조회
+	//IT湲고쉷遺� 愿�由ъ옄 援먯쑁 議고쉶
 	@Override
 	public ArrayList<EduApproval> selectAllApprovalList() {
 		
@@ -25,7 +25,7 @@ public class DaoImplbh implements Dao{
 		return (ArrayList<EduApproval>)eduList;
 	}
 	
-	//부서 서무 교육 조회
+	//遺��꽌 �꽌臾� 援먯쑁 議고쉶
 	@Override
 	public ArrayList<EduApproval> selectDepApprovalList(String emn) {
 		
@@ -34,21 +34,21 @@ public class DaoImplbh implements Dao{
 		return (ArrayList<EduApproval>)eduList;
 	}
 	
-	//부서 서무 결재
+	//遺��꽌 �꽌臾� 寃곗옱
 	@Override
-	public void updateDepFirstApproval(Edu002r edulist) {
+	public void updateDepFirstApproval(EduApproval edulist) {
 		sst.update("updateFirstApproval", edulist);
 	}
 	
-	//부서 서무 책임자 결재
+	//遺��꽌 �꽌臾� 梨낆엫�옄 寃곗옱
 	@Override
-	public void updateDepSecondApproval(Edu002r edulist) {
+	public void updateDepSecondApproval(EduApproval edulist) {
 		sst.update("updateSecondApproval", edulist);
 	}
 	
-	//IT기획부 관리자 결재
+	//IT湲고쉷遺� 愿�由ъ옄 寃곗옱
 	@Override
-	public void updateDepFinalApproval(Edu002r edulist) {
+	public void updateDepFinalApproval(EduApproval edulist) {
 		sst.update("updateFinalApproval", edulist);
 	}
 

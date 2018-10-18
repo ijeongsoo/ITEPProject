@@ -14,9 +14,9 @@ public interface Dao {
 	
 	public ArrayList<EduApproval> selectDepApprovalList(String emn);
 	
-	public void updateDepFirstApproval(Edu002r edulist);
+	public void updateDepFirstApproval(EduApproval edulist);
 	
-	public void updateDepSecondApproval(Edu002r edulist);
+	public void updateDepSecondApproval(EduApproval edulist);
 	
-	public void updateDepFinalApproval(Edu002r edulist);
+	public void updateDepFinalApproval(EduApproval edulist);
 }
