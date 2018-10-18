@@ -2,6 +2,7 @@ package kr.co.ibk.itep.service.bh;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,18 +29,8 @@ public class ServiceImplbh implements Service{
 	}
 	
 	@Override
-	public void updateDepFirstApproval(EduApproval edulist){
-		admindao.updateDepFirstApproval(edulist);
-	}
-	
-	@Override
-	public void updateDepSecondApproval(EduApproval edulist){
-		admindao.updateDepSecondApproval(edulist);
-	}
-	
-	@Override
-	public void updateDepFinalApproval(EduApproval edulist){
-		admindao.updateDepFinalApproval(edulist);
+	public void updateDepApproval(Map<String, String> eduinfo){
+		admindao.updateDepApproval(eduinfo);
 	}
 	
 }

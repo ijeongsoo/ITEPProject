@@ -3,7 +3,9 @@ package kr.co.ibk.itep.dao.bh;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,7 @@ public class DaoImplbh implements Dao{
 	private SqlSessionTemplate sst;
 	
 	
-	//IT湲고쉷遺� 愿�由ъ옄 援먯쑁 議고쉶
+	//IT기획부 관리자 검색(조건에 달아서 Select문을 했기때문에 지금은 안씀)
 	@Override
 	public ArrayList<EduApproval> selectAllApprovalList() {
 		
@@ -25,7 +27,7 @@ public class DaoImplbh implements Dao{
 		return (ArrayList<EduApproval>)eduList;
 	}
 	
-	//遺��꽌 �꽌臾� 援먯쑁 議고쉶
+	//관리자가 결재할 수 있는 교육 List 출력
 	@Override
 	public ArrayList<EduApproval> selectDepApprovalList(String emn) {
 		
@@ -34,23 +36,10 @@ public class DaoImplbh implements Dao{
 		return (ArrayList<EduApproval>)eduList;
 	}
 	
-	//遺��꽌 �꽌臾� 寃곗옱
+	//관리자가 결재 Update
 	@Override
-	public void updateDepFirstApproval(EduApproval edulist) {
-		sst.update("updateFirstApproval", edulist);
+	public void updateDepApproval(Map<String, String> eduinfo) {
+		sst.update("edu002r.updateDepApproval", eduinfo);
 	}
-	
-	//遺��꽌 �꽌臾� 梨낆엫�옄 寃곗옱
-	@Override
-	public void updateDepSecondApproval(EduApproval edulist) {
-		sst.update("updateSecondApproval", edulist);
-	}
-	
-	//IT湲고쉷遺� 愿�由ъ옄 寃곗옱
-	@Override
-	public void updateDepFinalApproval(EduApproval edulist) {
-		sst.update("updateFinalApproval", edulist);
-	}
-
 	
 }
