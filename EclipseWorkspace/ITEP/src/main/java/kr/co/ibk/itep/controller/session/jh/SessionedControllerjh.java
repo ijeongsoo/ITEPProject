@@ -30,6 +30,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -48,18 +49,19 @@ public class SessionedControllerjh {
 	private ServletContext servletContext;
 	
 	@RequestMapping("/authority")
-	public ModelAndView list(@RequestParam(defaultValue="title")String searchOption, @RequestParam(defaultValue="") String keyword) {
-		ModelAndView mv = new ModelAndView();
-		logger.info("test Info");
-		List<Ath001m> list = service.selectAuthorityList(searchOption, keyword);
+	public String authority( Model model, AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
+		List<AthJoinedEmpJoinedBri> auth_list = new ArrayList<>();
+		logger.info( " ####################정재희 꺼어어어어어어어어어어어ㅓ " );
 		
-		HashMap<String, Object> map = new HashMap<String, Object>(); 
-		map.put("list", list);
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
-		mv.addObject("map", map);
-		mv.setViewName("/authority");
-		return mv;
+		logger.info( athJoinedEmpJoinedBri.getKeyword());
+
+		auth_list = service.getAuthList(athJoinedEmpJoinedBri);
+		model.addAttribute("auth_list", auth_list);
+		model.addAttribute("searchOption", athJoinedEmpJoinedBri.getSearchOption());
+		model.addAttribute("keyword", athJoinedEmpJoinedBri.getKeyword());
+
+		
+		return "authority";
 	} 
 	
 
