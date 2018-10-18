@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.service;
+package kr.co.ibk.itep.service.bh;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import kr.co.ibk.itep.dto.*;
 
 @Component
-public interface AdminApprovalService {
+public interface Service {
 	
 	public ArrayList<EduApproval> selectDepApprovalList(String emn);
 	

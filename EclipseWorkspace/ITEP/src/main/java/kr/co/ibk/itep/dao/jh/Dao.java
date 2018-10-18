@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.dao;
+package kr.co.ibk.itep.dao.jh;
 
 
 import java.util.ArrayList;
@@ -17,10 +17,7 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Dao {
 	
-
-
-	
-
+	public List<Ath001m> selectAuthorityList(String searchOption, String keyword);
 
 	
 

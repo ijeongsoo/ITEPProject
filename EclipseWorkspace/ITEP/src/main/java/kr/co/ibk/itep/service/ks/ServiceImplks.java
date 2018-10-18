@@ -1,4 +1,4 @@
-﻿package kr.co.ibk.itep.service;
+﻿package kr.co.ibk.itep.service.ks;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.co.ibk.itep.dao.Dao;
+import kr.co.ibk.itep.dao.ks.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
@@ -28,10 +28,11 @@ import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
 @Component
-public class ServiceImpl implements Service {
-	private static final Logger logger = LoggerFactory.getLogger(ServiceImpl.class);
+public class ServiceImplks implements Service {
+	private static final Logger logger = LoggerFactory.getLogger(ServiceImplks.class);
 	@Autowired
 	private Dao dao;
+
 
 
 }

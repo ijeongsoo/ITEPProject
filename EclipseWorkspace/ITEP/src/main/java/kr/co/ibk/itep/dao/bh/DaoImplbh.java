@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.dao;
+package kr.co.ibk.itep.dao.bh;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.*;
 @Component
-public class AdminApprovalDaoImpl implements AdminApprovalDao{
+public class DaoImplbh implements Dao{
 
 	@Autowired
 	private SqlSessionTemplate sst;

@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.dao;
+package kr.co.ibk.itep.dao.bh;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.EduApproval;
 
 @Component
-public interface AdminApprovalDao {
+public interface Dao {
 	
 	public ArrayList<EduApproval> selectAllApprovalList();
 	

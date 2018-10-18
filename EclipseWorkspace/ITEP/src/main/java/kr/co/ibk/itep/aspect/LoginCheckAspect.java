@@ -23,7 +23,7 @@ public class LoginCheckAspect {
 	private void nonSession() {
 	}
 
-	@Pointcut("execution(public * kr.co.ibk.itep.controller.SessionedController.*(..))")
+	@Pointcut("execution(public * kr.co.ibk.itep.controller..*.Sessioned*.*(..))")
 	private void session() {
 	}
 

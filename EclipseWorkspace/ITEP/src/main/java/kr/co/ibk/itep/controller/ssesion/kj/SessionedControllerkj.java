@@ -1,4 +1,4 @@
-﻿package kr.co.ibk.itep.controller;
+﻿package kr.co.ibk.itep.controller.ssesion.kj;
 
 
 import java.io.File;
@@ -33,13 +33,13 @@ import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
-import kr.co.ibk.itep.service.Service;
+import kr.co.ibk.itep.service.kj.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
 
 @Controller
 @SessionAttributes("login_info")
-public class SessionedController {
-	private static final Logger logger = LoggerFactory.getLogger(SessionedController.class);
+public class SessionedControllerkj {
+	private static final Logger logger = LoggerFactory.getLogger(SessionedControllerkj.class);
 	
 	@Autowired
 	private Service service;
@@ -47,9 +47,21 @@ public class SessionedController {
 	@Autowired
 	private ServletContext servletContext;
 	
-
+	@RequestMapping("/EduList")
+	public String EduList(String ssoid, Model model) {
+		try{
+			
+			List<JoinForEdulist> joinForEdulist = service.selectEdulist();
+				model.addAttribute("edu_list", joinForEdulist);
+				model.addAttribute("ssoid", ssoid);
+				return "EduList";
+		}catch(Exception e){
+			logger.error(e.getStackTrace().toString());
+			model.addAttribute("result", 1);
+			return "error";
+		}
+	}
 	
 
-	
 	
 }

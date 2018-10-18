@@ -1,4 +1,4 @@
-﻿package kr.co.ibk.itep.controller;
+﻿package kr.co.ibk.itep.controller.session.jh;
 
 
 import java.io.File;
@@ -33,13 +33,13 @@ import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
-import kr.co.ibk.itep.service.Service;
+import kr.co.ibk.itep.service.jh.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
 
 @Controller
 @SessionAttributes("login_info")
-public class SessionedController {
-	private static final Logger logger = LoggerFactory.getLogger(SessionedController.class);
+public class SessionedControllerjh {
+	private static final Logger logger = LoggerFactory.getLogger(SessionedControllerjh.class);
 	
 	@Autowired
 	private Service service;
@@ -47,9 +47,21 @@ public class SessionedController {
 	@Autowired
 	private ServletContext servletContext;
 	
-
+	@RequestMapping("/authority")
+	public ModelAndView list(@RequestParam(defaultValue="title")String searchOption, @RequestParam(defaultValue="") String keyword) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Ath001m> list = service.selectAuthorityList(searchOption, keyword);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>(); 
+		map.put("list", list);
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		mv.addObject("map", map);
+		mv.setViewName("/authority");
+		return mv;
+	} 
 	
 
-	
 	
 }

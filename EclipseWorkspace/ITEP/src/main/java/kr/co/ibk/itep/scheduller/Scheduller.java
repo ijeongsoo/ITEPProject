@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.ibk.itep.dto.EmpJoinedDep;
-import kr.co.ibk.itep.service.Service;
+import kr.co.ibk.itep.service.js.Service;
 
 
 

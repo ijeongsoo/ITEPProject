@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.service;
+package kr.co.ibk.itep.service.kj;
 
 import java.io.File;
 import java.util.List;
@@ -15,7 +15,7 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Service {
 
-
+	public List<JoinForEdulist> selectEdulist();
 
 }
 

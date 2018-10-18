@@ -1,4 +1,4 @@
-package kr.co.ibk.itep.dao;
+package kr.co.ibk.itep.dao.kj;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,18 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 
 
 @Component
-public class DaoImpl implements Dao {
+public class DaoImplkj implements Dao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
-
-
-
-
+	@Override
+	public List<JoinForEdulist> selectAllEdulist() {
+		// TODO Auto-generated method stub
+		
+		List<JoinForEdulist> joinForEdulist=sst.selectList("edu001m.selectAll");
+		return joinForEdulist;
+	}
+	
 
 }
 
