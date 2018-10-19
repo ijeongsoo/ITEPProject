@@ -44,11 +44,21 @@
   ======================================================= -->
 </head>
 
+<!-- 
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$('#searchBtn').click(function (event){
+			self.location = "/article/paging/search/authority?{pageMaker.makeQuery(1)}"
+				+ "$searchOption=" + $("select option:selected").val()
+				+"$keyword=" + encodeURIComponent($("#keywordInput").val());	
+		});
+	});
+</script>
+ -->
+ 
 <body>
   <!-- container section start -->
   <section id="container" class="">
-
-
     <header class="header dark-bg">
       <div class="toggle-nav">
         <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -408,17 +418,21 @@
             <h3 class="page-header"><i class="fa fa-laptop"></i> 권한관리 </h3>
           </div>
         </div>
-<form name="form" method="post" action="admin">
+<form name="form" method="post" action="authority">
+
+	<!-- select box -->
 	<select name = "searchOption">
 		<!-- 검색조건을 검색 후 결과화면에 보여주기위해 c:out 출력태그 사용, 삼항연산자 -->
-		<option value = "all" <c:out value="${map.searchOption =='all'?'selected':"}"/>> 권한코드 + 부서 </option>
-		<option value = "branch" <c:out value="${map.searchOption =='branch'?'selected':"}"/>> 부서 </option>
-		<option value = "authority" <c:out value="${map.searchOption =='authority'?'selected':"}"/>> 권한 </option>
+		<option value = "all" <c:out value="${searchOption =='all'?'selected':''}"/>> 전체 </option>
+		<option value = "branch" <c:out value="${searchOption =='branch'?'selected':''}"/>> 부서 </option>
+		<option value = "authority" <c:out value="${searchOption =='authority'?'selected':''}"/>> 권한 </option>	
 	</select>
 
-	<input name="keyword" value="${map.keyword}">
-	<input type="submit" value="조회">
+	<input name="keyword" id="keywordInput" value="${keyword}">	
+	<input type ="submit" value="조회">
 </form>
+
+	<!-- 결과값 리턴 테이블 -->
 <table style="border:1px solid #ccc" >
     <colgroup>
         <col width="5%"/>
@@ -441,8 +455,8 @@
     </thead>
     <tbody>
         <c:choose>
-            <c:when test="${fn:length(List) > 0}">
-                <c:forEach items="${List}" var="row">
+            <c:when test="${fn:length(auth_list) > 0}">
+                <c:forEach items="${auth_list}" var="row">
                     <tr>
                         <td>${row.emn}</td>
                         <td>${row.emm}</td>
@@ -460,6 +474,7 @@
                 </tr>
             </c:otherwise>
         </c:choose>
+
          
     </tbody>
 </table>

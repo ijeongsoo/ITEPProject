@@ -3,6 +3,8 @@ package kr.co.ibk.itep.dto;
 public class EduApproval {
 	
 	private String emn;
+	private String emm;
+	private String krn_brm;
 	private String org_nm;
 	private String high_cls_nm;
 	private String mid_cls_nm;
@@ -24,6 +26,18 @@ public class EduApproval {
 	}
 	public void setEmn(String emn) {
 		this.emn = emn;
+	}
+	public String getEmm() {
+		return emm;
+	}
+	public void setEmm(String emm) {
+		this.emm = emm;
+	}
+	public String getKrn_brm() {
+		return krn_brm;
+	}
+	public void setKrn_brm(String krn_brm) {
+		this.krn_brm = krn_brm;
 	}
 	public String getOrg_nm() {
 		return org_nm;

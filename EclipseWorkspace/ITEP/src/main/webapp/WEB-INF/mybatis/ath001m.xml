@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ath001m">
+	<select id= "listAll" resultType="kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri" parameterType="kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri" >
+	
+	
+	SELECT A.EMN, A.EMM, A.AUTH_CD, B.AUTH_NM, C.KRN_BRM, B.REG_DT, B.CHG_DT
+	FROM TB_IEP_EMP001M A, TB_IEP_ATH001M B, TB_IEP_BRI001M C
+	WHERE (A.AUTH_CD = B.AUTH_CD AND A.BLNG_BRCD = C.BRCD)
+  	
+  	   <include refid="search"/>	
+	</select>
+ 	
+ 	<sql id = "search">
+		<!-- 검색옵션이 전체 검색일 경우 -->
+		<if test="searchOption == 'all'">
+			AND ( C.KRN_BRM like '%'||#{keyword}||'%'
+			OR B.AUTH_NM like '%'||#{keyword}||'%')
+		</if>
+		<!-- 전체 검색이 아닐 경우 -->
+		<if test="searchOption == 'branch'">
+			AND C.KRN_BRM like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchOption == 'authority'">
+			And B.AUTH_NM like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+</mapper>
+

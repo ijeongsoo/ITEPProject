@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -53,11 +54,12 @@ public class SessionedControllerbh {
 	@RequestMapping("/approval")
 	public String adminApproval( Model model) {
 		
-		//직번
+		//사용자의 개인정보
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 		
+		//접속한 사용자의 직번 획득
 		String ssoid = empJoinedDep.getEmn();
 
 		//접속한 사용자의 권한 획득
@@ -69,6 +71,7 @@ public class SessionedControllerbh {
 			if(!auth.equals("04")) {
 				List<EduApproval> adminApprovalList = service.selectDepApprovalList(ssoid);
 				model.addAttribute("adminApproval_List", adminApprovalList);
+				model.addAttribute("empJoinedDep_info", empJoinedDep);
 				if(auth.equals("01")){
 					
 				}else if(auth.equals("02")){
@@ -92,31 +95,37 @@ public class SessionedControllerbh {
 	
 	
 	//결재 페이지
-	@RequestMapping("/updateApproval")
-	public String permissionApproval( Model model) {
+	@RequestMapping("/updateApproval.do")
+	public String permissionApproval(@RequestParam List<String> pmlist, Model model) {
 		
 		//직번
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
-		
-		String ssoid = empJoinedDep.getEmn();
 
 		//접속한 사용자의 권한 획득
 		String auth = empJoinedDep.getAuth_cd();
+
+		HashMap<String, String> approvalInfo = new HashMap<String, String>();
+		
+		for(int i =0; i<pmlist.size(); i++) {
+		
+			String split[] = pmlist.get(i).split(";", 0);
+			
+			approvalInfo.put("auth", auth);
+			approvalInfo.put("emn", split[0]);
+			approvalInfo.put("course_cd", split[1]);
+			
+			
+			System.out.println(pmlist.get(i).toString());			
+		}
 		
 
 		try {
 			//관리자 또는 서무만 접속 가능
 			if(!auth.equals("04")) {
-				List<EduApproval> adminApprovalList = service.selectDepApprovalList(ssoid);
-				model.addAttribute("adminApproval_List", adminApprovalList);
-				if(auth.equals("01")){
-					
-				}else if(auth.equals("02")){
-					
-				}else if(auth.equals("03")){
-					
+				for(int i=0; i<approvalInfo.size(); i++) {
+					service.updateDepApproval(approvalInfo);					
 				}
 				
 				return "approval";

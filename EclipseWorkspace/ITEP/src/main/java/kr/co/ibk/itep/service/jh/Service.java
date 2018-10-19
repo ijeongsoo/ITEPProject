@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -15,7 +16,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Service {
 
-	public List<Ath001m> selectAuthorityList(String searchOption, String keyword);
+
+	public List<AthJoinedEmpJoinedBri> getAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
 
 }
 

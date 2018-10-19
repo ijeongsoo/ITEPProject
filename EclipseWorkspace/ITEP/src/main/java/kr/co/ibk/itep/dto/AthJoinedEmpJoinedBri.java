@@ -2,6 +2,20 @@ package kr.co.ibk.itep.dto;
 
 public class AthJoinedEmpJoinedBri {
 	
+	private String keyword;
+	private String searchOption;
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getSearchOption() {
+		return searchOption;
+	}
+	public void setSearchOption(String searchOption) {
+		this.searchOption = searchOption;
+	}
 	private String emn;
 	private String emm;
 	private String blng_brcd;

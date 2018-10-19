@@ -46,145 +46,130 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 </head>
-	<script>
-		$(document).ready( function () {
+	<script type="text/javascript">
+		$( function () {
 	    	$('#approvalTable').DataTable();
-	    	
-	        $("#adminPM").on("click", function(e){ //결재하기 버튼
-	            e.preventDefault();
-	            fn_pmApproval();
-	        });
-		} );
+		});
 		
-		function fn_pmApproval(){
-		    var comSubmit = new ComSubmit("approvalTable");
-		    //comSubmit.setUrl("<c:url value='/updateApproval' />");
-		    comSubmit.submit();
+		//교육 List 체크박스 전체 선택/해제
+		function chekc_All(){
+	        if( $("#allCheck").is(':checked') ){
+	            $("input[name=listCheckbox]").prop("checked", true);
+	          }else{
+	            $("input[name=listCheckbox]").prop("checked", false);
+	          }
 		}
+			
+		//버튼 클릭시 결재 Update 및 교육List 갱신
+		function fn_pmApproval(){
+			checkboxArr();
+
+			//location.href="approval";
+
+		}
+		
+		//체크되어 있는 교육들 파라미터 넘기기
+		function checkboxArr(){
+			
+			//체크되어 있는 value들 가져올 배열 선언
+			var checkboxValues = [];
+		    var chk_obj = document.getElementsByName("listCheckbox");
+		    var chk_use = false;
+		    
+		    for (i=0; i < chk_obj.length; i++) {
+		        if (chk_obj[i].checked == true) { 
+		        	chk_use = true;
+		        	checkboxValues.push(chk_obj[i].value);
+		            alert(chk_obj[i].value);    // 선택된 순서대로 값을 출력
+		        }
+		    }
+		    
+		    if(chk_use == false){
+		    	alert("선택하신 강의가 없습니다.");
+		    }else{
+		    	jQuery.ajaxSettings.traditional = true;
+
+		    	 $.ajax({
+		    	        'url':"updateApproval.do",
+		    	        'type':'GET',
+		    	        'data': { 'pmlist' : checkboxValues},
+		    	        'success':function(data){
+		    	            alert("성공적으로 결재되었습니다.");
+		    	            window.opener.location.reload();
+		    	            self.close();
+		    	        },
+		    	        'error':function(jqXHR, textStatus, errorThrown){
+		    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		    	            self.close();
+		    	        }
+		    	    });
+		    }
+
+		}
+		
 		
 	</script>
 	
 <body>
-  <!-- container section start -->
-  <section id="container" class="">
-
-
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      <!--overview start-->
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i>결재</h3>
+        <ol class="breadcrumb">
+          <li><i class="fa fa-home"></i><a href="home">Home</a></li>
+          <li><i class="fa fa-laptop"></i>결재</li>
+        </ol>
       </div>
-	
-	  <!-- 관리자 페이지 로고 부분 20181015 이기석 -->
-      <!--logo start-->
-      <a href="approval" class="logo">IT교육포털 <span class="lite">관리자 페이지</span></a>
-      <!--logo end-->
-	  
-    </header>
-    <!--header end-->
-
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="admin">
-                          <i class="icon_house_alt"></i>
-                          <span>대시보드</span>
-                      </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>교육관리</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_component.html" --%>>교육일괄등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육수정</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="" href="approval"> 
-                          <i class="icon_desktop"></i>
-                          <span>결재함</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" <%--href="<%=application.getContextPath()%>/resources/admin_page_resource/widgets.html"--%>>
-                          <i class="icon_genius"></i>
-                          <span>권한관리</span>
-                      </a>
-          </li>
-        </ul>
-        <!-- sidebar menu end-->
-      </div>
-    </aside>
-    <!--sidebar end-->
-
-    <!--main content start-->
-    <!-- 대시보드 메인 구성 20181015 이기석 -->
-    <section id="main-content">
-      <section class="wrapper">
-        <!--overview start-->
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-laptop"></i>결재</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="<%=application.getContextPath()%>/resources/admin_page_resource/index.html">Home</a></li>
-              <li><i class="fa fa-laptop"></i>결재</li>
-            </ol>
-          </div>
-        </div>
- 		<div class="container" align="right" style="height:40px;">
- 			<input id="adminPM" type="button" value="결재">
- 		</div>
- 		<div class="container">
-			<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
-				<thead>
+    </div>
+	<div class="container" align="right" style="height:40px;">
+		<input id="adminPM" type="button" value="결재" onclick="fn_pmApproval()">
+	</div>
+	<div class="container">
+		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
+			<thead>
+				<tr>
+					<th><input type='checkbox' id="allCheck" value="ALL" onClick="chekc_All()"></th>
+					<th style="text-align: center;">직원번호</th>
+					<th style="text-align: center;">직원명</th>
+					<th style="text-align: center;">직원부서</th>										
+					<th style="text-align: center;">기관명</th>
+					<th style="text-align: center;">소분류</th>
+					<th style="text-align: center;">과정명</th>
+					<th style="text-align: center;">교육시간</th>
+					<th style="text-align: center;">교육시작일</th>
+					<th style="text-align: center;">교육종료일</th>
+					<th style="text-align: center;">교육비</th>
+					<th style="text-align: center;">교육장소</th>
+					<th style="text-align: center;">환급여부</th>
+					<th style="text-align: center;">결재 상황</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
 					<tr>
-						<th><input type='checkbox' name="listCheckbox" value="ALL" onClick="selectCheckBox(this, 'listCheckbox');"></th>
-						<th style="text-align: center;">직원번호</th>
-						<th style="text-align: center;">기관명</th>
-						<th style="text-align: center;">소분류</th>
-						<th style="text-align: center;">과정명</th>
-						<th style="text-align: center;">교육시간</th>
-						<th style="text-align: center;">신청시작일</th>
-						<th style="text-align: center;">신청마감일</th>
-						<th style="text-align: center;">교육시작일</th>
-						<th style="text-align: center;">교육종료일</th>
-						<th style="text-align: center;">교육비</th>
-						<th style="text-align: center;">교육장소</th>
-						<th style="text-align: center;">환급여부</th>
-						<th style="text-align: center;">결재 상황</th>
+						<td><input type='checkbox' name="listCheckbox" value="${adminApprovalList.emn};${adminApprovalList.course_cd}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
+						<td align="center">${adminApprovalList.emn}</td>
+						<td align="center">${adminApprovalList.emm}</td>
+						<td align="center">${adminApprovalList.krn_brm}</td>
+						<td align="center">${adminApprovalList.org_nm}</td>
+						<td align="center">${adminApprovalList.low_cls_nm}</td>
+						<td align="center">${adminApprovalList.course_nm}</td>
+						<td align="center">${adminApprovalList.edu_hour}</td>
+						<td align="center">${adminApprovalList.edu_st_dt}</td>
+						<td align="center">${adminApprovalList.edu_ed_dt}</td>
+						<td align="center">${adminApprovalList.edu_cost}</td>
+						<td align="center">${adminApprovalList.loc}</td>
+						<td align="center">${adminApprovalList.refund_yn}</td>
+						<td align="center">${adminApprovalList.step_nm}</td>
+													
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
-						<tr>
-							<td><input type='checkbox' name="listCheckbox" onClick="selectCheckBox(tdis, 'listCheckbox');"></td>
-							<td align="center">${adminApprovalList.emn}</td>
-							<td align="center">${adminApprovalList.org_nm}</td>
-							<td align="center">${adminApprovalList.low_cls_nm}</td>
-							<td align="center">${adminApprovalList.course_nm}</td>
-							<td align="center">${adminApprovalList.edu_hour}</td>
-							<td align="center">${adminApprovalList.reg_st_dt}</td>
-							<td align="center">${adminApprovalList.reg_ed_dt}</td>
-							<td align="center">${adminApprovalList.edu_st_dt}</td>
-							<td align="center">${adminApprovalList.edu_ed_dt}</td>
-							<td align="center">${adminApprovalList.edu_cost}</td>
-							<td align="center">${adminApprovalList.loc}</td>
-							<td align="center">${adminApprovalList.refund_yn}</td>
-							<td align="center">${adminApprovalList.step_nm}</td>							
-						</tr>
-					</c:forEach>
-				</tbody>					
-			</table>
-		</div>
-		<div>
-			<h3>${login_info.emn}</h3>
-		</div>
+				</c:forEach>
+			</tbody>					
+		</table>
+	</div>
+    <div>
+		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm}님</h3>
+	</div>
 </body>
 
 </html>
