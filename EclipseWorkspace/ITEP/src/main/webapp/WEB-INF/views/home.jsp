@@ -194,7 +194,7 @@
 	<!-- Header -->
 	<header class="masthead text-white text-center"
 		style="background-color: #5098ba; margin-top: 50px;">
-		<div id="fisrtHeader" class="container">
+		<div id="fisrtHeader" class="container " style="display: none">
 
 			<div>
 
@@ -218,7 +218,7 @@
 			</div>
 
 		</div>
-		<div id="secondHeader" class="container" style="display: none">
+		<div id="secondHeader" class="container" >
 
 			<div style="text-align: left;">
 
