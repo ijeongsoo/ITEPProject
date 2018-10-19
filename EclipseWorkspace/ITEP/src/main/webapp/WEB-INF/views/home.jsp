@@ -64,9 +64,57 @@
 										
 					$("#top8List2").remove();
 		        }
+				
+				var fullname = '${login_info.emm}';
+				//var fullname = "이정수";
+				var name ;
+				if(fullname.length==3){
+					name = fullname.charAt(1)+fullname.charAt(2);
+
+				}else{
+					name = fullname;
+				}
+				var lastName = name.charAt(name.length - 1);
+				console.log(lastName.charCodeAt(0));
+				var index= (lastName.charCodeAt(0) - 0xAC00) % 28;
+				console.log(index);
+				if(index==0){
+					name = name + '야, 넌';
+				}else{
+					name = name + '아, 넌';
+				}
+
+				
+				$("#secondHeaderName").text(name);
+				
+				setInterval(swapHead,5000);
 	       
 				
 			});
+    		
+    		function swapHead(){
+    			
+    			if($("#fisrtHeader").css('display')=='none'){
+    				$("#fisrtHeader").attr('style', ' display: block');
+        			$("#secondHeader").attr('style', 'display: none;');
+    			}else{
+    				$("#fisrtHeader").attr('style', ' display: none');
+        			$("#secondHeader").attr('style', 'display: block;');
+    			}
+    			/* $("#fristWord1").removeClass('fadeInLeftBig');
+
+    			$("#firstWord1").addClass("fadeInLeftBig");
+    			
+    			$("#firstWord2").removeClass('fadeInRightBig');
+    			$("#firstWord2").addClass('fadeOutLeftBig'); */
+    			
+    			
+    			
+    			
+    			
+
+    			
+    		};
     		
 			$(document).ready(function(){
 				
@@ -146,22 +194,22 @@
 	<!-- Header -->
 	<header class="masthead text-white text-center"
 		style="background-color: #5098ba; margin-top: 50px;">
-		<div class="container">
+		<div id="fisrtHeader" class="container">
 
 			<div>
 
-				<h1 class="hanna animated fadeInLeftBig"
+				<h1 id="fristWord1" class="hanna animated fadeInLeftBig"
 					style="font-size: 180px; margin-bottom: 90px; z-index: 5">공부
 					의지가</h1>
 			</div>
 			<div>
 
-				<h1 class="hanna animated fadeInRightBig"
+				<h1 id="fristWord2" class="hanna animated fadeInRightBig"
 					style="font-size: 180px; margin-bottom: 60px; z-index: 5">불타
 					오른다</h1>
 
 			</div>
-			<div class="animated fadeInUp">
+			<div id="fristWord3" class="animated fadeInUp">
 				<h2 class="hanna" style="display: inline;">- 불타서 사라짐 -</h2>
 				<img
 					style="position: absolute; top: -250px; width: 300px; opacity: 0.3; z-index: 1"
@@ -170,11 +218,35 @@
 			</div>
 
 		</div>
+		<div id="secondHeader" class="container" style="display: none">
+
+			<div style="text-align: left;">
+
+				<h2 id="secondHeaderName" class="hanna animated fadeInLeftBig"
+					style="font-size: 60px; z-index: 5;margin-top: -90px; margin-bottom: 30px; margin-left: 215px;">재희야, 넌</h2>
+			</div>
+			<div>
+
+				<h1 class="hanna animated fadeInRightBig"
+					style="font-size: 180px; margin-bottom: 90px; z-index: 5">배울 때가</h1>
+
+			</div>
+						<div class="animated fadeInUp" style="margin-bottom: 50px">
+						<h1 class="hanna animated "style="display: inline; font-size: 180px; z-index: 5;">제일 예뻐</h1>
+						<img 
+					style="position: absolute; top: -170px; left: 700px; width: 300px; opacity: 0.3; z-index: 1"
+					src="resources/main_page_resource/img/student.png" alt="">
+						</div>
+						
+			
+			
+
+		</div>
 	</header>
 
 	<!-- Portfolio Grid Section -->
 	<section class="portfolio" id="portfolio"
-		style="background-color: #fdfde9">
+		style="background-color: #fdfde9; ">
 		<div class="container">
 			<h2 class="hanna text-center text-uppercase text-secondary mb-0">교육
 				정보</h2>
@@ -314,9 +386,9 @@
         	<br/>
 
 
-		<div class="row flyIn" id="services">
+		<div class="row flyIn" id="services" style="padding-bottom: 30px; margin-bottom: 0px">
 			<c:forEach var="d" items="${categoryList}" varStatus="status">
-				<div class="span3 animated-fast  filter ${d.high_cls_cd}" style="width: 240px; height: 320px; margin-left:  20px; margin-right :  20px ; margin-bottom: 20px ">
+				<div class="span3 animated-fast  filter ${d.high_cls_cd}" style="width: 240px; height: 320px; margin-left:  20px; margin-right :  20px ; margin-bottom: 40px ">
 					<div class="service-box" style="width: 240px; height: 320px; ">
 						<img class="photo3" style="width: 150px; height: 150px" src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="" />
 						<h2 class="hanna hidden">${d.course_nm}</h2>
@@ -327,7 +399,7 @@
 				</div>
 			</c:forEach>
 				<div id='categoryExist' style="text-align:center ; display: none">
-					<div  style="width: 1100px; height: 150px; margin-left:  20px; margin-right :  20px ; margin-bottom: 20px ">
+					<div  style="width: 1100px; height: 150px; margin-left:  20px; margin-right :  20px ; padding-bottom: 20px ">
 					<h1 class='hanna'>   해당 카테고리 신청가능한 교육이 없습니다.</h1>
 					</div>
 				</div>
@@ -343,10 +415,10 @@
 
 
 	<!-- About Section -->
-	<section class="bg-primary text-white mb-0" id="about">
-		<div class="container">
+	<section class="bg-primary text-white "  id="about">
+		<div class="container" style="margin-top: 0px">
 			<h2 class="text-center text-uppercase text-white">About</h2>
-			<hr class="star-light mb-5">
+			<hr class="star-light ">
 			<div class="row">
 
 				<div class="col-lg-4 ml-auto">
