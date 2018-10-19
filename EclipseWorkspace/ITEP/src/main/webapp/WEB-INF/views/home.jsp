@@ -234,7 +234,7 @@
 						<div class="animated fadeInUp" style="margin-bottom: 50px">
 						<h1 class="hanna animated "style="display: inline; font-size: 180px; z-index: 5;">제일 예뻐</h1>
 						<img 
-					style="position: absolute; top: -170px; left: 700px; width: 300px; opacity: 0.3; z-index: 1"
+					style="position: absolute; top: -170px; left: 700px; width: 300px; opacity: 0.6; z-index: 1"
 					src="resources/main_page_resource/img/student.png" alt="">
 						</div>
 						
