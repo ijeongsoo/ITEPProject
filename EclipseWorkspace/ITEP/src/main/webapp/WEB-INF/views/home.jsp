@@ -178,7 +178,7 @@
 					<li class="nav-item mx-0 mx-sm-1"><a id='adminButton'
 						style="visibility: hidden;"
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#contact">관리자</a></li>
+						href="admin">관리자</a></li>
 					<li class="nav-item mx-0 mx-sm-1"><a
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
 						href="#portfolio">교육 정보</a></li>
