@@ -26,6 +26,12 @@ public class DaoImplks implements Dao {
 		sst.insert("insertExcelList", eduList);
 	}
 
+	@Override
+	public String selectCourseSeq() {
+		// TODO Auto-generated method stub
+		return sst.selectOne("selectCourseSeq");
+	}
+
 	
 
 

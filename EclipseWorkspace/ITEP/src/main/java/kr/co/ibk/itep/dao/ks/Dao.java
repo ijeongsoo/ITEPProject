@@ -19,6 +19,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 public interface Dao {
 
 	void insertCourseList(ArrayList<Edu001m> eduList);
+
+	String selectCourseSeq();
 	
 
 	

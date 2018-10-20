@@ -68,13 +68,14 @@ public class SessionedControllerks {
 		return "eduUploadExcel";
 	}
 	
-	@RequestMapping("/admin/upload")
-	public String upload(Model model) {
-		return "eduUploadExcel";
-	}
-	
 	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
 	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException {
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
+		// 엑셀 파일 읽기
 		excel.setOriginalFileName(excel.getExcelFile().getOriginalFilename());
 		//excel.setFileType(excel.getExcelFile().getContentType());
 		String fileName = new Date().getTime() + "-" + excel.getOriginalFileName();
@@ -93,7 +94,7 @@ public class SessionedControllerks {
             extractor.setFormulasNotResults(true);
             extractor.setIncludeSheetNames(false);
             
-            service.insertExcelToDB(wb.getSheetAt(0), "xlsx", fileName);
+            service.insertExcelToDB(wb.getSheetAt(0), "xlsx", fileName, ssoid);
             
 		}
 		else if(excel.getFileType().equals("xls")) {
@@ -103,7 +104,7 @@ public class SessionedControllerks {
             extractor.setFormulasNotResults(true);
             extractor.setIncludeSheetNames(false);
             
-            service.insertExcelToDB(wb.getSheetAt(0), "xls", fileName);
+            service.insertExcelToDB(wb.getSheetAt(0), "xls", fileName, ssoid);
 		}
 		else {
 			// 엑셀이 아닌 파일 업로드

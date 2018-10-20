@@ -15,7 +15,7 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Service {
 
-	void insertExcelToDB(Object sheet, String flag, String fileName);
+	void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid);
 
 
 }

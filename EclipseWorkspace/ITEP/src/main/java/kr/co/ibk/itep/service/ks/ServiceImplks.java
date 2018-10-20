@@ -39,7 +39,7 @@ public class ServiceImplks implements Service {
 	@Autowired
 	private Dao dao;
 	@Override
-	public void insertExcelToDB(Object sheet, String flag, String fileName) {
+	public void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) {
 		// TODO Auto-generated method stub
 		Row titles = null;
 		
@@ -99,14 +99,17 @@ public class ServiceImplks implements Service {
                 if (!colValue.isEmpty()) {
                 	// 컬럼명 별로 데이터 처리
                 	switch (colName) {
-                	case "COURSE_CD":
-                		edu.setCourse_cd(colValue);
-                		break;
                 	case "ORG_CD":
                 		edu.setOrg_cd(colValue);
                 		break;
-                	case "CLS_CD":
-                		edu.setCls_cd(colValue);
+                	case "HIGH_CLS_CD":
+                		edu.setHigh_cls_cd(colValue);
+                		break;
+                	case "MID_CLS_CD":
+                		edu.setMid_cls_cd(colValue);
+                		break;
+                	case "LOW_CLS_CD":
+                		edu.setLow_cls_cd(colValue);
                 		break;
                 	case "COURSE_NM":
                 		edu.setCourse_nm(colValue);
@@ -130,13 +133,18 @@ public class ServiceImplks implements Service {
                 		edu.setEdu_cost(Integer.parseInt(colValue));
                 		break;
                 	case "LOC":
-                		edu.setLocation(colValue);
+                		edu.setLoc(colValue);
                 		break;
                 	case "REFUND_YN":
                 		edu.setRefund_yn(colValue);
                 		break;
                 	}
-                    
+                	// 등록자 사번 세팅
+                	edu.setReg_id(ssoid);
+                	
+                	// db에서 시퀀스 채번
+                	String courseCd = dao.selectCourseSeq();
+                	edu.setCourse_cd(courseCd);
                 }
             }
             // 생성된 객체 추가
