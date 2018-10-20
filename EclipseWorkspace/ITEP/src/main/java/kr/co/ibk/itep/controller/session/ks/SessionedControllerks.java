@@ -40,7 +40,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
-import kr.co.ibk.itep.dto.EduUploadExcel;
+import kr.co.ibk.itep.dto.EduUpload;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.ks.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
@@ -74,7 +74,7 @@ public class SessionedControllerks {
 	}
 	
 	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
-	public String upload(EduUploadExcel excel) throws IllegalStateException, IOException {
+	public String upload(EduUpload excel) throws IllegalStateException, IOException {
 		excel.setOriginalFileName(excel.getExcelFile().getOriginalFilename());
 		//excel.setFileType(excel.getExcelFile().getContentType());
 		String fileName = new Date().getTime() + "-" + excel.getOriginalFileName();
