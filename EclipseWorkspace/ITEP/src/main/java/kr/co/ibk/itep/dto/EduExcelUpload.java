@@ -2,7 +2,7 @@ package kr.co.ibk.itep.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class EduUpload {
+public class EduExcelUpload {
 	
 	private MultipartFile excelFile;
 	private String originalFileName;
