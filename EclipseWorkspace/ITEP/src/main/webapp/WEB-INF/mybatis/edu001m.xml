@@ -73,6 +73,10 @@
 		and rownum &lt;5
 	</select>
  	
+ 	<insert id="insertExcelList" parameterType="java.util.ArrayList">
+ 		 
+ 	</insert>
+ 	
  	<delete id= "deleteAll" >
  		delete from TB_IEP_EDU001M
 
