@@ -10,6 +10,8 @@ import kr.co.ibk.itep.dto.*;
 @Component
 public interface Service {
 	
+	public ArrayList<EduApproval> selectAllApprovalList();
+	
 	public ArrayList<EduApproval> selectDepApprovalList(String emn);
 	
 	public void updateDepApproval(Map<String, String> eduinfo);
