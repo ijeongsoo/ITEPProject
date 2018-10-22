@@ -113,6 +113,14 @@ public class SessionedControllerjs {
 		os.close();
 
 	}
+	
+	
+	@RequestMapping("/eduDetail")
+	public String eduDetail( String course_cd, Model model) {
+		
+
+		return "eduDetail";
+	} 
 
 	
 }
