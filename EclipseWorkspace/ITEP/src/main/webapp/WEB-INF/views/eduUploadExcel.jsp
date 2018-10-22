@@ -1,14 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="kr.co.ibk.itep.service.ExcelManager" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
-//여기해야함!!!
-	String execute = request.getParameter("execute");
-	String filePath = request.getParameter("fileAttach");
-	ExcelManager em = new ExcelManager(filePath);
-	String course_cd = "1";//em.getEduList().get(0).getCOURSE_CD();
-%>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +23,9 @@
   <!-- Custom styles -->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
   
+  <script
+		src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.js"></script>
+  
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -37,12 +33,6 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 </head>
-<script type="text/javascript">
-function registerFile(){
-	   $('#fileForm').submit();
-	   request.setParameter("execute", "실행완료");
-}
-</script>
 <body>
 <!-- 엑셀 업로드 화면 구성 20181015 이기석 -->
 
@@ -60,29 +50,21 @@ function registerFile(){
         ${login_info.emn}
         <br/>
         
-        <div style="height: 340px;width: 380px; overflow: auto;padding:20px;">
-  		<form id="fileForm" name="fileForm" method="post" action="eduUploadExcel" enctype="multipart/form-data">
-	   		<table border="1">
-	      		<tbody id="fileAttachBody">
-		      		<tr>
-		        		<td>
-		        			<input type="hidden" name="execute" value="전송완료"/>
-		            		<input type="file" id="fileAttach" name="fileAttach" />
-		            		<button onclick="registerFile();">Excel파일읽기</button>
-		        		</td>
-		      		</tr>
-	      		</tbody>
-	   		</table>
+        <div style="height: 340px;width: 500px; overflow: auto;padding:20px;">
+  		<form action="uploadFile" method="post" enctype="multipart/form-data">
+			<div class="input-group col-lg-12 ">
+				<label for="excelFile" id="excelFileBtn" class="col-lg-12 btn btn-default">
+					<span class="glyphicon glyphicon-camera"></span> 엑셀 추가
+				</label>
+				<input type="file" id=excelFile style="visibility: hidden" name="excelFile"/>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">글쓰기</button>
+			</div>
   		</form>
 		</div>
 		
 		<!-- 결과 출력 -->
-		<%
-			if(execute == null)
-				execute = "";
-		%>
-		<%=execute%>
-		<%=course_cd%>
         <!-- page end-->
       </section>
     </section>

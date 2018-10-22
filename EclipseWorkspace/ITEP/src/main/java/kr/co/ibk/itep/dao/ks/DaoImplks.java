@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -18,6 +19,20 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 public class DaoImplks implements Dao {
 	@Autowired
 	private SqlSessionTemplate sst;
+
+	@Override
+	public void insertCourseList(ArrayList<Edu001m> eduList) {
+		// TODO Auto-generated method stub
+		sst.insert("insertExcelList", eduList);
+	}
+
+	@Override
+	public String selectCourseSeq() {
+		// TODO Auto-generated method stub
+		return sst.selectOne("selectCourseSeq");
+	}
+
+	
 
 
 
