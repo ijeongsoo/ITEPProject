@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ecd002m">
+	
+	<select id="selectEcd002mList" resultType="kr.co.ibk.itep.dto.Ecd002m">
+		SELECT ORG_CD,
+			ORG_NM,
+			REG_ID,
+			REG_DT,
+			CHG_ID,
+			CHG_DT
+		FROM TB_IEP_ECD002M
+	</select>
+	
+</mapper>

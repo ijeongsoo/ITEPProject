@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ecd005m">
+	
+	<select id="selectEcd005mList" resultType="kr.co.ibk.itep.dto.Ecd005m">
+		SELECT HIGH_CLS_CD,
+			HIGH_CLS_NM,
+			REG_ID,
+			REG_DT,
+			CHG_ID,
+			CHG_DT
+		FROM TB_IEP_ECD005M
+	</select>
+	
+</mapper>
