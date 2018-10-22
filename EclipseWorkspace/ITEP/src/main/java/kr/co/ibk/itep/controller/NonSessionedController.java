@@ -56,8 +56,7 @@ public class NonSessionedController {
 			} else {
 
 				model.addAttribute("login_info", empJoinedDep);
-				logger.info("999999999999999999999");
-				return "redirect:home";
+				return "home";
 
 			}
 			
