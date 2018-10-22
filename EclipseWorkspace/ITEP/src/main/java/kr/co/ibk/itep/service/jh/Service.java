@@ -19,5 +19,7 @@ public interface Service {
 
 	public List<AthJoinedEmpJoinedBri> getAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
 
+//	public List<AthJoinedEmpJoinedBri> changeAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
+
 }
 

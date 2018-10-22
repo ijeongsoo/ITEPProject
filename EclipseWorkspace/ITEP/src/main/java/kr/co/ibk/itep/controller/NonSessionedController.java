@@ -47,20 +47,23 @@ public class NonSessionedController {
 	public String ssoLogin(@ModelAttribute EmpJoinedDep login_info, String emn, Model model) {
 		try{
 			
+			
 			EmpJoinedDep empJoinedDep = service.ssoLogin(emn);
 			
 			if (empJoinedDep == null) {
 				model.addAttribute("result", 0);
-				return "loginFail";
+				return "login";
 			} else {
+
 				model.addAttribute("login_info", empJoinedDep);
 				return "home";
+
 			}
 			
 		}catch(Exception e){
 			logger.error(e.getStackTrace().toString());
 			model.addAttribute("result", 1);
-			return "loginFail";
+			return "error";
 		}
 		
 

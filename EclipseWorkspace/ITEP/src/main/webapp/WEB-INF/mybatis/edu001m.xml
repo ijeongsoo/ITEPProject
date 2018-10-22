@@ -5,79 +5,158 @@
 
 <mapper namespace="edu001m">
 
-	<select id= "selectAll" resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
-		SELECT HIGH_CLS, 
-        MID_CLS, 
-        LOW_CLS,
-        COURSE_NM,
-        EDU_HOUR,
-        REG_ST_DT,
-        REG_ED_DT,
-        EDU_ST_DT,
-        EDU_ED_DT,
-        EDU_COST,
-        ORG_NM,
-        LOC,
-        REFUND_YN
-		FROM TB_IEP_ECD001M a, TB_IEP_ECD002M b, TB_IEP_EDU001M c	
-		WHERE a.CLS_CD = c.CLS_CD AND b.ORG_CD = c.ORG_CD
+	<select id="selectAll"
+		resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
+		SELECT
+		HIGH_CLS_NM,
+		MID_CLS_NM,
+		LOW_CLS_NM,
+		COURSE_NM,
+		EDU_HOUR,
+		REG_ST_DT,
+		REG_ED_DT,
+		EDU_ST_DT,
+		EDU_ED_DT,
+		EDU_COST,
+		ORG_NM,
+		LOC,
+		REFUND_YN
+		FROM TB_IEP_ECD005M a, TB_IEP_ECD006M b, TB_IEP_ECD007M c,
+		TB_IEP_ECD002M d, TB_IEP_EDU001M e
+		WHERE a.HIGH_CLS_CD = e.HIGH_CLS_CD
+		AND b.MID_CLS_CD = e.MID_CLS_CD
+		AND
+		c.LOW_CLS_CD = e.LOW_CLS_CD
+		AND d.ORG_CD = e.ORG_CD
 	</select>
-	
-	<select id= "selectDDayEdu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
-		select TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) as dday , a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt, a.svr_img_file_nm, a.img_file_type
-		from tb_iep_edu001m a,TB_IEP_ECD002M b
+
+	<select id="selectDDayEdu"
+		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">
+		select
+		TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) as dday ,
+		a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,
+		a.svr_img_file_nm, a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M
+		b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
-		and TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) &lt; 7 
+		and sysdate &gt;= a.REG_ST_DT and sysdate
+		&lt;= a.reg_ed_dt
+		and TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE,
+		0) &lt; 7
 		order by dday
 	</select>
 
-<select id= "selectTop8Edu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
-		select rownum, course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt, svr_img_file_nm, img_file_type from
-    			(select course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt,svr_img_file_nm,img_file_type, count(emn)
-    			from 
-        			(select c.emn, a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt, a.svr_img_file_nm, a.img_file_type
-        			from tb_iep_edu001m a,TB_IEP_ECD002M b,TB_IEP_EDU002R c
-        			where a.org_cd = b.org_cd (+)
-        			and a.course_cd = c.course_cd (+)
-        			and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt)
-    				group by course_cd, org_nm, course_nm, edu_st_dt, edu_ed_dt,svr_img_file_nm,img_file_type
-    				order by count(emn) desc)
-			where rownum &lt; 9
+	<select id="selectTop8Edu"
+		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">
+		select rownum, course_cd,
+		org_nm, course_nm, edu_st_dt, edu_ed_dt, svr_img_file_nm,
+		img_file_type from
+		(select course_cd, org_nm, course_nm, edu_st_dt,
+		edu_ed_dt,svr_img_file_nm,img_file_type, count(emn)
+		from
+		(select c.emn, a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,
+		a.svr_img_file_nm, a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M b,TB_IEP_EDU002R c
+		where a.org_cd = b.org_cd (+)
+		and a.course_cd = c.course_cd (+)
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt)
+		group by course_cd, org_nm, course_nm, edu_st_dt,
+		edu_ed_dt,svr_img_file_nm,img_file_type
+		order by count(emn) desc)
+		where rownum &lt; 9
 	</select>
-	
-	<select id= "selectCategoryEdu" resultType="kr.co.ibk.itep.dto.EduJoinedEcd" >
-		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
-		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+
+	<select id="selectCategoryEdu"
+		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">
+		select a.course_cd,
+		a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm,
+		a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		a.reg_ed_dt
 		and high_cls_cd = '1'
 		and rownum &lt;5
-		
-		union all 
-		
-		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
-		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+
+		union all
+
+		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm,
+		a.course_nm, a.edu_st_dt,
+		a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		a.reg_ed_dt
 		and high_cls_cd = '2'
 		and rownum &lt;5
-		
+
 		union all
-		
-		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type 
-		from tb_iep_edu001m a,TB_IEP_ECD002M b 
+
+		select a.course_cd, a.high_cls_cd, a.mid_cls_cd, a.low_cls_cd, b.org_nm,
+		a.course_nm, a.edu_st_dt,
+		a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
+		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt
+		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		a.reg_ed_dt
 		and high_cls_cd = '3'
 		and rownum &lt;5
 	</select>
- 	
- 	<delete id= "deleteAll" >
- 		delete from TB_IEP_EDU001M
+	
+	<select id="selectCourseSeq" resultType="java.lang.String">
+		SELECT COURSE_ID_SEQ.NEXTVAL FROM DUAL
+	</select>
+
+	<insert id="insertExcelList" parameterType="java.util.ArrayList">
+		INSERT ALL
+		<foreach collection="list" item="item">
+		INTO TB_IEP_EDU001M
+		(
+			COURSE_CD,
+			ORG_CD,
+			HIGH_CLS_CD,
+			MID_CLS_CD,
+			LOW_CLS_CD,
+			COURSE_NM,
+			EDU_HOUR,
+			REG_ST_DT,
+			REG_ED_DT,
+			EDU_ST_DT,
+			EDU_ED_DT,
+			EDU_COST,
+			LOC,
+			REFUND_YN,
+			REG_ID,
+			REG_DT
+		)
+		VALUES
+		(
+			#{item.course_cd},
+			#{item.org_cd},
+			#{item.high_cls_cd},
+			#{item.mid_cls_cd},
+			#{item.low_cls_cd},
+			#{item.course_nm},
+			#{item.edu_hour},
+			#{item.reg_st_dt},
+			#{item.reg_ed_dt},
+			#{item.edu_st_dt},
+			#{item.edu_ed_dt},
+			#{item.edu_cost},
+			#{item.loc},
+			#{item.refund_yn},
+			#{item.reg_id},
+			SYSDATE
+		)
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+
+	<delete id="deleteAll">
+		delete from TB_IEP_EDU001M
 
 	</delete>
-	
 
-	
+
+
 </mapper>

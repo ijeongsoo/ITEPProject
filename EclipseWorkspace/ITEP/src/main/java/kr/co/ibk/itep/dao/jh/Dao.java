@@ -19,6 +19,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 public interface Dao {
 
 	List<AthJoinedEmpJoinedBri> selectAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
+
+//	List<AthJoinedEmpJoinedBri> changeAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
 	
 
 }

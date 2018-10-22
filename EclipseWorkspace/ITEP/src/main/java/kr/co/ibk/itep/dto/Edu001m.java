@@ -3,7 +3,9 @@ package kr.co.ibk.itep.dto;
 public class Edu001m {
 	private String course_cd;
 	private String org_cd;
-	private String cls_cd;
+	private String high_cls_cd;
+	private String mid_cls_cd;
+	private String low_cls_cd;
 	private String course_nm;
 	private int edu_hour;
 	private String reg_st_dt;
@@ -11,8 +13,11 @@ public class Edu001m {
 	private String edu_st_dt;
 	private String edu_ed_dt;
 	private int edu_cost;
-	private String location;
+	private String loc;
 	private String refund_yn;
+	private String origin_img_file_nm;
+	private String svr_img_file_nm;
+	private String img_file_type;
 	private String reg_id;
 	private String reg_dt;
 	private String chg_id;
@@ -30,11 +35,24 @@ public class Edu001m {
 	public void setOrg_cd(String org_cd) {
 		this.org_cd = org_cd;
 	}
-	public String getCls_cd() {
-		return cls_cd;
+	
+	public String getHigh_cls_cd() {
+		return high_cls_cd;
 	}
-	public void setCls_cd(String cls_cd) {
-		this.cls_cd = cls_cd;
+	public void setHigh_cls_cd(String high_cls_cd) {
+		this.high_cls_cd = high_cls_cd;
+	}
+	public String getMid_cls_cd() {
+		return mid_cls_cd;
+	}
+	public void setMid_cls_cd(String mid_cls_cd) {
+		this.mid_cls_cd = mid_cls_cd;
+	}
+	public String getLow_cls_cd() {
+		return low_cls_cd;
+	}
+	public void setLow_cls_cd(String low_cls_cd) {
+		this.low_cls_cd = low_cls_cd;
 	}
 	public String getCourse_nm() {
 		return course_nm;
@@ -78,11 +96,11 @@ public class Edu001m {
 	public void setEdu_cost(int edu_cost) {
 		this.edu_cost = edu_cost;
 	}
-	public String getLocation() {
-		return location;
+	public String getLoc() {
+		return loc;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLoc(String loc) {
+		this.loc = loc;
 	}
 	public String getRefund_yn() {
 		return refund_yn;
@@ -113,6 +131,24 @@ public class Edu001m {
 	}
 	public void setChg_dt(String chg_dt) {
 		this.chg_dt = chg_dt;
+	}
+	public String getOrigin_img_file_nm() {
+		return origin_img_file_nm;
+	}
+	public void setOrigin_img_file_nm(String origin_img_file_nm) {
+		this.origin_img_file_nm = origin_img_file_nm;
+	}
+	public String getSvr_img_file_nm() {
+		return svr_img_file_nm;
+	}
+	public void setSvr_img_file_nm(String svr_img_file_nm) {
+		this.svr_img_file_nm = svr_img_file_nm;
+	}
+	public String getImg_file_type() {
+		return img_file_type;
+	}
+	public void setImg_file_type(String img_file_type) {
+		this.img_file_type = img_file_type;
 	}
 	
 

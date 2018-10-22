@@ -11,7 +11,7 @@
 	FROM TB_IEP_EMP001M A, TB_IEP_ATH001M B, TB_IEP_BRI001M C
 	WHERE (A.AUTH_CD = B.AUTH_CD AND A.BLNG_BRCD = C.BRCD)
   	
-  	   <include refid="search"/>	
+  	 <!--  <include refid="search"/> -->	
 	</select>
  	
  	<sql id = "search">
@@ -28,5 +28,12 @@
 			And B.AUTH_NM like '%'||#{keyword}||'%'
 		</if>
 	</sql>
+	
+	
+	<update id="changeAll">
+		UPDATE TB_IEP_EMP001M 
+		SET AUTH_CD = "04" 
+		WHERE EMN = #{emn}
+		</update>
 </mapper>
 

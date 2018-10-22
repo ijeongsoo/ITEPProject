@@ -35,8 +35,9 @@ public class LoginCheckAspect {
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
+		
 		if (empJoinedDep != null) {
-			return "redirect:home?ssoid=" + empJoinedDep.getEmn();
+			return "redirect:home";
 		} else {
 			Object result = joinPoint.proceed();
 			return result;

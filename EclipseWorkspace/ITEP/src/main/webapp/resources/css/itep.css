@@ -93,3 +93,11 @@ src:local(※),
 
 /* === section services === */
 
+
+.modal-header {
+    border-radius: 3px 3px 0 0;
+}
+ .modal-content {
+    border-radius: 3px;
+}
+
