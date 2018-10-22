@@ -56,6 +56,7 @@ public class SessionedControllerkj {
 				model.addAttribute("ssoid", ssoid);
 				return "EduList";
 		}catch(Exception e){
+			
 			logger.error(e.getStackTrace().toString());
 			model.addAttribute("result", 1);
 			return "error";
