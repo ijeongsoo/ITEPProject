@@ -7,54 +7,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-<!-- 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
- -->		<meta name="description" content="">
-		<meta name="author" content="">
-		
-	    <title >IT그룹 교육 포탈</title>
-	    
-  		<script src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
 	
-		<link href="<%=application.getContextPath()%>/resources/main_page_resource/css/style.css" rel="stylesheet">
-
-		    <!-- Bootstrap core CSS -->
-     	<link href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		
-	    <!-- Custom fonts for this template -->
-	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-	    <!-- Plugin CSS -->
-	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-	
-	    <!-- Custom styles for this template -->
-	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
-    
-
-		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/owl.carousel.css" rel="stylesheet" media="screen" />
-		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/owl.theme.css" rel="stylesheet" media="screen" />
-		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css" rel="stylesheet">
-		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/color/default.css" rel="stylesheet">
-		 <link href="<%=application.getContextPath()%>/resources/css/itep.css" rel="stylesheet" type="text/css">
-		 
-
 
     	
     	<script>
-    		// 관리자만 보이게    
-			   		
-    		function eduDetail(course_cd) {
-    			$.get(
-    				    "eduDetail?course_cd="+course_cd ,
-    				    function(data) {
-    				        $("#eduModalContent").html(data);
-    				    }
-    				);
-			}
-    		
+    		// 관리자만 보이게    		
 			$( function() {
-				
-
 				if(${login_info.auth_cd} !='04'){
 					$("#adminButton").attr('style', 'visiblity:show');
 				}
@@ -203,7 +161,37 @@
 			</div>
 		</div>
 	</nav>
+	
+	<div class="modal fade" id="view" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true"
+			style="overflow: auto;">
+			<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">×</button>
+    <h3 class="smaller lighter blue no-margin modal-title">검수정보 등록</h3>
+</div>
+ 
+<div class="modal-body">
+    테스트입니다.                     
+</div>
+ 
+<div class="modal-footer">
+    <span class="btn btn-sm btn-warning" id="testDel">
+        전체삭제<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+    </span>
+    <span class="btn btn-sm btn-success" id="testSave">
+        저장<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+    </span>
+    <button class="btn btn-sm btn-danger pull-right" data-dismiss="modal" id="btnClose">
+        <i class="ace-icon fa fa-times"></i>닫기
+    </button>
+</div>
+        </div>
 
+
+			</div>
+		</div>
 
 	<!-- Header -->
 	<header class="masthead text-white text-center"
@@ -274,9 +262,9 @@
 						<ul class="slides" id="top8List1">
 							<li style="text-align: center;"><c:forEach var="d"
 									items="${top8List1}" varStatus="status">
-									<a onclick="eduDetail('${d.course_cd}');"  data-toggle="modal" data-target="#eduModal">
-									
 									<div class="top8List1ContentCount" style="display: inline-table; width: 20%; padding: 30px">
+									
+									
 									
 											<p style="font-size: 20pt" class="hanna text-center mb-0">${d.rownum }위</p>
 											<div style="text-align: center;">
@@ -296,15 +284,15 @@
 												<p class="hanna  text-secondary hidden text-center"
 													style="padding-top: 0px">${d.edu_st_dt}~ ${d.edu_ed_dt }</p>
 											</div>
+										</a>
 									</div>
-									</a>
 								</c:forEach></li>
 								<li id="top8List2" style="text-align: center; "><c:forEach var="d"
 									items="${top8List2}" varStatus="status">
-									<a onclick="eduDetail('${d.course_cd}');"  data-toggle="modal" data-target="#eduModal">
-									
 									<div class="top8List2ContentCount" style="display: inline-table; width: 23%; padding: 20px">
-										
+										<a href="img/works/1.jpg" title="This is an image title"
+											data-lightbox-gallery="gallery1"
+											data-lightbox-hidpi="resources/main_page_resource/sub/img/works/1@2x.jpg">
 											<p style="font-size: 20pt" class="hanna text-center mb-0">${d.rownum }위</p>
 											<div style="text-align: center;">
 												<img
@@ -323,8 +311,8 @@
 												<p class="hanna  text-secondary hidden text-center"
 													style="padding-top: 0px">${d.edu_st_dt}~ ${d.edu_ed_dt }</p>
 											</div>
+										</a>
 									</div>
-									</a>
 								</c:forEach></li>
 								
 								
@@ -349,9 +337,9 @@
 					<div class="">
 						<div id="owl-works" class="">
 							<c:forEach var="d" items="${ddayList }" varStatus="status">
-								<a onclick="eduDetail('${d.course_cd}');"  data-toggle="modal" data-target="#eduModal">
 							
 								<div class="ddayCount">
+										<a href="eduDetail?course_ce=${d.course_cd}" data-toggle="modal" data-target="#view" data-reveal-id="myModal">
 
 										<h4 class="hanna text-center mb-0">D-${d.dday }</h4>
 										<div style="text-align: center;">
@@ -371,9 +359,8 @@
 											<p class="hanna  text-secondary hidden text-center"
 												style="padding-top: 0px">${d.edu_st_dt}~ ${d.edu_ed_dt }</p>
 										</div>
+									</a>
 								</div>
-								</a>
-								
 							</c:forEach>
 							
 						</div>
@@ -403,7 +390,6 @@
 
 		<div class="row flyIn" id="services" style="padding-bottom: 30px; margin-bottom: 0px">
 			<c:forEach var="d" items="${categoryList}" varStatus="status">
-			<a onclick="eduDetail('${d.course_cd}');"  data-toggle="modal" data-target="#eduModal">
 				<div class="span3 animated-fast  filter ${d.high_cls_cd}" style="width: 240px; height: 320px; margin-left:  20px; margin-right :  20px ; margin-bottom: 40px ">
 					<div class="service-box" style="width: 240px; height: 320px; ">
 						<img class="photo3" style="width: 150px; height: 150px" src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="" />
@@ -413,7 +399,6 @@
 						</p>
 					</div>
 				</div>
-				</a>
 			</c:forEach>
 				<div id='categoryExist' style="text-align:center ; display: none">
 					<div  style="width: 1100px; height: 150px; margin-left:  20px; margin-right :  20px ; padding-bottom: 20px ">
@@ -426,11 +411,10 @@
 
 		</div>
 	</section>
-	<!-- Large modal -->
-
-
 	
-
+	<a href="eduDetail?course_ce=${d.course_cd}" >
+	aaaaaa</a>
+	
 
 
 	<!-- About Section -->
@@ -592,75 +576,138 @@
             </div>
             
         </div>
-        
-        
-        <div id="eduModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div id="eduModalContent" class="modal-content">
-    </div>
-  </div>
-</div>
 
-	
-	
-	
+	<!-- Portfolio Modal 2 -->
+	<div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
+		<div class="portfolio-modal-dialog bg-white">
+			<a class="close-button d-none d-md-block portfolio-modal-dismiss"
+				href="#"> <i class="fa fa-3x fa-times"></i>
+			</a>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+						<hr class="star-dark mb-5">
+						<img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
+						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias
+							magnam, recusandae quos quis inventore quisquam velit asperiores,
+							vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+						<a
+							class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"
+							href="#"> <i class="fa fa-close"></i> Close Project
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Portfolio Modal 3 -->
+	<div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
+		<div class="portfolio-modal-dialog bg-white">
+			<a class="close-button d-none d-md-block portfolio-modal-dismiss"
+				href="#"> <i class="fa fa-3x fa-times"></i>
+			</a>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+						<hr class="star-dark mb-5">
+						<img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
+						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias
+							magnam, recusandae quos quis inventore quisquam velit asperiores,
+							vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+						<a
+							class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"
+							href="#"> <i class="fa fa-close"></i> Close Project
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<!-- Portfolio Modal 4 -->
+	<div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
+		<div class="portfolio-modal-dialog bg-white">
+			<a class="close-button d-none d-md-block portfolio-modal-dismiss"
+				href="#"> <i class="fa fa-3x fa-times"></i>
+			</a>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+						<hr class="star-dark mb-5">
+						<img class="img-fluid mb-5" src="img/portfolio/game.png" alt="">
+						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias
+							magnam, recusandae quos quis inventore quisquam velit asperiores,
+							vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+						<a
+							class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"
+							href="#"> <i class="fa fa-close"></i> Close Project
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- Plugin JavaScript -->
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<!-- Portfolio Modal 5 -->
+	<div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
+		<div class="portfolio-modal-dialog bg-white">
+			<a class="close-button d-none d-md-block portfolio-modal-dismiss"
+				href="#"> <i class="fa fa-3x fa-times"></i>
+			</a>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+						<hr class="star-dark mb-5">
+						<img class="img-fluid mb-5" src="img/portfolio/safe.png" alt="">
+						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias
+							magnam, recusandae quos quis inventore quisquam velit asperiores,
+							vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+						<a
+							class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"
+							href="#"> <i class="fa fa-close"></i> Close Project
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- Contact Form JavaScript -->
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jqBootstrapValidation.js"></script>
+	<!-- Portfolio Modal 6 -->
+	<div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
+		<div class="portfolio-modal-dialog bg-white">
+			<a class="close-button d-none d-md-block portfolio-modal-dismiss"
+				href="#"> <i class="fa fa-3x fa-times"></i>
+			</a>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+						<hr class="star-dark mb-5">
+						<img class="img-fluid mb-5" src="img/portfolio/submarine.png"
+							alt="">
+						<p class="mb-5">Lorem ipsum dolor sit amet, consectetur
+							adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias
+							magnam, recusandae quos quis inventore quisquam velit asperiores,
+							vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+						<a
+							class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"
+							href="#"> <i class="fa fa-close"></i> Close Project
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- Custom scripts for this template -->
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/freelancer.min.js"></script>
-
-
-
-
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.scrollTo.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.nav.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.localScroll.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.prettyPhoto.js"></script>
-	 	<script src="<%=application.getContextPath()%>/resources/main_page_resource/js/isotope.js"></script>
-
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.flexslider.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/inview.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/animate.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/js/custom.js"></script>
-
-
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/jquery.sticky.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/slippry.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/wow.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/owl.carousel.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/custom.js"></script>
 
 
 
