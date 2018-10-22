@@ -36,7 +36,8 @@
 		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css" rel="stylesheet">
 		  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/color/default.css" rel="stylesheet">
 		 <link href="<%=application.getContextPath()%>/resources/css/itep.css" rel="stylesheet" type="text/css">
-		    	
+		 
+
 
     	
     	<script>
@@ -261,9 +262,8 @@
 							<li style="text-align: center;"><c:forEach var="d"
 									items="${top8List1}" varStatus="status">
 									<div class="top8List1ContentCount" style="display: inline-table; width: 20%; padding: 30px">
-										<a href="img/works/1.jpg" title="This is an image title"
-											data-lightbox-gallery="gallery1"
-											data-lightbox-hidpi="resources/main_page_resource/sub/img/works/1@2x.jpg">
+										<a data-toggle="modal" data-target="#subscribeModal"
+											href="eduDetail?course_cd=${d.course_cd}">
 											<p style="font-size: 20pt" class="hanna text-center mb-0">${d.rownum }위</p>
 											<div style="text-align: center;">
 												<img
@@ -409,10 +409,21 @@
 
 		</div>
 	</section>
+	
+	
+<div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg  " role="document">
+        <!--Content-->
+        <div class="modal-content">
+           
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 
-
-
-
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#orangeModalSubscription">Launch modal Subscription</a>
+</div>
 
 	<!-- About Section -->
 	<section class="bg-primary text-white "  id="about">
@@ -455,53 +466,7 @@
 				<div class="col-lg-8 mx-auto">
 					<!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
 					<!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-					<form name="sentMessage" id="contactForm" novalidate="novalidate">
-						<div class="control-group">
-							<div
-								class="form-group floating-label-form-group controls mb-0 pb-2">
-								<label>Name</label> <input class="form-control" id="name"
-									type="text" placeholder="Name" required="required"
-									data-validation-required-message="Please enter your name.">
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div
-								class="form-group floating-label-form-group controls mb-0 pb-2">
-								<label>Email Address</label> <input class="form-control"
-									id="email" type="email" placeholder="Email Address"
-									required="required"
-									data-validation-required-message="Please enter your email address.">
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div
-								class="form-group floating-label-form-group controls mb-0 pb-2">
-								<label>Phone Number</label> <input class="form-control"
-									id="phone" type="tel" placeholder="Phone Number"
-									required="required"
-									data-validation-required-message="Please enter your phone number.">
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<div class="control-group">
-							<div
-								class="form-group floating-label-form-group controls mb-0 pb-2">
-								<label>Message</label>
-								<textarea class="form-control" id="message" rows="5"
-									placeholder="Message" required="required"
-									data-validation-required-message="Please enter a message."></textarea>
-								<p class="help-block text-danger"></p>
-							</div>
-						</div>
-						<br>
-						<div id="success"></div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-xl"
-								id="sendMessageButton">Send</button>
-						</div>
-					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -593,6 +558,32 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!-- Content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                        	<a class="logo" href="index.html"></a>
+                            <h1><strong>Bootstrap</strong> Modal Registration Form</h1>
+                            <div class="description">
+                            	<p>
+	                            	This is a free responsive modal registration form made with Bootstrap. 
+	                            	Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
+                            	</p>
+                            </div>
+                            <div class="top-big-link">
+                            	<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-register">Launch modal</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
 	<!-- Portfolio Modal 2 -->
 	<div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
@@ -780,6 +771,8 @@
 		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/owl.carousel.min.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/main_page_resource/sub/js/custom.js"></script>
+
+
 
 
 

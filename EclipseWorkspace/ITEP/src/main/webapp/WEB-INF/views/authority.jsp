@@ -17,9 +17,15 @@
 		<link href="<%=application.getContextPath()%>/resources/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
 	   
 	    <!-- Custom styles for this template -->
+	    <!-- css 추가 정재희  -->
 	    		<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
 	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet"> 
+	    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
+	    <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	    <script src="//code.jquery.com/jquery.min.js"></script>
 				<!-- 테이블 자동 검색을 위한 css end -->
+		<!-- css 추가 정재희  end -->
+		
 		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/fullcalendar.css">
   		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/widgets.css" rel="stylesheet">
   		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
@@ -44,13 +50,84 @@
   		<!-- owl carousel -->
   		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
   		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">	
-	</head>
 	
-	<script>
+	<style>
+		#modal {
+		display:none;
+		background-color:#FFFFFF;
+		position:absolute;
+		top:300px;
+		left:200px;
+		padding:10px;
+		border:2px solid #E2E2E2;
+		z-Index:9999}
+	</style>
+	
+	<script type="text/javascript">
+		
+		//테이블 자동 검색
 		$(document).ready( function () {
 	    	$('#authorityTable').DataTable();
 		} );
+
+
+		  
+		// 모달 창 여는 버튼에 이벤트 걸기
+		$(document).ready(function(){
+			$("#button").click(function() {
+				myModal.show(); // 모달창 보여주기
+			});
+		});
+	
+		// 모달 창 안에 있는 확인 버튼에 이벤트 걸기
+		$(document).ready(function(){
+			$("#confirm_button").click(function() {
+			    alert("권한 변경이 완료되었습니다.");
+			    myModal.hide(); // 모달창 감추기
+			});
+		});
+		
+		 //모달 창 안에 있는 닫기 버튼에 이벤트 걸기
+		$(document).ready(function(){
+	        $(".js_close").click(function() {
+	            // 모달창 감추기(여기서 obj는 Example.Modal 인스턴트 자체를 의미)
+	            myModal.hide();
+	        });
+		});
+		
+		 
+		 //체크되어 있는 관리자 정보 파라미터 넘기기 
+		 function checkAuthArr(){
+			 
+			 var checkboxValues = [];
+			 var chk_obj = document.getElementsByName("listCheckBox");
+			 var chk_use = 0; 
+			 alert(chk_obj);
+			 for(i=0; i<chk_obj.length; i++) {
+				 if (chk_obj[i].checked == true){
+					 chk_use++;
+					 checkboxValues.push(chk_obj[i].value);
+				 }
+			 }
+			 
+			 if(chk_use != 1){
+				 alert("하나만 선택해주세요.");
+			 }else{
+				 
+					// 모달창 인스턴트 생성
+					var myModal = new Example.Modal({
+					    id: "modal" // 모달창 아이디 지정
+					});
+					
+				 jQuery.ajaxSettings.traditional = true;
+				 myModal.show();
+				 window.opener.location.reload();
+				 self.close();
+			 }
+		 }
 	</script>
+	
+	</head>
 	
 	<body>
   <!-- container section start -->
@@ -72,80 +149,7 @@
     </header>
     <!--header end-->
 
-    <!--sidebar start-->
-    <aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="admin?ssoid=<%=ssoid%>">
-                          <i class="icon_house_alt"></i>
-                          <span>대시보드</span>
-                      </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>교육관리</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_component.html" --%>>교육일괄등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
-              <li><a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육수정</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="" <%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/widgets.html"--%>>
-                          <i class="icon_desktop"></i>
-                          <span>결재함</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" href="/ITEP/authority">
-                          <i class="icon_genius"></i>
-                          <span>권한관리</span>
-                      </a>
-          </li>
-          <!-- 하단에 추가 메뉴 구성 가능 20181015 이기석 -->
-          <%-- 
-          <li>
-            <a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
 
-                      </a>
-
-          </li>
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tabls</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/basic_table.html">Basic Table</a></li>
-            </ul>
-          </li>
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/profile.html">Profile</a></li>
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/login.html"><span>Login Page</span></a></li>
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/contact.html"><span>Contact Page</span></a></li>
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/blank.html">Blank Page</a></li>
-              <li><a class="" href="<%=application.getContextPath()%>/resources/admin_page_resource/404.html">404 Errr</a></li>
-            </ul>
-          </li>
-		--%>
-        </ul>
-        <!-- sidebar menu end-->
       </div>
     </aside>
     <!--sidebar end-->
@@ -161,9 +165,34 @@
           </div>
         </div>
 
-
-
+		<!-- 모달 창을 여는 버튼 -->
+		<input id="testbutton" type="button" value="권한변경" onclick="checkAuthArr()">
+			
+		<!-- 모달창 -->
+		<div id="modal">
+    		<h2>권한 수정 </h2>
+    		<p>권한 부여, 수정, 삭제 </p>
+    		<form role="form">
+    			<div class = "form-group">
+    				<label for="name" class="control-label"> 이름 : </label><br>
+    				<label for="name" class="control-label"> 사번 : </label><br>
+    				<label for="name" class="control-label"> 권한 : </label>
+    			</div>
+    			<div class = "form-group">
+    				<label for="authority" class="control-label"> 변경 후 권한: </label>
+    				<select name="authority_select">
+    					<option value="교육관리자"> 교육관리자 </option>    				
+    					<option value="서무담당자"> 서무담당자 </option>
+    					<option value="서무차장"> 서무차장 </option>
+    					<option value="일반사용자"> 일반사용자 </option>
+    				</select>
+    			</div>
+    		</form>
+    		<button id="confirm_button">확인</button>
+    		<button class="js_close">닫기</button>
+		</div>
 		
+		<!-- 내용 -->
 		<div class="container">
 	<table id = "authorityTable" style="border:1px solid #ccc; width:1000px; text-align:center;"  >
     	<thead>
@@ -182,10 +211,10 @@
             <c:when test="${fn:length(auth_list) > 0}">
                 <c:forEach items="${auth_list}" var="row">
                     <tr style="border-top : 1px solid #ccc;">
-						<td><input type='checkbox' name="listCheckbox"  value="${adminApprovalList.course_nm}" onClick="selectCheckBox(this, 'listCheckbox');"> </td>              
+						<td><input type='checkbox' name="listCheckBox"  value="${row.emm}"> </td>              
                         <td>${row.emn}</td>
                         <td>${row.emm}</td>
-                        <td>${row.krn_brm}</td>
+                        <td>${row.krn_brm}</td>f
                         <td>${row.auth_cd}</td>
                         <td>${row.auth_nm}</td>
                         <td>${row.reg_dt}</td>

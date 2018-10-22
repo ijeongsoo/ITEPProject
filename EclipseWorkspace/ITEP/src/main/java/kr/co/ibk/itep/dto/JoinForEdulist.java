@@ -2,9 +2,9 @@ package kr.co.ibk.itep.dto;
 
 public class JoinForEdulist {
 	
-	private String high_cls;
-	private String mid_cls;
-	private String low_cls;
+	private String high_cls_nm;
+	private String mid_cls_nm;
+	private String low_cls_nm;
 	private String course_nm;
 	private String edu_hour;
 	private String reg_st_dt;
@@ -15,24 +15,31 @@ public class JoinForEdulist {
 	private String org_nm;
 	private String loc;
 	private String refund_yn;
+	private String d_day;
 	
-	public String getHigh_cls() {
-		return high_cls;
+	public String getHigh_cls_nm() {
+		return high_cls_nm;
 	}
-	public void setHigh_cls(String high_cls) {
-		this.high_cls = high_cls;
+	public void setHigh_cls_nm(String high_cls_nm) {
+		this.high_cls_nm = high_cls_nm;
 	}
-	public String getMid_cls() {
-		return mid_cls;
+	public String getMid_cls_nm() {
+		return mid_cls_nm;
 	}
-	public void setMid_cls(String mid_cls) {
-		this.mid_cls = mid_cls;
+	public void setMid_cls_nm(String mid_cls_nm) {
+		this.mid_cls_nm = mid_cls_nm;
 	}
-	public String getLow_cls() {
-		return low_cls;
+	public String getLow_cls_nm() {
+		return low_cls_nm;
 	}
-	public void setLow_cls(String low_cls) {
-		this.low_cls = low_cls;
+	public void setLow_cls_nm(String low_cls_nm) {
+		this.low_cls_nm = low_cls_nm;
+	}
+	public String getD_day() {
+		return d_day;
+	}
+	public void setD_day(String d_day) {
+		this.d_day = d_day;
 	}
 	public String getCourse_nm() {
 		return course_nm;
