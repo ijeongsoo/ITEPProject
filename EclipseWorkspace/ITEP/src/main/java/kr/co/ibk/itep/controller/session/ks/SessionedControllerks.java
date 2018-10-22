@@ -15,6 +15,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.apache.poi.hssf.extractor.ExcelExtractor;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -69,7 +70,7 @@ public class SessionedControllerks {
 	}
 	
 	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
-	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException {
+	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException, NotFoundException {
 		// 등록자 사번 가져오기
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
@@ -111,7 +112,7 @@ public class SessionedControllerks {
 			// 에러페이지 표시
 			return "dashboard";
 		}
-		return "dashboard";
+		return "eduUploadExcel";
 	}
 	
 	@RequestMapping("/admin/dashboard")

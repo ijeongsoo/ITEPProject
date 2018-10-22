@@ -33,6 +33,23 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 </head>
+
+<script>
+	$(document).ready(function() {
+		$('#load').hide();
+		$('#excelFileBtn').attr('disable', false);
+		$('#submitBtn').attr('disable', false);
+		$('#excelFile').change(function() {
+			$('#filePath').html("gkgk");
+		});
+		$('#excel').submit(function() {
+			$('#load').show();
+			$('#excelFileBtn').attr('disable', true);
+			$('#submitBtn').attr('disable', true);
+			return true;
+		});
+	});
+</script>
 <body>
 <!-- 엑셀 업로드 화면 구성 20181015 이기석 -->
 
@@ -50,19 +67,28 @@
         ${login_info.emn}
         <br/>
         
+        <label>
+        	<span id="filePath">hello</span>
+        </label>
+        
         <div style="height: 340px;width: 500px; overflow: auto;padding:20px;">
-  		<form action="uploadFile" method="post" enctype="multipart/form-data">
+  		<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
 			<div class="input-group col-lg-12 ">
-				<label for="excelFile" id="excelFileBtn" class="col-lg-12 btn btn-default">
+				<label for="excelFile" id="excelFileBtn" class="col-lg-12 btn btn-default" onclick=>
 					<span class="glyphicon glyphicon-camera"></span> 엑셀 추가
 				</label>
 				<input type="file" id=excelFile style="visibility: hidden" name="excelFile"/>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">글쓰기</button>
+				<button id="submitBtn" type="submit" class="btn btn-primary">글쓰기</button>
+			</div>
+			<div id="load" style="text-align: center;">
+				<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading">
 			</div>
   		</form>
 		</div>
+		
+		
 		
 		<!-- 결과 출력 -->
         <!-- page end-->

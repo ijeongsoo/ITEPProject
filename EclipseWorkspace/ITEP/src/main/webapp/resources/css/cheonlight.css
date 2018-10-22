@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+@font-face{
+font-family:cheonlight;
+src:url('cheonlight.eot');
+src:local(※), 
+	url('cheonlight.woff') format('woff');
+}
+
+
+.cheonlight{
+	font-family: cheonlight;
+	font-weight: normal;
+	margin: 0;
+	padding: 10px;
+}
