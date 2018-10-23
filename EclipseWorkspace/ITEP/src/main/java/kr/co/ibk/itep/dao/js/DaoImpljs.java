@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
@@ -71,6 +72,14 @@ public class DaoImpljs implements Dao {
 	public ArrayList<EduJoinedEcd> selectCategoryEdu() {
 		List<EduJoinedEcd> list = sst.selectList("edu001m.selectCategoryEdu");
 		return (ArrayList<EduJoinedEcd>) list;
+	}
+
+
+	@Override
+	public EduPullInfo selectByCourse_cd(String course_cd) {
+		// TODO Auto-generated method stub
+		EduPullInfo edu = sst.selectOne("edu001m.selectEduByCourse_cd", course_cd);
+		return edu;
 	}
 
 

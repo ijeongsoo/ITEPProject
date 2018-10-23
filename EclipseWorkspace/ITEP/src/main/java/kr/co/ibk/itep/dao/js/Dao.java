@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -32,6 +33,8 @@ public interface Dao {
 	public ArrayList<EduJoinedEcd> selectDDayEdu();
 	
 	public ArrayList<EduJoinedEcd> selectCategoryEdu();
+
+	public EduPullInfo selectByCourse_cd(String course_cd);
 
 	
 

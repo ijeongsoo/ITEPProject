@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-
+import java.util.Date;
 import java.util.HashMap;
 
 import java.util.List;
@@ -23,15 +23,20 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu002r;
+import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.js.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
@@ -119,9 +124,42 @@ public class SessionedControllerjs {
 	public String eduDetail( String course_cd, Model model) {
 		
 		logger.info(course_cd);
+		EduPullInfo edu = service.getEduByCourseCD(course_cd);
+		model.addAttribute("edu", edu);
+
 		
 		return "eduDetail";
 	} 
+	
+	@RequestMapping(value = "/regEdu", method = RequestMethod.POST)
+	public String regEdu( Edu002rAttach edu, Model model ) throws IllegalStateException, IOException {
+		edu.setOrgin_reg_file_nm(edu.getRegAttach().getOriginalFilename()); 
+		edu.setReg_file_type(edu.getRegAttach().getContentType());
+		String regfileName = new Date().getTime() + "-" + edu.getOrgin_reg_file_nm();
+		edu.setSvr_reg_file_nm(regfileName);
+		
+		edu.setOrigin_plan_file_nm(edu.getPlanAttach().getOriginalFilename());
+		edu.setPlan_file_type(edu.getPlanAttach().getContentType());
+		String planfileName = new Date().getTime() + "-" + edu.getOrigin_plan_file_nm();
+		edu.setSvr_plan_file_nm(planfileName);
+
+		
+		String regfileRealPath = servletContext.getRealPath("/WEB-INF/upload/reg/");
+		String planfileRealPath = servletContext.getRealPath("/WEB-INF/upload/plan/");
+
+		File regfile = new File(regfileRealPath + regfileName);
+		File planfile = new File(planfileRealPath + planfileName);
+		
+		edu.getRegAttach().transferTo(regfile);
+		edu.getPlanAttach().transferTo(planfile);
+
+		//int result = service.registEdu(edu);
+		
+		model.addAttribute("result", 1);
+
+		return "redirect:/";
+
+	}
 
 	
 }

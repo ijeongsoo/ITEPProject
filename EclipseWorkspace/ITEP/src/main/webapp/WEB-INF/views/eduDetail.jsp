@@ -3,6 +3,60 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<script type="text/javascript">
+	function regAttachChange(event) {
+		if ($("#regAttach")[0].files.length != 0) {
+			
+			var fileValue = $("#regAttach").val().split("\\");
+			var fileName = fileValue[fileValue.length-1]; // 파일명
+			
+			/* $("#imgFileViewContainer").attr("hidden", false);
+			$("#imgFileView")[0].src = URL
+					.createObjectURL(event.target.files[0]);*/
+			$("#regAttachLabel").attr("style", "background-color: #92F5A2; text-align:center;  color: white"); 
+			$("#regAttachLabel").text( fileName);
+
+		}
+	}
+	
+	function planAttachVhange(event) {
+		if ($("#planAttach")[0].files.length != 0) {
+			
+			var fileValue = $("#planAttach").val().split("\\");
+			var fileName = fileValue[fileValue.length-1]; // 파일명
+			
+			/* $("#imgFileViewContainer").attr("hidden", false);
+			$("#imgFileView")[0].src = URL
+					.createObjectURL(event.target.files[0]);*/
+			$("#planAttachLabel").attr("style", "background-color: #92F5A2; text-align:center;  color: white"); 
+			$("#planAttachLabel").text( fileName);
+
+		}
+	}
+	
+	function validation() {
+		if ($("#planAttach")[0].files.length == 0 || $("#regAttach")[0].files.length == 0 ) {			
+			$("#modalLabel").text("신청서와 계획서를 반드시 첨부하셔야 합니다.");
+			$("#confirmBtnSet").attr("style","display:none");
+			
+		}else{
+			$("#modalLabel").text("정말 신청하시겠습니까?");
+			$("#confirmBtnSet").attr("style","display:");
+		}
+	}
+	
+	
+
+	function submitForm()
+	{	
+		//폼전송 
+		$('#eduForm').submit();
+	}
+
+</script>
+
+
+
 
 	<div class="modal-header" style="background-color: #447AF9">
 			<div style=" margin: 0 auto;">
@@ -16,45 +70,56 @@
 	</div>
 
 	<div class="modal-body">
-		<form name="sentMessage" id="contactForm" novalidate="novalidate">
-			<div class="control-group">
-				<div class="form-group floating-label-form-group controls mb-0 pb-2">
-					<label>Name</label> <input class="form-control" id="name"
-						type="text" placeholder="Name" required="required"
-						data-validation-required-message="Please enter your name.">
-					<p class="help-block text-danger"></p>
-				</div>
+		<form name="eduForm" id="eduForm" novalidate="novalidate" action="regEdu" method="post" enctype="multipart/form-data">
+		
+			<div style=" float: left; width: 45%;">
+				<img class="photo2"
+						src="<%=application.getContextPath()%>/file?svr_img_file_nm=${edu.svr_img_file_nm}&mfiletype=${edu.img_file_type}"
+						 alt="img" />
 			</div>
-			<div class="control-group">
-				<div class="form-group floating-label-form-group controls mb-0 pb-2">
-					<label>Email Address</label> <input class="form-control" id="email"
-						type="email" placeholder="Email Address" required="required"
-						data-validation-required-message="Please enter your email address.">
-					<p class="help-block text-danger"></p>
-				</div>
+			<div style=" float: left; width: 55%;">
+				<p style="font-size: 16px; margin-bottom : 0 ; padding-bottom : 0" class="hanna"  >${edu.high_cls_nm} > ${edu.mid_cls_nm} > ${edu.low_cls_nm}</p>
+				<p style="font-size: 28px; padding-top: 0 " class="hanna" >교육명 : ${edu.course_nm }</p>
+				<p style="font-size: 28px; padding-bottom : 0" class="hanna" >교육기관 : ${edu.org_nm }</p>
+				<p style="font-size: 16px;  padding-top: 0" class="hanna" >위치 : ${edu.loc}</p>
+				<p style="font-size: 28px" class="hanna" >교육기간 : ${edu.edu_st_dt} ~ ${edu.edu_ed_dt}</p>
+				<p style="font-size: 28px" class="hanna" >신청기간 : ${edu.edu_st_dt} ~ ${edu.edu_ed_dt}</p>
+				<input type="hidden" class="form-control" name="course_cd"
+						value="${edu.course_cd}" />
+				<input type="hidden" class="form-control" name="emn"
+						value="${login_info.emn}" />
 			</div>
-			<div class="control-group">
-				<div class="form-group floating-label-form-group controls mb-0 pb-2">
-					<label>Phone Number</label> <input class="form-control" id="phone"
-						type="tel" placeholder="Phone Number" required="required"
-						data-validation-required-message="Please enter your phone number.">
-					<p class="help-block text-danger"></p>
+			
+			
+				<div class="col-lg-12" style="margin-bottom: 15px">
+					<label id="regAttachLabel" style="text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2  " for="regAttach" id="attachBtn"
+						class="col-lg-12 btn-reg hanna">신청서 등록</label><input
+						type="file" id="regAttach" style="display: none;"
+						onchange="regAttachChange(event)" name="regAttach" />
 				</div>
-			</div>
-			<div class="control-group">
-				<div class="form-group floating-label-form-group controls mb-0 pb-2">
-					<label>Message</label>
-					<textarea class="form-control" id="message" rows="5"
-						placeholder="Message" required="required"
-						data-validation-required-message="Please enter a message."></textarea>
-					<p class="help-block text-danger"></p>
+				
+				<div class=" col-lg-12 "  style="padding-top: 0; margin-top: 0">
+					<label id="planAttachLabel" style="text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2  " for="planAttach" id="attachBtn"
+						class="col-lg-12 btn-reg hanna">계획서 등록</label><input
+						type="file" id="planAttach" style="visibility: hidden"
+						onchange="planAttachVhange(event)" name="planAttach" />
 				</div>
-			</div>
+
+			
 			<br>
 			<div id="success"></div>
 			<div class="form-group">
-				<button type="submit" style="background-color:#FF4F60; width: 100%; height: 70px" class="btn "
-					id="sendMessageButton" ><p class="hanna" style="font-size: 20px">신청하기</p></button>
+				<a onclick="validation()" style=" width: 100%; height: 70px" class="btn " data-toggle="modal" data-target="#confirmModal"
+					 ><p  class="hanna" style="font-size: 20px; color: white">신청하기</p></a>
 			</div>
+			
+			
+			
+			
 		</form>
 	</div>
+	
+	
+	
+	
+	

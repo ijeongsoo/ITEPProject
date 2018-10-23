@@ -14,8 +14,10 @@
 		
 	    <title >IT그룹 교육 포탈</title>
 	    
+	    
+	    
   		<script src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
-	
+		
 		<link href="<%=application.getContextPath()%>/resources/main_page_resource/css/style.css" rel="stylesheet">
 
 		    <!-- Bootstrap core CSS -->
@@ -172,6 +174,10 @@
 				$(this).addClass("active");
 
 			});
+			
+			
+			
+
 
     		
     	</script>
@@ -600,6 +606,38 @@
     </div>
   </div>
 </div>
+
+		<div id="confirmModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-md">
+ 				   <div  id="eduModalContent" class="modal-content">
+ 	
+ 				   
+ 				 		<div class="modal-header" style="background-color: #F94164">
+							<div style=" margin: 0 auto;">
+								<h1 align="center" class="hanna" style="margin-left : 30px; color: white" id="modalLabel">정말 신청하시겠습니까?</h1>
+			
+							</div>
+	
+							<button style="margin: 0" type="button" class="close" data-dismiss="modal">
+								<span style="margin: -20px ; color: white" aria-hidden="true" >&times;</span><span class="sr-only">Close</span>
+							</button>
+						</div>
+					
+						<div class="modal-body">
+							
+								
+								<br>
+								<div id="success"></div>
+								<div class="row" id="confirmBtnSet">
+									<button  data-dismiss="modal"  style=" width: 50%; height: 70px" class="btn"><p  class="hanna" style="font-size: 20px; color: white">아니욥</p></button>
+									<button  onclick="submitForm()" style=" width: 50%; height: 70px" class="btn-yes" ><p  class="hanna" style="font-size: 20px; color: white">넵</p></button>
+								</div>
+								
+						</div>
+	
+ 				   </div>
+ 			  </div>
+			</div>
 
 	
 	

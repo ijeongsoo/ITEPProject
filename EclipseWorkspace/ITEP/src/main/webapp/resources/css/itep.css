@@ -15,6 +15,13 @@ src:local(※),
 	padding: 10px;
 }
 
+.photo2 {
+    width: 270px; height: 270px;
+    margin : 30px;
+    object-fit: cover;
+}
+
+
 .photo3 {
     width: 200px; height: 200px;
     object-fit: cover;

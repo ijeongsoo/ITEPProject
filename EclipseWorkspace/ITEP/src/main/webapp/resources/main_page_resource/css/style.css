@@ -1018,6 +1018,96 @@ i.icon-white {
 /* =========================================================
 08. Buttons
 ============================================================ */
+.btn-yes {
+	color: #000;
+	text-shadow: none;
+	font-size: 16px;
+	padding: 11px 19px;
+	letter-spacing: 0.05em;
+	border: 10px;
+	text-transform: none;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+  background-color: #92F5A2;
+  border-color: #92F5A2;
+  *background-color: #fff;
+  background-image: none;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: none;
+  border: 1px;
+  *border:1px;
+  border-bottom-color: none;
+}
+.btn-yes:link, .btn-yes:visited {
+	color: #fff;
+}
+.btn-yes:hover {
+	background:  #74B147 !important;
+}
+.btn-yes:hover,
+.btn-yes:focus,
+.btn-yes:active,
+.btn-yes.active,
+.btn-yes.disabled,
+.btn-yes[disabled] {
+  color: #fff;
+  background-color: #74B147;
+  *background-color: #74B147;
+}
+
+
+
+
+
+.btn-reg {
+	color: #000;
+	text-shadow: none;
+	font-size: 16px;
+	padding: 11px 19px;
+	letter-spacing: 0.05em;
+	border: 10px;
+	text-transform: none;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+  background-color: #fff;
+  border-color: #92F5A2;
+  *background-color: #fff;
+  background-image: none;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: none;
+  border: 1px;
+  *border:1px;
+  border-bottom-color: none;
+}
+.btn-reg:link, .btn-reg:visited {
+	color: #fff;
+}
+.btn-reg:hover {
+	background:  #92F5A2 !important;
+}
+.btn-reg:hover,
+.btn-reg:focus,
+.btn-reg:active,
+.btn-reg.active,
+.btn-reg.disabled,
+.btn-reg[disabled] {
+  color: #fff;
+  background-color: #FF4F60;
+  *background-color: #FF4F60;
+}
+
+ 
+ 
+ 
+ 
  
 .btn {
 	color: #fff;

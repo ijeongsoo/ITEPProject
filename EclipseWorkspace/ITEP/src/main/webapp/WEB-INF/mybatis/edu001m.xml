@@ -5,6 +5,37 @@
 
 <mapper namespace="edu001m">
 
+
+	<select id= "selectEduByCourse_cd" resultType="kr.co.ibk.itep.dto.EduPullInfo" parameterType="string">
+		select a.course_cd
+			, a.org_cd
+			, b.org_nm
+			, a.high_cls_cd
+			, c.high_cls_nm
+			, a.mid_cls_cd
+			, d.mid_cls_nm
+			, a.low_cls_cd
+			, e.low_cls_nm
+			, a.course_nm
+			, a.edu_hour
+			, a.reg_st_dt
+			, a.reg_ed_dt
+			, a.edu_st_dt
+			, a.edu_ed_dt
+			, a.edu_cost
+			, a.loc
+			, a.refund_yn
+			, a.origin_img_file_nm
+			, a.svr_img_file_nm
+			, a.img_file_type  
+		from TB_IEP_EDU001M a, TB_IEP_ECD002M b, TB_IEP_ECD005M c, TB_IEP_ECD006M d, TB_IEP_ECD007M e
+		where a.org_cd = b.org_cd
+		and a.HIGH_CLS_CD = c.HIGH_CLS_CD
+		and a.MID_CLS_CD = d.MID_CLS_CD
+		and a.LOW_CLS_CD =  e.LOW_CLS_CD
+		and a.course_cd = #{course_cd}
+	</select>
+
    <select id= "selectAll" resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
       	SELECT HIGH_CLS_NM, 
         	MID_CLS_NM, 

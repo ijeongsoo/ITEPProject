@@ -22,7 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.co.ibk.itep.dao.js.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
+import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -203,6 +205,20 @@ public class ServiceImpljs implements Service {
 	public ArrayList<EduJoinedEcd> getCategoryEdu() {
 		ArrayList<EduJoinedEcd> list = dao.selectCategoryEdu();
 		return list;
+	}
+
+
+	@Override
+	public EduPullInfo getEduByCourseCD(String course_cd) {
+		EduPullInfo edu = dao.selectByCourse_cd(course_cd);
+		return edu;
+	}
+
+
+	@Override
+	public int registEdu(Edu002rAttach edu) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
