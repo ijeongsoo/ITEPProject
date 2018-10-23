@@ -4,6 +4,9 @@ public class Ecd007m {
 	private String low_cls_cd;
 	private String low_cls_nm;
 	private String mid_cls_cd;
+	private String default_origin_img_nm;
+	private String default_svr_img_nm;
+	private String default_img_type;
 	private String reg_id;
 	private String reg_dt;
 	private String chg_id;
@@ -49,6 +52,24 @@ public class Ecd007m {
 	}
 	public void setChg_dt(String chg_dt) {
 		this.chg_dt = chg_dt;
+	}
+	public String getDefault_origin_img_nm() {
+		return default_origin_img_nm;
+	}
+	public void setDefault_origin_img_nm(String default_origin_img_nm) {
+		this.default_origin_img_nm = default_origin_img_nm;
+	}
+	public String getDefault_svr_img_nm() {
+		return default_svr_img_nm;
+	}
+	public void setDefault_svr_img_nm(String default_svr_img_nm) {
+		this.default_svr_img_nm = default_svr_img_nm;
+	}
+	public String getDefault_img_type() {
+		return default_img_type;
+	}
+	public void setDefault_img_type(String default_img_type) {
+		this.default_img_type = default_img_type;
 	}
 	
 }
