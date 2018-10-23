@@ -1033,9 +1033,9 @@ i.icon-white {
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
-  background-color: #545454;
+  background-color: #FF9A8A;
   border-color: none;
-  *background-color: #545454;
+  *background-color: #FF9A8A;
   background-image: none;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: none;
@@ -1047,7 +1047,7 @@ i.icon-white {
 	color: #fff;
 }
 .btn:hover {
-	background: #333 !important;
+	background:  #FF4F60 !important;
 }
 .btn:hover,
 .btn:focus,
@@ -1056,13 +1056,13 @@ i.icon-white {
 .btn.disabled,
 .btn[disabled] {
   color: #fff;
-  background-color: #333;
-  *background-color: #333;
+  background-color: #FF4F60;
+  *background-color: #FF4F60;
 }
 
 
 .btn.btn-theme:hover {
-	background: #333 !important;
+	background: #FF4F60 !important;
 }
 
 /* size */

@@ -4,11 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-	<div class="modal-header">
-			<h3 class="modal-title" id="modal-register-label">Sign up now</h3>
+	<div class="modal-header" style="background-color: #447AF9">
+			<div style=" margin: 0 auto;">
+						<h1 align="center" class="hanna" style="margin-left : 30px; color: white" id="modal-register-label">교육 신청서</h1>
+			
+			</div>
 	
-		<button type="button" class="close" data-dismiss="modal">
-			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		<button style="margin: 0" type="button" class="close" data-dismiss="modal">
+			<span style="margin: -20px ; color: white" aria-hidden="true" >&times;</span><span class="sr-only">Close</span>
 		</button>
 	</div>
 
@@ -50,8 +53,8 @@
 			<br>
 			<div id="success"></div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-xl"
-					id="sendMessageButton">Send</button>
+				<button type="submit" style="background-color:#FF4F60; width: 100%; height: 70px" class="btn "
+					id="sendMessageButton" ><p class="hanna" style="font-size: 20px">신청하기</p></button>
 			</div>
 		</form>
 	</div>
