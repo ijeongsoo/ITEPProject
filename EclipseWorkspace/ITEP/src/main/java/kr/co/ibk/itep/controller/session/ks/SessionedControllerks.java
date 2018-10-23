@@ -15,6 +15,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.apache.poi.hssf.extractor.ExcelExtractor;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -39,8 +40,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduApproval;
-import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduExcelUpload;
+import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.ks.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
@@ -63,13 +64,13 @@ public class SessionedControllerks {
 	} 
 	
 
-	@RequestMapping("/admin/eduUploadExcel")
+	@RequestMapping("/eduUploadExcel")
 	public String eduUploadExcel(Model model) {
 		return "eduUploadExcel";
 	}
 	
-	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
-	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException {
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException, NotFoundException {
 		// 등록자 사번 가져오기
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
@@ -111,10 +112,10 @@ public class SessionedControllerks {
 			// 에러페이지 표시
 			return "dashboard";
 		}
-		return "dashboard";
+		return "eduUploadExcel";
 	}
 	
-	@RequestMapping("/admin/dashboard")
+	@RequestMapping("/dashboard")
 	public String dashboard(Model model) {
 		return "dashboard";
 	} 

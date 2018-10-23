@@ -5,30 +5,24 @@
 
 <mapper namespace="edu001m">
 
-	<select id="selectAll"
-		resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
-		SELECT
-		HIGH_CLS_NM,
-		MID_CLS_NM,
-		LOW_CLS_NM,
-		COURSE_NM,
-		EDU_HOUR,
-		REG_ST_DT,
-		REG_ED_DT,
-		EDU_ST_DT,
-		EDU_ED_DT,
-		EDU_COST,
-		ORG_NM,
-		LOC,
-		REFUND_YN
-		FROM TB_IEP_ECD005M a, TB_IEP_ECD006M b, TB_IEP_ECD007M c,
-		TB_IEP_ECD002M d, TB_IEP_EDU001M e
-		WHERE a.HIGH_CLS_CD = e.HIGH_CLS_CD
-		AND b.MID_CLS_CD = e.MID_CLS_CD
-		AND
-		c.LOW_CLS_CD = e.LOW_CLS_CD
-		AND d.ORG_CD = e.ORG_CD
-	</select>
+   <select id= "selectAll" resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
+      	SELECT HIGH_CLS_NM, 
+        	MID_CLS_NM, 
+        	LOW_CLS_NM,
+        	COURSE_NM,
+        	EDU_HOUR,
+        	REG_ST_DT,
+        	REG_ED_DT,
+        	EDU_ST_DT,
+	        EDU_ED_DT,
+    	    EDU_COST,
+        	ORG_NM,
+        	LOC,
+        	REFUND_YN,
+        	DECODE(CONCAT('D-',REG_ED_DT - TO_CHAR(SYSDATE,'YYYYMMDD')),'D-0','D-Day',CONCAT('D-',REG_ED_DT - TO_CHAR(SYSDATE,'YYYYMMDD'))) AS D_DAY
+		FROM TB_IEP_ECD002M a, TB_IEP_EDU001M b, TB_IEP_ECD005M c, TB_IEP_ECD006M d, TB_IEP_ECD007M e
+		WHERE c.HIGH_CLS_CD = b.HIGH_CLS_CD AND d.MID_CLS_CD = b.MID_CLS_CD AND e.LOW_CLS_CD = b.LOW_CLS_CD AND a.ORG_CD = b.ORG_CD AND (REG_ST_DT &lt;= TO_CHAR(SYSDATE,'YYYYMMDD') AND REG_ED_DT &gt;= TO_CHAR(SYSDATE,'YYYYMMDD'))
+   </select>
 
 	<select id="selectDDayEdu"
 		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">

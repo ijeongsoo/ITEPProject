@@ -118,7 +118,8 @@ public class SessionedControllerjs {
 	@RequestMapping("/eduDetail")
 	public String eduDetail( String course_cd, Model model) {
 		
-
+		logger.info("*********************************aaaaaaaaaaasdfslkdfjlakjsdfl");
+		
 		return "eduDetail";
 	} 
 

@@ -1,16 +1,9 @@
 ﻿package kr.co.ibk.itep.service.ks;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -20,18 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.ibk.itep.dao.ks.Dao;
-import kr.co.ibk.itep.dto.Ath001m;
-import kr.co.ibk.itep.dto.Bri001m;
+import kr.co.ibk.itep.dto.Ecd002m;
+import kr.co.ibk.itep.dto.Ecd005m;
+import kr.co.ibk.itep.dto.Ecd006m;
+import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
-import kr.co.ibk.itep.dto.EduJoinedEcd;
-import kr.co.ibk.itep.dto.Emp001m;
-import kr.co.ibk.itep.dto.EmpJoinedDep;
-import kr.co.ibk.itep.dto.JoinForEdulist;
 
 @Component
 public class ServiceImplks implements Service {
@@ -39,12 +27,17 @@ public class ServiceImplks implements Service {
 	@Autowired
 	private Dao dao;
 	@Override
-	public void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) {
+	public void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) throws NotFoundException {
 		// TODO Auto-generated method stub
 		Row titles = null;
 		
 		ArrayList<Edu001m> eduList = new ArrayList<Edu001m>();
 
+		List<Ecd002m> ecd002m = dao.selectEcd002mList();
+		List<Ecd005m> ecd005m = dao.selectEcd005mList();
+		List<Ecd006m> ecd006m = dao.selectEcd006mList();
+		List<Ecd007m> ecd007m = dao.selectEcd007mList();
+		
         // 시트 전체 처리하기 위한 반복문
         for (Row row : (flag.equals("xls") ? (HSSFSheet) sheet : (XSSFSheet) sheet)) {
             if (row.getRowNum() == 0) {
@@ -100,16 +93,56 @@ public class ServiceImplks implements Service {
                 	// 컬럼명 별로 데이터 처리
                 	switch (colName) {
                 	case "ORG_CD":
-                		edu.setOrg_cd(colValue);
+                		// 코드이름 찾기
+                		for(int i=0; i<ecd002m.size(); i++) {
+                			if(ecd002m.get(i).getOrg_nm().equals(colValue)) {
+                				edu.setOrg_cd(ecd002m.get(i).getOrg_cd());
+                				break;
+                			}
+                			if(i==ecd002m.size()) {
+                				// 같은 값이 없다면 Exception throw
+                        		throw new NotFoundException("ORG_CD");
+                			}
+                		}
                 		break;
                 	case "HIGH_CLS_CD":
-                		edu.setHigh_cls_cd(colValue);
+                		// 코드이름 찾기
+                		for(int i=0; i<ecd005m.size(); i++) {
+                			if(ecd005m.get(i).getHigh_cls_nm().equals(colValue)) {
+                				edu.setHigh_cls_cd(ecd005m.get(i).getHigh_cls_cd());
+                				break;
+                			}
+                			if(i==ecd005m.size()) {
+                				// 같은 값이 없다면 Exception throw
+                        		throw new NotFoundException("HIGH_CLS_CD");
+                			}
+                		}
                 		break;
                 	case "MID_CLS_CD":
-                		edu.setMid_cls_cd(colValue);
+                		// 코드이름 찾기
+                		for(int i=0; i<ecd006m.size(); i++) {
+                			if(ecd006m.get(i).getMid_cls_nm().equals(colValue)) {
+                				edu.setMid_cls_cd(ecd006m.get(i).getMid_cls_cd());
+                				break;
+                			}
+                			if(i==ecd006m.size()) {
+                				// 같은 값이 없다면 Exception throw
+                        		throw new NotFoundException("MID_CLS_CD");
+                			}
+                		}
                 		break;
                 	case "LOW_CLS_CD":
-                		edu.setLow_cls_cd(colValue);
+                		// 코드이름 찾기
+                		for(int i=0; i<ecd007m.size(); i++) {
+                			if(ecd007m.get(i).getLow_cls_nm().equals(colValue)) {
+                				edu.setLow_cls_cd(ecd007m.get(i).getLow_cls_cd());
+                				break;
+                			}
+                			if(i==ecd007m.size()) {
+                				// 같은 값이 없다면 Exception throw
+                        		throw new NotFoundException("LOW_CLS_CD");
+                			}
+                		}
                 		break;
                 	case "COURSE_NM":
                 		edu.setCourse_nm(colValue);
@@ -139,14 +172,15 @@ public class ServiceImplks implements Service {
                 		edu.setRefund_yn(colValue);
                 		break;
                 	}
-                	// 등록자 사번 세팅
-                	edu.setReg_id(ssoid);
-                	
-                	// db에서 시퀀스 채번
-                	String courseCd = dao.selectCourseSeq();
-                	edu.setCourse_cd(courseCd);
                 }
             }
+        	// 등록자 사번 세팅
+        	edu.setReg_id(ssoid);
+            
+            // db에서 시퀀스 채번
+        	String courseCd = dao.selectCourseSeq();
+        	edu.setCourse_cd(courseCd);
+        	
             // 생성된 객체 추가
             eduList.add(edu);
         }
@@ -154,6 +188,7 @@ public class ServiceImplks implements Service {
         // dao 처리 시작
         dao.insertCourseList(eduList);
 	}
+	
 
 
 
