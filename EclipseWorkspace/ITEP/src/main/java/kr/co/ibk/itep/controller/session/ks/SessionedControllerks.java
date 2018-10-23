@@ -115,7 +115,7 @@ public class SessionedControllerks {
 		return "eduUploadExcel";
 	}
 	
-	@RequestMapping("/dashboard")
+	@RequestMapping("/admin/dashboard")
 	public String dashboard(Model model) {
 		return "dashboard";
 	} 
