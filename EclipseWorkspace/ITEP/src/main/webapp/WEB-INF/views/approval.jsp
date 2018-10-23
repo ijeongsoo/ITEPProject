@@ -44,6 +44,13 @@
 	<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
 
+	<!-- chart.js  -->
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.min.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
+	
+
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -111,8 +118,7 @@
 		    }
 
 		}
-		
-		
+				
 	</script>
 	
 <body>
@@ -175,6 +181,7 @@
     <div>
 		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm}님</h3>
 	</div>
+
 </body>
 
 </html>
