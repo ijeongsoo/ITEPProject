@@ -64,12 +64,12 @@ public class SessionedControllerks {
 	} 
 	
 
-	@RequestMapping("/eduUploadExcel")
+	@RequestMapping("/admin/eduUploadExcel")
 	public String eduUploadExcel(Model model) {
 		return "eduUploadExcel";
 	}
 	
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/uploadFile", method = RequestMethod.POST)
 	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException, NotFoundException {
 		// 등록자 사번 가져오기
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
