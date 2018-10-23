@@ -17,7 +17,7 @@
 	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
 <link rel="shortcut icon" href="img/favicon.png">
 
-<title>Creative - Bootstrap Admin Template</title>
+<title>IT그룹 교육 포탈 관리자 페이지</title>
 
 <!-- Bootstrap CSS -->
 <link
@@ -112,8 +112,8 @@
 			<div id="sidebar" class="nav-collapse ">
 				<!-- sidebar menu start-->
 				<ul class="sidebar-menu">
-					<li class="active"><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> <i
-							class="icon_house_alt"></i> <span>대시보드</span>
+					<li><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> 
+						<i	class="icon_house_alt"></i> <span>대시보드</span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
 							class="icon_document_alt"></i> <span>교육관리</span> <span
@@ -122,7 +122,7 @@
 						<ul class="sub">
 							<li><a class="" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육일괄등록</a></li>
 							<li><a class=""<%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
-							<li><a class=""<%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육수정</a></li>
+							<li><a class="" onclick="changeIframeUrl('eduChange')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
 					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
 							<i class="icon_desktop"></i> <span>결재함</span>

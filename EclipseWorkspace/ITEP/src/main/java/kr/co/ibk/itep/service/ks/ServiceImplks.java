@@ -99,7 +99,7 @@ public class ServiceImplks implements Service {
                 				edu.setOrg_cd(ecd002m.get(i).getOrg_cd());
                 				break;
                 			}
-                			if(i==ecd002m.size()) {
+                			if(i==ecd002m.size()-1) {
                 				// 같은 값이 없다면 Exception throw
                         		throw new NotFoundException("ORG_CD");
                 			}
@@ -112,7 +112,7 @@ public class ServiceImplks implements Service {
                 				edu.setHigh_cls_cd(ecd005m.get(i).getHigh_cls_cd());
                 				break;
                 			}
-                			if(i==ecd005m.size()) {
+                			if(i==ecd005m.size()-1) {
                 				// 같은 값이 없다면 Exception throw
                         		throw new NotFoundException("HIGH_CLS_CD");
                 			}
@@ -125,20 +125,23 @@ public class ServiceImplks implements Service {
                 				edu.setMid_cls_cd(ecd006m.get(i).getMid_cls_cd());
                 				break;
                 			}
-                			if(i==ecd006m.size()) {
+                			if(i==ecd006m.size()-1) {
                 				// 같은 값이 없다면 Exception throw
                         		throw new NotFoundException("MID_CLS_CD");
                 			}
                 		}
                 		break;
                 	case "LOW_CLS_CD":
-                		// 코드이름 찾기
+                		// 코드이름 찾기 및 서버 이미지 디폴트 값 생성
                 		for(int i=0; i<ecd007m.size(); i++) {
                 			if(ecd007m.get(i).getLow_cls_nm().equals(colValue)) {
                 				edu.setLow_cls_cd(ecd007m.get(i).getLow_cls_cd());
+                				edu.setOrigin_img_file_nm(ecd007m.get(i).getDefault_origin_img_nm());
+                				edu.setSvr_img_file_nm(ecd007m.get(i).getDefault_svr_img_nm());
+                				edu.setImg_file_type(ecd007m.get(i).getDefault_img_type());
                 				break;
                 			}
-                			if(i==ecd007m.size()) {
+                			if(i==ecd007m.size()-1) {
                 				// 같은 값이 없다면 Exception throw
                         		throw new NotFoundException("LOW_CLS_CD");
                 			}
@@ -176,7 +179,7 @@ public class ServiceImplks implements Service {
             }
         	// 등록자 사번 세팅
         	edu.setReg_id(ssoid);
-            
+        	
             // db에서 시퀀스 채번
         	String courseCd = dao.selectCourseSeq();
         	edu.setCourse_cd(courseCd);

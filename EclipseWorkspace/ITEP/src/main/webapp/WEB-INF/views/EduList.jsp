@@ -16,9 +16,10 @@
       <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
       <link href="<%=application.getContextPath()%>/resources/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
              <!-- Custom styles for this template -->
-       <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
-    
+        <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
+ 
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css" rel="stylesheet">
+
 	</head>
 	
 	<script>
@@ -26,7 +27,16 @@
 	    	$('#edulistTable').DataTable();
 		} );
 	</script>
-	
+  
+	<script>
+	function openModal(high_cls_nm){
+		$('#detailInfoModal').modal({
+			keyboard:true,
+			backdrop:"static"
+		});
+	};
+	</script>
+
 
 	<body>
 	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
@@ -34,8 +44,8 @@
 	        <a class="hanna navbar-brand js-scroll-trigger">교육 리스트</a>
 	        </div>
 	    </nav><br>
-	</body>
-	<body>
+
+		<!-- Table 출력 -->
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -51,8 +61,8 @@
 				</thead>
 				<tbody>
 					<c:forEach var="edulist" items="${edu_list}" varStatus="status">
-						<tr>
-							<th style="text-align: center;"><a href="http://www.naver.com">${edulist.high_cls_nm}</th>
+						<tr data-toggle="modal" data-id="edu_list.high_cls_nm" title="Add this item" class="popupModal" href="#detailInfoModal">
+							<th style="text-align: center;">${edulist.high_cls_nm}</th>
 							<th style="text-align: center;">${edulist.mid_cls_nm}</th>
 							<th>${edulist.course_nm}</th>
 							<th style="text-align: center;">${edulist.edu_st_dt}</th>
@@ -75,6 +85,27 @@
 					</tr>
 				</tfoot>
 			</table>
+		</div>
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="detailInfoModal" role="dialog">
+			<div class="modal-dialog">
+		
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+	      	</div>
+	      	</div>
 		</div>
 	</body>
 </html>

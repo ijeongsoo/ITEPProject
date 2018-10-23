@@ -140,6 +140,11 @@ public class SessionedControllerbh {
 		}
 
 	} 	
+	
+	@RequestMapping("/dashboard")
+	public String dashboard(Model model) {
+		return "dashboard";
+	} 	
 
 	
 }
