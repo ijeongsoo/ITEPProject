@@ -112,8 +112,8 @@
 			<div id="sidebar" class="nav-collapse ">
 				<!-- sidebar menu start-->
 				<ul class="sidebar-menu">
-					<li class="active"><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> <i
-							class="icon_house_alt"></i> <span>대시보드</span>
+					<li><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> 
+						<i	class="icon_house_alt"></i> <span>대시보드</span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
 							class="icon_document_alt"></i> <span>교육관리</span> <span
