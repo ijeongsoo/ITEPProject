@@ -110,9 +110,13 @@ public class SessionedControllerks {
 		else {
 			// 엑셀이 아닌 파일 업로드
 			// 에러페이지 표시
-			return "dashboard";
+			return "error";
 		}
 		return "eduUploadExcel";
 	}
 	
+	@RequestMapping("/eduChange")
+	public String eduChange(Model model) {
+		return "eduChange";
+	}
 }
