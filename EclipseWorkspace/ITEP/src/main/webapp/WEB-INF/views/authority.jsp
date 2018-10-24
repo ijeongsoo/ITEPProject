@@ -56,11 +56,31 @@
 		display:none;
 		background-color:#FFFFFF;
 		position:absolute;
+		width : 500px;
+		height : 500px;
 		top:300px;
 		left:200px;
-		padding:10px;
-		border:2px solid #E2E2E2;
 		z-Index:9999}
+		
+
+/*DARK BLUE BUTTON STYLES*/     
+.confirm_button{background-color: #237fbc; color : #fff; border-color: #237fbc; -webkit-box-shadow: 0 3px 0 #1a5c87; box-shadow: 0 3px 0 #1a5c87; width: 150px; height: 30px;}
+.confirm_button:hover{background-color:#166ea8;}
+.confirm_button:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+/*RED/ROUGE BUTTON STYLES*/     
+.js_close{background-color: #c0392b; color : #fff; border-color: #c0392b; -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #8f2a1f; width: 150px; height: 30px;}
+.js_close:hover{background-color:#ac3420;}
+.js_close:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+	
+	.modal_content{
+	padding:40px;
+	}
+
+	/*yellow/ROUGE BUTTON STYLES*/     
+#changebutton{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; width: 150px; height: 30px;}
+#changebutton:hover{background-color:#dd9003;}
+#changebutton:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 	</style>
 	
 	</head>
@@ -80,8 +100,8 @@
 	
 		// 모달 창 안에 있는 확인 버튼에 이벤트 걸기
 		$(document).ready(function(){
-			$("#confirm_button").click(function() {
-			    alert("권한 변경이 완료되었습니다.");
+			$(".confirm_button").click(function() {
+			    //alert("권한 변경이 완료되었습니다.");
 			    myModal.hide(); // 모달창 감추기
 			});
 		});
@@ -235,31 +255,41 @@
         </div>
 
 		<!-- 모달 창을 여는 버튼 -->
-		<input id="testbutton" type="button" value="권한변경" onclick="checkAuthArr();">
+		<input id="changebutton" type="button" value="권한변경" onclick="checkAuthArr();">
 			
 		<!-- 모달창 -->
 		<div id="modal">
-    		<h2>권한 수정 </h2><br>
+			<div class="modal-header" style="background-color: #237fbc">
+				   <h1 align="center" class="hanna" style="color:#fff">권한 수정 </h1>	
+			</div>
+			
+			<div class="modal_content">
     		<form role="form">
-    			<div class = "form-group">
+    			<div class = "form-group" align = "center" >
     				<label for="name" id ="labelid1" class="control-label">  </label><br>
     				<label for="name" id ="labelid2" class="control-label">  </label><br>
     				<label for="name" id ="labelid3" class="control-label">  </label><br>
     				<label for="name" id ="labelid4" class="control-label">  </label>
     				
     			</div>
-    			<div class = "form-group">
+    			<div class = "form-group" align = "center">
     				<label for="authority" class="control-label"> 변경 후 권한: </label>
-    				<select name="authority_select">
+    				<select name="authority_select" style="width:200px">
     					<option value="교육관리자"> 교육관리자 </option>    				
     					<option value="서무차장"> 서무차장 </option>
     					<option value="서무담당"> 서무담당 </option>
     					<option value="일반사용자"> 일반사용자 </option>
     				</select>
     			</div>
+    			<div class="button" align="center">	
+    			    <input class="confirm_button" type="button" value="확인" onclick="selectValue();">  		
+    				<button class="js_close">닫기</button>
+    			</div>
     		</form>
-    		<input id="confirm_button" type="button" value="확인" onclick="selectValue();">  		
-    		<button class="js_close">닫기</button>
+    		
+
+    	
+    		</div>
 		</div>
 		<!-- 모달창 end -->
 		
