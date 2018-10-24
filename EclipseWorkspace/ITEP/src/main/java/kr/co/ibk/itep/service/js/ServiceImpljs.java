@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.co.ibk.itep.dao.js.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
+import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
@@ -218,7 +219,47 @@ public class ServiceImpljs implements Service {
 	@Override
 	public int registEdu(Edu002rAttach edu) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		//이미 등록한 교육 여부 확인
+		int alreadyRegCount = dao.selectCountByCourse_cdEmn(edu);
+		
+		
+		if(alreadyRegCount != 0){
+			return 0;
+		}
+		
+		//설문 안한 교육 존재여부 확인
+		int doNotSurveyCount = dao.selectSurveyCountByCourse_cdEmn(edu);
+		
+		if(doNotSurveyCount != 0){
+			return 2;
+		}
+		
+		dao.insertEdu002r(edu);
+		
+		return 1;
+		
+	}
+
+
+	@Override
+	public int regConfirm(Edu002rAttach eduConfirm) {
+		// TODO Auto-generated method stub
+		int alreadyRegCount = dao.selectCountByCourse_cdEmn(eduConfirm);
+		
+		
+		if(alreadyRegCount != 0){
+			return 0;
+		}
+		
+		//설문 안한 교육 존재여부 확인
+		int doNotSurveyCount = dao.selectSurveyCountByCourse_cdEmn(eduConfirm);
+		
+		if(doNotSurveyCount != 0){
+			return 2;
+		}
+				
+		return 1;
 	}
 
 

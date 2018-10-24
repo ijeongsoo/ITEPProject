@@ -1398,6 +1398,7 @@ i.icon-white {
 
 #services .service-box {
 	text-align: center;
+	background-color: #f9f9f9;
 	padding: 20px;
 	-webkit-transition: all 0.3s ease-in-out ; 
 	-moz-transition: all 0.3s ease-in-out ;
@@ -1420,5 +1421,28 @@ i.icon-white {
 }
 
 #services .service-box:hover {
- 	background:#f36518;
+ 	background:#FFDCE6;
  }
+
+ 
+ 
+ 
+ 
+
+
+#services2 .service-box {
+	text-align: center;
+	background-color: #fdfde9;
+	padding: 20px;
+	-webkit-transition: all 0.3s ease-in-out ; 
+	-moz-transition: all 0.3s ease-in-out ;
+	-o-transition: all 0.3s ease-in-out ;
+	-ms-transition: all 0.3s ease-in-out ;
+	transition: all 0.3s ease-in-out ;
+}
+
+
+#services2 .service-box:hover {
+ 	background:#FFDCE6;
+ }
+ 

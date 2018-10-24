@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -80,6 +81,27 @@ public class DaoImpljs implements Dao {
 		// TODO Auto-generated method stub
 		EduPullInfo edu = sst.selectOne("edu001m.selectEduByCourse_cd", course_cd);
 		return edu;
+	}
+
+
+	@Override
+	public int selectCountByCourse_cdEmn(Edu002rAttach edu) {
+		// TODO Auto-generated method stub
+		int count = sst.selectOne("edu002r.selectCountByCourse_cdEmn", edu);
+		return count;
+	}
+
+
+	@Override
+	public int selectSurveyCountByCourse_cdEmn(Edu002rAttach edu) {
+		int count = sst.selectOne("edu003r.selectSurveyCountByCourse_cdEmn", edu);
+		return count;
+	}
+
+
+	@Override
+	public void insertEdu002r(Edu002rAttach edu) {
+		sst.insert("edu002r.insert", edu);		
 	}
 
 

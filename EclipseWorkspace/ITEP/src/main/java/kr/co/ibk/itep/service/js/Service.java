@@ -33,6 +33,8 @@ public interface Service {
 
 	public int registEdu(Edu002rAttach edu);
 
+	public int regConfirm(Edu002rAttach eduConfirm);
+
 
 }
 

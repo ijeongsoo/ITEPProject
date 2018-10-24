@@ -52,6 +52,20 @@
 		//폼전송 
 		$('#eduForm').submit();
 	}
+	
+	
+	$(function() {
+		if(${result} == 0){
+			$('#registBtnTxt').text("이미 신청한 교육입니다.");
+			$("#registBtn").attr("style", "display:none");
+		}else if(${result} == 2){
+			$('#registBtnTxt').text("설문하지 않은 교육이 존재합니다.");
+			$("#registBtn").attr("style", "display:none");
+		}else{
+			$("#registBtnTxt").attr("style", "display:none");
+		}
+	
+	});
 
 </script>
 
@@ -109,8 +123,9 @@
 			<br>
 			<div id="success"></div>
 			<div class="form-group">
-				<a onclick="validation()" style=" width: 100%; height: 70px" class="btn " data-toggle="modal" data-target="#confirmModal"
-					 ><p  class="hanna" style="font-size: 20px; color: white">신청하기</p></a>
+				<p style=" text-align:center; color:white; width: 100%; height: 50px; background-color: gray" id="registBtnTxt" class="hanna" style="font-size: 30px; color: white"></p>
+				<a id="registBtn" onclick="validation()" style=" width: 100%; height: 70px" class="btn " data-toggle="modal" data-target="#confirmModal"
+					 ><p class="hanna" style="font-size: 20px; color: white">신청하기</p></a>
 			</div>
 			
 			

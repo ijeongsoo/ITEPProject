@@ -54,5 +54,17 @@
 		 WHERE EMN = #{emn}
 		   AND COURSE_CD = #{course_cd}      
 	</update>
+	
+	
+	<select id= "selectCountByCourse_cdEmn" resultType="int" parameterType="kr.co.ibk.itep.dto.Edu002rAttach">
+		select count(*) from TB_IEP_EDU002R where emn = #{emn} and course_cd = #{course_cd}	
+
+	</select>
+	
+	
+	<insert id="insert" parameterType="kr.co.ibk.itep.dto.Edu002rAttach" >
+		insert into TB_IEP_EDU002R(emn,course_cd,step_cd,stat_cd, origin_reg_file_nm, origin_plan_file_nm, svr_reg_file_nm, svr_plan_file_nm, reg_file_type, plan_file_type, reg_id, reg_dt, chg_id, chg_dt) 
+		values (#{emn},#{course_cd}, '10','00', #{origin_reg_file_nm}, #{origin_plan_file_nm}, #{svr_reg_file_nm}, #{svr_plan_file_nm}, #{reg_file_type}, #{plan_file_type}, #{emn}, sysdate, #{emn}, sysdate)
+	</insert>
 
 </mapper>

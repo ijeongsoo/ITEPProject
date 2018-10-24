@@ -56,7 +56,7 @@ public class SessionedControllerjs {
 	
 	
 	@RequestMapping("/home")
-	public String home( Model model) {
+	public String home( Model model, String result) {
 		ArrayList<EduJoinedEcd> top8List = new ArrayList<>();
 		ArrayList<EduJoinedEcd> top8List1 = new ArrayList<>();
 		ArrayList<EduJoinedEcd> top8List2 = new ArrayList<>();
@@ -82,6 +82,10 @@ public class SessionedControllerjs {
 
 		model.addAttribute("ddayList", ddayList);
 		model.addAttribute("categoryList", categoryList);
+		
+		if(result != null){
+			model.addAttribute("result", result);
+		}
 
 		return "home";
 	} 
@@ -123,9 +127,19 @@ public class SessionedControllerjs {
 	@RequestMapping("/eduDetail")
 	public String eduDetail( String course_cd, Model model) {
 		
-		logger.info(course_cd);
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		Edu002rAttach eduConfirm = new Edu002rAttach();
+		eduConfirm.setEmn(empJoinedDep.getEmn());
+		eduConfirm.setCourse_cd(course_cd);
+		
 		EduPullInfo edu = service.getEduByCourseCD(course_cd);
+		int result = service.regConfirm(eduConfirm);
+		
 		model.addAttribute("edu", edu);
+		model.addAttribute("result", result);
 
 		
 		return "eduDetail";
@@ -133,31 +147,33 @@ public class SessionedControllerjs {
 	
 	@RequestMapping(value = "/regEdu", method = RequestMethod.POST)
 	public String regEdu( Edu002rAttach edu, Model model ) throws IllegalStateException, IOException {
-		edu.setOrgin_reg_file_nm(edu.getRegAttach().getOriginalFilename()); 
+		edu.setOrigin_reg_file_nm(edu.getRegAttach().getOriginalFilename()); 
 		edu.setReg_file_type(edu.getRegAttach().getContentType());
-		String regfileName = new Date().getTime() + "-" + edu.getOrgin_reg_file_nm();
+		String regfileName = new Date().getTime() + "-" + edu.getOrigin_reg_file_nm();
 		edu.setSvr_reg_file_nm(regfileName);
 		
 		edu.setOrigin_plan_file_nm(edu.getPlanAttach().getOriginalFilename());
 		edu.setPlan_file_type(edu.getPlanAttach().getContentType());
 		String planfileName = new Date().getTime() + "-" + edu.getOrigin_plan_file_nm();
 		edu.setSvr_plan_file_nm(planfileName);
-
 		
-		String regfileRealPath = servletContext.getRealPath("/WEB-INF/upload/reg/");
-		String planfileRealPath = servletContext.getRealPath("/WEB-INF/upload/plan/");
+		int result = service.registEdu(edu);
 
-		File regfile = new File(regfileRealPath + regfileName);
-		File planfile = new File(planfileRealPath + planfileName);
+		if(result == 1){
+			String regfileRealPath = servletContext.getRealPath("/WEB-INF/upload/reg/");
+			String planfileRealPath = servletContext.getRealPath("/WEB-INF/upload/plan/");
+
+			File regfile = new File(regfileRealPath + regfileName);
+			File planfile = new File(planfileRealPath + planfileName);
+			
+			edu.getRegAttach().transferTo(regfile);
+			edu.getPlanAttach().transferTo(planfile);
+		}
 		
-		edu.getRegAttach().transferTo(regfile);
-		edu.getPlanAttach().transferTo(planfile);
 
-		//int result = service.registEdu(edu);
-		
-		model.addAttribute("result", 1);
+		model.addAttribute("result", result);
 
-		return "redirect:/";
+		return "redirect:/home";
 
 	}
 

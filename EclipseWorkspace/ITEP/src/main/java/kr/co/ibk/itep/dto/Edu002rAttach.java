@@ -7,7 +7,7 @@ public class Edu002rAttach {
 	private String course_cd;
 	private String step_cd;
 	private String stat_cd;
-	private String orgin_reg_file_nm;
+	private String origin_reg_file_nm;
 	private String origin_plan_file_nm;
 	private String svr_reg_file_nm;
 	private String svr_plan_file_nm;
@@ -58,11 +58,11 @@ public class Edu002rAttach {
 	public void setStat_cd(String stat_cd) {
 		this.stat_cd = stat_cd;
 	}
-	public String getOrgin_reg_file_nm() {
-		return orgin_reg_file_nm;
+	public String getOrigin_reg_file_nm() {
+		return origin_reg_file_nm;
 	}
-	public void setOrgin_reg_file_nm(String orgin_reg_file_nm) {
-		this.orgin_reg_file_nm = orgin_reg_file_nm;
+	public void setOrigin_reg_file_nm(String orgin_reg_file_nm) {
+		this.origin_reg_file_nm = orgin_reg_file_nm;
 	}
 	public String getOrigin_plan_file_nm() {
 		return origin_plan_file_nm;

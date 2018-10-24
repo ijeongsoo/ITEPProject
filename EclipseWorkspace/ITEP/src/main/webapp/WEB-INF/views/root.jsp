@@ -22,7 +22,7 @@
 				$.ajax({
 					'url' : "ssoLogin",
 					'data' : {
-						'emn' : "42755"
+						'emn' : "42737"
 					},
 					'type' : "POST",
 					'success' : function(data) {

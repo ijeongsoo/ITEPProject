@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
@@ -35,6 +36,12 @@ public interface Dao {
 	public ArrayList<EduJoinedEcd> selectCategoryEdu();
 
 	public EduPullInfo selectByCourse_cd(String course_cd);
+
+	public int selectCountByCourse_cdEmn(Edu002rAttach edu);
+
+	public int selectSurveyCountByCourse_cdEmn(Edu002rAttach edu);
+
+	public void insertEdu002r(Edu002rAttach edu);
 
 	
 
