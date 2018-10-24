@@ -50,8 +50,8 @@
   		<!-- owl carousel -->
   		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
   		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">	
-	
 	<style>
+	
 		#modal {
 		display:none;
 		background-color:#FFFFFF;
@@ -63,14 +63,13 @@
 		z-Index:9999}
 	</style>
 	
-	<script type="text/javascript">
+	</head>
+		<script type="text/javascript">
 		
 		//테이블 자동 검색
 		$(document).ready( function () {
 	    	$('#authorityTable').DataTable();
 		} );
-
-
 		  
 		// 모달 창 여는 버튼에 이벤트 걸기
 		$(document).ready(function(){
@@ -98,11 +97,13 @@
 		 
 		 //체크되어 있는 관리자 정보 파라미터 넘기기 
 		 function checkAuthArr(){
+			 			
+			 checkArrInfo();
 			 
 			 var checkboxValues = [];
 			 var chk_obj = document.getElementsByName("listCheckBox");
 			 var chk_use = 0; 
-			 alert(chk_obj);
+			 
 			 for(i=0; i<chk_obj.length; i++) {
 				 if (chk_obj[i].checked == true){
 					 chk_use++;
@@ -125,9 +126,77 @@
 				 self.close();
 			 }
 		 }
-	</script>
+		 
+		 function checkArrInfo(){
+				var rowData = new Array();
+				var tdArr = new Array();
+				var checkbox = $("input[name=listCheckBox]:checked");
+				
+				checkbox.each(function(i){
+					var tr = checkbox.parent().parent().eq(i);
+					var td = tr.children();
+					
+					// 체크된 row의 모든 값을 배열에 담는다.
+					rowData.push(tr.text());
+					
+					// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+					var empno = td.eq(1).text();
+					var name = td.eq(2).text();
+					var branch = td.eq(3).text();
+					var authority = td.eq(5).text();
+					// 가져온 값을 배열에 담는다.
+					tdArr.push(empno);
+					tdArr.push(name);
+					tdArr.push(branch);
+					tdArr.push(authority);
+						});
+					$("#labelid1").html("사번 :" + tdArr[0]);			
+					$("#labelid2").html("이름 :" + tdArr[1]);					
+					$("#labelid3").html("부서 :" + tdArr[2]);	
+					$("#labelid4").html("권한 :" + tdArr[3]);		 
+					
+		 }
 	
-	</head>
+		 function selectValue(){
+			 
+				var rowData = new Array();
+				var tdArr = new Array();
+				var checkbox = $("input[name=listCheckBox]:checked");
+				
+				checkbox.each(function(i){
+					var tr = checkbox.parent().parent().eq(i);
+					var td = tr.children();
+					
+					// 체크된 row의 모든 값을 배열에 담는다.
+					rowData.push(tr.text());
+					var empno = td.eq(1).text();
+					// 가져온 값을 배열에 담는다.
+					tdArr.push(empno);
+						});
+					
+
+				 var data = tdArr[0] + ";" + $('select[name="authority_select"]').val();
+				 
+		    	jQuery.ajaxSettings.traditional = true;
+
+		    	 $.ajax({
+		    	        'url':"updateAuthority.do",
+		    	        'type':'GET',
+		    	        'data': { 'updateData' : data},
+		    	        'success':function(data){
+		    	            alert("성공적으로 변경되었습니다.");
+		    	            self.close();
+		    	            location.reload(); 
+		    	        },
+		    	        'error':function(jqXHR, textStatus, errorThrown){
+		    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		    	            myModal.hide();
+		    	        }
+		    	    });
+		 }
+		 
+		 
+	</script>	
 	
 	<body>
   <!-- container section start -->
@@ -166,31 +235,33 @@
         </div>
 
 		<!-- 모달 창을 여는 버튼 -->
-		<input id="testbutton" type="button" value="권한변경" onclick="checkAuthArr()">
+		<input id="testbutton" type="button" value="권한변경" onclick="checkAuthArr();">
 			
 		<!-- 모달창 -->
 		<div id="modal">
-    		<h2>권한 수정 </h2>
-    		<p>권한 부여, 수정, 삭제 </p>
+    		<h2>권한 수정 </h2><br>
     		<form role="form">
     			<div class = "form-group">
-    				<label for="name" class="control-label"> 이름 : </label><br>
-    				<label for="name" class="control-label"> 사번 : </label><br>
-    				<label for="name" class="control-label"> 권한 : </label>
+    				<label for="name" id ="labelid1" class="control-label">  </label><br>
+    				<label for="name" id ="labelid2" class="control-label">  </label><br>
+    				<label for="name" id ="labelid3" class="control-label">  </label><br>
+    				<label for="name" id ="labelid4" class="control-label">  </label>
+    				
     			</div>
     			<div class = "form-group">
     				<label for="authority" class="control-label"> 변경 후 권한: </label>
     				<select name="authority_select">
     					<option value="교육관리자"> 교육관리자 </option>    				
-    					<option value="서무담당자"> 서무담당자 </option>
     					<option value="서무차장"> 서무차장 </option>
+    					<option value="서무담당"> 서무담당 </option>
     					<option value="일반사용자"> 일반사용자 </option>
     				</select>
     			</div>
     		</form>
-    		<button id="confirm_button">확인</button>
+    		<input id="confirm_button" type="button" value="확인" onclick="selectValue();">  		
     		<button class="js_close">닫기</button>
 		</div>
+		<!-- 모달창 end -->
 		
 		<!-- 내용 -->
 		<div class="container">
@@ -214,7 +285,7 @@
 						<td><input type='checkbox' name="listCheckBox"  value="${row.emm}"> </td>              
                         <td>${row.emn}</td>
                         <td>${row.emm}</td>
-                        <td>${row.krn_brm}</td>f
+                        <td>${row.krn_brm}</td>
                         <td>${row.auth_cd}</td>
                         <td>${row.auth_nm}</td>
                         <td>${row.reg_dt}</td>

@@ -3,6 +3,7 @@ package kr.co.ibk.itep.service.jh;
 import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public interface Service {
 
 	public List<AthJoinedEmpJoinedBri> getAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
 
-//	public List<AthJoinedEmpJoinedBri> changeAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
+	public void changeAuth(HashMap<String, String> authinfo);
 
 }
 

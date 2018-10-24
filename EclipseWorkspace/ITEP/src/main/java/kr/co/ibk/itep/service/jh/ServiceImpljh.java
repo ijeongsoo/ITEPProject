@@ -40,11 +40,11 @@ public class ServiceImpljh implements Service {
 		
 		return list;
 	}
-//	@Override
-//	public List<AthJoinedEmpJoinedBri> changeAuthList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
-//		// TODO Auto-generated method stub
-//		return dao.changeAuthorityList(athJoinedEmpJoinedBri);
-//	}
+	@Override
+	public void changeAuth(HashMap<String, String> authinfo) {
+		// TODO Auto-generated method stub
+		dao.changeAuthorityList(authinfo);
+	}
 
 
 

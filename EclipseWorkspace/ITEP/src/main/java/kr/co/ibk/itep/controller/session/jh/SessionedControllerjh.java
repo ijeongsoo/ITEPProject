@@ -63,6 +63,35 @@ public class SessionedControllerjh {
 		return "authority";
 	} 
 	
+	@RequestMapping("/updateAuthority.do")
+	public String updateAuthority(@RequestParam String updateData, Model model) {
+				System.out.println(updateData+"1");
+		HashMap<String, String> authorityInfo = new HashMap<String, String>();
+		
+		String split[] = updateData.split(";", 0);
+		String auth_cd = "";
+
+		if(split[1].equals("교육관리자")) {
+			auth_cd = "01";			
+		}else if(split[1].equals("서무차장")) {
+			auth_cd = "02";
+		}else if(split[1].equals("서무담당")) {
+			auth_cd = "03";
+		}else if(split[1].equals("교육관리자")) {
+			auth_cd = "04";
+		}
+		
+		System.out.println(auth_cd);
+	
+		authorityInfo.put("emn", split[0]);	
+		authorityInfo.put("auth_cd", auth_cd);
+
+		service.changeAuth(authorityInfo);
+		System.out.println(authorityInfo.get("emn"));
+		return "authority";
+	} 	
+	
+	
 	
 //	@RequestMapping("/authority")
 //	public String delete_auth(Model model, AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {

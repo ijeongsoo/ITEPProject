@@ -1,6 +1,7 @@
 package kr.co.ibk.itep.dao.jh;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -21,15 +22,14 @@ public class DaoImpljh implements Dao {
 	@Override
 	public List<AthJoinedEmpJoinedBri> selectAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
 		List<AthJoinedEmpJoinedBri> list = sst.selectList("ath001m.listAll", athJoinedEmpJoinedBri);
-				
 		return list;
 	}
-
-//	@Override
-//	public List<AthJoinedEmpJoinedBri> changeAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	
+	@Override
+	public void changeAuthorityList(Map<String, String> authinfo) {
+		// TODO Auto-generated method stub
+		sst.update("ath001m.changeAll", authinfo);
+	}
 
 
 

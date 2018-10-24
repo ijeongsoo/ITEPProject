@@ -29,11 +29,11 @@
 		</if>
 	</sql>
 	
-	
-	<update id="changeAll">
+	<update id="changeAll" parameterType="Map">
 		UPDATE TB_IEP_EMP001M 
-		SET AUTH_CD = "04" 
+		SET AUTH_CD = #{auth_cd}
 		WHERE EMN = #{emn}
-		</update>
+	</update>
+		
 </mapper>
 

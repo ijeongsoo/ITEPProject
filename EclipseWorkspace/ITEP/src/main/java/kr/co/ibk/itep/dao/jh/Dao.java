@@ -20,7 +20,7 @@ public interface Dao {
 
 	List<AthJoinedEmpJoinedBri> selectAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
 
-//	List<AthJoinedEmpJoinedBri> changeAuthorityList(AthJoinedEmpJoinedBri athJoinedEmpJoinedBri);
+	public void changeAuthorityList(Map<String, String> authinfo);
 	
 
 }
