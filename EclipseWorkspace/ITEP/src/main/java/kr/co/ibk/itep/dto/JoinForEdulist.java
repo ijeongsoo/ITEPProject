@@ -2,6 +2,7 @@ package kr.co.ibk.itep.dto;
 
 public class JoinForEdulist {
 	
+	private String course_cd;
 	private String high_cls_nm;
 	private String mid_cls_nm;
 	private String low_cls_nm;
@@ -17,6 +18,13 @@ public class JoinForEdulist {
 	private String refund_yn;
 	private String d_day;
 	
+	
+	public String getCourse_cd() {
+		return course_cd;
+	}
+	public void setCourse_cd(String course_cd) {
+		this.course_cd = course_cd;
+	}
 	public String getHigh_cls_nm() {
 		return high_cls_nm;
 	}

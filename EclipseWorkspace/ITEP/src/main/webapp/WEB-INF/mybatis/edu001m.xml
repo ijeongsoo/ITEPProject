@@ -37,7 +37,8 @@
 	</select>
 
    <select id= "selectAll" resultType="kr.co.ibk.itep.dto.JoinForEdulist" parameterType="string">
-      	SELECT HIGH_CLS_NM, 
+      	SELECT COURSE_CD, 
+      		HIGH_CLS_NM, 
         	MID_CLS_NM, 
         	LOW_CLS_NM,
         	COURSE_NM,
