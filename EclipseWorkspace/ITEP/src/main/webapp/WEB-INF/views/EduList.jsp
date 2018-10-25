@@ -25,6 +25,7 @@
 	<script>
 		$(document).ready( function () {
 	    	$('#edulistTable').DataTable();
+	    	$('#postedulistTable').DataTable();
 		} );
 	</script>
   
@@ -38,14 +39,15 @@
 	</script>
 
 
-	<body>
+	<body id="edupage-top">
 	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
-	        <a class="hanna navbar-brand js-scroll-trigger">교육 리스트</a>
+	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
 	        </div>
 	    </nav><br>
 
-		<!-- Table 출력 -->
+		<!-- 현재 신청가능한 목록 출력 -->
+		<section>
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -84,8 +86,51 @@
 						<th style="text-align: center;">신청마감</th>
 					</tr>
 				</tfoot>
-			</table>
+			</table><br>
 		</div>
+		</section>
+		
+		<!-- 교육시작월이 2개월 후인 목록 출력 -->
+		<section style="background-color:#f9f9f9">
+		<div class="container">
+			<br><br>
+			<table id="postedulistTable" class="display" style="width:100%">
+				<thead>
+					<tr>
+						<th style="text-align: center;">교육구분</th>
+						<th style="text-align: center;">분류</th>
+						<th style="text-align: center;">교육명</th>
+						<th style="text-align: center;">교육시작일</th>
+						<th style="text-align: center;">교육종료일</th>
+						<th style="text-align: center;">교육기관</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="postedulist" items="${post_edulist}" varStatus="status">
+						<tr data-toggle="modal" data-id="post_edulist.high_cls_nm" title="Add this item" class="popupModal" href="#detailInfoModal">
+							<th style="text-align: center;">${postedulist.high_cls_nm}</th>
+							<th style="text-align: center;">${postedulist.mid_cls_nm}</th>
+							<th>${postedulist.course_nm}</th>
+							<th style="text-align: center;">${postedulist.edu_st_dt}</th>
+							<th style="text-align: center;">${postedulist.edu_ed_dt}</th>
+							<th style="text-align: center;">${postedulist.org_nm}</th>
+						</tr>
+					</c:forEach>
+				</tbody>					
+				<tfoot>
+					<tr>
+						<tr>
+						<th style="text-align: center;">교육구분</th>
+						<th style="text-align: center;">분류</th>
+						<th style="text-align: center;">교육명</th>
+						<th style="text-align: center;">교육시작일</th>
+						<th style="text-align: center;">교육종료일</th>
+						<th style="text-align: center;">교육기관</th>
+					</tr>
+				</tfoot>
+			</table><br>
+		</div>
+		</section>
 		
 		
 		<!-- Modal -->

@@ -12,6 +12,7 @@ import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.JoinForPostEdulist;
 
 
 @Component
@@ -27,6 +28,13 @@ public class DaoImplkj implements Dao {
 		return joinForEdulist;
 	}
 	
+	@Override
+	public List<JoinForPostEdulist> selectAllPostEdulist() {
+		// TODO Auto-generated method stub
+		
+		List<JoinForPostEdulist> joinForPostEdulist=sst.selectList("edu001m.selectPostAll");
+		return joinForPostEdulist;
+	}
 
 }
 

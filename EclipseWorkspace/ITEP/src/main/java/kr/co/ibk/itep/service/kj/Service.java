@@ -10,12 +10,14 @@ import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.JoinForPostEdulist;
 
 
 @Component
 public interface Service {
 
 	public List<JoinForEdulist> selectEdulist();
+	public List<JoinForPostEdulist> selectPostEdulist();
 
 }
 

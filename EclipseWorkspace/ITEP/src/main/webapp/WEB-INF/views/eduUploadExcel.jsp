@@ -30,13 +30,13 @@
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css"
 	rel="stylesheet" />
+	
 <!-- Custom styles -->
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css"
 	rel="stylesheet">
 
-<script
-	src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.js"></script>
+<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 <!-- =======================================================
     Theme Name: NiceAdmin

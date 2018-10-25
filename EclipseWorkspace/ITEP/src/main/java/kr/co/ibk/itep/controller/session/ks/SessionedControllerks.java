@@ -39,7 +39,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduApproval;
+import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduExcelUpload;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -112,11 +114,25 @@ public class SessionedControllerks {
 			// 에러페이지 표시
 			return "error";
 		}
-		return "eduUploadExcel";
+		return "redirect:eduEdit";
 	}
 	
-	@RequestMapping("/eduChange")
+	@RequestMapping("/eduEdit")
 	public String eduChange(Model model) {
-		return "eduChange";
+		try{
+			// 등록자 사번 가져오기
+			RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+			EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+			String ssoid = empJoinedDep.getEmn();
+			
+			List<EduEditList> edulist = service.selectEduEditList();
+			model.addAttribute("edulist", edulist);
+			model.addAttribute("ssoid", ssoid);
+			return "eduEdit";
+		}catch(Exception e){
+			logger.error(e.getStackTrace().toString());
+			model.addAttribute("result", 1);
+			return "error";
+		}
 	}
 }

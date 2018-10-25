@@ -13,6 +13,7 @@ import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
+import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -33,6 +34,8 @@ public interface Dao {
 	List<Ecd006m> selectEcd006mList();
 
 	List<Ecd007m> selectEcd007mList();
+
+	List<EduEditList> selectEduEditList();
 	
 
 	

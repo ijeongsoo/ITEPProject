@@ -26,6 +26,7 @@ import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.JoinForPostEdulist;
 
 @Component
 public class ServiceImplkj implements Service {
@@ -40,6 +41,12 @@ public class ServiceImplkj implements Service {
 
 		return joinForEdulist;
 	}
+	@Override
+	public List<JoinForPostEdulist> selectPostEdulist() {
+		// TODO Auto-generated method stub
+		List<JoinForPostEdulist> joinForPostEdulist = dao.selectAllPostEdulist();
 
+		return joinForPostEdulist;
+	}
 
 }

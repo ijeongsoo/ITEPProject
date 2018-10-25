@@ -14,8 +14,7 @@
   <link rel="shortcut icon" href="img/favicon.png">
 
   <title>Creative - Bootstrap Admin Template</title>
-<script
-	src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
+  <script	src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
   <!-- Bootstrap CSS -->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap.min.css" rel="stylesheet">
   <!-- bootstrap theme -->
@@ -45,11 +44,8 @@
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
 
 	<!-- chart.js  -->
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.min.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
-	
+  <script src="<%=application.getContextPath()%>/resources/js/Chart.min.js"></script>  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
 
   <!-- =======================================================
     Theme Name: NiceAdmin
@@ -58,14 +54,10 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 </head>
-	<script type="text/javascript">
-		
-				
-	</script>
+
 	
 <body>
-      <!--overview start-->
-    <div class="row">
+ <div class="row">
       <div class="col-lg-12">
         <h3 class="page-header"><i class="fa fa-laptop"></i>대시보드</h3>
         <ol class="breadcrumb">
@@ -74,9 +66,110 @@
         </ol>
       </div>
     </div>
-	<div class="container">
+    <div>
+		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm} 관리자님♥</h3>
+	</div>    
+    <div>
+    	<h3>올해 교육 신청자 : </h3>
+    	<h3>이번달 교육 신청자 : </h3>
+    </div>
+    <div  style="float:left;width:50%;height:50%;background-Color:#F2FFFF">
+    	<h3>막대그래프</h3>
+  		<canvas id="myChart_1" width="400" height="400"></canvas>
+    </div>
+    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">
+    	<h3>선 그래프</h3>    
+  		<canvas id="myChart_2" width="400" height="400"></canvas>
+    </div>
+    <div  style="float:left;width:50%;height:50%;background-Color:#FFFFF2">
+    	<h3>원 그래프</h3>    
+  		<canvas id="myChart_3" width="400" height="400"></canvas>
+    </div>
+    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">
+    	<h3>도넛 그래프</h3>   		
+  		<canvas id="myChart_4" width="400" height="400"></canvas>
+    </div>            
 	
-	</div>
+<script>
+	var data_1 = {
+		labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
+		datasets: [
+			{
+				label: "My First dataset",
+				fillColor: "rgba(150,200,250,0.5)",
+				strokeColor: "rgba(150,200,250,0.8)",
+				highlightFill: "rgba(150,200,250,0.75)",
+				highlightStroke: "rgba(150,200,250,1)",
+				data: [65, 59, 80, 81, 56, 55]
+			}
+		]
+	};
+	var options = {	animation: false };
+	var ctx_1 = $('#myChart_1').get(0).getContext('2d');
+	var myBarChart = new Chart(ctx_1).Bar(data_1, options);
+	
+	var data_2 = {
+	        labels: ["월","화","수","목","금","토","일"],
+	        datasets: [
+	            {
+	                label: "",
+	                fillColor: "rgba(220,220,220,0.2)",
+	                strokeColor: "rgba(220,220,220,1)",
+	                pointColor: "rgba(220,220,220,1)",
+	                pointStrokeColor: "#fff",
+	                pointHighlightFill: "#fff",
+	                pointHighlightStroke: "rgba(220,220,220,1)",
+	                data: [2, 3, 5, 7, 11, 13, 17]
+	            },
+	            {
+	                label: "",
+	                fillColor: "rgba(151,187,205,0.2)",
+	                strokeColor: "rgba(151,187,205,1)",
+	                pointColor: "rgba(151,187,205,1)",
+	                pointStrokeColor: "#fff",
+	                pointHighlightFill: "#fff",
+	                pointHighlightStroke: "rgba(151,187,205,1)",
+	                data: [0, 1, 1, 2, 3, 5, 8]
+	            }
+	        ]
+	    };
+
+	    var ctx = document.getElementById("myChart_2").getContext("2d");
+	    var options_2 = { };
+	    var lineChart = new Chart(ctx).Line(data_2, options_2);
+
+	    var data_3 = [
+	    	{
+	    		value: 300,
+	    		color: 'rgb(75, 192, 192)',
+	    		highlight: "#FF5A5E",
+	    		label: "Red"
+	    	},
+	    	{
+	    		value: 50,
+	    		color: 'rgb(54, 162, 235)',
+	    		highlight: "#5AD3D1",
+	    		label: "Green"
+	    	},
+	    	{
+	    		value: 100,
+	    		color: 'rgb(255, 159, 64)',
+	    		highlight: "#FFC870",
+	    		label: "Yellow"
+	    	}
+	    ]
+
+	    var ctx_3 = document.getElementById("myChart_3").getContext("2d");
+	    var options_3 = { responsive: true };
+	    var myPieChart = new Chart(ctx_3).Pie(data_3, options_3);
+
+	    
+	    var ctx_4 = document.getElementById("myChart_4").getContext("2d");
+	    var options_4 = { responsive: true };
+	    var myPieChart = new Chart(ctx_4).Doughnut(data_3, options_4);
+		
+</script>
+
     
 </body>
 

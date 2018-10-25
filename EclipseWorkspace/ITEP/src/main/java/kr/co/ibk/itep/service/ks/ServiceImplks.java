@@ -20,6 +20,8 @@ import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
+import kr.co.ibk.itep.dto.EduEditList;
+import kr.co.ibk.itep.dto.JoinForEdulist;
 
 @Component
 public class ServiceImplks implements Service {
@@ -190,6 +192,13 @@ public class ServiceImplks implements Service {
         // 시트 전체 처리 반복문 끝
         // dao 처리 시작
         dao.insertCourseList(eduList);
+	}
+	
+	@Override
+	public List<EduEditList> selectEduEditList() {
+		// TODO Auto-generated method stub
+		List<EduEditList> eduList = dao.selectEduEditList();
+		return eduList;
 	}
 	
 

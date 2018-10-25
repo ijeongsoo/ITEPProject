@@ -14,6 +14,7 @@ import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
+import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -58,6 +59,12 @@ public class DaoImplks implements Dao {
 	public List<Ecd007m> selectEcd007mList() {
 		// TODO Auto-generated method stub
 		return sst.selectList("ecd007m.selectEcd007mList");
+	}
+
+	@Override
+	public List<EduEditList> selectEduEditList() {
+		// TODO Auto-generated method stub
+		return sst.selectList("edu001m.selectEduEditList");
 	}
 }
 
