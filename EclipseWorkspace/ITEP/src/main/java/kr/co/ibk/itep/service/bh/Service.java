@@ -1,6 +1,7 @@
 package kr.co.ibk.itep.service.bh;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -17,5 +18,8 @@ public interface Service {
 	public ArrayList<EduApproval> selectDepApprovalList(String emn);
 	
 	public void updateDepApproval(Map<String, String> eduinfo);
+	
+	//대시보드
+	public List<Map<String, Integer>> selectBrcdEduCount();
 	
 }

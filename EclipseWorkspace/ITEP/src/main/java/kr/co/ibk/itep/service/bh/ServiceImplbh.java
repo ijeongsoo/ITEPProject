@@ -49,4 +49,12 @@ public class ServiceImplbh implements Service{
 		admindao.updateDepApproval(eduinfo);
 	}
 	
+	//대시보드
+	@Override
+	public List<Map<String, Integer>> selectBrcdEduCount() {
+		List<Map<String, Integer>> resultMap = admindao.selectBrcdEduCount();
+		
+		return resultMap;
+	}
+	
 }

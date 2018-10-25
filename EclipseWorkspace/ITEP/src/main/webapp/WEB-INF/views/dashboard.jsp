@@ -74,37 +74,45 @@
     	<h3>이번달 교육 신청자 : </h3>
     </div>
     <div  style="float:left;width:50%;height:50%;background-Color:#F2FFFF">
-    	<h3>막대그래프</h3>
-  		<canvas id="myChart_1" width="400" height="400"></canvas>
+  		<canvas id="myChart_1" width="600" height="400"></canvas>
     </div>
-    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">
-    	<h3>선 그래프</h3>    
-  		<canvas id="myChart_2" width="400" height="400"></canvas>
+    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">  
+  		<canvas id="myChart_2" width="600" height="400"></canvas>
     </div>
     <div  style="float:left;width:50%;height:50%;background-Color:#FFFFF2">
-    	<h3>원 그래프</h3>    
-  		<canvas id="myChart_3" width="400" height="400"></canvas>
+  		<canvas id="myChart_3" width="600" height="400"></canvas>
     </div>
-    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">
-    	<h3>도넛 그래프</h3>   		
-  		<canvas id="myChart_4" width="400" height="400"></canvas>
+    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">		
+  		<canvas id="myChart_4" width="600" height="400"></canvas>
     </div>            
 	
 <script>
 	var data_1 = {
-		labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
+		labels: ["IT기획부", "IT정보부", "IT수신카드부", "IT여신외환부", "IT채널부", "IT시스템운영팀"],
 		datasets: [
 			{
-				label: "My First dataset",
-				fillColor: "rgba(150,200,250,0.5)",
-				strokeColor: "rgba(150,200,250,0.8)",
-				highlightFill: "rgba(150,200,250,0.75)",
-				highlightStroke: "rgba(150,200,250,1)",
-				data: [65, 59, 80, 81, 56, 55]
+				label : "당월 부서별 교육 수강 현황",
+				borderColor:"rgb(255, 99, 132)",//["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)"],		
+				fillColor:"rgba(255, 99, 132, 0.2)",//["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],				
+				data: [12, 21, 8, 12, 15, 6],
+				fill:false,
 			}
 		]
 	};
-	var options = {	animation: false };
+	var options = {
+		responsive: true,
+		title: {
+			display: true,
+			text: '당월 부서별 교육 수강 현황'
+		},
+		scales: {
+	        xAxes: [{
+	            gridLines: {
+	                offsetGridLines: true
+	            }
+	        }]
+	    } 
+	};
 	var ctx_1 = $('#myChart_1').get(0).getContext('2d');
 	var myBarChart = new Chart(ctx_1).Bar(data_1, options);
 	
@@ -141,19 +149,19 @@
 	    var data_3 = [
 	    	{
 	    		value: 300,
-	    		color: 'rgb(75, 192, 192)',
+	    		color: 'rgba(255, 159, 64, 0.2)',
 	    		highlight: "#FF5A5E",
 	    		label: "Red"
 	    	},
 	    	{
 	    		value: 50,
-	    		color: 'rgb(54, 162, 235)',
+	    		color: 'rgba(255, 205, 86, 0.2)',
 	    		highlight: "#5AD3D1",
 	    		label: "Green"
 	    	},
 	    	{
 	    		value: 100,
-	    		color: 'rgb(255, 159, 64)',
+	    		color: 'rgba(75, 192, 192, 0.2)',
 	    		highlight: "#FFC870",
 	    		label: "Yellow"
 	    	}

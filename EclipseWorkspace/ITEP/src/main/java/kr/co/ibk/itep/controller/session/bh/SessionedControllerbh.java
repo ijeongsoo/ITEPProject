@@ -4,6 +4,7 @@
 import java.util.HashMap;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -120,12 +121,23 @@ public class SessionedControllerbh {
 
 	} 	
 	
+	//대시보드
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model) {
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 
+		//대시보드 막대그래프 (해당 월에 교육을 듣는 부서별 교육 수(인원 X))
+		List<Map<String, Integer>> brcdEduCountList = service.selectBrcdEduCount();
+		
+		for(int i=0; i<brcdEduCountList.size(); i++) {
+			System.out.println(brcdEduCountList.get(i).get("KRN_BRM"));
+			System.out.println(brcdEduCountList.get(i).get("COUNT"));
+
+		}
+		
+		
 		try {
 			model.addAttribute("empJoinedDep_info", empJoinedDep);		
 		}
@@ -134,8 +146,6 @@ public class SessionedControllerbh {
 			model.addAttribute("result", 1);
 			return "error";
 		}
-		
-		
 
 		return "dashboard";
 	} 	
