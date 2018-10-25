@@ -488,20 +488,201 @@
 				정보</h2>
 			<hr class="star-dark2 mb-5">
 			<div class="row">
-				<div style="border: 1px solid red; float: left; width: 100%;">
-					<div style="border: 1px solid red; float: left; width: 50%;">
+				<div style="float: left; width: 100%; margin-bottom: 50px">
+					<div style="float: left; width: 47%; ">
 						<h3 class="hanna">신청 정보</h3>
+						<hr>
+						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style=" float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style=" float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style=" float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style=" float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style="float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style=" float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div id="info1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							
+							<div style="float: left; width: 100%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >해당 내역이 없습니다. </p>
+								</div>
+							</div>
+							
+						</div>
+						<div class="infoList" id="moreInfo1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<div style="float: left; width: 100%;height: 30px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
+								</div>
+							</div>
+						</div>
 					</div>
-					<div style="border: 1px solid red; float: left; width: 50%;">
+					<div style="float: left; width: 6%;">
+					&nbsp;
+					</div>
+					<div style="float: left; width: 47%; ">
 						<h3 class="hanna">수강중인 교육</h3>
+						<hr>
+						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style="float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style="float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style=" float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div id="info2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							
+							<div style="float: left; width: 100%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >해당 내역이 없습니다. </p>
+								</div>
+							</div>
+							
+						</div>
+						<div class="infoList" id="moreInfo2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<div style="float: left; width: 100%;height: 30px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
+								</div>
+							</div>
+						</div>
+						
 					</div>
+					
 				</div>
-				<div style="border: 1px solid red; float: left; width: 100%;">
-					<div style="border: 1px solid red; float: left; width: 50%;">
+				<div style=" float: left; width: 100%;  ">
+					<div style=" float: left; width: 47%; ">
 						<h3 class="hanna">설문해주세요!!</h3>
+						<hr>
+						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style=" float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style="float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style="float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div id="info3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							
+							<div style="float: left; width: 100%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >해당 내역이 없습니다. </p>
+								</div>
+							</div>
+							
+						</div>
+						<div class="infoList" id="moreInfo3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<div style="float: left; width: 100%;height: 30px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
+								</div>
+							</div>
+						</div>
 					</div>
-					<div style="border: 1px solid red; float: left; width: 50%;">
+					<div style="float: left; width: 6%;">
+					&nbsp;
+					</div>
+					<div style=" float: left; width: 47%;">
 						<h3 class="hanna">최근 수강 내역</h3>
+						<hr>
+						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style="float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style=" float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style=" red; float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style="float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style="float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style="float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							<div style="float: left; width: 20%; height: 72px">
+								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							</div>
+							<div style=" float: left; width: 60%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+								</div>
+
+							</div>
+							<div style=" float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							</div>
+						</div>
+						<div id="info4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
+							
+							<div style="float: left; width: 100%;height: 72px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >해당 내역이 없습니다. </p>
+								</div>
+							</div>
+							
+						</div>
+						<div class="infoList" id="moreInfo4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<div style="float: left; width: 100%;height: 30px; display: table;">
+								<div style=" vertical-align: middle; display: table-cell;">
+									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 

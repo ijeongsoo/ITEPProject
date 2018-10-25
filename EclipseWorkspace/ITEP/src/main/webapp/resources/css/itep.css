@@ -28,6 +28,12 @@ src:local(※),
     border-radius: 50%;
 }
 
+.photo4 {
+    width: 70px; height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .container {
  			 width: 1120px;
   			max-width: none !important;
