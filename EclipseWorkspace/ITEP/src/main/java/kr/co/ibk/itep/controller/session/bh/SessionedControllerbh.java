@@ -91,25 +91,20 @@ public class SessionedControllerbh {
 		String auth = empJoinedDep_2.getAuth_cd();
 
 		HashMap<String, String> approvalInfo = new HashMap<String, String>();
-		
-		for(int i =0; i<pmlist.size(); i++) {
-		
-			String split[] = pmlist.get(i).split(";", 0);
-			
-			approvalInfo.put("auth", auth);
-			approvalInfo.put("emn", split[0]);
-			approvalInfo.put("course_cd", split[1]);
-			
-			
-			System.out.println(pmlist.get(i).toString());			
-		}
-		
 
 		try {
 			//관리자 또는 서무만 접속 가능
 			if(!auth.equals("04")) {
-				for(int i=0; i<approvalInfo.size(); i++) {
-					service.updateDepApproval(approvalInfo);					
+				for(int i =0; i<pmlist.size(); i++) {
+					
+					String split[] = pmlist.get(i).split(";", 0);
+					
+					approvalInfo. put("auth", auth);
+					approvalInfo.put("emn", split[0]);
+					approvalInfo.put("course_cd", split[1]);
+					
+					service.updateDepApproval(approvalInfo);	
+					System.out.println(pmlist.get(i).toString());			
 				}
 				
 				return "approval";
@@ -131,6 +126,9 @@ public class SessionedControllerbh {
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 
+		
+		
+		
 		model.addAttribute("empJoinedDep_info", empJoinedDep);
 		return "dashboard";
 	} 	
