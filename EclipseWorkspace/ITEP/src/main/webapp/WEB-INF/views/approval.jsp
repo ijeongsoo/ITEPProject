@@ -178,9 +178,6 @@
 			</tbody>					
 		</table>
 	</div>
-    <div>
-		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm}님</h3>
-	</div>
 
 </body>
 

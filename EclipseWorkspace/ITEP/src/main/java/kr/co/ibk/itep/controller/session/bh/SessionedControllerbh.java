@@ -143,6 +143,11 @@ public class SessionedControllerbh {
 	
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model) {
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+
+		model.addAttribute("empJoinedDep_info", empJoinedDep);
 		return "dashboard";
 	} 	
 
