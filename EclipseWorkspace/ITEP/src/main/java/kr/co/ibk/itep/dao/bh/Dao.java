@@ -23,4 +23,6 @@ public interface Dao {
 	
 	//대시보드
 	public List<Map<String, Integer>> selectBrcdEduCount();
+	
+	public List<Map<String, Integer>> selectYearEduCount();
 }

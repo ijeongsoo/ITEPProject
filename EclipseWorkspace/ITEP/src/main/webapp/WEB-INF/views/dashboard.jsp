@@ -71,7 +71,7 @@
     <div>
     	<h4>올해 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
     	<h4>이번달 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
-    	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜)</h3>
+    	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜, 선그래프도 진짜)</h3>
     </div>
     <div  style="padding:30px;float:left;width:50%;height:50%;background-Color:#F2FFFF">
   		<canvas id="myChart_1" width="300" height="300"></canvas>
@@ -138,7 +138,8 @@
 	            label: "2018년 월별 교육 수강 현황",
 	            backgroundColor: "rgba(255, 99, 132, 0.2)",
 	            borderColor: "rgb(255, 99, 132)",
-	            data: [80, 21, 58, 42, 75, 36, 72, 18, 53, 100, 78, 52],
+	            data: ["${YrCount[0]}", "${YrCount[1]}", "${YrCount[2]}", "${YrCount[3]}", "${YrCount[4]}", "${YrCount[5]}",  
+	            	"${YrCount[6]}", "${YrCount[7]}", "${YrCount[8]}", "${YrCount[9]}", "${YrCount[10]}", "${YrCount[11]}"],
 	            fill : false
 	        }]
 	    	

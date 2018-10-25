@@ -59,6 +59,16 @@
 		   GROUP BY BRI001M.KRN_BRM
 	</select>
 	
+	<select id="dashboardYearEduCountMonth" resultType="Map">
+		SELECT SUBSTR(EDU001M.EDU_ST_DT, 5,2) MONTH, COUNT(SUBSTR(EDU001M.EDU_ST_DT, 5,2)) COUNT
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.STEP_CD = '40'
+		   AND EDU002R.STAT_CD in ('02', '03', '04', '05')
+		   AND EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYY') = SUBSTR(EDU001M.EDU_ST_DT, 1,4)
+		   GROUP BY SUBSTR(EDU001M.EDU_ST_DT, 5,2)	
+	</select>
+	
 	<update id="updateDepApproval" parameterType="Map">	
 		UPDATE TB_IEP_EDU002R
 		   SET STEP_CD = (CASE WHEN #{auth} = '03' THEN '20'

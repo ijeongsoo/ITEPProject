@@ -57,4 +57,11 @@ public class DaoImplbh implements Dao{
 		return resultMap;
 	}
 	
+	//해당년도에 각 월별로 수강한 교육 수
+	@Override
+	public List<Map<String, Integer>> selectYearEduCount() {
+		List<Map<String, Integer>> resultMap = sst.selectList("edu002r.dashboardYearEduCountMonth");
+		return resultMap;
+	}
+	
 }
