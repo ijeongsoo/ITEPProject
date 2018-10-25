@@ -135,4 +135,10 @@ public class SessionedControllerks {
 			return "error";
 		}
 	}
+	
+	@RequestMapping("/eduEditDetail")
+	public String eduEditDetail(String course_cd, Model model){
+		return "eduEditDetail";
+	}
+	
 }

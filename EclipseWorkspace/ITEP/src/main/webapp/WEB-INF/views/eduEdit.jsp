@@ -44,14 +44,27 @@
       <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
       <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
+
+
 </head>
 
 <script>
 	$(document).ready(function() {
 		$('#edulistTable').DataTable();
 	});
+	
+	function eduEditDetail(course_cd, course_nm) {
+		$.get(
+			    "eduEditDetail?course_cd="+course_cd ,
+			    function(data) {
+			        $("#modalBody").html(data);
+			    }
+			);
+		$("#modalHeader").html(course_nm);
+		
+	}
 </script>
-
+<!-- 넘어오는거 확인 -->
 <body>
 	<!-- 교육 수정 화면 구성 20181023 이기석 -->
 	<section id="edit-main">
@@ -80,18 +93,39 @@
 				</thead>
 				<tbody>
 					<c:forEach var="edu" items="${edulist}" varStatus="status">
-						<tr>
-							<th style="text-align: center;">${edu.rownum}</th>
-							<th style="text-align: center;">${edu.high_cls_nm}</th>
-							<th style="text-align: center;">${edu.mid_cls_nm}</th>
-							<th>${edu.course_nm}</th>
-							<th style="text-align: center;">${edu.edu_st_dt}</th>
-							<th style="text-align: center;">${edu.edu_ed_dt}</th>
-							<th style="text-align: center;">${edu.org_nm}</th>
+						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal">
+							<td style="text-align: center;">${edu.rownum}</td>
+							<td style="text-al
+							ign: center;">${edu.high_cls_nm}</td>
+							<td style="text-align: center;">${edu.mid_cls_nm}</td>
+							<td >${edu.course_nm}</td>
+							<td style="text-align: center;">${edu.edu_st_dt}</td>
+							<td style="text-align: center;">${edu.edu_ed_dt}</td>
+							<td style="text-align: center;">${edu.org_nm}</td>
 						</tr>
 					</c:forEach>
 				</tbody>					
 			</table>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="editEduModal" role="dialog">
+			<div class="modal-dialog" style="margin-top: 100px;">
+		
+			<!-- Modal content-->
+			<div class="modal-content">
+				
+				<div id="modalHeader" class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div id="modalBody" class="modal-body"> </div>
+				<div id="modalFooter" class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">저장</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				</div>
+				
+	      	</div>
+	      	</div>
 		</div>
 		
 		</section>

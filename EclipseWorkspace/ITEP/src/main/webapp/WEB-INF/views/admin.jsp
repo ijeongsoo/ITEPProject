@@ -120,8 +120,7 @@
 							class="menu-arrow arrow_carrot-right"></span>
 					</a>
 						<ul class="sub">
-							<li><a class="" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육일괄등록</a></li>
-							<li><a class=""<%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
+							<li><a class="" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육등록</a></li>
 							<li><a class="" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
 					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
