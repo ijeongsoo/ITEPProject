@@ -34,7 +34,8 @@ import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.kj.Service;
-import kr.co.ibk.itep.dto.JoinForEdulist; 
+import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.JoinForPostEdulist; 
 
 @Controller
 @SessionAttributes("login_info")
@@ -52,7 +53,9 @@ public class SessionedControllerkj {
 		try{
 			
 			List<JoinForEdulist> joinForEdulist = service.selectEdulist();
+			List<JoinForPostEdulist> joinForPostEdulist = service.selectPostEdulist();
 				model.addAttribute("edu_list", joinForEdulist);
+				model.addAttribute("post_edulist",joinForPostEdulist);
 				model.addAttribute("ssoid", ssoid);
 				return "EduList";
 		}catch(Exception e){

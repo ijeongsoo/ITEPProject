@@ -55,6 +55,25 @@
 		FROM TB_IEP_ECD002M a, TB_IEP_EDU001M b, TB_IEP_ECD005M c, TB_IEP_ECD006M d, TB_IEP_ECD007M e
 		WHERE c.HIGH_CLS_CD = b.HIGH_CLS_CD AND d.MID_CLS_CD = b.MID_CLS_CD AND e.LOW_CLS_CD = b.LOW_CLS_CD AND a.ORG_CD = b.ORG_CD AND (REG_ST_DT &lt;= TO_CHAR(SYSDATE,'YYYYMMDD') AND REG_ED_DT &gt;= TO_CHAR(SYSDATE,'YYYYMMDD'))
    </select>
+   
+   <select id= "selectPostAll" resultType="kr.co.ibk.itep.dto.JoinForPostEdulist" parameterType="string">
+      	SELECT COURSE_CD, 
+      		HIGH_CLS_NM, 
+        	MID_CLS_NM, 
+        	LOW_CLS_NM,
+        	COURSE_NM,
+        	EDU_HOUR,
+        	REG_ST_DT,
+        	REG_ED_DT,
+        	EDU_ST_DT,
+	        EDU_ED_DT,
+    	    EDU_COST,
+        	ORG_NM,
+        	LOC,
+        	REFUND_YN
+		FROM TB_IEP_ECD002M a, TB_IEP_EDU001M b, TB_IEP_ECD005M c, TB_IEP_ECD006M d, TB_IEP_ECD007M e
+		WHERE c.HIGH_CLS_CD = b.HIGH_CLS_CD AND d.MID_CLS_CD = b.MID_CLS_CD AND e.LOW_CLS_CD = b.LOW_CLS_CD AND a.ORG_CD = b.ORG_CD AND SUBSTR(EDU_ST_DT,1,6) = TO_CHAR(ADD_MONTHS(SYSDATE,2),'YYYYMM')
+   </select>
 
 	<select id="selectDDayEdu"
 		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">
