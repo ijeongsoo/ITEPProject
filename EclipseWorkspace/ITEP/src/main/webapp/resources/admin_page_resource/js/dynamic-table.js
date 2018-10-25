@@ -7,8 +7,8 @@ $(document).ready(function() {
             "oLanguage": {
                 "sLengthMenu": "_MENU_ records per page",
                 "oPaginate": {
-                    "sPrevious": "Prev",
-                    "sNext": "Next"
+                    "이전": "Prev",
+                    "다음": "Next"
                 }
             },
             "aoColumnDefs": [{
