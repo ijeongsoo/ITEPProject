@@ -138,9 +138,22 @@ public class SessionedControllerks {
 	
 	@RequestMapping("/eduEditDetail")
 	public String eduEditDetail(String course_cd, Model model){
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
 		// 해당 교육 정보 읽어와서 정보 뿌려주기
+		Edu001m edu = service.selectEduInfo(course_cd);
+		model.addAttribute("edu", edu);
+		model.addAttribute("ssoid", ssoid);
 		
 		return "eduEditDetail";
+	}
+	
+	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
+	public String eduSave() {
+		
 	}
 	
 }

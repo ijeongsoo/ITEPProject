@@ -55,7 +55,7 @@
 	
 	function eduEditDetail(course_cd, course_nm) {
 		$.get(
-			    "eduEditDetail?course_cd="+course_cd ,
+			    "eduEditDetail?course_cd="+course_cd,
 			    function(data) {
 			        $("#modalBody").html(data);
 			    }
@@ -109,19 +109,14 @@
 		
 		<!-- Modal -->
 		<div class="modal fade" id="editEduModal" role="dialog">
-			<div class="modal-dialog" style="margin-top: 100px;">
+			<div class="modal-dialog" style="margin-top: 60px;">
 		
 			<!-- Modal content-->
 			<div class="modal-content">
 				
-				<div id="modalHeader" class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div id="modalHeader" class="modal-header" >
 				</div>
 				<div id="modalBody" class="modal-body"> </div>
-				<div id="modalFooter" class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">저장</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-				</div>
 				
 	      	</div>
 	      	</div>
