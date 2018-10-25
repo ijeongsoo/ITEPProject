@@ -90,6 +90,6 @@ $('#editForm').submit(function() {
 			<input type="submit" value="저장" class="btn btn-default" data-dismiss="modal" style="float: right;" />
 		</div>
 	</form>
-
+<!-- 로딩 이미지, 업데이트 쿼리, 콤보박스 등 작성 -->
 </body>
 </html>

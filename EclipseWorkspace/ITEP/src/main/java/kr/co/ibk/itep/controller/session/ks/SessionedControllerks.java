@@ -151,9 +151,4 @@ public class SessionedControllerks {
 		return "eduEditDetail";
 	}
 	
-	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
-	public String eduSave() {
-		
-	}
-	
 }
