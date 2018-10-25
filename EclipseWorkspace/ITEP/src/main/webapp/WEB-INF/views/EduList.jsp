@@ -43,14 +43,7 @@
 		} );
 	</script>
   
-	<script>
-	function openModal(high_cls_nm){
-		$('#detailInfoModal').modal({
-			keyboard:true,
-			backdrop:"static"
-		});
-	};
-	</script>
+
 	
 	<script>
 	function eduDetail(course_cd) {
@@ -69,10 +62,10 @@
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
 	        </div>
-	    </nav><br>
+	    </nav>
 
 		<!-- 현재 신청가능한 목록 출력 -->
-		<section>
+		<section style="padding-top:120px; padding-bottom:30px">
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -111,25 +104,14 @@
 						<th style="text-align: center;">신청마감</th>
 					</tr>
 				</tfoot>
-			</table><br>
+			</table>
 		</div>
 		</section>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
-		<section style="background-color:#f9f9f9">
+		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
 		<div class="container">
-			<br><br>
 			<table id="postedulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -143,7 +125,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="postedulist" items="${post_edulist}" varStatus="status">
-						<tr data-toggle="modal"	data-target="#detailInfoModal">
+						<tr onclick="eduDetail('${postedulist.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal">
 							<th style="text-align: center;">${postedulist.high_cls_nm}</th>
 							<th style="text-align: center;">${postedulist.mid_cls_nm}</th>
 							<th>${postedulist.course_nm}</th>
@@ -164,7 +146,7 @@
 						<th style="text-align: center;">교육기관</th>
 					</tr>
 				</tfoot>
-			</table><br>
+			</table>
 		</div>
 		</section>
 		
