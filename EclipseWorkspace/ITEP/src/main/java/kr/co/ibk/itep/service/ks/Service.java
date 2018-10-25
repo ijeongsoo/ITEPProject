@@ -8,6 +8,8 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu001m;
+import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -17,6 +19,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 public interface Service {
 
 	void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) throws NotFoundException;
+
+	List<EduEditList> selectEduEditList();
 
 
 }

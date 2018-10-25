@@ -17,7 +17,8 @@
            AND EDU002R.STEP_CD = ECD003M.STEP_CD 
            AND EDU002R.EMN = EMP001M.EMN
            AND EMP001M.BLNG_BRCD = BRI001M.BRCD
-		   AND EDU002R.STEP_CD in ('30')              
+		   AND EDU002R.STEP_CD in ('30')
+           AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN EDU001M.REG_ST_DT AND EDU001M.REG_ED_DT              
 	</select>
 	
 	<select id="selectDep" resultType="kr.co.ibk.itep.dto.EduApproval" parameterType="String">
@@ -42,7 +43,8 @@
                                        WHEN AUTH_CD = '01' THEN '30'
                                        END
                                        FROM TB_IEP_EMP001M
-                                       WHERE EMN = #{emn})              
+                                       WHERE EMN = #{emn})
+           AND TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN EDU001M.REG_ST_DT AND EDU001M.REG_ED_DT              
 	</select>
 	
 	<update id="updateDepApproval" parameterType="Map">	

@@ -151,6 +151,32 @@
 	<select id="selectCourseSeq" resultType="java.lang.String">
 		SELECT COURSE_ID_SEQ.NEXTVAL FROM DUAL
 	</select>
+	
+	<select id="selectEduEditList" resultType="kr.co.ibk.itep.dto.EduEditList">
+		SELECT ROWNUM
+		    , COURSE_CD
+    		, ORG_NM
+    		, HIGH_CLS_NM
+    		, MID_CLS_NM
+    		, LOW_CLS_NM
+    		, COURSE_NM
+    		, EDU_ST_DT
+    		, EDU_ED_DT
+    		, EDU_COST
+		FROM (
+    		SELECT *
+    		FROM TB_IEP_EDU001M EDU
+        		, TB_IEP_ECD002M ORG
+        		, TB_IEP_ECD005M HIGH_C
+        		, TB_IEP_ECD006M MID_C
+        		, TB_IEP_ECD007M LOW_C
+    		WHERE EDU.ORG_CD = ORG.ORG_CD
+    		  AND EDU.HIGH_CLS_CD = HIGH_C.HIGH_CLS_CD
+		      AND EDU.MID_CLS_CD = MID_C.MID_CLS_CD
+		      AND EDU.LOW_CLS_CD = LOW_C.LOW_CLS_CD
+		    ORDER BY EDU.COURSE_CD DESC
+		)
+	</select>
 
 	<insert id="insertExcelList" parameterType="java.util.ArrayList">
 		INSERT ALL

@@ -92,9 +92,9 @@
 		        if (chk_obj[i].checked == true) { 
 		        	chk_use = true;
 		        	checkboxValues.push(chk_obj[i].value);
-		            alert(chk_obj[i].value);    // 선택된 순서대로 값을 출력
 		        }
 		    }
+
 		    
 		    if(chk_use == false){
 		    	alert("선택하신 강의가 없습니다.");
@@ -108,11 +108,10 @@
 		    	        'success':function(data){
 		    	            alert("성공적으로 결재되었습니다.");
 		    	            window.opener.location.reload();
-		    	            self.close();
 		    	        },
 		    	        'error':function(jqXHR, textStatus, errorThrown){
 		    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-		    	            self.close();
+
 		    	        }
 		    	    });
 		    }
@@ -177,9 +176,6 @@
 				</c:forEach>
 			</tbody>					
 		</table>
-	</div>
-    <div>
-		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm}님</h3>
 	</div>
 
 </body>

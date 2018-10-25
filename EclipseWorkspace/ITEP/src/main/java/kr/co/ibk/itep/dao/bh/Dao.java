@@ -7,9 +7,12 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.EduApproval;
+import kr.co.ibk.itep.dto.EmpJoinedDep;
 
 @Component
 public interface Dao {
+	
+	public EmpJoinedDep selectByEmn(String emn);
 	
 	public ArrayList<EduApproval> selectAllApprovalList();
 	
