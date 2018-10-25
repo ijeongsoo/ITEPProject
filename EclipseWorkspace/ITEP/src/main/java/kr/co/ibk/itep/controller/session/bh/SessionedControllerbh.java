@@ -131,14 +131,31 @@ public class SessionedControllerbh {
 		//대시보드 막대그래프 (해당 월에 교육을 듣는 부서별 교육 수(인원 X))
 		List<Map<String, Integer>> brcdEduCountList = service.selectBrcdEduCount();
 		
+		int[] BrCount = {15,21,12,7,14,10};
+
+		
 		for(int i=0; i<brcdEduCountList.size(); i++) {
 			System.out.println(brcdEduCountList.get(i).get("KRN_BRM"));
-			System.out.println(brcdEduCountList.get(i).get("COUNT"));
+			
+			if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT기획부")) {
+				BrCount[0] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT정보부")) {
+				BrCount[1] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT수신카드부")) {
+				BrCount[2] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT여신외환부")) {
+				BrCount[3] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT채널부")) {
+				BrCount[4] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT시스템운영팀")) {
+				BrCount[5] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}
 
 		}
 		
 		
 		try {
+			model.addAttribute("BrCount", BrCount);				
 			model.addAttribute("empJoinedDep_info", empJoinedDep);		
 		}
 		catch(Exception e){

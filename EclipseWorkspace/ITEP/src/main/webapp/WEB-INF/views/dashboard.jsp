@@ -66,23 +66,24 @@
       </div>
     </div>
     <div>
-		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm} 관리자님♥</h3>
+		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
 	</div>    
     <div>
-    	<h3>올해 교육 신청자 : </h3>
-    	<h3>이번달 교육 신청자 : </h3>
+    	<h4>올해 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
+    	<h4>이번달 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
+    	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜)</h3>
     </div>
-    <div  style="float:left;width:50%;height:50%;background-Color:#F2FFFF">
-  		<canvas id="myChart_1" width="400" height="400"></canvas>
+    <div  style="padding:30px;float:left;width:50%;height:50%;background-Color:#F2FFFF">
+  		<canvas id="myChart_1" width="300" height="300"></canvas>
     </div>
-    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">  
-  		<canvas id="myChart_2" width="400" height="400"></canvas>
+    <div style="padding:30px;clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">  
+  		<canvas id="myChart_2" width="300" height="300"></canvas>
     </div>
-    <div  style="float:left;width:50%;height:50%;background-Color:#FFFFF2">
-  		<canvas id="myChart_3" width="400" height="400"></canvas>
+    <div  style="padding:30px;float:left;width:50%;height:50%;background-Color:#FFFFF2">
+  		<canvas id="myChart_3" width="300" height="300"></canvas>
     </div>
-    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">		
-  		<canvas id="myChart_4" width="400" height="400"></canvas>
+    <div  style="padding:30px;clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">		
+  		<canvas id="myChart_4" width="300" height="300"></canvas>
     </div>            
 	
 <script>
@@ -98,9 +99,12 @@
 	        labels: ["IT기획부", "IT정보부", "IT수신카드부", "IT여신외환부", "IT채널부", "IT시스템운영팀"],
 	        datasets: [{
 	            label: "당월 부서별 교육 수강 현황",
-	            backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],
-	            borderColor: ["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)"],
-	            data: [12, 21, 8, 12, 15, 6],
+	            backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)",
+	            				"rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],
+	            borderColor: ["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)",
+	            			"rgb(54, 162, 235)","rgb(153, 102, 255)"],
+	            data: ["${BrCount[0]}", "${BrCount[1]}", "${BrCount[2]}",
+	            	"${BrCount[3]}", "${BrCount[4]}", "${BrCount[5]}"],
 	        }]
 	    },
 	
@@ -111,7 +115,15 @@
 	                gridLines: {
 	                    offsetGridLines: true
 	                }
-	            }]
+	            }],
+                yAxes: [{
+                    display: true,
+                    stacked: true,
+                    ticks: {
+                        min: 0, // minimum value
+                        max: 30 // maximum value
+                    }
+           }]	            
 	        }	    	
 	    }
 	});
@@ -120,18 +132,32 @@
 
 	var myLineChart = new Chart(ctx_line, {
 	    type: 'line',
-	    data: [{
-	        x: 10,
-	        y: 20
-	    }, {
-	        x: 15,
-	        y: 10
-	    }],
+	    data: {
+	    	labels : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	        datasets: [{
+	            label: "2018년 월별 교육 수강 현황",
+	            backgroundColor: "rgba(255, 99, 132, 0.2)",
+	            borderColor: "rgb(255, 99, 132)",
+	            data: [80, 21, 58, 42, 75, 36, 72, 18, 53, 100, 78, 52],
+	            fill : false
+	        }]
+	    	
+	    },
 	    options: {
 	        scales: {
-	            yAxes: [{
-	                stacked: true
-	            }]
+	            xAxes: [{
+	                gridLines: {
+	                    offsetGridLines: true
+	                }
+	            }],
+                yAxes: [{
+                    display: true,
+                    stacked: true,
+                    ticks: {
+                        min: 0, // minimum value
+                        max: 100 // maximum value
+                    }
+           		}]	            
 	        }
 	    }
 	});
@@ -142,18 +168,29 @@
         type: 'pie',
         data : {
         	    datasets: [{
-        	        data: [10, 20, 30],
-	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)"]
+        	        data: [50, 20, 30, 24, 32, 41, 23, 10],
+	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(155, 105, 86, 0.2)"
+	        	    	,"rgba(215, 15, 16, 0.2)","rgba(115, 135, 246, 0.2)","rgba(15, 205, 186, 0.2)","rgba(225, 105, 186, 0.2)"]
         	    }],
 
         	    // These labels appear in the legend and in the tooltips when hovering different arcs
         	    labels: [
-        	        'Red',
-        	        'Yellow',
-        	        'Blue'
+        	    	'프로그래밍',
+        	    	'데이터베이스',
+        	    	'서버',
+        	    	'네트워크',
+        	    	'OS',
+        	    	'보안',
+        	    	'웹',
+        	    	'모바일'
         	    ]
         	},
-        options: {}
+        options: {
+            title: {
+                display: true,
+                text: '분야별 연간 교육 수강 현황'
+            }        	
+        }
     });
     
 	var ctx_doughnut = document.getElementById('myChart_4').getContext('2d');
@@ -161,19 +198,30 @@
     var myDoughnutChart = new Chart(ctx_doughnut, {
         type: 'doughnut',
         data : {
-        	    datasets: [{
-        	        data: [10, 20, 30],
-	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)"]
-        	    }],
+    	    datasets: [{
+    	        data: [50, 20, 30, 24, 32, 41, 23, 10],
+        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(155, 105, 86, 0.2)"
+        	    	,"rgba(215, 15, 16, 0.2)","rgba(115, 135, 246, 0.2)","rgba(15, 205, 186, 0.2)","rgba(225, 105, 186, 0.2)"]
+    	    }],
 
-        	    // These labels appear in the legend and in the tooltips when hovering different arcs
-        	    labels: [
-        	        'Red',
-        	        'Yellow',
-        	        'Blue'
-        	    ]
-        	},
-        options: {}
+    	    // These labels appear in the legend and in the tooltips when hovering different arcs
+    	    labels: [
+    	    	'프로그래밍',
+    	    	'데이터베이스',
+    	    	'서버',
+    	    	'네트워크',
+    	    	'OS',
+    	    	'보안',
+    	    	'웹',
+    	    	'모바일'
+    	    ]
+    	},
+        options: {
+            title: {
+                display: true,
+                text: '분야별 연간 교육 수강 현황'
+            }        	
+        }
     });
 
 	   
