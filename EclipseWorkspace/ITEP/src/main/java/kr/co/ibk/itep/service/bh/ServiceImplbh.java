@@ -21,6 +21,14 @@ public class ServiceImplbh implements Service{
 
 	
 	@Override
+	public EmpJoinedDep ssoLogin(String emn) {
+		// TODO Auto-generated method stub
+		EmpJoinedDep empJoinedDep = admindao.selectByEmn(emn);
+
+		return empJoinedDep;
+	}
+	
+	@Override
 	public ArrayList<EduApproval> selectDepApprovalList(String emn){
 		
 		List<EduApproval> eduList = admindao.selectDepApprovalList(emn);
