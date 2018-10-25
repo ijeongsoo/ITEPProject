@@ -126,10 +126,17 @@ public class SessionedControllerbh {
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 
+		try {
+			model.addAttribute("empJoinedDep_info", empJoinedDep);		
+		}
+		catch(Exception e){
+			logger.error(e.getStackTrace().toString());
+			model.addAttribute("result", 1);
+			return "error";
+		}
 		
 		
-		
-		model.addAttribute("empJoinedDep_info", empJoinedDep);
+
 		return "dashboard";
 	} 	
 
