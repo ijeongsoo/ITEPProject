@@ -138,6 +138,8 @@ public class SessionedControllerks {
 	
 	@RequestMapping("/eduEditDetail")
 	public String eduEditDetail(String course_cd, Model model){
+		// 해당 교육 정보 읽어와서 정보 뿌려주기
+		
 		return "eduEditDetail";
 	}
 	

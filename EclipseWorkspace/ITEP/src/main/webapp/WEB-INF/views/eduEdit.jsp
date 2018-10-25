@@ -95,8 +95,7 @@
 					<c:forEach var="edu" items="${edulist}" varStatus="status">
 						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal">
 							<td style="text-align: center;">${edu.rownum}</td>
-							<td style="text-al
-							ign: center;">${edu.high_cls_nm}</td>
+							<td style="text-align: center;">${edu.high_cls_nm}</td>
 							<td style="text-align: center;">${edu.mid_cls_nm}</td>
 							<td >${edu.course_nm}</td>
 							<td style="text-align: center;">${edu.edu_st_dt}</td>
