@@ -12,7 +12,8 @@
   <meta name="author" content="GeeksLabs">
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
-
+  <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+  
   <title>Creative - Bootstrap Admin Template</title>
 <script
 	src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
@@ -21,8 +22,8 @@
   <!-- bootstrap theme -->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap-theme.css" rel="stylesheet">
   <!--external css-->
-  <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-  <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>  
+  <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
+  <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>  
   <!-- font icon -->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
@@ -57,6 +58,13 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+
+<style>
+	/*yellow/ROUGE BUTTON STYLES*/     
+	#adminPM{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#adminPM:hover{background-color:#dd9003;}
+	#adminPM:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+</style>
 </head>
 	<script type="text/javascript">
 		$( function () {
@@ -122,19 +130,20 @@
 	
 <body>
       <!--overview start-->
-    <div class="row">
-      <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa-laptop"></i>결재</h3>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i><a href="home">Home</a></li>
-          <li><i class="fa fa-laptop"></i>결재</li>
-        </ol>
-      </div>
-    </div>
-	<div class="container" align="right" style="height:40px;">
+	<section class="wrapper">
+      <!--overview start-->
+    	<div class="row">
+      		<div class="col-lg-12">
+        	<h3 class="page-header hanna"><i class="fa fa-laptop"></i>결재</h3>
+      		</div>
+    	</div>
+    </section>
+
+	<div class="hanna" align="center" style="height:40px;">
 		<input id="adminPM" type="button" value="결재" onclick="fn_pmApproval()">
 	</div>
 	<div class="container">
+		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>
 				<tr>
@@ -176,8 +185,9 @@
 				</c:forEach>
 			</tbody>					
 		</table>
+		</div>
 	</div>
-
+	
 </body>
 
 </html>

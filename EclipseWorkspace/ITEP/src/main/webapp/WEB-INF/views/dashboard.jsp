@@ -44,8 +44,7 @@
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
 
 	<!-- chart.js  -->
-  <script src="<%=application.getContextPath()%>/resources/js/Chart.min.js"></script>  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 
   <!-- =======================================================
     Theme Name: NiceAdmin
@@ -74,99 +73,110 @@
     	<h3>이번달 교육 신청자 : </h3>
     </div>
     <div  style="float:left;width:50%;height:50%;background-Color:#F2FFFF">
-    	<h3>막대그래프</h3>
   		<canvas id="myChart_1" width="400" height="400"></canvas>
     </div>
-    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">
-    	<h3>선 그래프</h3>    
+    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">  
   		<canvas id="myChart_2" width="400" height="400"></canvas>
     </div>
     <div  style="float:left;width:50%;height:50%;background-Color:#FFFFF2">
-    	<h3>원 그래프</h3>    
   		<canvas id="myChart_3" width="400" height="400"></canvas>
     </div>
-    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">
-    	<h3>도넛 그래프</h3>   		
+    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">		
   		<canvas id="myChart_4" width="400" height="400"></canvas>
     </div>            
 	
 <script>
-	var data_1 = {
-		labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
-		datasets: [
-			{
-				label: "My First dataset",
-				fillColor: "rgba(150,200,250,0.5)",
-				strokeColor: "rgba(150,200,250,0.8)",
-				highlightFill: "rgba(150,200,250,0.75)",
-				highlightStroke: "rgba(150,200,250,1)",
-				data: [65, 59, 80, 81, 56, 55]
-			}
-		]
-	};
-	var options = {	animation: false };
-	var ctx_1 = $('#myChart_1').get(0).getContext('2d');
-	var myBarChart = new Chart(ctx_1).Bar(data_1, options);
+
+	var ctx_bar = document.getElementById('myChart_1').getContext('2d');
 	
-	var data_2 = {
-	        labels: ["월","화","수","목","금","토","일"],
-	        datasets: [
-	            {
-	                label: "",
-	                fillColor: "rgba(220,220,220,0.2)",
-	                strokeColor: "rgba(220,220,220,1)",
-	                pointColor: "rgba(220,220,220,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(220,220,220,1)",
-	                data: [2, 3, 5, 7, 11, 13, 17]
-	            },
-	            {
-	                label: "",
-	                fillColor: "rgba(151,187,205,0.2)",
-	                strokeColor: "rgba(151,187,205,1)",
-	                pointColor: "rgba(151,187,205,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(151,187,205,1)",
-	                data: [0, 1, 1, 2, 3, 5, 8]
-	            }
-	        ]
-	    };
+	var chart = new Chart(ctx_bar, {
+	    // The type of chart we want to create
+	    type: 'bar',
+	
+	    // The data for our dataset
+	    data: {
+	        labels: ["IT기획부", "IT정보부", "IT수신카드부", "IT여신외환부", "IT채널부", "IT시스템운영팀"],
+	        datasets: [{
+	            label: "당월 부서별 교육 수강 현황",
+	            backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],
+	            borderColor: ["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)"],
+	            data: [12, 21, 8, 12, 15, 6],
+	        }]
+	    },
+	
+	    // Configuration options go here
+	    options: {
+	        scales: {
+	            xAxes: [{
+	                gridLines: {
+	                    offsetGridLines: true
+	                }
+	            }]
+	        }	    	
+	    }
+	});
 
-	    var ctx = document.getElementById("myChart_2").getContext("2d");
-	    var options_2 = { };
-	    var lineChart = new Chart(ctx).Line(data_2, options_2);
+	var ctx_line = document.getElementById('myChart_2').getContext('2d');
 
-	    var data_3 = [
-	    	{
-	    		value: 300,
-	    		color: 'rgb(75, 192, 192)',
-	    		highlight: "#FF5A5E",
-	    		label: "Red"
-	    	},
-	    	{
-	    		value: 50,
-	    		color: 'rgb(54, 162, 235)',
-	    		highlight: "#5AD3D1",
-	    		label: "Green"
-	    	},
-	    	{
-	    		value: 100,
-	    		color: 'rgb(255, 159, 64)',
-	    		highlight: "#FFC870",
-	    		label: "Yellow"
-	    	}
-	    ]
+	var myLineChart = new Chart(ctx_line, {
+	    type: 'line',
+	    data: [{
+	        x: 10,
+	        y: 20
+	    }, {
+	        x: 15,
+	        y: 10
+	    }],
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                stacked: true
+	            }]
+	        }
+	    }
+	});
+	
+	var ctx_pie = document.getElementById('myChart_3').getContext('2d');
 
-	    var ctx_3 = document.getElementById("myChart_3").getContext("2d");
-	    var options_3 = { responsive: true };
-	    var myPieChart = new Chart(ctx_3).Pie(data_3, options_3);
+    var myPieChart = new Chart(ctx_pie,{
+        type: 'pie',
+        data : {
+        	    datasets: [{
+        	        data: [10, 20, 30],
+	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)"]
+        	    }],
 
-	    
-	    var ctx_4 = document.getElementById("myChart_4").getContext("2d");
-	    var options_4 = { responsive: true };
-	    var myPieChart = new Chart(ctx_4).Doughnut(data_3, options_4);
+        	    // These labels appear in the legend and in the tooltips when hovering different arcs
+        	    labels: [
+        	        'Red',
+        	        'Yellow',
+        	        'Blue'
+        	    ]
+        	},
+        options: {}
+    });
+    
+	var ctx_doughnut = document.getElementById('myChart_4').getContext('2d');
+	
+    var myDoughnutChart = new Chart(ctx_doughnut, {
+        type: 'doughnut',
+        data : {
+        	    datasets: [{
+        	        data: [10, 20, 30],
+	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)"]
+        	    }],
+
+        	    // These labels appear in the legend and in the tooltips when hovering different arcs
+        	    labels: [
+        	        'Red',
+        	        'Yellow',
+        	        'Blue'
+        	    ]
+        	},
+        options: {}
+    });
+
+	   
 		
 </script>
 

@@ -77,7 +77,7 @@ public class SessionedControllerjh {
 			auth_cd = "02";
 		}else if(split[1].equals("서무담당")) {
 			auth_cd = "03";
-		}else if(split[1].equals("교육관리자")) {
+		}else if(split[1].equals("일반사용자")) {
 			auth_cd = "04";
 		}
 		

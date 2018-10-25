@@ -127,6 +127,8 @@ public class SessionedControllerjs {
 	@RequestMapping("/eduDetail")
 	public String eduDetail( String course_cd, Model model) {
 		
+		logger.info(course_cd);
+		
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
