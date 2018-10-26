@@ -162,6 +162,31 @@
     		
 			$(document).ready(function(){
 				
+				if(${myRegistListCount} == 0){
+		        	$("#info1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }else if(${myRegistListCount} > 3){
+		        	$("#moreInfo1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }
+				
+				if(${myStudyListCount} == 0){
+		        	$("#info2").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }else if(${myStudyListCount} > 3){
+		        	$("#moreInfo2").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }
+				
+				if(${mySurveyListCount} == 0){
+		        	$("#info3").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }else if(${mySurveyListCount} > 3){
+		        	$("#moreInfo3").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }
+				
+				if(${myRecentListCount} == 0){
+		        	$("#info4").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }else if(${myRecentListCount} > 3){
+		        	$("#moreInfo4").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
+		        }
+				
+				
 				if($('.filter').length == 0){
 		        	$("#categoryExist").attr('style', 'display:inline; text-align:center')
 		        }else{
@@ -481,7 +506,7 @@
 
 
 	<!-- Contact Section -->
-	<section id="myInfo">
+	<section id="myInfo" style="margin-bottom: 120px">
 		<div class="container">
 			<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">${login_info.emm }님의
@@ -492,20 +517,20 @@
 					<div style="float: left; width: 47%; ">
 						<h3 class="hanna">신청 정보</h3>
 						<hr>
-						<c:forEach var="d" items="${myRegistList}" varStatus="status">
+						<c:forEach var="d" items="${myRegistList}"  begin="0" end="2" step="1" varStatus="status">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 							</div>
 							<div style=" float: left; width: 60%;height: 72px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >${d.course_nm} </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>
 								</div>
 
 							</div>
 							<div style=" float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.step_nm }</p>
 							</div>
 						</div>
 						</c:forEach>
@@ -533,21 +558,23 @@
 					<div style="float: left; width: 47%; ">
 						<h3 class="hanna">수강중인 교육</h3>
 						<hr>
+						<c:forEach var="d" items="${myStudyList}"  begin="0" end="2" step="1" varStatus="status">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
-							<div style="float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							<div style=" float: left; width: 20%; height: 72px">
+								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 							</div>
-							<div style="float: left; width: 60%;height: 72px; display: table;">
+							<div style=" float: left; width: 60%;height: 72px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >${d.course_nm} </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>
 								</div>
 
 							</div>
 							<div style=" float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.stat_nm }</p>
 							</div>
 						</div>
+						</c:forEach>
 						<div id="info2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
@@ -568,25 +595,29 @@
 					</div>
 					
 				</div>
+				
+				
 				<div style=" float: left; width: 100%;  ">
 					<div style=" float: left; width: 47%; ">
 						<h3 class="hanna">설문해주세요!!</h3>
 						<hr>
+						<c:forEach var="d" items="${mySurveyList}"  begin="0" end="2" step="1" varStatus="status">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 							</div>
-							<div style="float: left; width: 60%;height: 72px; display: table;">
+							<div style=" float: left; width: 60%;height: 72px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >${d.course_nm} </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>
 								</div>
 
 							</div>
-							<div style="float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+							<div style=" float: left; width: 20%; height: 72px; display: table; ">
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.stat_nm }</p>
 							</div>
 						</div>
+						</c:forEach>
 						<div id="info3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
@@ -610,51 +641,24 @@
 					<div style=" float: left; width: 47%;">
 						<h3 class="hanna">최근 수강 내역</h3>
 						<hr>
+						<c:forEach var="d" items="${myRecentList}"  begin="0" end="2" step="1" varStatus="status">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
-							<div style="float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
+							<div style=" float: left; width: 20%; height: 72px">
+								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 							</div>
 							<div style=" float: left; width: 60%;height: 72px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
-								</div>
-
-							</div>
-							<div style=" red; float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
-							</div>
-						</div>
-						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
-							<div style="float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
-							</div>
-							<div style="float: left; width: 60%;height: 72px; display: table;">
-								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
-								</div>
-
-							</div>
-							<div style="float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
-							</div>
-						</div>
-						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
-							<div style="float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
-							</div>
-							<div style=" float: left; width: 60%;height: 72px; display: table;">
-								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >${d.course_nm} </p>
+									<p style="font-size: 13px; padding : 0" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>
 								</div>
 
 							</div>
 							<div style=" float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
+								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.step_nm }</p>
 							</div>
 						</div>
+						</c:forEach>
+						
 						<div id="info4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
@@ -676,6 +680,7 @@
 
 
 			</div>
+			<hr>
 		</div>
 	</section>
 

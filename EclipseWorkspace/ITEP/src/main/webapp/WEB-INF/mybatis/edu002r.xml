@@ -156,6 +156,7 @@
 		and b.LOW_CLS_CD = h.LOW_CLS_CD
 		and a.emn = #{emn}
 		and a.step_cd not in ('40', '50')
+		order by a.reg_dt
 		
 	</select>
 	
@@ -212,6 +213,7 @@
 		and b.LOW_CLS_CD = h.LOW_CLS_CD
 		and a.emn = #{emn}
 		and a.step_cd = '40'
+		order by a.reg_dt
 		
 	</select>
 	
@@ -269,6 +271,8 @@
 		and a.emn = #{emn}
 		and a.step_cd = '40'
 		and a.stat_cd = '03'
+		order by a.reg_dt
+		
 		
 	</select>
 	
@@ -326,6 +330,7 @@
 		and a.emn = #{emn}
 		and a.step_cd = '40'
 		and a.stat_cd = '04'
+		order by a.reg_dt
 		
 	</select>
 

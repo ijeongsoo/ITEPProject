@@ -6,6 +6,6 @@
 <mapper namespace="edu003r">
 	
 	<select id= "selectSurveyCountByCourse_cdEmn" resultType="int" parameterType="kr.co.ibk.itep.dto.Edu002rAttach">
-		select count(*) from TB_IEP_EDU003R where emn = #{emn} and sur_point is null
+		select count(*) from TB_IEP_EDU002R where emn = #{emn} and stat_cd = '03'
 	</select>
 </mapper>
