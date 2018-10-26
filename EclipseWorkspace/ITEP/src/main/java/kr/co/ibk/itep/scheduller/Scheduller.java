@@ -71,6 +71,7 @@ public class Scheduller {
 					break;
 				}
 			}
+			
 			try {
 				Thread.sleep(30*60*1000);
 				count++;

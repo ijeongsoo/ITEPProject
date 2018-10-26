@@ -492,13 +492,14 @@
 					<div style="float: left; width: 47%; ">
 						<h3 class="hanna">신청 정보</h3>
 						<hr>
+						<c:forEach var="d" items="${myRegistList}" varStatus="status">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
 								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
 							</div>
 							<div style=" float: left; width: 60%;height: 72px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
+									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >${d.course_nm} </p>
 									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
 								</div>
 
@@ -507,21 +508,8 @@
 								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
 							</div>
 						</div>
-						<div class="infoList" style=" float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
-							<div style=" float: left; width: 20%; height: 72px">
-								<img class="photo4" src="resources/main_page_resource/img/book.png" alt="">
-							</div>
-							<div style="float: left; width: 60%;height: 72px; display: table;">
-								<div style=" vertical-align: middle; display: table-cell;">
-									<p style="font-size: 22px; padding: 0 " class="hanna hidden" >TEST 교육aasdfsadfsldkjflsjkadlfkjsaldfjlas </p>
-									<p style="font-size: 13px; padding : 0" class="hanna" >IBK기업은행 / 20180910~20180910</p>
-								</div>
-
-							</div>
-							<div style=" float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >서무대기</p>
-							</div>
-						</div>
+						</c:forEach>
+						
 						<div id="info1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
