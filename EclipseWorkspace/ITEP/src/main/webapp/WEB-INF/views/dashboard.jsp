@@ -40,8 +40,6 @@
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style-responsive.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/xcharts.min.css" rel=" stylesheet">
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-	<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
-  <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
 
 	<!-- chart.js  -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
@@ -53,9 +51,18 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
   <style>
-	  .white-box{background:#fff;padding:25px;margin-bottom:30px}
-.box-title{margin:0 0 12px;font-weight:500;text-transform:uppercase;font-size:16px}.panel{border-radius:0;margin-bottom:30px;border:0;box-shadow:none}.panel	  
+	.white-box{background:#fff;padding:25px;margin-bottom:30px}
+	.box-title{margin:0 0 12px;font-weight:500;text-transform:uppercase;font-size:16px} 
+	.list-inline{margin-bottom:0}.analytics-info 
+	.list-inline li{vertical-align:middle}.analytics-info 
+	.list-inline li span{font-size:24px}.analytics-info 
+	.list-inline li i{font-size:20px}	 
+	.two-part li{width:48.8%}
+	.two-part li i{font-size:50px}
+	.two-part li span{font-size:50px;font-weight:100;font-family:Rubik,sans-serif}	
+
   </style>
+
 </head>
 
 	
@@ -72,7 +79,7 @@
     <div>
 		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
 	</div>       
-    <div class="row">
+    <div>
         <div class="col-lg-4 col-sm-6 col-xs-12">
             <div class="white-box analytics-info">
                 <h3 class="box-title">Total Registered Courses</h3>
@@ -111,18 +118,29 @@
     <div>
     	<h3>밑에는 가짜 데이터입니당!</h3>
     </div>
-    <div  style="padding:30px;width:600px; height:600px;">
-  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
+    <div>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="white-box">
+                <h3 class="box-title">2018년 월별 교육 수강 현황</h3>
+                <div id="ct-visits" style="height: 405px;">
+                 	<canvas id="myChart_2" width="200px" height="100%"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="padding:30px;width:600px; height:600px;">  
-  		<canvas id="myChart_2" width="600px" height="600px"></canvas>
-    </div>
-    <div  style="padding:30px;width:600px; height:600px;">
-  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
-    </div>
-    <div  style="padding:30px;width:600px; height:600px;">		
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	     <div style="padding:30px;float:left;width:49%;height:50%;background-Color:#FFFFF2;">  
+	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
+	    </div>   
+    </div>    
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	     <div style="padding:30px;clear:right;float:right;width:49%;height:50%; background-Color:#F2FFFF;">  
+	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
+	    </div>   
+    </div>   
+    <!--<div  style="padding:30px;width:600px; height:600px; background-Color:#FFF2FF;">		
   		<canvas id="myChart_4" width="600px" height="600px"></canvas>
-    </div>            
+    </div> -->           
 	
 <script>
 
@@ -167,7 +185,8 @@
 	});
 
 	var ctx_line = document.getElementById('myChart_2').getContext('2d');
-
+	ctx_line.canvas.width = 1200;
+	ctx_line.canvas.height = 400;
 	var myLineChart = new Chart(ctx_line, {
 	    type: 'line',
 	    data: {
@@ -183,6 +202,9 @@
 	    	
 	    },
 	    options: {
+	        legend: {
+	            display: false,
+	        },	    	
 	        scales: {
 	            xAxes: [{
 	                gridLines: {
@@ -194,7 +216,7 @@
                     stacked: true,
                     ticks: {
                         min: 0, // minimum value
-                        max: 100 // maximum value
+                        max: 70 // maximum value
                     }
            		}]	            
 	        }
