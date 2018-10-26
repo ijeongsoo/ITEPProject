@@ -186,9 +186,36 @@ public class SessionedControllerbh {
 			}
 		}
 		
+		//대시보드 파이그래프(당해년도 교육 카테고리별 수강 현황)
+		List<Map<String, Integer>> yearEduCTCountList = service.selectYearCTEduCount();
+		
+		int[] YrCTCount = {5,2,3,4,1,6,5,4};		
+		
+		for(int i=0; i<yearEduCTCountList.size(); i++) {
+			if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("프로그래밍")) {
+				YrCTCount[0] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("데이터베이스")) {
+				YrCTCount[1] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("서버")) {
+				YrCTCount[2] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("네트워크")) {
+				YrCTCount[3] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("OS")) {
+				YrCTCount[4] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("보안")) {
+				YrCTCount[5] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("웹")) {
+				YrCTCount[6] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("모바일")) {
+				YrCTCount[7] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}			
+		}
+		
+		
 		try {
 			model.addAttribute("BrCount", BrCount);	
 			model.addAttribute("YrCount", YrCount);
+			model.addAttribute("YrCTCount", YrCTCount);
 			model.addAttribute("empJoinedDep_info", empJoinedDep);		
 		}
 		catch(Exception e){
@@ -199,6 +226,27 @@ public class SessionedControllerbh {
 
 		return "dashboard";
 	} 	
+	
+	//추후 고도화
+	public int[] resultDataSet(String dataName, List<Map<String, Integer>> dataList) {
+
+		int num=0;
+		
+		if(dataName.equals("부서별")) {
+			num=6;
+		}else if(dataName.equals("연간월별")) {
+			num=12;
+		}else if(dataName.equals("연간분야별")) {
+			num=8;
+		}
+		int[] data = new int[num];
+		
+		//각 data 종류에 따른 for문 구현 필요
+		
+		
+		
+		return data;
+	}
 
 	
 }

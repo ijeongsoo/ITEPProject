@@ -24,4 +24,6 @@ public interface Service {
 	
 	public List<Map<String, Integer>> selectYearEduCount();
 	
+	public List<Map<String, Integer>> selectYearCTEduCount();
+	
 }

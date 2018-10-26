@@ -62,4 +62,10 @@ public class ServiceImplbh implements Service{
 		return resultMap;
 	}	
 	
+	@Override
+	public List<Map<String, Integer>> selectYearCTEduCount() {
+		List<Map<String, Integer>> resultMap = admindao.selectYearCTEduCount();
+		return resultMap;
+	}	
+	
 }

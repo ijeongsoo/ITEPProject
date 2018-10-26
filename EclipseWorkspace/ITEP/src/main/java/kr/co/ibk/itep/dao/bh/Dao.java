@@ -25,4 +25,6 @@ public interface Dao {
 	public List<Map<String, Integer>> selectBrcdEduCount();
 	
 	public List<Map<String, Integer>> selectYearEduCount();
+	
+	public List<Map<String, Integer>> selectYearCTEduCount();
 }

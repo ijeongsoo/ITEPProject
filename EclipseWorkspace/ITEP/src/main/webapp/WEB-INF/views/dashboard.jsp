@@ -73,17 +73,17 @@
     	<h4>이번달 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
     	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜, 선그래프도 진짜)</h3>
     </div>
-    <div  style="padding:30px;float:left;width:50%;height:50%;background-Color:#F2FFFF">
-  		<canvas id="myChart_1" width="300" height="300"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">
+  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
     </div>
-    <div style="padding:30px;clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">  
-  		<canvas id="myChart_2" width="300" height="300"></canvas>
+    <div style="padding:30px;width:600px; height:600px;">  
+  		<canvas id="myChart_2" width="600px" height="600px"></canvas>
     </div>
-    <div  style="padding:30px;float:left;width:50%;height:50%;background-Color:#FFFFF2">
-  		<canvas id="myChart_3" width="300" height="300"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">
+  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
     </div>
-    <div  style="padding:30px;clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">		
-  		<canvas id="myChart_4" width="300" height="300"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">		
+  		<canvas id="myChart_4" width="600px" height="600px"></canvas>
     </div>            
 	
 <script>
@@ -169,7 +169,8 @@
         type: 'pie',
         data : {
         	    datasets: [{
-        	        data: [50, 20, 30, 24, 32, 41, 23, 10],
+        	        data: ["${YrCTCount[0]}", "${YrCTCount[1]}", "${YrCTCount[2]}", "${YrCTCount[3]}", 
+        	        	"${YrCTCount[4]}", "${YrCTCount[5]}", "${YrCTCount[6]}", "${YrCTCount[7]}"],
 	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(155, 105, 86, 0.2)"
 	        	    	,"rgba(215, 15, 16, 0.2)","rgba(115, 135, 246, 0.2)","rgba(15, 205, 186, 0.2)","rgba(225, 105, 186, 0.2)"]
         	    }],

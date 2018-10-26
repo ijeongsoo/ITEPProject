@@ -64,4 +64,12 @@ public class DaoImplbh implements Dao{
 		return resultMap;
 	}
 	
+	
+	//해당년도에 각 분야별 교육 수강 현황
+	@Override
+	public List<Map<String, Integer>> selectYearCTEduCount() {
+		List<Map<String, Integer>> resultMap = sst.selectList("edu002r.dashboardCTEduCount");
+		return resultMap;
+	}	
+	
 }
