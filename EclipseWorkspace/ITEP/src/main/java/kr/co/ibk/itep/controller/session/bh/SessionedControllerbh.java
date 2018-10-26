@@ -4,6 +4,7 @@
 import java.util.HashMap;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -120,13 +121,101 @@ public class SessionedControllerbh {
 
 	} 	
 	
+	//대시보드
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model) {
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 
+		//대시보드 막대그래프 (해당 월에 교육을 듣는 부서별 교육 수(인원 X))
+		List<Map<String, Integer>> brcdEduCountList = service.selectBrcdEduCount();
+		
+		int[] BrCount = {15,21,12,7,14,10};
+
+		
+		for(int i=0; i<brcdEduCountList.size(); i++) {
+			
+			if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT기획부")) {
+				BrCount[0] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT정보부")) {
+				BrCount[1] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT수신카드부")) {
+				BrCount[2] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT여신외환부")) {
+				BrCount[3] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT채널부")) {
+				BrCount[4] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(brcdEduCountList.get(i).get("KRN_BRM")).equals("IT시스템운영팀")) {
+				BrCount[5] = Integer.parseInt(String.valueOf(brcdEduCountList.get(i).get("COUNT")));
+			}
+
+		}
+		
+		//대시보드 선그래프(당해년도 월별 교육 수강 현황)
+		List<Map<String, Integer>> yearEduCountList = service.selectYearEduCount();
+		
+		int[] YrCount = {10,20,30,40,50,60,50,40,30,40,50,60};
+		
+		for(int i=0; i<yearEduCountList.size(); i++) {
+			
+			if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("01")) {
+				YrCount[0] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("02")) {
+				YrCount[1] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("03")) {
+				YrCount[2] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("04")) {
+				YrCount[3] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("05")) {
+				YrCount[4] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("06")) {
+				YrCount[5] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("07")) {
+				YrCount[6] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("08")) {
+				YrCount[7] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("09")) {
+				YrCount[8] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("10")) {
+				YrCount[9] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("11")) {
+				YrCount[10] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCountList.get(i).get("MONTH")).equals("12")) {
+				YrCount[11] = Integer.parseInt(String.valueOf(yearEduCountList.get(i).get("COUNT")));				
+			}
+		}
+		
+		//대시보드 파이그래프(당해년도 교육 카테고리별 수강 현황)
+		List<Map<String, Integer>> yearEduCTCountList = service.selectYearCTEduCount();
+		
+		int[] YrCTCount = {5,2,3,4,1,6,5,4};		
+		
+		for(int i=0; i<yearEduCTCountList.size(); i++) {
+			if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("프로그래밍")) {
+				YrCTCount[0] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("데이터베이스")) {
+				YrCTCount[1] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("서버")) {
+				YrCTCount[2] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("네트워크")) {
+				YrCTCount[3] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("OS")) {
+				YrCTCount[4] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("보안")) {
+				YrCTCount[5] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("웹")) {
+				YrCTCount[6] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}else if(String.valueOf(yearEduCTCountList.get(i).get("MID_CLS_NM")).equals("모바일")) {
+				YrCTCount[7] = Integer.parseInt(String.valueOf(yearEduCTCountList.get(i).get("COUNT")));				
+			}			
+		}
+		
+		
 		try {
+			model.addAttribute("BrCount", BrCount);	
+			model.addAttribute("YrCount", YrCount);
+			model.addAttribute("YrCTCount", YrCTCount);
 			model.addAttribute("empJoinedDep_info", empJoinedDep);		
 		}
 		catch(Exception e){
@@ -134,11 +223,30 @@ public class SessionedControllerbh {
 			model.addAttribute("result", 1);
 			return "error";
 		}
-		
-		
 
 		return "dashboard";
 	} 	
+	
+	//추후 고도화
+	public int[] resultDataSet(String dataName, List<Map<String, Integer>> dataList) {
+
+		int num=0;
+		
+		if(dataName.equals("부서별")) {
+			num=6;
+		}else if(dataName.equals("연간월별")) {
+			num=12;
+		}else if(dataName.equals("연간분야별")) {
+			num=8;
+		}
+		int[] data = new int[num];
+		
+		//각 data 종류에 따른 for문 구현 필요
+		
+		
+		
+		return data;
+	}
 
 	
 }

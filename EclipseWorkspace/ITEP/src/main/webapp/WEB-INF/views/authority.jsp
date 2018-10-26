@@ -5,51 +5,52 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<title>Education List</title>
-		<link href="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-		<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-		<script src="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
-		<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
-		<link href="<%=application.getContextPath()%>/resources/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
-	   
-	    <!-- Custom styles for this template -->
-	    <!-- css 추가 정재희  -->
-	    		<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
-	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet"> 
-	    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
-	    <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
-	    <script src="//code.jquery.com/jquery.min.js"></script>
-				<!-- 테이블 자동 검색을 위한 css end -->
-		<!-- css 추가 정재희  end -->
-		
-		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/fullcalendar.css">
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/widgets.css" rel="stylesheet">
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style-responsive.css" rel="stylesheet" />
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/xcharts.min.css" rel=" stylesheet">
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-  		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-  		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>   	
-    	<!-- Bootstrap CSS -->
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap.min.css" rel="stylesheet">
-  		<!-- bootstrap theme -->
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap-theme.css" rel="stylesheet">
-  		<!--external css-->
-  		  <!-- font icon -->
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
-  		<!-- full calendar css-->
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-  		<!-- easy pie chart-->
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-  		<!-- owl carousel -->
-  		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
-  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">	
+	
+	  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+  
+  <title>Creative - Bootstrap Admin Template</title>
+<script
+	src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
+  <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>  
+  <!-- font icon -->
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/fullcalendar.css">
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/widgets.css" rel="stylesheet">
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style-responsive.css" rel="stylesheet" />
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/xcharts.min.css" rel=" stylesheet">
+  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
+  <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
+
+	<!-- chart.js  -->
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.min.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
+  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
+	
 	<style>
 	
 		#modal {
@@ -57,7 +58,7 @@
 		background-color:#FFFFFF;
 		position:absolute;
 		width : 500px;
-		height : 500px;
+		height : 600px;
 		top:300px;
 		left:200px;
 		z-Index:9999}
@@ -72,15 +73,15 @@
 .js_close{background-color: #c0392b; color : #fff; border-color: #c0392b; -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #8f2a1f; width: 150px; height: 30px;}
 .js_close:hover{background-color:#ac3420;}
 .js_close:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+	/*yellow/ROUGE BUTTON STYLES*/     
+#changebutton{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+#changebutton:hover{background-color:#dd9003;}
+#changebutton:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 	
 	.modal_content{
 	padding:40px;
 	}
-
-	/*yellow/ROUGE BUTTON STYLES*/     
-#changebutton{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; width: 150px; height: 30px;}
-#changebutton:hover{background-color:#dd9003;}
-#changebutton:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 	</style>
 	
 	</head>
@@ -132,7 +133,7 @@
 			 }
 			 
 			 if(chk_use != 1){
-				 alert("하나만 선택해주세요.");
+				 alert("권한을 변경할 대상자를 1명 선택하세요.");
 			 }else{
 				 
 					// 모달창 인스턴트 생성
@@ -219,44 +220,19 @@
 	</script>	
 	
 	<body>
-  <!-- container section start -->
-  <section id="container" class="">
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-	
-	  <!-- 관리자 페이지 로고 부분 20181015 이기석 -->
-      <!--logo start-->
-      <% String ssoid = request.getParameter("ssoid"); %>
-      <a href="admin?ssoid=<%=ssoid%>" class="logo">IT교육포털 <span class="lite">관리자 페이지</span></a>
-      <!--logo end-->
-	  
-	  <!-- 검색바 삭제 20181015 이기석 -->
-      
-	  <!-- 우측 상단 아이콘 활용 주석처리 20181015 이기석 -->
-    </header>
-    <!--header end-->
-
-
-      </div>
-    </aside>
-    <!--sidebar end-->
-
-    <!--main content start-->
-    <!-- 대시보드 메인 구성 20181015 이기석 -->
-    <section id="main-content">
       <section class="wrapper">
         <!--overview start-->
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-laptop"></i> 권한관리 </h3>
+            <h3 class="page-header hanna">권한관리 </h3>
           </div>
         </div>
-
+		</section>
 		<!-- 모달 창을 여는 버튼 -->
-		<input id="changebutton" type="button" value="권한변경" onclick="checkAuthArr();">
-			
+		<div class="hanna" align="center">
+		<input id="changebutton" type="button" value="권한수정" onclick="checkAuthArr();">
+		</div>
+		
 		<!-- 모달창 -->
 		<div id="modal">
 			<div class="modal-header" style="background-color: #237fbc">
@@ -264,24 +240,31 @@
 			</div>
 			
 			<div class="modal_content">
+			
+			<div class="img" align="center" style="margin_bottom:50px">
+			<img src= "<%=application.getContextPath()%>/resources/admin_page_resource/img/check.png" width="80px" hight="80px">
+			</div>
+    		
     		<form role="form">
-    			<div class = "form-group" align = "center" >
+    			<div class = "hanna" align = "center" style="font-size:18px;">
     				<label for="name" id ="labelid1" class="control-label">  </label><br>
     				<label for="name" id ="labelid2" class="control-label">  </label><br>
     				<label for="name" id ="labelid3" class="control-label">  </label><br>
     				<label for="name" id ="labelid4" class="control-label">  </label>
-    				
     			</div>
-    			<div class = "form-group" align = "center">
+    			<div  align = "center" style="font-size:20px;">
     				<label for="authority" class="control-label"> 변경 후 권한: </label>
-    				<select name="authority_select" style="width:200px">
+    				<select name="authority_select" style="width:200px"  >
     					<option value="교육관리자"> 교육관리자 </option>    				
     					<option value="서무차장"> 서무차장 </option>
     					<option value="서무담당"> 서무담당 </option>
     					<option value="일반사용자"> 일반사용자 </option>
     				</select>
     			</div>
-    			<div class="button" align="center">	
+    			<br>
+    			<br>
+    			
+    			<div id="button" class="hanna" align="center">	
     			    <input class="confirm_button" type="button" value="확인" onclick="selectValue();">  		
     				<button class="js_close">닫기</button>
     			</div>
@@ -295,7 +278,8 @@
 		
 		<!-- 내용 -->
 		<div class="container">
-	<table id = "authorityTable" style="border:1px solid #ccc; width:1000px; text-align:center;"  >
+		<div class="hanna">
+	<table id = "authorityTable" class="display" style="width:100%; text-align:center;"  >
     	<thead>
         <tr>
             <th style="text-align: center;">선택</th>
@@ -331,6 +315,7 @@
         </c:choose>
     	</tbody>
 	</table>
+		</div>
 		</div>
 	</body>
 	

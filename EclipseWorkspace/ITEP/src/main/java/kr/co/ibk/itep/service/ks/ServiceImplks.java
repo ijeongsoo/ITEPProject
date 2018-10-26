@@ -28,6 +28,7 @@ public class ServiceImplks implements Service {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceImplks.class);
 	@Autowired
 	private Dao dao;
+	
 	@Override
 	public void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) throws NotFoundException {
 		// TODO Auto-generated method stub
@@ -199,6 +200,13 @@ public class ServiceImplks implements Service {
 		// TODO Auto-generated method stub
 		List<EduEditList> eduList = dao.selectEduEditList();
 		return eduList;
+	}
+
+	@Override
+	public Edu001m selectEduInfo(String course_cd) {
+		// TODO Auto-generated method stub
+		Edu001m edu = dao.selectEduInfo(course_cd);
+		return edu;
 	}
 	
 

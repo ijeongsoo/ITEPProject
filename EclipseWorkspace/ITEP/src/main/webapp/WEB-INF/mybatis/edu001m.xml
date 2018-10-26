@@ -177,6 +177,32 @@
 		    ORDER BY EDU.COURSE_CD DESC
 		)
 	</select>
+	
+	<select id="selectEduInfo" resultType="kr.co.ibk.itep.dto.Edu001m">
+		 SELECT COURSE_CD
+	        , ORG_CD
+    	    , HIGH_CLS_CD
+        	, MID_CLS_CD
+        	, LOW_CLS_CD
+        	, COURSE_NM
+        	, EDU_HOUR
+        	, REG_ST_DT
+        	, REG_ED_DT
+        	, EDU_ST_DT
+        	, EDU_ED_DT
+        	, EDU_COST
+        	, LOC
+        	, REFUND_YN
+        	, ORIGIN_IMG_FILE_NM
+        	, SVR_IMG_FILE_NM
+        	, IMG_FILE_TYPE
+        	, REG_ID
+        	, TO_CHAR(REG_DT, 'YYYYMMDDHH24MISS') REG_DT
+        	, CHG_ID
+        	, TO_CHAR(CHG_DT, 'YYYYMMDDHH24MISS') CHG_DT
+    	FROM TB_IEP_EDU001M EDU
+    	WHERE EDU.COURSE_CD = #{course_cd}
+	</select>
 
 	<insert id="insertExcelList" parameterType="java.util.ArrayList">
 		INSERT ALL

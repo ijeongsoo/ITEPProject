@@ -12,7 +12,7 @@
 	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
 <link rel="shortcut icon" href="img/favicon.png">
 
-<title>교육등록 - 일괄UPLOAD</title>
+<title>교육등록</title>
 
 <!-- Bootstrap CSS -->
 <link
@@ -34,6 +34,9 @@
 <!-- Custom styles -->
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css"
 	rel="stylesheet">
 
 <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -72,7 +75,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<h3 class="page-header" style="color: #333333">
-						<i class="fa fa fa-bars"></i> 교육등록 - 일괄Upload
+						<i class="fa fa fa-bars"></i> 교육등록
 					</h3>
 					<br />
 				</div>

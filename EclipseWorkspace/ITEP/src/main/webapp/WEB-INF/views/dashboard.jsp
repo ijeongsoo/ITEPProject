@@ -44,8 +44,7 @@
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
 
 	<!-- chart.js  -->
-  <script src="<%=application.getContextPath()%>/resources/js/Chart.min.js"></script>  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 
   <!-- =======================================================
     Theme Name: NiceAdmin
@@ -67,106 +66,167 @@
       </div>
     </div>
     <div>
-		<h3>안녕하세요 ! ${empJoinedDep_info.krn_brm} ${empJoinedDep_info.emm} 관리자님♥</h3>
+		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
 	</div>    
     <div>
-    	<h3>올해 교육 신청자 : </h3>
-    	<h3>이번달 교육 신청자 : </h3>
+    	<h4>올해 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
+    	<h4>이번달 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
+    	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜, 선그래프도 진짜)</h3>
     </div>
-    <div  style="float:left;width:50%;height:50%;background-Color:#F2FFFF">
-    	<h3>막대그래프</h3>
-  		<canvas id="myChart_1" width="400" height="400"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">
+  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
     </div>
-    <div style="clear:right;float:right;width:50%;height:50%;background-Color:#FFF2FF">
-    	<h3>선 그래프</h3>    
-  		<canvas id="myChart_2" width="400" height="400"></canvas>
+    <div style="padding:30px;width:600px; height:600px;">  
+  		<canvas id="myChart_2" width="600px" height="600px"></canvas>
     </div>
-    <div  style="float:left;width:50%;height:50%;background-Color:#FFFFF2">
-    	<h3>원 그래프</h3>    
-  		<canvas id="myChart_3" width="400" height="400"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">
+  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
     </div>
-    <div  style="clear:right;float:right;width:50%;height:50%;background-Color:#EFEFEF">
-    	<h3>도넛 그래프</h3>   		
-  		<canvas id="myChart_4" width="400" height="400"></canvas>
+    <div  style="padding:30px;width:600px; height:600px;">		
+  		<canvas id="myChart_4" width="600px" height="600px"></canvas>
     </div>            
 	
 <script>
-	var data_1 = {
-		labels: ["1월", "2월", "3월", "4월", "5월", "6월"],
-		datasets: [
-			{
-				label: "My First dataset",
-				fillColor: "rgba(150,200,250,0.5)",
-				strokeColor: "rgba(150,200,250,0.8)",
-				highlightFill: "rgba(150,200,250,0.75)",
-				highlightStroke: "rgba(150,200,250,1)",
-				data: [65, 59, 80, 81, 56, 55]
-			}
-		]
-	};
-	var options = {	animation: false };
-	var ctx_1 = $('#myChart_1').get(0).getContext('2d');
-	var myBarChart = new Chart(ctx_1).Bar(data_1, options);
+
+	var ctx_bar = document.getElementById('myChart_1').getContext('2d');
 	
-	var data_2 = {
-	        labels: ["월","화","수","목","금","토","일"],
-	        datasets: [
-	            {
-	                label: "",
-	                fillColor: "rgba(220,220,220,0.2)",
-	                strokeColor: "rgba(220,220,220,1)",
-	                pointColor: "rgba(220,220,220,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(220,220,220,1)",
-	                data: [2, 3, 5, 7, 11, 13, 17]
-	            },
-	            {
-	                label: "",
-	                fillColor: "rgba(151,187,205,0.2)",
-	                strokeColor: "rgba(151,187,205,1)",
-	                pointColor: "rgba(151,187,205,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(151,187,205,1)",
-	                data: [0, 1, 1, 2, 3, 5, 8]
-	            }
-	        ]
-	    };
+	var chart = new Chart(ctx_bar, {
+	    // The type of chart we want to create
+	    type: 'bar',
+	
+	    // The data for our dataset
+	    data: {
+	        labels: ["IT기획부", "IT정보부", "IT수신카드부", "IT여신외환부", "IT채널부", "IT시스템운영팀"],
+	        datasets: [{
+	            label: "당월 부서별 교육 수강 현황",
+	            backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)",
+	            				"rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],
+	            borderColor: ["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)",
+	            			"rgb(54, 162, 235)","rgb(153, 102, 255)"],
+	            data: ["${BrCount[0]}", "${BrCount[1]}", "${BrCount[2]}",
+	            	"${BrCount[3]}", "${BrCount[4]}", "${BrCount[5]}"],
+	        }]
+	    },
+	
+	    // Configuration options go here
+	    options: {
+	        scales: {
+	            xAxes: [{
+	                gridLines: {
+	                    offsetGridLines: true
+	                }
+	            }],
+                yAxes: [{
+                    display: true,
+                    stacked: true,
+                    ticks: {
+                        min: 0, // minimum value
+                        max: 30 // maximum value
+                    }
+           }]	            
+	        }	    	
+	    }
+	});
 
-	    var ctx = document.getElementById("myChart_2").getContext("2d");
-	    var options_2 = { };
-	    var lineChart = new Chart(ctx).Line(data_2, options_2);
+	var ctx_line = document.getElementById('myChart_2').getContext('2d');
 
-	    var data_3 = [
-	    	{
-	    		value: 300,
-	    		color: 'rgb(75, 192, 192)',
-	    		highlight: "#FF5A5E",
-	    		label: "Red"
-	    	},
-	    	{
-	    		value: 50,
-	    		color: 'rgb(54, 162, 235)',
-	    		highlight: "#5AD3D1",
-	    		label: "Green"
-	    	},
-	    	{
-	    		value: 100,
-	    		color: 'rgb(255, 159, 64)',
-	    		highlight: "#FFC870",
-	    		label: "Yellow"
-	    	}
-	    ]
+	var myLineChart = new Chart(ctx_line, {
+	    type: 'line',
+	    data: {
+	    	labels : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	        datasets: [{
+	            label: "2018년 월별 교육 수강 현황",
+	            backgroundColor: "rgba(255, 99, 132, 0.2)",
+	            borderColor: "rgb(255, 99, 132)",
+	            data: ["${YrCount[0]}", "${YrCount[1]}", "${YrCount[2]}", "${YrCount[3]}", "${YrCount[4]}", "${YrCount[5]}",  
+	            	"${YrCount[6]}", "${YrCount[7]}", "${YrCount[8]}", "${YrCount[9]}", "${YrCount[10]}", "${YrCount[11]}"],
+	            fill : false
+	        }]
+	    	
+	    },
+	    options: {
+	        scales: {
+	            xAxes: [{
+	                gridLines: {
+	                    offsetGridLines: true
+	                }
+	            }],
+                yAxes: [{
+                    display: true,
+                    stacked: true,
+                    ticks: {
+                        min: 0, // minimum value
+                        max: 100 // maximum value
+                    }
+           		}]	            
+	        }
+	    }
+	});
+	
+	var ctx_pie = document.getElementById('myChart_3').getContext('2d');
 
-	    var ctx_3 = document.getElementById("myChart_3").getContext("2d");
-	    var options_3 = { responsive: true };
-	    var myPieChart = new Chart(ctx_3).Pie(data_3, options_3);
+    var myPieChart = new Chart(ctx_pie,{
+        type: 'pie',
+        data : {
+        	    datasets: [{
+        	        data: ["${YrCTCount[0]}", "${YrCTCount[1]}", "${YrCTCount[2]}", "${YrCTCount[3]}", 
+        	        	"${YrCTCount[4]}", "${YrCTCount[5]}", "${YrCTCount[6]}", "${YrCTCount[7]}"],
+	        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(155, 105, 86, 0.2)"
+	        	    	,"rgba(215, 15, 16, 0.2)","rgba(115, 135, 246, 0.2)","rgba(15, 205, 186, 0.2)","rgba(225, 105, 186, 0.2)"]
+        	    }],
 
-	    
-	    var ctx_4 = document.getElementById("myChart_4").getContext("2d");
-	    var options_4 = { responsive: true };
-	    var myPieChart = new Chart(ctx_4).Doughnut(data_3, options_4);
+        	    // These labels appear in the legend and in the tooltips when hovering different arcs
+        	    labels: [
+        	    	'프로그래밍',
+        	    	'데이터베이스',
+        	    	'서버',
+        	    	'네트워크',
+        	    	'OS',
+        	    	'보안',
+        	    	'웹',
+        	    	'모바일'
+        	    ]
+        	},
+        options: {
+            title: {
+                display: true,
+                text: '분야별 연간 교육 수강 현황'
+            }        	
+        }
+    });
+    
+	var ctx_doughnut = document.getElementById('myChart_4').getContext('2d');
+	
+    var myDoughnutChart = new Chart(ctx_doughnut, {
+        type: 'doughnut',
+        data : {
+    	    datasets: [{
+    	        data: [50, 20, 30, 24, 32, 41, 23, 10],
+        	    backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(155, 105, 86, 0.2)"
+        	    	,"rgba(215, 15, 16, 0.2)","rgba(115, 135, 246, 0.2)","rgba(15, 205, 186, 0.2)","rgba(225, 105, 186, 0.2)"]
+    	    }],
+
+    	    // These labels appear in the legend and in the tooltips when hovering different arcs
+    	    labels: [
+    	    	'프로그래밍',
+    	    	'데이터베이스',
+    	    	'서버',
+    	    	'네트워크',
+    	    	'OS',
+    	    	'보안',
+    	    	'웹',
+    	    	'모바일'
+    	    ]
+    	},
+        options: {
+            title: {
+                display: true,
+                text: '분야별 연간 교육 수강 현황'
+            }        	
+        }
+    });
+
+	   
 		
 </script>
 

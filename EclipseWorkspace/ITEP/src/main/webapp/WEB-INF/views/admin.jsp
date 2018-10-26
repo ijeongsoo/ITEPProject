@@ -46,6 +46,8 @@
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css"
 	rel="stylesheet" type="text/css" media="screen" />
+<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+
 <!-- owl carousel -->
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css"
@@ -109,26 +111,26 @@
 
 		<!--sidebar start-->
 		<aside>
-			<div id="sidebar" class="nav-collapse ">
+			<div id="sidebar" class="nav-collapse">
 				<!-- sidebar menu start-->
 				<ul class="sidebar-menu">
 					<li><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> 
-						<i	class="icon_house_alt"></i> <span>대시보드</span>
+						<i	class="icon_house_alt"></i> <span class="hanna">대시보드</span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
-							class="icon_document_alt"></i> <span>교육관리</span> <span
+							class="icon_document_alt"></i> <span class="hanna">교육관리</span> <span
 							class="menu-arrow arrow_carrot-right"></span>
 					</a>
 						<ul class="sub">
-							<li><a class="" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육일괄등록</a></li>
-							<li><a class=""<%-- href="<%=application.getContextPath()%>/resources/admin_page_resource/form_validation.html" --%>>교육등록</a></li>
-							<li><a class="" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
+
+							<li><a class="hanna" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육등록</a></li>
+							<li><a class="hanna" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
 					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
-							<i class="icon_desktop"></i> <span>결재함</span>
+							<i class="icon_desktop"></i> <span class="hanna">결재함</span>
 					</a></li>
 					<li><a class="" onclick="changeIframeUrl('authority')" style="cursor:pointer">
-							<i class="icon_genius"></i> <span>권한관리</span>
+							<i class="icon_genius"></i> <span class="hanna">권한관리</span>
 					</a></li>
 				</ul>
 

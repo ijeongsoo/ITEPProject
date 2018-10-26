@@ -49,4 +49,27 @@ public class DaoImplbh implements Dao{
 		sst.update("edu002r.updateDepApproval", eduinfo);
 	}
 	
+	//대시보드
+	//대시보드에서 해당 월에 교육을 듣는 부서별 교육 수강수(수강인원 수 X DISTINCT 안되어 있음)
+	@Override
+	public List<Map<String, Integer>> selectBrcdEduCount() {
+		List<Map<String, Integer>> resultMap = sst.selectList("edu002r.dashboardBrcdEduCountMonth");
+		return resultMap;
+	}
+	
+	//해당년도에 각 월별로 수강한 교육 수
+	@Override
+	public List<Map<String, Integer>> selectYearEduCount() {
+		List<Map<String, Integer>> resultMap = sst.selectList("edu002r.dashboardYearEduCountMonth");
+		return resultMap;
+	}
+	
+	
+	//해당년도에 각 분야별 교육 수강 현황
+	@Override
+	public List<Map<String, Integer>> selectYearCTEduCount() {
+		List<Map<String, Integer>> resultMap = sst.selectList("edu002r.dashboardCTEduCount");
+		return resultMap;
+	}	
+	
 }

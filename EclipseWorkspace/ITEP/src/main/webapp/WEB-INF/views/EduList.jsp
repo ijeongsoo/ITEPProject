@@ -6,19 +6,33 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
       <title>Education List</title>
-      <link href="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
       <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-      <script src="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+     <link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
       <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
       <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
-      <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
-      <link href="<%=application.getContextPath()%>/resources/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
+
+
+            <link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/css/style.css"
+	rel="stylesheet">
              <!-- Custom styles for this template -->
         <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
- 
-  <link href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css" rel="stylesheet">
+
+
+
+<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css"
+	rel="stylesheet">
+
+<link href="<%=application.getContextPath()%>/resources/css/itep.css"
+	rel="stylesheet" type="text/css">
+	
+	
+	
+
 
 	</head>
 	
@@ -29,13 +43,17 @@
 		} );
 	</script>
   
+
+	
 	<script>
-	function openModal(high_cls_nm){
-		$('#detailInfoModal').modal({
-			keyboard:true,
-			backdrop:"static"
-		});
-	};
+	function eduDetail(course_cd) {
+		$.get(
+			    "eduDetail?course_cd="+course_cd ,
+			    function(data) {
+			        $("#eduModalContent").html(data);
+			    }
+			);
+	}
 	</script>
 
 
@@ -44,10 +62,10 @@
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
 	        </div>
-	    </nav><br>
+	    </nav>
 
 		<!-- 현재 신청가능한 목록 출력 -->
-		<section>
+		<section style="padding-top:120px; padding-bottom:30px">
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -63,7 +81,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="edulist" items="${edu_list}" varStatus="status">
-						<tr data-toggle="modal" data-id="edu_list.high_cls_nm" title="Add this item" class="popupModal" href="#detailInfoModal">
+						<tr onclick="eduDetail('${edulist.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal">
 							<th style="text-align: center;">${edulist.high_cls_nm}</th>
 							<th style="text-align: center;">${edulist.mid_cls_nm}</th>
 							<th>${edulist.course_nm}</th>
@@ -86,14 +104,14 @@
 						<th style="text-align: center;">신청마감</th>
 					</tr>
 				</tfoot>
-			</table><br>
+			</table>
 		</div>
 		</section>
+
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
-		<section style="background-color:#f9f9f9">
+		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
 		<div class="container">
-			<br><br>
 			<table id="postedulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -107,7 +125,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="postedulist" items="${post_edulist}" varStatus="status">
-						<tr data-toggle="modal" data-id="post_edulist.high_cls_nm" title="Add this item" class="popupModal" href="#detailInfoModal">
+						<tr onclick="eduDetail('${postedulist.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal">
 							<th style="text-align: center;">${postedulist.high_cls_nm}</th>
 							<th style="text-align: center;">${postedulist.mid_cls_nm}</th>
 							<th>${postedulist.course_nm}</th>
@@ -128,29 +146,72 @@
 						<th style="text-align: center;">교육기관</th>
 					</tr>
 				</tfoot>
-			</table><br>
+			</table>
 		</div>
 		</section>
 		
 		
-		<!-- Modal -->
-		<div class="modal fade" id="detailInfoModal" role="dialog">
-			<div class="modal-dialog">
-		
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
-				</div>
-				<div class="modal-body">
-					<p>Some text in the modal.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-	      	</div>
-	      	</div>
+
+		<div id="detailInfoModal" class="modal fade bs-example-modal-lg" tabindex="-1"
+			role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div id="eduModalContent" class="modal-content"></div>
+			</div>
 		</div>
+		
+		
+			<div id="confirmModal" class="modal fade bs-example-modal-lg"
+		tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div id="eduModalContent" class="modal-content">
+
+
+				<div class="modal-header" style="background-color: #F94164">
+					<div style="margin: 0 auto;">
+						<h1 align="center" class="hanna"
+							style="margin-left: 30px; color: white" id="modalLabel">정말
+							신청하시겠습니까?</h1>
+
+					</div>
+
+					<button style="margin: 0" type="button" class="close"
+						data-dismiss="modal">
+						<span style="margin: -20px; color: white" aria-hidden="true">&times;</span><span
+							class="sr-only">Close</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+
+
+					<br>
+					<div id="success"></div>
+					<div class="row" id="confirmBtnSet">
+						<button data-dismiss="modal" style="width: 50%; height: 70px"
+							class="btn">
+							<p class="hanna" style="font-size: 20px; color: white">아니욥</p>
+						</button>
+						<button onclick="submitForm()" style="width: 50%; height: 70px"
+							class="btn-yes">
+							<p class="hanna" style="font-size: 20px; color: white">넵</p>
+						</button>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+		
+		
+		
+		<script
+		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		
+		
+		
+		
+		
 	</body>
 </html>

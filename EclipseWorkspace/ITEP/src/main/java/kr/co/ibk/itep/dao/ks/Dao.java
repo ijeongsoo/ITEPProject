@@ -36,6 +36,8 @@ public interface Dao {
 	List<Ecd007m> selectEcd007mList();
 
 	List<EduEditList> selectEduEditList();
+
+	Edu001m selectEduInfo(String course_cd);
 	
 
 	

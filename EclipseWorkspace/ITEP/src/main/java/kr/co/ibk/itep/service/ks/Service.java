@@ -22,6 +22,8 @@ public interface Service {
 
 	List<EduEditList> selectEduEditList();
 
+	Edu001m selectEduInfo(String course_cd);
+
 
 }
 
