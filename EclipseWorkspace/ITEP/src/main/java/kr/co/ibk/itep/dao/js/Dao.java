@@ -14,6 +14,7 @@ import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.RegistEduPullInfo;
 
 
 @Component
@@ -42,6 +43,14 @@ public interface Dao {
 	public int selectSurveyCountByCourse_cdEmn(Edu002rAttach edu);
 
 	public void insertEdu002r(Edu002rAttach edu);
+
+	public List<RegistEduPullInfo> selectRegistList(String emn);
+
+	public List<RegistEduPullInfo> selectStudyList(String emn);
+
+	public List<RegistEduPullInfo> selectSurveyList(String emn);
+
+	public List<RegistEduPullInfo> selectRecentList(String emn);
 
 	
 

@@ -14,6 +14,7 @@ import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.RegistEduPullInfo;
 
 
 @Component
@@ -102,6 +103,35 @@ public class DaoImpljs implements Dao {
 	@Override
 	public void insertEdu002r(Edu002rAttach edu) {
 		sst.insert("edu002r.insert", edu);		
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> selectRegistList(String emn) {
+		// TODO Auto-generated method stub
+		List<RegistEduPullInfo> myRegistList = sst.selectList("edu002r.selectRegistList", emn);
+		return myRegistList;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> selectStudyList(String emn) {
+		List<RegistEduPullInfo> myStudyList = sst.selectList("edu002r.selectStudyList", emn);
+		return myStudyList;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> selectSurveyList(String emn) {
+		List<RegistEduPullInfo> mySurveyList = sst.selectList("edu002r.selectSurveyList", emn);
+		return mySurveyList;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> selectRecentList(String emn) {
+		List<RegistEduPullInfo> myRecentList = sst.selectList("edu002r.selectRecentList", emn);
+		return myRecentList;
 	}
 
 

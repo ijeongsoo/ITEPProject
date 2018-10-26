@@ -266,29 +266,29 @@ public class ServiceImpljs implements Service {
 
 	@Override
 	public List<RegistEduPullInfo> getMyRegistList(String emn) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RegistEduPullInfo> myRegistList = dao.selectRegistList(emn);
+		return myRegistList;
 	}
 
 
 	@Override
 	public List<RegistEduPullInfo> getMyStudyList(String emn) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RegistEduPullInfo> myStudyList = dao.selectStudyList(emn);;
+		return myStudyList;
 	}
 
 
 	@Override
 	public List<RegistEduPullInfo> getMySurveyList(String emn) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RegistEduPullInfo> mySurveyList = dao.selectSurveyList(emn);
+		return mySurveyList;
 	}
 
 
 	@Override
 	public List<RegistEduPullInfo> getMyRecentList(String emn) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RegistEduPullInfo> myRecentList = dao.selectRecentList(emn);;
+		return myRecentList;
 	}
 
 

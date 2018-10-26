@@ -24,6 +24,8 @@ public interface Service {
 
 	Edu001m selectEduInfo(String course_cd);
 
+	void updateEduInfo(Edu001m edu);
+
 
 }
 

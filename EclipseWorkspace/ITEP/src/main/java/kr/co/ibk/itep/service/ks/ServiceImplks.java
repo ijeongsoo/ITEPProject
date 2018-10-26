@@ -208,8 +208,10 @@ public class ServiceImplks implements Service {
 		Edu001m edu = dao.selectEduInfo(course_cd);
 		return edu;
 	}
-	
 
-
-
+	@Override
+	public void updateEduInfo(Edu001m edu) {
+		// TODO Auto-generated method stub
+		dao.updateEduInfo(edu);
+	}
 }

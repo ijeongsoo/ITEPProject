@@ -38,6 +38,8 @@ public interface Dao {
 	List<EduEditList> selectEduEditList();
 
 	Edu001m selectEduInfo(String course_cd);
+
+	void updateEduInfo(Edu001m edu);
 	
 
 	

@@ -72,5 +72,11 @@ public class DaoImplks implements Dao {
 		// TODO Auto-generated method stub
 		return sst.selectOne("edu001m.selectEduInfo", course_cd);
 	}
+
+	@Override
+	public void updateEduInfo(Edu001m edu) {
+		// TODO Auto-generated method stub
+		sst.update("edu001m.updateEduInfo", edu);
+	}
 }
 
