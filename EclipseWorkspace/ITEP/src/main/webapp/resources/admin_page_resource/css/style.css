@@ -16,7 +16,7 @@ body {
 
     color: #797979;
 
-    background: #eeeeee;
+    background: #fafafa;
 
     font-family: 'Lato', sans-serif;
 
@@ -515,7 +515,7 @@ table tr th { color: #688a7e;}
 
     position: fixed;
 
-    background: #394a59;
+    background: #2c3e50;
 
 }
 
@@ -565,7 +565,7 @@ ul.sidebar-menu {
 
 ul.sidebar-menu li ul.sub li{
 
-    background: #394a59;
+    background: #2c3e50;
 
     margin-bottom: 0;
 
@@ -1021,7 +1021,7 @@ ul.sidebar-menu li.active a i {
 
 .dark-bg {
 
-    background: rgba(54,66,74,1);
+    background: #2c3e50!important;
 
     border-bottom: 1px solid #f1f2f7;
 
@@ -1053,7 +1053,7 @@ a.logo {
 	
 	font-weight: 300;
 	
-    color: #fed189;
+    color: #fff;
 
     float: left;
 
@@ -1063,6 +1063,21 @@ a.logo {
 
 }
 
+a.logo2 {
+
+    font-size: 22px;
+	
+	font-weight: 300;
+	
+    color: yellow;
+
+    float: left;
+
+    margin-top: 15px;
+
+    text-transform: uppercase;
+
+}
 
 
 a.logo:hover, a.logo:focus {

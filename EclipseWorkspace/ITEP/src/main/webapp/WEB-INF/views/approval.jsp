@@ -134,7 +134,7 @@
       <!--overview start-->
     	<div class="row">
       		<div class="col-lg-12">
-        	<h3 class="page-header hanna"><i class="fa fa-laptop"></i>결재</h3>
+        	<h3 class="page-header hanna">결재</h3>
       		</div>
     	</div>
     </section>
