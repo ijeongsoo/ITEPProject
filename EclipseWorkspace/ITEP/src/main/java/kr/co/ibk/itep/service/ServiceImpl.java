@@ -34,8 +34,13 @@ public class ServiceImpl implements Service {
 	private Dao dao;
 
 	@Override
-	public void updateEduStatCd() {
-		dao.updateEduStatCd();
+	public void updateEduEndStatCd() {
+		dao.updateEduEndStatCd();
+	}
+	
+	@Override
+	public void updateEduStartStatCd() {
+		dao.updateEduStartStatCd();
 	}
 
 }

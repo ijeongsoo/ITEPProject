@@ -15,7 +15,9 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Service {
 
-	public void updateEduStatCd();
+	public void updateEduEndStatCd();
+
+	public void updateEduStartStatCd();
 
 }
 

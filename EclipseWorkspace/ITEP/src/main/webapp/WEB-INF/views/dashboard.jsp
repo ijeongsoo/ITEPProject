@@ -52,6 +52,10 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+  <style>
+	  .white-box{background:#fff;padding:25px;margin-bottom:30px}
+.box-title{margin:0 0 12px;font-weight:500;text-transform:uppercase;font-size:16px}.panel{border-radius:0;margin-bottom:30px;border:0;box-shadow:none}.panel	  
+  </style>
 </head>
 
 	
@@ -67,11 +71,45 @@
     </div>
     <div>
 		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
-	</div>    
+	</div>       
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Total Registered Courses</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Apply Per Year</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash2"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Apply Per October</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash3"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>    
+ 
     <div>
-    	<h4>올해 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
-    	<h4>이번달 교육 신청자 : 무슨 데이터 넣을까 추천 좀</h4>
-    	<h3>밑에는 다 가짜 데이터입니당!(막대그래프만 진짜, 선그래프도 진짜)</h3>
+    	<h3>밑에는 가짜 데이터입니당!</h3>
     </div>
     <div  style="padding:30px;width:600px; height:600px;">
   		<canvas id="myChart_1" width="600px" height="600px"></canvas>
