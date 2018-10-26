@@ -115,10 +115,10 @@
 				<!-- sidebar menu start-->
 				<ul class="sidebar-menu">
 					<li><a class="" onclick="changeIframeUrl('dashboard')" style="cursor:pointer"> 
-						<i	class="icon_house_alt"></i> <span class="hanna">대시보드</span>
+						<i	class="icon_piechart"></i> <span class="hanna">대시보드</span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
-							class="icon_document_alt"></i> <span class="hanna">교육관리</span> <span
+							class="icon_documents"></i> <span class="hanna">교육관리</span> <span
 							class="menu-arrow arrow_carrot-right"></span>
 					</a>
 						<ul class="sub">
@@ -127,10 +127,10 @@
 							<li><a class="hanna" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
 					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
-							<i class="icon_desktop"></i> <span class="hanna">결재함</span>
+							<i class="icon_toolbox_alt"></i> <span class="hanna">결재함</span>
 					</a></li>
 					<li><a class="" onclick="changeIframeUrl('authority')" style="cursor:pointer">
-							<i class="icon_genius"></i> <span class="hanna">권한관리</span>
+							<i class="icon_contacts_alt"></i> <span class="hanna">권한관리</span>
 					</a></li>
 				</ul>
 
@@ -141,8 +141,8 @@
 		
 		<!--main content start-->
 		<section id="main-content">
-			<iframe id="main-container" src="dashboard"
-				style="display: block; width: 100%; height: 100vh"></iframe>
+			<iframe id="main-container" src="dashboard" 
+				style="display: block; width: 100%; height: 100vh; border:none"></iframe>
 		</section>
 		<!--main content end-->
 

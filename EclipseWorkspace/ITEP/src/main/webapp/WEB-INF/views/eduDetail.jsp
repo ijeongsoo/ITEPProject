@@ -55,9 +55,11 @@
 	
 	
 	$(function() {
+	
 		if(${result} == 0){
 			$('#registBtnTxt').text("이미 신청한 교육입니다.");
 			$("#registBtn").attr("style", "display:none");
+
 		}else if(${result} == 2){
 			$('#registBtnTxt').text("설문하지 않은 교육이 존재합니다.");
 			$("#registBtn").attr("style", "display:none");

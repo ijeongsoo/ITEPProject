@@ -37,6 +37,8 @@
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css"
 	rel="stylesheet" />
+	<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+	
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css"
 	rel="stylesheet" />
@@ -71,6 +73,14 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+<style>
+.uploadContent{
+width:700px;
+background:#fff;
+margin: auto;
+}
+
+</style>
 </head>
 
 <!-- 슬릭 그리드 스크립트 추가 -->
@@ -228,13 +238,13 @@
 	<!--main content start-->
 	<section id="excel-main">
 		<section class="wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h3 class="page-header" style="color: #333333">
-						<i class="fa fa fa-bars"></i> 교육등록
-					</h3>
-				</div>
-			</div>
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header hanna">교육등록 </h3>
+          </div>
+        </div>
+		</section>
 			<!-- page start-->
 			
 			<!-- 슬릭 그리드 영역 -->
@@ -246,7 +256,7 @@
 			</div>
 			
 			<!-- 엑셀 업로드 구역 -->
-			<div
+			<div class="uploadContent"
 				style="height: 340px; width: 500px; overflow: auto; padding: 20px;">
 				<a href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">양식 다운</a>
 				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
@@ -274,7 +284,6 @@
 
 			<!-- 결과 출력 -->
 			<!-- page end-->
-		</section>
 	</section>
 
 </body>
