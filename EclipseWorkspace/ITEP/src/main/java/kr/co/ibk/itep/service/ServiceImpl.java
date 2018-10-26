@@ -33,5 +33,9 @@ public class ServiceImpl implements Service {
 	@Autowired
 	private Dao dao;
 
+	@Override
+	public void updateEduStatCd() {
+		dao.updateEduStatCd();
+	}
 
 }

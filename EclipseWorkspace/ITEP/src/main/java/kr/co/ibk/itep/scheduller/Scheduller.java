@@ -31,6 +31,9 @@ public class Scheduller {
 	private Service service;
 	
 	@Autowired
+	private kr.co.ibk.itep.service.Service service_main;
+	
+	@Autowired
 	private ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 20 * * * ")
@@ -71,6 +74,7 @@ public class Scheduller {
 					break;
 				}
 			}
+			
 			try {
 				Thread.sleep(30*60*1000);
 				count++;
@@ -132,6 +136,11 @@ public class Scheduller {
 		}
 
 
+	}
+	
+	@Scheduled(cron="0 30 13 * * *")
+	public void eduStatUpdate(){
+		service_main.updateEduStatCd();
 	}
 
 	

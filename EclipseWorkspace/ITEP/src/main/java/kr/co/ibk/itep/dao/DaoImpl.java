@@ -19,8 +19,10 @@ public class DaoImpl implements Dao {
 	@Autowired
 	private SqlSessionTemplate sst;
 
-
-
+	@Override
+	public void updateEduStatCd() {
+		sst.update("edu002r.updateEduStat");
+	}
 
 
 

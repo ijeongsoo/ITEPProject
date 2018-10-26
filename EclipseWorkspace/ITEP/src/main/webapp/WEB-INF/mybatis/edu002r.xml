@@ -91,6 +91,16 @@
 		   AND COURSE_CD = #{course_cd}      
 	</update>
 	
+	<update id="updateEduStat">
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '03'
+		 WHERE STEP_CD = '40'
+		   AND STAT_CD = '02'  
+		   AND COURSE_CD IN (SELECT DISTINCT EDU002R.COURSE_CD
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYYMMDD') > EDU001M.EDU_ED_DT)	
+	</update>
 	
 	<select id= "selectCountByCourse_cdEmn" resultType="int" parameterType="kr.co.ibk.itep.dto.Edu002rAttach">
 		select count(*) from TB_IEP_EDU002R where emn = #{emn} and course_cd = #{course_cd}	
@@ -102,5 +112,231 @@
 		insert into TB_IEP_EDU002R(emn,course_cd,step_cd,stat_cd, origin_reg_file_nm, origin_plan_file_nm, svr_reg_file_nm, svr_plan_file_nm, reg_file_type, plan_file_type, reg_id, reg_dt, chg_id, chg_dt) 
 		values (#{emn},#{course_cd}, '10','00', #{origin_reg_file_nm}, #{origin_plan_file_nm}, #{svr_reg_file_nm}, #{svr_plan_file_nm}, #{reg_file_type}, #{plan_file_type}, #{emn}, sysdate, #{emn}, sysdate)
 	</insert>
+	
+	<select id="selectRegistList"
+		resultType="kr.co.ibk.itep.dto.RegistEduPullInfo" parameterType="string">
+		
+		SELECT a.emn
+			, a.course_cd
+			, a.step_cd
+			, a.stat_cd
+			, a.origin_reg_file_nm
+			, a.origin_plan_file_nm
+			, a.svr_reg_file_nm
+			, a.svr_plan_file_nm
+			, a.reg_file_type
+			, a.plan_file_type
+			, a.reg_dt
+			, b.org_cd
+			, b.high_cls_cd
+			, b.mid_cls_cd
+			, b.low_cls_cd
+			, b.course_nm
+			, b.edu_hour
+			, b.reg_st_dt
+			, b.reg_ed_dt
+			, b.edu_st_dt
+			, b.edu_ed_dt
+			, b.edu_cost
+			, b.loc
+			, b.refund_yn
+			, b.origin_img_file_nm
+			, b.svr_img_file_nm
+			, b.img_file_type
+			, c.org_nm
+			, d.step_nm
+			, e.stat_nm
+			, f.high_cls_nm
+			, g.mid_cls_nm
+			, h.low_cls_nm  
+		FROM TB_IEP_EDU002R a
+			, TB_IEP_EDU001M b
+			, TB_IEP_ECD002M c
+			, TB_IEP_ECD003M d
+			, TB_IEP_ECD004M e
+			, TB_IEP_ECD005M f
+			, TB_IEP_ECD006M g
+			, TB_IEP_ECD007M h
+		where a.course_cd = b.COURSE_CD
+		and a.STEP_CD = d.STEP_CD
+		and a.STAT_CD = e.STAT_CD
+		and b.ORG_CD = c.ORG_CD
+		and b.HIGH_CLS_CD = f.HIGH_CLS_CD
+		and b.MID_CLS_CD = g.MID_CLS_CD
+		and b.LOW_CLS_CD = h.LOW_CLS_CD
+		and a.emn = #{emn}
+		and a.step_cd not in ('40', '50')
+		
+	</select>
+	
+		<select id="selectStudyList"
+		resultType="kr.co.ibk.itep.dto.RegistEduPullInfo" parameterType="string">
+		
+		SELECT a.emn
+			, a.course_cd
+			, a.step_cd
+			, a.stat_cd
+			, a.origin_reg_file_nm
+			, a.origin_plan_file_nm
+			, a.svr_reg_file_nm
+			, a.svr_plan_file_nm
+			, a.reg_file_type
+			, a.plan_file_type
+			, a.reg_dt
+			, b.org_cd
+			, b.high_cls_cd
+			, b.mid_cls_cd
+			, b.low_cls_cd
+			, b.course_nm
+			, b.edu_hour
+			, b.reg_st_dt
+			, b.reg_ed_dt
+			, b.edu_st_dt
+			, b.edu_ed_dt
+			, b.edu_cost
+			, b.loc
+			, b.refund_yn
+			, b.origin_img_file_nm
+			, b.svr_img_file_nm
+			, b.img_file_type
+			, c.org_nm
+			, d.step_nm
+			, e.stat_nm
+			, f.high_cls_nm
+			, g.mid_cls_nm
+			, h.low_cls_nm  
+		FROM TB_IEP_EDU002R a
+			, TB_IEP_EDU001M b
+			, TB_IEP_ECD002M c
+			, TB_IEP_ECD003M d
+			, TB_IEP_ECD004M e
+			, TB_IEP_ECD005M f
+			, TB_IEP_ECD006M g
+			, TB_IEP_ECD007M h
+		where a.course_cd = b.COURSE_CD
+		and a.STEP_CD = d.STEP_CD
+		and a.STAT_CD = e.STAT_CD
+		and b.ORG_CD = c.ORG_CD
+		and b.HIGH_CLS_CD = f.HIGH_CLS_CD
+		and b.MID_CLS_CD = g.MID_CLS_CD
+		and b.LOW_CLS_CD = h.LOW_CLS_CD
+		and a.emn = #{emn}
+		and a.step_cd = '40'
+		
+	</select>
+	
+	<select id="selectSurveyList"
+		resultType="kr.co.ibk.itep.dto.RegistEduPullInfo" parameterType="string">
+		
+		SELECT a.emn
+			, a.course_cd
+			, a.step_cd
+			, a.stat_cd
+			, a.origin_reg_file_nm
+			, a.origin_plan_file_nm
+			, a.svr_reg_file_nm
+			, a.svr_plan_file_nm
+			, a.reg_file_type
+			, a.plan_file_type
+			, a.reg_dt
+			, b.org_cd
+			, b.high_cls_cd
+			, b.mid_cls_cd
+			, b.low_cls_cd
+			, b.course_nm
+			, b.edu_hour
+			, b.reg_st_dt
+			, b.reg_ed_dt
+			, b.edu_st_dt
+			, b.edu_ed_dt
+			, b.edu_cost
+			, b.loc
+			, b.refund_yn
+			, b.origin_img_file_nm
+			, b.svr_img_file_nm
+			, b.img_file_type
+			, c.org_nm
+			, d.step_nm
+			, e.stat_nm
+			, f.high_cls_nm
+			, g.mid_cls_nm
+			, h.low_cls_nm  
+		FROM TB_IEP_EDU002R a
+			, TB_IEP_EDU001M b
+			, TB_IEP_ECD002M c
+			, TB_IEP_ECD003M d
+			, TB_IEP_ECD004M e
+			, TB_IEP_ECD005M f
+			, TB_IEP_ECD006M g
+			, TB_IEP_ECD007M h
+		where a.course_cd = b.COURSE_CD
+		and a.STEP_CD = d.STEP_CD
+		and a.STAT_CD = e.STAT_CD
+		and b.ORG_CD = c.ORG_CD
+		and b.HIGH_CLS_CD = f.HIGH_CLS_CD
+		and b.MID_CLS_CD = g.MID_CLS_CD
+		and b.LOW_CLS_CD = h.LOW_CLS_CD
+		and a.emn = #{emn}
+		and a.step_cd = '40'
+		and a.stat_cd = '03'
+		
+	</select>
+	
+	<select id="selectRecentList"
+		resultType="kr.co.ibk.itep.dto.RegistEduPullInfo" parameterType="string">
+		
+		SELECT a.emn
+			, a.course_cd
+			, a.step_cd
+			, a.stat_cd
+			, a.origin_reg_file_nm
+			, a.origin_plan_file_nm
+			, a.svr_reg_file_nm
+			, a.svr_plan_file_nm
+			, a.reg_file_type
+			, a.plan_file_type
+			, a.reg_dt
+			, b.org_cd
+			, b.high_cls_cd
+			, b.mid_cls_cd
+			, b.low_cls_cd
+			, b.course_nm
+			, b.edu_hour
+			, b.reg_st_dt
+			, b.reg_ed_dt
+			, b.edu_st_dt
+			, b.edu_ed_dt
+			, b.edu_cost
+			, b.loc
+			, b.refund_yn
+			, b.origin_img_file_nm
+			, b.svr_img_file_nm
+			, b.img_file_type
+			, c.org_nm
+			, d.step_nm
+			, e.stat_nm
+			, f.high_cls_nm
+			, g.mid_cls_nm
+			, h.low_cls_nm  
+		FROM TB_IEP_EDU002R a
+			, TB_IEP_EDU001M b
+			, TB_IEP_ECD002M c
+			, TB_IEP_ECD003M d
+			, TB_IEP_ECD004M e
+			, TB_IEP_ECD005M f
+			, TB_IEP_ECD006M g
+			, TB_IEP_ECD007M h
+		where a.course_cd = b.COURSE_CD
+		and a.STEP_CD = d.STEP_CD
+		and a.STAT_CD = e.STAT_CD
+		and b.ORG_CD = c.ORG_CD
+		and b.HIGH_CLS_CD = f.HIGH_CLS_CD
+		and b.MID_CLS_CD = g.MID_CLS_CD
+		and b.LOW_CLS_CD = h.LOW_CLS_CD
+		and a.emn = #{emn}
+		and a.step_cd = '40'
+		and a.stat_cd = '04'
+		
+	</select>
 
 </mapper>
