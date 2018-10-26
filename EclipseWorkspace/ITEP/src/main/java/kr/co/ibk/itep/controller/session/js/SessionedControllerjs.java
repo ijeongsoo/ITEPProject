@@ -39,7 +39,8 @@ import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.js.Service;
-import kr.co.ibk.itep.dto.JoinForEdulist; 
+import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.RegistEduPullInfo; 
 
 @Controller
 @SessionAttributes("login_info")
@@ -57,15 +58,29 @@ public class SessionedControllerjs {
 	
 	@RequestMapping("/home")
 	public String home( Model model, String result) {
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		String emn = empJoinedDep.getEmn();
+		
 		ArrayList<EduJoinedEcd> top8List = new ArrayList<>();
 		ArrayList<EduJoinedEcd> top8List1 = new ArrayList<>();
 		ArrayList<EduJoinedEcd> top8List2 = new ArrayList<>();
 		ArrayList<EduJoinedEcd> ddayList = new ArrayList<>();
 		ArrayList<EduJoinedEcd> categoryList = new ArrayList<>();
+		
+		List<RegistEduPullInfo> myRegistList = new ArrayList<>();
+		List<RegistEduPullInfo> myStudyList = new ArrayList<>();
+		List<RegistEduPullInfo> mySurveyList = new ArrayList<>();
+		List<RegistEduPullInfo> myRecentList = new ArrayList<>();
+		
+		
+
 
 		
 		top8List = service.getTop8Edu();
-		logger.info( " ####################"+ top8List.size() );
 		for(int i=0; i<top8List.size(); i++){
 			if( i/4 < 1){
 				top8List1.add(top8List.get(i));
@@ -76,12 +91,28 @@ public class SessionedControllerjs {
 		
 		ddayList = service.getDDayEdu();
 		categoryList = service.getCategoryEdu();
+		
+		myRegistList = service.getMyRegistList(emn);
+		myStudyList = service.getMyStudyList(emn);
+		mySurveyList = service.getMySurveyList(emn);
+		myRecentList = service.getMyRecentList(emn);
 
 		model.addAttribute("top8List1", top8List1);
 		model.addAttribute("top8List2", top8List2);
 
 		model.addAttribute("ddayList", ddayList);
 		model.addAttribute("categoryList", categoryList);
+		
+		model.addAttribute("myRegistList", myRegistList);
+		model.addAttribute("myStudyList", myStudyList);
+		model.addAttribute("mySurveyList", mySurveyList);
+		model.addAttribute("myRecentList", myRecentList);
+		
+		model.addAttribute("myRegistListCount", myRegistList.size());
+		model.addAttribute("myStudyListCount", myStudyList.size());
+		model.addAttribute("mySurveyListCount", mySurveyList.size());
+		model.addAttribute("myRecentListCount", myRecentList.size());
+
 		
 		if(result != null){
 			model.addAttribute("result", result);

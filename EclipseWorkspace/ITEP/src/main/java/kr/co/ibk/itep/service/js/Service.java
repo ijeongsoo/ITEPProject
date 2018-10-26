@@ -12,6 +12,7 @@ import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.RegistEduPullInfo;
 
 
 @Component
@@ -34,6 +35,14 @@ public interface Service {
 	public int registEdu(Edu002rAttach edu);
 
 	public int regConfirm(Edu002rAttach eduConfirm);
+
+	public List<RegistEduPullInfo> getMyRegistList(String emn);
+
+	public List<RegistEduPullInfo> getMyStudyList(String emn);
+
+	public List<RegistEduPullInfo> getMySurveyList(String emn);
+
+	public List<RegistEduPullInfo> getMyRecentList(String emn);
 
 
 }

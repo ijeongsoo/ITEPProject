@@ -29,6 +29,7 @@ import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
+import kr.co.ibk.itep.dto.RegistEduPullInfo;
 
 @Component
 public class ServiceImpljs implements Service {
@@ -260,6 +261,34 @@ public class ServiceImpljs implements Service {
 		}
 				
 		return 1;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> getMyRegistList(String emn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> getMyStudyList(String emn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> getMySurveyList(String emn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<RegistEduPullInfo> getMyRecentList(String emn) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
