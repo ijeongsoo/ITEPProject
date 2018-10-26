@@ -4,32 +4,32 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>Education List</title>
-      <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-     <link
-	href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-      <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-      <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>Education List</title>
+		<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+		<link
+			href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
+			rel="stylesheet">
+		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
 
-            <link
-	href="<%=application.getContextPath()%>/resources/main_page_resource/css/style.css"
-	rel="stylesheet">
+		<link
+			href="<%=application.getContextPath()%>/resources/main_page_resource/css/style.css"
+			rel="stylesheet">
              <!-- Custom styles for this template -->
-        <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
+		<link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
 
 
 
-<link
-	href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css"
-	rel="stylesheet">
+		<link
+			href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css"
+			rel="stylesheet">
 
-<link href="<%=application.getContextPath()%>/resources/css/itep.css"
-	rel="stylesheet" type="text/css">
-	
+		<link href="<%=application.getContextPath()%>/resources/css/itep.css"
+			rel="stylesheet" type="text/css">
+		<script src="<%=application.getContextPath()%>/resources/parallax.js-1.5.0/parallax.js"></script>
 	
 	
 
@@ -64,8 +64,16 @@
 	        </div>
 	    </nav>
 
+		<!-- <section class="section_div_1" style="padding-top:140px; padding-bottom:350px">
+			
+		</section> -->
+		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="top" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
+		</section>
+
+
+
 		<!-- 현재 신청가능한 목록 출력 -->
-		<section style="padding-top:120px; padding-bottom:30px">
+		<section style="padding-top:40px; padding-bottom:90px">
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -108,6 +116,15 @@
 		</div>
 		</section>
 
+
+
+		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="top" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
+
+				<h1>Education is the best provision for old age.</h1>
+
+                <h4>Aristoteles <span>&#8213; ancient Greece</span></h4>
+		</section>
+
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
 		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
@@ -148,6 +165,13 @@
 				</tfoot>
 			</table>
 		</div>
+		</section>
+		
+				<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="bottom" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
+
+				<h1>Education is the best provision for old age.</h1>
+
+                <h4>Aristoteles <span>&#8213; ancient Greece</span></h4>
 		</section>
 		
 		
