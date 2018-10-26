@@ -136,6 +136,10 @@
       		<div class="col-lg-12">
         	<h3 class="page-header hanna">결재</h3>
       		</div>
+      		<div class="headerConets" align="center">
+      		결재 단계 <br>      		
+      		이미지 -> 이미지 -> 이미지 
+     		 </div>
     	</div>
     </section>
 

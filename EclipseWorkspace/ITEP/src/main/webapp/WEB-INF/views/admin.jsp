@@ -79,6 +79,15 @@
 	function changeIframeUrl(url) {
 		document.getElementById("main-container").src = url;
 	}
+	
+	function changeIframeUrlAdmin(url) {
+			if("${login_info.auth_cd}" == 1){
+				document.getElementById("main-container").src = url;
+			}
+			else{
+				alert("해당 기능의 권한이 없습니다. 교육관리자에게 문의하시기 바랍니다.");
+			}
+		}
 </script>
 
 
@@ -127,9 +136,9 @@
 							<li><a class="hanna" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
 					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
-							<i class="icon_toolbox_alt"></i> <span class="hanna">결재함</span>
+							<i class="icon_toolbox_alt"></i> <span class="hanna">결재함 </span>
 					</a></li>
-					<li><a class="" onclick="changeIframeUrl('authority')" style="cursor:pointer">
+					<li><a class="" onclick="changeIframeUrlAdmin('authority')" style="cursor:pointer">
 							<i class="icon_contacts_alt"></i> <span class="hanna">권한관리</span>
 					</a></li>
 				</ul>
