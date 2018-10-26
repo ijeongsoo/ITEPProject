@@ -151,4 +151,18 @@ public class SessionedControllerks {
 		return "eduEditDetail";
 	}
 	
+	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
+	public String eduSave(Edu001m edu) {
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
+		edu.setChg_id(ssoid);
+		
+		service.updateEduInfo(edu);
+		
+		return "redirect:eduEdit";
+	}
+	
 }

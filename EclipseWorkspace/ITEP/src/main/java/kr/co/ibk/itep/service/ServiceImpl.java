@@ -33,5 +33,14 @@ public class ServiceImpl implements Service {
 	@Autowired
 	private Dao dao;
 
+	@Override
+	public void updateEduEndStatCd() {
+		dao.updateEduEndStatCd();
+	}
+	
+	@Override
+	public void updateEduStartStatCd() {
+		dao.updateEduStartStatCd();
+	}
 
 }

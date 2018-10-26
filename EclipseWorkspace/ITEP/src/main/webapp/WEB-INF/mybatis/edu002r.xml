@@ -91,6 +91,27 @@
 		   AND COURSE_CD = #{course_cd}      
 	</update>
 	
+	<update id="updateEduEndStat">
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '03'
+		 WHERE STEP_CD = '40'
+		   AND STAT_CD = '02'  
+		   AND COURSE_CD IN (SELECT DISTINCT EDU002R.COURSE_CD
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYYMMDD') > EDU001M.EDU_ED_DT)	
+	</update>
+	
+	<update id="updateEduStartStat">
+		UPDATE TB_IEP_EDU002R
+		   SET STAT_CD = '02'
+		 WHERE STEP_CD = '40'
+		   AND STAT_CD = '01'  
+		   AND COURSE_CD IN (SELECT DISTINCT EDU002R.COURSE_CD
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYYMMDD') = EDU001M.EDU_ST_DT)	
+	</update>
 	
 	<select id= "selectCountByCourse_cdEmn" resultType="int" parameterType="kr.co.ibk.itep.dto.Edu002rAttach">
 		select count(*) from TB_IEP_EDU002R where emn = #{emn} and course_cd = #{course_cd}	

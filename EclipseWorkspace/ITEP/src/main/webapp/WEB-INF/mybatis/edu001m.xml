@@ -254,6 +254,24 @@
 		</foreach>
 		SELECT * FROM DUAL
 	</insert>
+	
+	<update id="updateEduInfo" parameterType="kr.co.ibk.itep.dto.Edu001m">
+		UPDATE TB_IEP_EDU001M
+		SET ORG_CD = #{org_cd}
+		    , HIGH_CLS_CD = #{high_cls_cd}
+		    , MID_CLS_CD = #{mid_cls_cd}
+    		, LOW_CLS_CD = #{low_cls_cd}
+    		, COURSE_NM = #{course_nm}
+    		, EDU_HOUR = #{edu_hour}
+    		, REG_ST_DT = #{reg_st_dt}
+    		, REG_ED_DT = #{reg_ed_dt}
+    		, EDU_ST_DT = #{edu_st_dt}
+    		, EDU_ED_DT = #{edu_ed_dt}
+    		, EDU_COST = #{edu_cost}
+    		, LOC = #{loc}
+    		, REFUND_YN = #{refund_yn}
+		WHERE COURSE_CD = #{course_cd}
+	</update>
 
 	<delete id="deleteAll">
 		delete from TB_IEP_EDU001M

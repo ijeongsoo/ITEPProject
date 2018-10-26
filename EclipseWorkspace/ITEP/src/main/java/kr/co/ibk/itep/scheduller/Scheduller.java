@@ -31,6 +31,9 @@ public class Scheduller {
 	private Service service;
 	
 	@Autowired
+	private kr.co.ibk.itep.service.Service service_main;
+	
+	@Autowired
 	private ServletContext servletContext;
 	
 	//@Scheduled(cron="0 0 20 * * * ")
@@ -133,6 +136,12 @@ public class Scheduller {
 		}
 
 
+	}
+	
+	@Scheduled(cron="0 57 13 * * *")
+	public void eduStatUpdate(){
+		service_main.updateEduEndStatCd();
+		service_main.updateEduStartStatCd();
 	}
 
 	
