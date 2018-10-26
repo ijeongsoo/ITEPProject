@@ -7,8 +7,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
   <meta name="author" content="GeeksLabs">
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
@@ -60,7 +59,7 @@
 	.two-part li{width:48.8%}
 	.two-part li i{font-size:50px}
 	.two-part li span{font-size:50px;font-weight:100;font-family:Rubik,sans-serif}	
-
+	.text-purple{color:#707cd2}
   </style>
 
 </head>
@@ -76,65 +75,61 @@
         </ol>
       </div>
     </div>
-    <div>
+    <div style="padding-left:70px; padding-bottom:10px">
 		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
 	</div>       
-    <div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div style="width: 33.3%; float:left; padding-right: 20px;">
             <div class="white-box analytics-info">
-                <h3 class="box-title">Total Registered Courses</h3>
+                <h3 class="box-title">전체 교육 등록 수</h3>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">${selectAllEduCount}</span></li>
                 </ul>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div  style="width: 33.3%; float:left; padding-left:10px;padding-right: 10px;">
             <div class="white-box analytics-info">
-                <h3 class="box-title">Apply Per Year</h3>
+                <h3 class="box-title">올해 교육 신청 수</h3>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash2"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">${selectYearAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div style="width:33.3%; float:left; padding-left:20px;"> 
             <div class="white-box analytics-info">
-                <h3 class="box-title">Apply Per October</h3>
+                <h3 class="box-title">이번달 교육 신청 수</h3>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash3"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">${selectMonthAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
     </div>    
- 
     <div>
-    	<h3>밑에는 가짜 데이터입니당!</h3>
-    </div>
-    <div>
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-xs-12" style="padding-top:160px">
             <div class="white-box">
                 <h3 class="box-title">2018년 월별 교육 수강 현황</h3>
-                <div id="ct-visits" style="height: 405px;">
+                <div id="ct-visits" style="height: 445px; padding-top:50px; padding-left:20px; padding-right:20px;">
                  	<canvas id="myChart_2" width="200px" height="100%"></canvas>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-	     <div style="padding:30px;float:left;width:49%;height:50%;background-Color:#FFFFF2;">  
+	     <div class="white-box" style="padding:20px;float:left;width:49%;height:50%;">  
 	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
 	    </div>   
     </div>    
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-	     <div style="padding:30px;clear:right;float:right;width:49%;height:50%; background-Color:#F2FFFF;">  
+	     <div class="white-box" style="padding:20px;clear:right;float:right;width:49%;height:50%;">  
 	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
 	    </div>   
     </div>   
