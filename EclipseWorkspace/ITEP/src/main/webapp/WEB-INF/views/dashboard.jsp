@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="utf-8">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
   <meta name="author" content="GeeksLabs">
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
@@ -24,6 +24,7 @@
   <!-- font icon -->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
   <!-- full calendar css-->
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
@@ -43,6 +44,13 @@
 	<!-- chart.js  -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 
+	<!-- number Animation.js -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.counterup.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.counterup.js"></script>
+
+
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -60,82 +68,105 @@
 	.two-part li i{font-size:50px}
 	.two-part li span{font-size:50px;font-weight:100;font-family:Rubik,sans-serif}	
 	.text-purple{color:#707cd2}
-  </style>
+    
+    </style>
+
+
+<script>
+jQuery(document).ready(function($) {
+	$('.counter').counterUp({
+		delay: 10, // the delay time in ms
+		time: 1000 // the speed time in ms
+	});
+});
+</script>
 
 </head>
 
-	
+
 <body>
+
+	<!-- number Animation.js 꼭 body 안에 위치 해야 함. 수정 x-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.counterup.min.js"></script>
+<script src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.counterup.js"></script>
+
  <div class="row">
       <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa-laptop"></i>대시보드</h3>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i><a href="home">Home</a></li>
-          <li><i class="fa fa-laptop"></i>대시보드</li>
-        </ol>
+        <h3 class="page-header"><i class="fa fa-laptop"></i></h3>
       </div>
     </div>
-    <div style="padding-left:70px; padding-bottom:10px">
-		<h3>안녕하세요! ${empJoinedDep_info.krn_brm}의 ${empJoinedDep_info.emm} 관리자님♥</h3>
-	</div>       
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <div style="width: 33.3%; float:left; padding-right: 20px;">
-            <div class="white-box analytics-info">
-                <h3 class="box-title">전체 교육 등록 수</h3>
+    <br>
+    <div style="padding-top:50px; padding-left:70px; padding-bottom:50px; width:100%;">
+		<h2 class="hanna" align="center" style="">안녕하세요 <br> ${empJoinedDep_info.krn_brm}  ${empJoinedDep_info.emm} 관리자님♥</h2>
+	</div>
+	<div align="center"> <h4 class="hanna"> 대시보드에서 교육 신청 데이터를 한눈에!! </h4></div> <br><br>
+	
+	<!-- 대시보드 항목 1: 신청수 및 등록수  -->       
+    <div style="margin:auto">
+        <div style="float:left; padding-left: 6%; padding-right: 20px;">
+            <div class="white-box analytics-info" style="width: 380px; height: 120px; border-bottom: 1px double #A0A0A0;  ">
+                <h4 class="hanna">전체 교육 등록 수</h4>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">${selectAllEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter hanna" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectAllEduCount}</span></li>
                 </ul>
             </div>
         </div>
-        <div  style="width: 33.3%; float:left; padding-left:10px;padding-right: 10px;">
-            <div class="white-box analytics-info">
-                <h3 class="box-title">올해 교육 신청 수</h3>
+        <div style="float:left; padding-right: 20px;">
+            <div class="white-box analytics-info" style="width: 380px; height: 120px;  border-bottom: 1px double #A0A0A0;">
+                <h4 class="hanna">올해 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash2"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">${selectYearAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectYearAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
-        <div style="width:33.3%; float:left; padding-left:20px;"> 
-            <div class="white-box analytics-info">
-                <h3 class="box-title">이번달 교육 신청 수</h3>
+        <div style="float:left; padding-rignt:20px;"> 
+            <div class="white-box analytics-info" style="width: 380px; height: 120px;  border-bottom: 1px double #A0A0A0;">
+                <h4 class="hanna">이번달 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
                         <div id="sparklinedash3"></div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">${selectMonthAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectMonthAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
-    </div>    
+    </div>
+    
+    <!-- 대시보드 항목 2 -->
     <div>
-        <div class="col-xs-12" style="padding-top:160px">
-            <div class="white-box">
-                <h3 class="box-title">2018년 월별 교육 수강 현황</h3>
-                <div id="ct-visits" style="height: 445px; padding-top:50px; padding-left:20px; padding-right:20px;">
-                 	<canvas id="myChart_2" width="200px" height="100%"></canvas>
+        <div class="col-xs-12" style="padding-top:160px ;padding-bottom:50px;">
+            <div class="white-box" style="width:1000px; height:500px; margin:auto;">
+                <h3 class="hanna">2018년 월별 교육 수강 현황</h3>
+                <div id="ct-visits" style="width:950px; height:500px; padding-top:50px; padding-left:20px; padding-right:20px;">
+                 	<canvas id="myChart_2" width="200px" height="800px"></canvas>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-	     <div class="white-box" style="padding:20px;float:left;width:49%;height:50%;">  
+    
+    <!-- 대시보드 항목3 -->
+    <div style="float:fixed; padding-bottom:50px;">   
+    <div style="padding-left:170px;">
+	     <div class="white-box" style="padding-top:20px;width:40%;height:40%;float:left;">  
+	                     <h3 class="hanna">당월 부서별 교육 수강 현황</h3>
 	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
 	    </div>   
     </div>    
-    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-	     <div class="white-box" style="padding:20px;clear:right;float:right;width:49%;height:50%;">  
+    <div style="padding-right:170px;">
+	     <div class="white-box" style="padding-top:20px;width:40%;height:40%;float:right;">
+	                     <h3 class="hanna">분야별 연간 교육 수강 현황</h3>  
 	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
 	    </div>   
-    </div>   
-    <!--<div  style="padding:30px;width:600px; height:600px; background-Color:#FFF2FF;">		
-  		<canvas id="myChart_4" width="600px" height="600px"></canvas>
-    </div> -->           
+    </div>
+    </div>            
 	
 <script>
 
@@ -149,7 +180,6 @@
 	    data: {
 	        labels: ["IT기획부", "IT정보부", "IT수신카드부", "IT여신외환부", "IT채널부", "IT시스템운영팀"],
 	        datasets: [{
-	            label: "당월 부서별 교육 수강 현황",
 	            backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)",
 	            				"rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)"],
 	            borderColor: ["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)",
@@ -189,7 +219,7 @@
 	        datasets: [{
 	            label: "2018년 월별 교육 수강 현황",
 	            backgroundColor: "rgba(255, 99, 132, 0.2)",
-	            borderColor: "rgb(255, 99, 132)",
+	            borderColor: "rgb(245, 158, 0)",
 	            data: ["${YrCount[0]}", "${YrCount[1]}", "${YrCount[2]}", "${YrCount[3]}", "${YrCount[4]}", "${YrCount[5]}",  
 	            	"${YrCount[6]}", "${YrCount[7]}", "${YrCount[8]}", "${YrCount[9]}", "${YrCount[10]}", "${YrCount[11]}"],
 	            fill : false
@@ -245,7 +275,6 @@
         options: {
             title: {
                 display: true,
-                text: '분야별 연간 교육 수강 현황'
             }        	
         }
     });
@@ -276,13 +305,11 @@
         options: {
             title: {
                 display: true,
-                text: '분야별 연간 교육 수강 현황'
+                text: ''
             }        	
         }
     });
 
-	   
-		
 </script>
 
     

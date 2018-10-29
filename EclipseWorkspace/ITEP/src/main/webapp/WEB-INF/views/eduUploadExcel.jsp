@@ -241,7 +241,7 @@ margin: auto;
         <!--overview start-->
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header hanna">교육등록 </h3>
+            <h3 class="page-header hanna">교육등록  <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
         </div>
 		</section>
