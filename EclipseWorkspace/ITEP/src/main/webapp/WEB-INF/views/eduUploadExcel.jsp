@@ -104,33 +104,34 @@ margin: auto;
 		
 			<!-- page start-->
 			
-			<div>
-				<button id="addRow" class="btn btn-primary" onclick="addRowClick()">행추가</button>
+			<div style="padding-left: 55px; padding-bottom: 30px">
+				<button id="addRow" class="btn btn-primary" onclick="addRowClick()" style="float: left;">행추가</button>
 			</div>
+			<br/>
+			<span style="padding-left: 55px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
 				<div id="grid"></div>
 			</div>
+			
 			<!-- 엑셀 업로드 구역 -->
-			<div class="uploadContent"
-				style="height: 200px; overflow: auto; padding: 20px;">
-				<a href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">양식 다운</a>
+			<div 
+				style="height: 180px; overflow: auto; padding: 20px;">
+				<div id="load" style="text-align: center;">
+					<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
+				</div>
+				<a style="padding-left: 35px" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
+				<label style="padding-left: 20px"> 
+					<span>파일경로: </span> 
+					<span id="filePath"> 파일 미선택</span>
+				</label> 
 				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
-					<div class="input-group col-lg-12 ">
-						<label> 
-							<span>파일경로: </span> 
-							<span id="filePath"> 파일 미선택</span>
-						</label> 
-						<label for="excelFile" id="excelFileBtn"  class="col-lg-12 btn btn-default" onclick=>
+					<div style="padding-left: 35px">
+						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
 							엑셀 추가
 						</label>
+						<button id="submitBtn" type="submit" class="btn btn-primary">등록</button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
-					</div>
-
-					<button id="submitBtn" type="submit" class="btn btn-primary">등록</button>
-
-					<div id="load" style="text-align: center;">
-						<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
 					</div>
 				</form>
 
