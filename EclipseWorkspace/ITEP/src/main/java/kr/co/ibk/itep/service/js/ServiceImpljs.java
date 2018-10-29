@@ -24,6 +24,7 @@ import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
 import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.Edu002rAttach;
+import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
@@ -289,6 +290,31 @@ public class ServiceImpljs implements Service {
 	public List<RegistEduPullInfo> getMyRecentList(String emn) {
 		List<RegistEduPullInfo> myRecentList = dao.selectRecentList(emn);;
 		return myRecentList;
+	}
+
+
+	@Override
+	public RegistEduPullInfo getEdu(RegistEduPullInfo myRegistEduInfo) {
+		RegistEduPullInfo edu = dao.selectMyEdu(myRegistEduInfo);
+		return edu;
+	}
+
+
+	
+	@Override
+	@Transactional
+	public void survay(Edu003r edu003r) {		
+		
+		dao.insertSurvay(edu003r);
+		dao.updateStat(edu003r);
+				
+	}
+
+
+	@Override
+	public RegistEduPullInfo getFinishedEdu(RegistEduPullInfo myEdu) {
+		RegistEduPullInfo edu = dao.selectMyFinishedEdu(myEdu);
+		return edu;
 	}
 
 

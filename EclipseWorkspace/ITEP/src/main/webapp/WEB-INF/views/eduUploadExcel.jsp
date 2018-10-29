@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +14,6 @@
 
 <title>교육등록</title>
 
-
-<link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/slickgrid/slick.grid.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/slickgrid/css/smoothness/jquery-ui-1.8.16.custom.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/slickgrid/examples/examples.css"
-	type="text/css" />
 
 <!-- Bootstrap CSS -->
 <link
@@ -44,26 +35,20 @@
 	rel="stylesheet" />
 	
 <!-- Custom styles -->
+
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css"
 	rel="stylesheet">
+	
 <link
 	href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css"
 	rel="stylesheet">
 	
-<!-- 슬릭 그리드 스타일 추가 -->
-
-<style>
-.cell-title {
-	font-weight: bold;
-}
-
-.cell-effort-driven {
-	text-align: center;
-}
-</style>
-
-<!-- 슬릭 그리드 스타일 끝 -->
+<!-- tui 그리드 css -->
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/css/tui-example-style.css" />
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/dist/tui-grid.css" />
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/css/tui-date-picker.css" />
+	
 
 <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
@@ -83,34 +68,6 @@ margin: auto;
 </style>
 </head>
 
-<!-- 슬릭 그리드 스크립트 추가 -->
-
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/lib/firebugx.js"></script>
-
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/lib/jquery-1.7.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/lib/jquery-ui-1.8.16.custom.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/lib/jquery.event.drag-2.2.js"></script>
-
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/slick.core.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/plugins/slick.cellrangedecorator.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/plugins/slick.cellrangeselector.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/plugins/slick.cellselectionmodel.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/slick.formatters.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/slick.editors.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/slickgrid/slick.grid.js"></script>
-
-<!-- 슬릭 그리드 스크립트 끝 -->
 
 <script>
 	$(document).ready(function() {
@@ -128,108 +85,7 @@ margin: auto;
 			return true;
 		});
 	});
-</script>
-
-<script>
-	function requiredFieldValidator(value) {
-		if (value == null || value == undefined || !value.length) {
-			return {
-				valid : false,
-				msg : "This is a required field"
-			};
-		} else {
-			return {
-				valid : true,
-				msg : null
-			};
-		}
-	}
-
-	var grid;
-	var data = [];
-	var columns = [ {
-		id : "title",
-		name : "Title",
-		field : "title",
-		width : 120,
-		cssClass : "cell-title",
-		editor : Slick.Editors.Text,
-		validator : requiredFieldValidator
-	}, {
-		id : "desc",
-		name : "Description",
-		field : "description",
-		width : 100,
-		editor : Slick.Editors.LongText
-	}, {
-		id : "duration",
-		name : "Duration",
-		field : "duration",
-		editor : Slick.Editors.Text
-	}, {
-		id : "%",
-		name : "% Complete",
-		field : "percentComplete",
-		width : 80,
-		resizable : false,
-		formatter : Slick.Formatters.PercentCompleteBar,
-		editor : Slick.Editors.PercentComplete
-	}, {
-		id : "start",
-		name : "Start",
-		field : "start",
-		minWidth : 60,
-		editor : Slick.Editors.Date
-	}, {
-		id : "finish",
-		name : "Finish",
-		field : "finish",
-		minWidth : 60,
-		editor : Slick.Editors.Date
-	}, {
-		id : "effort-driven",
-		name : "Effort Driven",
-		width : 80,
-		minWidth : 20,
-		maxWidth : 80,
-		cssClass : "cell-effort-driven",
-		field : "effortDriven",
-		formatter : Slick.Formatters.Checkmark,
-		editor : Slick.Editors.Checkbox
-	} ];
-	var options = {
-		editable : true,
-		enableAddRow : true,
-		enableCellNavigation : true,
-		asyncEditorLoading : false,
-		autoEdit : false
-	};
-
-	$(function() {
-		for (var i = 0; i < 10; i++) {
-			var d = (data[i] = {});
-
-			d["title"] = "Task " + i;
-			d["description"] = "This is a sample task description.\n  It can be multiline";
-			d["duration"] = "5 days";
-			d["percentComplete"] = Math.round(Math.random() * 100);
-			d["start"] = "01/01/2009";
-			d["finish"] = "01/05/2009";
-			d["effortDriven"] = (i % 5 == 0);
-		}
-
-		grid = new Slick.Grid("#myGrid", data, columns, options);
-
-		grid.setSelectionModel(new Slick.CellSelectionModel());
-
-		grid.onAddNewRow.subscribe(function(e, args) {
-			var item = args.item;
-			grid.invalidateRow(data.length);
-			data.push(item);
-			grid.updateRowCount();
-			grid.render();
-		});
-	})
+	
 </script>
 
 <body>
@@ -245,46 +101,287 @@ margin: auto;
           </div>
         </div>
 		</section>
+		
 			<!-- page start-->
 			
-			<!-- 슬릭 그리드 영역 -->
-			
-			<div style="position: relative">
-				<div style="width: 1200px;">
-					<div id="myGrid" style="width: 100%; height: 500px;"></div>
-				</div>
+			<div style="padding-left: 55px; padding-bottom: 30px">
+				<button id="addRow" class="btn btn-primary" onclick="addRowClick()" style="float: left;">행추가</button>
+			</div>
+			<br/>
+			<span style="padding-left: 55px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+			<!-- 그리드 영역 -->
+			<div class="code-html contents">
+				<div id="grid"></div>
 			</div>
 			
 			<!-- 엑셀 업로드 구역 -->
-			<div class="uploadContent"
-				style="height: 340px; width: 500px; overflow: auto; padding: 20px;">
-				<a href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">양식 다운</a>
+			<div 
+				style="height: 180px; overflow: auto; padding: 20px;">
+				<div id="load" style="text-align: center;">
+					<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
+				</div>
+				<a style="padding-left: 35px" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
+				<label style="padding-left: 20px"> 
+					<span>파일경로: </span> 
+					<span id="filePath"> 파일 미선택</span>
+				</label> 
 				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
-					<div class="input-group col-lg-12 ">
-						<label> 
-							<span>파일경로: </span> 
-							<span id="filePath"> 파일 미선택</span>
-						</label> 
-						<label for="excelFile" id="excelFileBtn"  class="col-lg-12 btn btn-default" onclick=>
+					<div style="padding-left: 35px">
+						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
 							엑셀 추가
 						</label>
+						<button id="submitBtn" type="submit" class="btn btn-primary">등록</button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
-					</div>
-
-					<button id="submitBtn" type="submit" class="btn btn-primary">등록</button>
-
-					<div id="load" style="text-align: center;">
-						<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
 					</div>
 				</form>
 
 			</div>
-
-
 
 			<!-- 결과 출력 -->
 			<!-- page end-->
 	</section>
 
 </body>
+
+<!-- tui 그리드 스크립트  -->
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/jquery.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/underscore.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/backbone.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/tui-code-snippet.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/tui-date-picker.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/dist/tui-grid.js"></script>
+
+<!-- tui 그리드 스크립트 -->
+<script type="text/javascript" class="code-js">
+
+  var grid = new tui.Grid({
+      el: $('#grid'),
+      scrollX: true,
+      scrollY: true,
+      columns: [
+    	  {
+              title: '기관명',
+              name: 'org_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'select',
+                  listItems: ${ecd002m},
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 130
+          },
+          {
+              title: '대분류',
+              name: 'high_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'select',
+                  listItems: ${ecd005m},
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 60
+          },
+          {
+              title: '중분류',
+              name: 'mid_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'select',
+                  listItems: ${ecd006m},
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 100
+          },
+          {
+              title: '소분류',
+              name: 'low_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'select',
+                  listItems: ${ecd007m},
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 120
+          },
+          {
+              title: '교육명',	// 화면 제목
+              name: 'course_nm',		// 키 이름
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {	// 타입
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 200
+          },
+          {
+              title: '교육시간',	// 화면 제목
+              name: 'edu_hour',		// 키 이름
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {	// 타입
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 60
+          },
+          {
+	            title: '신청시작일',
+	            name: 'reg_st_dt',
+	            editOptions: {
+	                type: 'text'
+	            },
+	            component: {
+	                name: 'datePicker',
+	                options: {
+	                    date: new Date()
+	                }
+	            },
+	              width: 'auto',
+	              minWidth: 80
+	      },
+	      {
+	            title: '신청종료일',
+	            name: 'reg_ed_dt',
+	            editOptions: {
+	                type: 'text'
+	            },
+	            component: {
+	                name: 'datePicker',
+	                options: {
+	                    date: new Date()
+	                }
+	            },
+	              width: 'auto',
+	              minWidth: 80
+	      },
+	      {
+	            title: '교육시작일',
+	            name: 'edu_st_dt',
+	            editOptions: {
+	                type: 'text'
+	            },
+	            component: {
+	                name: 'datePicker',
+	                options: {
+	                    date: new Date()
+	                }
+	            },
+	              width: 'auto',
+	              minWidth: 80
+	      },
+	      {
+	            title: '교육종료일',
+	            name: 'edu_ed_dt',
+	            editOptions: {
+	                type: 'text'
+	            },
+	            component: {
+	                name: 'datePicker',
+	                options: {
+	                    date: new Date()
+	                }
+	            },
+	              width: 'auto',
+	              minWidth: 80
+	      },
+          {
+              title: '교육비용',
+              name: 'edu_cost',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+                  ev.stop();
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 70
+          },
+          {
+              title: '교육장소',
+              name: 'loc',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 300
+          },
+          {
+              title: '고용보험 환급여부',
+              name: 'refund_yn',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'radio',
+                  listItems: [
+                      { text: 'Y', value: 'y' },
+                      { text: 'N', value: 'n' }
+                  ],
+                  useViewMode: true
+              },
+              copyOptions: {
+                  useListItemText: true // when this option is used, the copy value is concatenated text
+              },
+              width: 'auto',
+              minWidth: 150
+          }
+      ]
+  });
+  for(var i=0; i<5; i++) {	// 입력칸 생성
+	  grid.appendRow();
+  }
+	function addRowClick() {	//행추가 
+		grid.appendRow();
+	}
+</script>
 </html>

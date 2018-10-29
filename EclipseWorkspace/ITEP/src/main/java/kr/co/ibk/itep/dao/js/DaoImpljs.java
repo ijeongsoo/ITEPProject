@@ -5,11 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import kr.co.ibk.itep.controller.session.js.SessionedControllerjs;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Edu002rAttach;
+import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -19,6 +23,9 @@ import kr.co.ibk.itep.dto.RegistEduPullInfo;
 
 @Component
 public class DaoImpljs implements Dao {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DaoImpljs.class);
+
 	@Autowired
 	private SqlSessionTemplate sst;
 
@@ -132,6 +139,37 @@ public class DaoImpljs implements Dao {
 	public List<RegistEduPullInfo> selectRecentList(String emn) {
 		List<RegistEduPullInfo> myRecentList = sst.selectList("edu002r.selectRecentList", emn);
 		return myRecentList;
+	}
+
+
+	@Override
+	public RegistEduPullInfo selectMyEdu(RegistEduPullInfo myRegistEduInfo) {
+		RegistEduPullInfo edu = sst.selectOne("edu002r.selectMyEdu", myRegistEduInfo);
+		return edu;
+	}
+
+
+	@Override
+	public void insertSurvay(Edu003r edu003r) {
+
+		sst.insert("edu003r.insert", edu003r);
+		
+	}
+
+
+	@Override
+	public void updateStat(Edu003r edu003r) {
+		// TODO Auto-generated method stub
+		sst.insert("edu002r.updateStat", edu003r);		
+
+	}
+
+
+	@Override
+	public RegistEduPullInfo selectMyFinishedEdu(RegistEduPullInfo myEdu) {
+		
+		RegistEduPullInfo edu = sst.selectOne("edu002r.selectMyFinishedEdu", myEdu);
+		return edu;
 	}
 
 

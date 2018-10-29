@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Edu002rAttach;
+import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
@@ -51,6 +52,14 @@ public interface Dao {
 	public List<RegistEduPullInfo> selectSurveyList(String emn);
 
 	public List<RegistEduPullInfo> selectRecentList(String emn);
+
+	public RegistEduPullInfo selectMyEdu(RegistEduPullInfo myRegistEduInfo);
+
+	public void insertSurvay(Edu003r edu003r);
+
+	public void updateStat(Edu003r edu003r);
+
+	public RegistEduPullInfo selectMyFinishedEdu(RegistEduPullInfo myEdu);
 
 	
 

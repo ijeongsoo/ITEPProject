@@ -214,4 +214,32 @@ public class ServiceImplks implements Service {
 		// TODO Auto-generated method stub
 		dao.updateEduInfo(edu);
 	}
+
+	@Override
+	public List<Ecd002m> selectEcd002mList() {
+		// TODO Auto-generated method stub
+		List<Ecd002m> ecd002m = dao.selectEcd002mList();
+		return ecd002m;
+	}
+
+	@Override
+	public List<Ecd005m> selectEcd005mList() {
+		// TODO Auto-generated method stub
+		List<Ecd005m> ecd005m = dao.selectEcd005mList();
+		return ecd005m;
+	}
+
+	@Override
+	public List<Ecd006m> selectEcd006mList() {
+		// TODO Auto-generated method stub
+		List<Ecd006m> ecd006m = dao.selectEcd006mList();
+		return ecd006m;
+	}
+
+	@Override
+	public List<Ecd007m> selectEcd007mList() {
+		// TODO Auto-generated method stub
+		List<Ecd007m> ecd007m = dao.selectEcd007mList();
+		return ecd007m;
+	}
 }
