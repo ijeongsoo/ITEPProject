@@ -85,6 +85,7 @@ margin: auto;
 			return true;
 		});
 	});
+	
 </script>
 
 <body>
@@ -103,6 +104,9 @@ margin: auto;
 		
 			<!-- page start-->
 			
+			<div>
+				<button id="addRow" class="btn btn-primary" onclick="addRowClick()">행추가</button>
+			</div>
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
 				<div id="grid"></div>
@@ -186,7 +190,7 @@ margin: auto;
                   useViewMode: true
               },
               width: 'auto',
-              minWidth: 50
+              minWidth: 60
           },
           {
               title: '중분류',
@@ -372,8 +376,11 @@ margin: auto;
           }
       ]
   });
-  for(var i=0; i<8; i++) {	// 입력칸 생성
+  for(var i=0; i<5; i++) {	// 입력칸 생성
 	  grid.appendRow();
   }
+	function addRowClick() {	//행추가 
+		grid.appendRow();
+	}
 </script>
 </html>
