@@ -117,15 +117,16 @@ public class SessionedControllerks {
 		return "eduUploadExcel";
 	}
 	
+	// 그리드 업로드
 	@RequestMapping(value = "/uploadGrid", method = RequestMethod.POST)
 	public String uploadGrid(String edu001m) {
 		JSONArray jArr = new JSONArray(edu001m);
 		ArrayList<Edu001m> gridList = new ArrayList<Edu001m>();
 		for(int i=0; i<jArr.length(); i++) {
 			JSONObject obj = jArr.getJSONObject(i);
-			
-			//gridList.add()
+			gridList.add(new Edu001m(obj));
 		}
+		service.insertGridToDB(gridList);
 		return "redirect:eduEdit";
 	}
 	

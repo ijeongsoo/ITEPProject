@@ -32,6 +32,16 @@ public class Edu001m {
 		this.org_cd = obj.getString("org_cd");
 		this.high_cls_cd = obj.getString("high_cls_cd");
 		this.mid_cls_cd = obj.getString("mid_cls_cd");
+		this.low_cls_cd = obj.getString("low_cls_cd");
+		this.course_nm = obj.getString("course_nm");
+		this.edu_hour = Integer.parseInt(obj.getString("edu_hour"));
+		this.reg_st_dt = obj.getString("reg_st_dt");
+		this.reg_ed_dt = obj.getString("reg_ed_dt");
+		this.edu_st_dt = obj.getString("edu_st_dt");
+		this.edu_ed_dt = obj.getString("edu_ed_dt");
+		this.edu_cost = Integer.parseInt(obj.getString("edu_cost"));
+		this.loc = obj.getString("loc");
+		this.refund_yn = obj.getString("refund_yn");
 	}
 	
 	public String getCourse_cd() {
