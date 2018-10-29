@@ -318,4 +318,11 @@ public class ServiceImpljs implements Service {
 	}
 
 
+	@Override
+	public long getTotalAmount(String emn) {
+		long totalAmount = dao.selectTotalAmount(emn);
+		return totalAmount;
+	}
+
+
 }

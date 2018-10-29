@@ -59,7 +59,10 @@
 	rel="stylesheet">
 <link href="<%=application.getContextPath()%>/resources/css/itep.css"
 	rel="stylesheet" type="text/css">
-
+<link href="<%=application.getContextPath()%>/resources/css/odometer-theme-default.css"
+	rel="stylesheet" type="text/css">
+<script
+	src="<%=application.getContextPath()%>/resources/js/odometer.js"></script>
 
 
 
@@ -117,149 +120,11 @@
 					$("#adminButton").attr('style', 'visiblity:show');
 				}
 				
-				if($('.ddayCount').length == 0){
-		        	$("#ddayExist").attr('style', 'display:inline; text-align:center');
-		        }else{
-		        	$("#ddayExist").attr('style', 'display:none');
-		        }
-				
-				if($('.top8List1ContentCount').length == 0){
-					$("#top8List1").remove();
-					$("#top8Exist").attr('style', 'display:inline; text-align:center');
-		        }else{
-		        	$("#top8Exist").attr('style','display:none');
-
-		        }
-				
-				if($('.top8List2ContentCount').length == 0){
-										
-					$("#top8List2").remove();
-		        }
-				
-				var fullname = '${login_info.emm}';
-				//var fullname = "이정수";
-				var name ;
-				if(fullname.length==3){
-					name = fullname.charAt(1)+fullname.charAt(2);
-
-				}else{
-					name = fullname;
-				}
-				var lastName = name.charAt(name.length - 1);
-				console.log(lastName.charCodeAt(0));
-				var index= (lastName.charCodeAt(0) - 0xAC00) % 28;
-				console.log(index);
-				if(index==0){
-					name = name + '야, 넌';
-				}else{
-					name = name + '아, 넌';
-				}
-
-				
-				$("#secondHeaderName").text(name);
-				
-				setInterval(swapHead,5000);
-	       
+				setTimeout(function(){
+				    odometer.innerHTML = 10000;
+				}, 0);
 				
 			});
-    		
-    		function swapHead(){
-    			
-    			if($("#fisrtHeader").css('display')=='none'){
-    				$("#fisrtHeader").attr('style', ' display: block');
-        			$("#secondHeader").attr('style', 'display: none;');
-    			}else{
-    				$("#fisrtHeader").attr('style', ' display: none');
-        			$("#secondHeader").attr('style', 'display: block;');
-    			}
-    			/* $("#fristWord1").removeClass('fadeInLeftBig');
-
-    			$("#firstWord1").addClass("fadeInLeftBig");
-    			
-    			$("#firstWord2").removeClass('fadeInRightBig');
-    			$("#firstWord2").addClass('fadeOutLeftBig'); */
-    			
-    			
-    			
-    			
-    			
-
-    			
-    		};
-    		
-			$(document).ready(function(){
-				
-				if(${myRegistListCount} == 0){
-		        	$("#info1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }else if(${myRegistListCount} > 3){
-		        	$("#moreInfo1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }
-				
-				if(${myStudyListCount} == 0){
-		        	$("#info2").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }else if(${myStudyListCount} > 3){
-		        	$("#moreInfo2").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }
-				
-				if(${mySurveyListCount} == 0){
-		        	$("#info3").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }else if(${mySurveyListCount} > 3){
-		        	$("#moreInfo3").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }
-				
-				if(${myRecentListCount} == 0){
-		        	$("#info4").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }else if(${myRecentListCount} > 3){
-		        	$("#moreInfo4").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
-		        }
-				
-				
-				if($('.filter').length == 0){
-		        	$("#categoryExist").attr('style', 'display:inline; text-align:center')
-		        }else{
-		        	$("#categoryExist").attr('style', 'display:none')
-		        }
-
-			    $(".filter-button").click(function(){
-			        var value = $(this).attr('data-filter');
-			        
-			        if(value == "all")
-			        {
-			        	if($('.filter').length == 0){
-				        	$("#categoryExist").attr('style', 'display:inline; text-align:center')
-				        }else{
-				        	$("#categoryExist").attr('style', 'display:none')
-				        }
-			            //$('.filter').removeClass('hidden');
-			            $('.filter').show('1000');
-			        }
-			        else
-			        {
-			        	
-			        	if($('.'+value).length == 0){
-				        	$("#categoryExist").attr('style', 'display:inline; text-align:center')
-				        }else{
-				        	$("#categoryExist").attr('style', 'display:none')
-				        }
-//			            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-//			            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
-			            $(".filter").not('.'+value).hide('3000');
-			            $('.filter').filter('.'+value).show('3000');
-			            
-			        }
-			    });
-			    
-			    if ($(".filter-button").removeClass("active")) {
-						$(this).removeClass("active");
-				}
-				$(this).addClass("active");
-
-			});
-			
-			
-			
-
-
     		
     	</script>
 
@@ -270,9 +135,8 @@
 	<nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase"
 		id="mainNav">
 		<div class="container">
-			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK IT
+			<a class="hanna navbar-brand js-scroll-trigger" href="home">IBK IT
 				교육 포탈</a>
-
 			<div class=" " id="">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item mx-0 mx-sm-1"><a id='adminButton'
@@ -281,10 +145,10 @@
 						href="admin">관리자</a></li>
 					<li class="nav-item mx-0 mx-sm-1"><a
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#portfolio">교육 정보</a></li>
+						href="home">홈으로</a></li>
 					<li class="nav-item mx-0 mx-sm-1"><a
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#myInfo">${login_info.emm}님의 정보</a></li>
+						href="EduList">교육정보</a></li>
 
 				</ul>
 			</div>
@@ -294,53 +158,28 @@
 
 	<!-- Header -->
 	<header class="masthead text-white text-center"
-		style="background-color: #5098ba; margin-top: 50px;">
-		<div id="fisrtHeader" class="container " style="display: none">
+		style="background-color: #FFDCE6;">
 
-			<div>
+		<div id="secondHeader" class="container" style="position:relative">
 
-				<h1 id="fristWord1" class="hanna animated fadeInLeftBig"
-					style="font-size: 180px; margin-bottom: 90px; z-index: 5">공부
-					의지가</h1>
+			<div style="z-index: 5; position:relative">
+				<h1  class="hanna "
+					style="color :#444444; font-size: 60px; z-index: 5; padding: 0 ; margin: 0">${login_info.emm}님은 지금까지 총</h1>
 			</div>
-			<div>
 
-				<h1 id="fristWord2" class="hanna animated fadeInRightBig"
-					style="font-size: 180px; margin-bottom: 60px; z-index: 5">불타
-					오른다</h1>
+			<div  style="z-index: 5; position:relative">
+				<h1  style="color :#444444; font-size: 120px;  z-index: 5; padding: 0; margin: 0 " class="hanna"><span id="odometer" class="odometer hanna" style="color :#444444; font-size: 120px;  z-index: 5; padding: 0; margin: 0 " >0</span>원 </h1>
+			</div>
+			<div  style="z-index: 5; position:relative">
+
+				<h1 class="hanna "
+					style="color :#444444; font-size: 60px;  z-index: 5; padding: 0 ">어치 교육을 이수하셨습니다</h1>
 
 			</div>
-			<div id="fristWord3" class="animated fadeInUp">
-				<h2 class="hanna" style="display: inline;">- 불타서 사라짐 -</h2>
+			<div class="animated fadeInUp" style="margin-bottom: 60px; z-index: 1; position:relative">
 				<img
-					style="position: absolute; top: -250px; width: 300px; opacity: 0.3; z-index: 1"
-					src="resources/main_page_resource/img/book.png" alt="">
-
-			</div>
-
-		</div>
-		<div id="secondHeader" class="container">
-
-			<div style="text-align: left;">
-
-				<h2 id="secondHeaderName" class="hanna animated fadeInLeftBig"
-					style="font-size: 60px; z-index: 5; margin-top: -90px; margin-bottom: 30px; margin-left: 215px;">재희야,
-					넌</h2>
-			</div>
-			<div>
-
-				<h1 class="hanna animated fadeInRightBig"
-					style="font-size: 180px; margin-bottom: 90px; z-index: 5">배울
-					때가</h1>
-			</div>
-			<div>
-				<h1 class="hanna animated fadeInLeftBig"
-					style="font-size: 180px; z-index: 5;">제일 예뻐</h1>
-			</div>
-			<div class="animated fadeInUp" style="margin-bottom: 60px">
-				<img
-					style="position: absolute; top: -230px; left: 650px; width: 300px; opacity: 0.6; z-index: 1;"
-					src="resources/main_page_resource/img/student.png" alt="">
+					style="position: absolute; top: -170px; left: 610px; width: 300px; opacity: 0.6; z-index: 1;"
+					src="resources/image/money.png" alt="">
 			</div>
 
 
@@ -353,8 +192,7 @@
 		<div class="container" >
 			<div style="text-align: center">
 				<h2 style="padding-top: 80px;"
-				class="hanna text-center text-uppercase text-secondary mb-0">교육
-				정보</h2>
+				class="hanna text-center text-uppercase text-secondary mb-0">내가 신청한 모든 교육</h2>
 				<h3 class="hanna text-center">신청할 수 있는 다양한 교육 정보를 확인하세요!</h3>
 				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
 				<hr class="star-dark mb-5">

@@ -513,5 +513,7 @@
 			and stat_cd ='03'
  	
  	</update>
+ 	
+
 
 </mapper>

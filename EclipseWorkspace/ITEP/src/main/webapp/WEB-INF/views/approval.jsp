@@ -128,19 +128,18 @@
 				
 	</script>
 	
-<body>
-      <!--overview start-->
-	<section class="wrapper">
-      <!--overview start-->
-    	<div class="row">
-      		<div class="col-lg-12">
-        	<h3 class="page-header hanna">결재</h3>
+	<body>
+		<section class="wrapper">
+      		<!--overview start-->
+    		<div class="row">
+      			<div class="col-lg-12">
+        			<h3 class="page-header hanna"> 결재   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
+      			</div>
       		</div>
       		<div class="headerConets" align="center">
-      		결재 단계 <br>      		
+      		결재 단계 <br>
       		이미지 -> 이미지 -> 이미지 
-     		 </div>
-    	</div>
+     		</div>
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">
