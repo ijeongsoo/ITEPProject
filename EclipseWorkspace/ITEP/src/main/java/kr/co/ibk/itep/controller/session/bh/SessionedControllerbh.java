@@ -73,7 +73,48 @@ public class SessionedControllerbh {
 		}
 
 	} 
-	
+
+	//결재 페이지
+	@RequestMapping("/approvalDetail")
+	public String adminApprovalDetail( Model model) {
+		
+		//사용자의 개인정보
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		//접속한 사용자의 직번 획득
+		String ssoid = empJoinedDep.getEmn();
+
+		EmpJoinedDep empJoinedDep_2 = service.ssoLogin(ssoid);
+		
+		//접속한 사용자의 권한 획득
+		String auth = empJoinedDep_2.getAuth_cd();
+		
+
+		try {
+			//관리자 또는 서무만 접속 가능
+			if(!auth.equals("04")) {
+				if(auth.equals("01")){
+					List<EduApproval> adminApprovalList = service.selectAllApprovalList();
+					model.addAttribute("adminApproval_List", adminApprovalList);
+				}else {
+					List<EduApproval> adminApprovalList = service.selectDepApprovalList(ssoid);
+					model.addAttribute("adminApproval_List", adminApprovalList);
+				}
+				
+				return "approvalDetail";
+			}
+
+			//model.addAttribute("ssoid", ssoid);
+			return "error";
+		}catch(Exception e){
+			logger.error(e.getStackTrace().toString());
+			model.addAttribute("result", 1);
+			return "error";
+		}
+
+	} 
 	
 	//결재 페이지
 	@RequestMapping("/updateApproval.do")

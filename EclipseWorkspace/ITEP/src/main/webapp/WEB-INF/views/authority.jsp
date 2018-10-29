@@ -218,9 +218,10 @@
         <!--overview start-->
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header hanna">권한관리 </h3>
+            <h3 class="page-header hanna">권한관리 <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
         </div>
+        
 		</section>
 		<!-- 모달 창을 여는 버튼 -->
 		<div class="hanna" align="center">
