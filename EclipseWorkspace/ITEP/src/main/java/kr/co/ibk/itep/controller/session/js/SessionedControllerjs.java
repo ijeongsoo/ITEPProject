@@ -312,6 +312,23 @@ public class SessionedControllerjs {
 		
 		return "redirect:/home";
 	} 
+	
+	
+	@RequestMapping("/myInfomation")
+	public String myInfomation( Model model, String result) {
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		String emn = empJoinedDep.getEmn();
+		
+		long totalAmount = service.getTotalAmount(emn);
+		
+		model.addAttribute("totalAmount", totalAmount);
+
+		return "myInfomation";
+	} 
 
 	
 }
