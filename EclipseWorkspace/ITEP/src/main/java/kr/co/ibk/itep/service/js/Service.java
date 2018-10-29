@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Edu002rAttach;
+import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
@@ -43,6 +44,12 @@ public interface Service {
 	public List<RegistEduPullInfo> getMySurveyList(String emn);
 
 	public List<RegistEduPullInfo> getMyRecentList(String emn);
+
+	public RegistEduPullInfo getEdu(RegistEduPullInfo myRegistEduInfo);
+
+	public void survay(Edu003r edu003r);
+
+	public RegistEduPullInfo getFinishedEdu(RegistEduPullInfo myEdu);
 
 
 }

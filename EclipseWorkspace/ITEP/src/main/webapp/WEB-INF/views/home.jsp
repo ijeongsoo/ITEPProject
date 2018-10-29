@@ -75,6 +75,33 @@
     				);
 			}
     		
+    		function infoDetail(course_cd) {
+    			$.get(
+    				    "infoDetail?course_cd="+course_cd ,
+    				    function(data) {
+    				        $("#infoModalContent").html(data);
+    				    }
+    				);
+			}
+    		
+    		function survayDetail(course_cd) {
+    			$.get(
+    				    "survayDetail?course_cd="+course_cd ,
+    				    function(data) {
+    				        $("#survayModalContent").html(data);
+    				    }
+    				);
+			}
+    		
+    		function recentDetail(course_cd) {
+    			$.get(
+    				    "recentDetail?course_cd="+course_cd ,
+    				    function(data) {
+    				        $("#recentModalContent").html(data);
+    				    }
+    				);
+			}
+    		
 			$( function() {
 					if('${result}a' == '0a'){
 						alert("이미 신청한 교육입니다.");
@@ -243,7 +270,7 @@
 	<nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase"
 		id="mainNav">
 		<div class="container">
-			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK
+			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK IT
 				교육 포탈</a>
 
 			<div class=" " id="">
@@ -324,11 +351,16 @@
 	<!-- Portfolio Grid Section -->
 	<section class="portfolio" id="portfolio"
 		style="background-color: #fdfde9;">
-		<div class="container">
-			<h2 style="padding-top: 80px;"
+		<div class="container" >
+			<div style="text-align: center">
+				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">교육
 				정보</h2>
-			<hr class="star-dark mb-5">
+				<h3 class="hanna text-center">신청할 수 있는 다양한 교육 정보를 확인하세요!</h3>
+				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+				<hr class="star-dark mb-5">
+			</div>
+			
 
 			<h3 class="hanna text-uppercase text-secondary mb-0">인기 교육 Top 8</h3>
 
@@ -490,6 +522,7 @@
 							</div>
 						</a>
 					</c:forEach>
+					
 					<div id='categoryExist' style="text-align: center; display: none">
 						<div
 							style="width: 1100px; height: 150px; margin-left: 20px; margin-right: 20px; padding-bottom: 20px">
@@ -499,7 +532,14 @@
 
 				</div>
 			</div>
-
+			
+			<hr>
+			
+			<div style="text-align: center; padding-bottom: 70px;margin-top: 70px">
+				<h3 class="hanna text-center">더욱 많은 교육정보를 알고싶으세요?</h3>
+				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
+			
 		</div>
 	</section>
 
@@ -508,9 +548,16 @@
 	<!-- Contact Section -->
 	<section id="myInfo" style="margin-bottom: 120px">
 		<div class="container">
-			<h2 style="padding-top: 80px;"
+		
+			<div style="text-align: center">
+				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">${login_info.emm }님의
 				정보</h2>
+				<h3 class="hanna text-center">${login_info.emm }님이 신청하고 들었던 교육정보를 확인하세요!</h3>
+				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
+			
+			
 			<hr class="star-dark2 mb-5">
 			<div class="row">
 				<div style="float: left; width: 100%; margin-bottom: 50px">
@@ -518,6 +565,8 @@
 						<h3 class="hanna">신청 정보</h3>
 						<hr>
 						<c:forEach var="d" items="${myRegistList}"  begin="0" end="2" step="1" varStatus="status">
+						<a onclick="infoDetail('${d.course_cd}');" data-toggle="modal"
+							data-target="#infoModal">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
 								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
@@ -533,6 +582,7 @@
 								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.step_nm }</p>
 							</div>
 						</div>
+						</a>
 						</c:forEach>
 						
 						<div id="info1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
@@ -545,11 +595,14 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
+							
 						</div>
 					</div>
 					<div style="float: left; width: 6%;">
@@ -559,6 +612,8 @@
 						<h3 class="hanna">수강중인 교육</h3>
 						<hr>
 						<c:forEach var="d" items="${myStudyList}"  begin="0" end="2" step="1" varStatus="status">
+						<a onclick="infoDetail('${d.course_cd}');" data-toggle="modal"
+							data-target="#infoModal">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
 								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
@@ -574,6 +629,7 @@
 								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.stat_nm }</p>
 							</div>
 						</div>
+						</a>
 						</c:forEach>
 						<div id="info2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
@@ -585,11 +641,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 						
 					</div>
@@ -602,6 +660,8 @@
 						<h3 class="hanna">설문해주세요!!</h3>
 						<hr>
 						<c:forEach var="d" items="${mySurveyList}"  begin="0" end="2" step="1" varStatus="status">
+						<a onclick="survayDetail('${d.course_cd}');" data-toggle="modal"
+							data-target="#survayModal">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
 								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
@@ -617,6 +677,7 @@
 								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.stat_nm }</p>
 							</div>
 						</div>
+						</a>
 						</c:forEach>
 						<div id="info3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
@@ -628,11 +689,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 					<div style="float: left; width: 6%;">
@@ -642,6 +705,8 @@
 						<h3 class="hanna">최근 수강 내역</h3>
 						<hr>
 						<c:forEach var="d" items="${myRecentList}"  begin="0" end="2" step="1" varStatus="status">
+						<a onclick="recentDetail('${d.course_cd}');" data-toggle="modal"
+							data-target="#recentModal">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							<div style=" float: left; width: 20%; height: 72px">
 								<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
@@ -654,9 +719,17 @@
 
 							</div>
 							<div style=" float: left; width: 20%; height: 72px; display: table; ">
-								<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >${d.step_nm }</p>
+								<div class="starRev" style="vertical-align: middle; display: table-cell;">
+									<c:forEach  begin="0" end="${d.sur_point-1}" step="1" varStatus="status">								
+ 										<span class="starMini on"></span>
+					 				</c:forEach>
+					 				<c:forEach begin="0" end="${4-d.sur_point}" step="1" varStatus="status">								
+ 					 					<span class="starMini"></span>
+					 				</c:forEach>
+								</div>
 							</div>
 						</div>
+						</a>
 						</c:forEach>
 						
 						<div id="info4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
@@ -669,11 +742,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">	
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -681,6 +756,11 @@
 
 			</div>
 			<hr>
+			
+			<div style="text-align: center; margin-top: 70px">
+				<h3 class="hanna text-center">${login_info.emm }님의 더욱 자세한 정보를 알고 싶으세요?</h3>
+				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
 		</div>
 	</section>
 
@@ -689,41 +769,26 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Location</h4>
+					<h4 class="text-uppercase mb-4 hanna">위치</h4>
 					<p class="lead mb-0">
-						2215 John Daniel Drive <br>Clark, MO 65243
+						본점 : 서울 중구 을지로 79 기업은행<br>IT센터 : 경기 용인시 수지구 신수로 799
 					</p>
 				</div>
 				<div class="col-md-4 mb-5 mb-lg-0">
-					<h4 class="text-uppercase mb-4">Around the Web</h4>
+					<h4 class="text-uppercase mb-4 hanna">담당자</h4>
 					<ul class="list-inline mb-0">
-						<li class="list-inline-item"><a
-							class="btn btn-outline-light btn-social text-center rounded-circle"
-							href="#"> <i class="fab fa-fw fa-facebook-f"></i>
-						</a></li>
-						<li class="list-inline-item"><a
-							class="btn btn-outline-light btn-social text-center rounded-circle"
-							href="#"> <i class="fab fa-fw fa-google-plus-g"></i>
-						</a></li>
-						<li class="list-inline-item"><a
-							class="btn btn-outline-light btn-social text-center rounded-circle"
-							href="#"> <i class="fab fa-fw fa-twitter"></i>
-						</a></li>
-						<li class="list-inline-item"><a
-							class="btn btn-outline-light btn-social text-center rounded-circle"
-							href="#"> <i class="fab fa-fw fa-linkedin-in"></i>
-						</a></li>
-						<li class="list-inline-item"><a
-							class="btn btn-outline-light btn-social text-center rounded-circle"
-							href="#"> <i class="fab fa-fw fa-dribbble"></i>
-						</a></li>
+						<li class="list-inline-item">
+							<p class="lead mb-0">
+								IT기획부 오세웅 대리(Tel. 2977)<br>
+								IT기획부 김광진 계장(Tel. 2828)<br>
+							</p>
 					</ul>
 				</div>
 				<div class="col-md-4">
-					<h4 class="text-uppercase mb-4">About Freelancer</h4>
+					<h4 class="text-uppercase mb-4 hanna">IBK IT 교육포털에 관하여</h4>
 					<p class="lead mb-0">
-						Freelance is a free to use, open source Bootstrap theme created by
-						<a href="http://startbootstrap.com">Start Bootstrap</a>.
+						IBK IT 교육포털은 다양한 교육을 편리하게 신청할 수 있는 사이트로 
+						기업은행 IT신입행원 프로젝트를 통해 제작되었습니다.
 					</p>
 				</div>
 			</div>
@@ -732,7 +797,7 @@
 
 	<div class="copyright py-4 text-center text-white">
 		<div class="container">
-			<small>Copyright &copy; Your Website 2018</small>
+			<small>Copyright &copy; IBK기업은행 2018</small>
 		</div>
 	</div>
 
@@ -754,6 +819,27 @@
 		role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div id="eduModalContent" class="modal-content"></div>
+		</div>
+	</div>
+	
+	<div id="infoModal" class="modal fade bs-example-modal-lg" tabindex="-1"
+		role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div id="infoModalContent" class="modal-content"></div>
+		</div>
+	</div>
+	
+	<div id="survayModal" class="modal fade bs-example-modal-lg" tabindex="-1"
+		role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div id="survayModalContent" class="modal-content"></div>
+		</div>
+	</div>
+	
+	<div id="recentModal" class="modal fade bs-example-modal-lg" tabindex="-1"
+		role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div id="recentModalContent" class="modal-content"></div>
 		</div>
 	</div>
 

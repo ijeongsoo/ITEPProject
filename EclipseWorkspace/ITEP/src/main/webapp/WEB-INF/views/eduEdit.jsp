@@ -28,6 +28,8 @@
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css"
 	rel="stylesheet" />
+<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css"
 	rel="stylesheet" />
@@ -67,16 +69,15 @@
 <!-- 넘어오는거 확인 -->
 <body>
 	<!-- 교육 수정 화면 구성 20181023 이기석 -->
-	<section id="edit-main">
+		<section id="excel-main">
 		<section class="wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h3 class="page-header" style="color: #333333">
-						<i class="fa fa fa-bars"></i> 교육수정
-					</h3>
-					<br />
-				</div>
-			</div>
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header hanna">교육수정  <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
+          </div>
+        </div>
+		</section>
 			<!-- Table 출력 -->
 		<div class="container">
 			<table id="edulistTable" class="display" style="width:100%">
@@ -123,7 +124,6 @@
 		</div>
 		
 		</section>
-	</section>
 
 </body>
 </html>

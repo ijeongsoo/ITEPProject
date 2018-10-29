@@ -135,9 +135,15 @@
 							<li><a class="hanna" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육등록</a></li>
 							<li><a class="hanna" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
 						</ul></li>
-					<li><a class="" onclick="changeIframeUrl('approval')" style="cursor:pointer">
-							<i class="icon_toolbox_alt"></i> <span class="hanna">결재함 </span>
-					</a></li>
+					<li class="sub-menu"><a href="javascript:;" class=""> <i
+							class="icon_toolbox_alt"></i> <span class="hanna">결재함</span> <span
+							class="menu-arrow arrow_carrot-right"></span>
+					</a>
+						<ul class="sub">
+
+							<li><a class="hanna" onclick="changeIframeUrl('approval')" style="cursor:pointer">결재진행</a></li>
+							<li><a class="hanna" onclick="changeIframeUrl('approvalDetail')" style="cursor:pointer">결재완료</a></li>
+						</ul></li>
 					<li><a class="" onclick="changeIframeUrlAdmin('authority')" style="cursor:pointer">
 							<i class="icon_contacts_alt"></i> <span class="hanna">권한관리</span>
 					</a></li>
