@@ -270,7 +270,7 @@
 	<nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase"
 		id="mainNav">
 		<div class="container">
-			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK
+			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK IT
 				교육 포탈</a>
 
 			<div class=" " id="">
@@ -351,11 +351,16 @@
 	<!-- Portfolio Grid Section -->
 	<section class="portfolio" id="portfolio"
 		style="background-color: #fdfde9;">
-		<div class="container">
-			<h2 style="padding-top: 80px;"
+		<div class="container" >
+			<div style="text-align: center">
+				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">교육
 				정보</h2>
-			<hr class="star-dark mb-5">
+				<h3 class="hanna text-center">신청할 수 있는 다양한 교육 정보를 확인하세요!</h3>
+				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+				<hr class="star-dark mb-5">
+			</div>
+			
 
 			<h3 class="hanna text-uppercase text-secondary mb-0">인기 교육 Top 8</h3>
 
@@ -517,6 +522,7 @@
 							</div>
 						</a>
 					</c:forEach>
+					
 					<div id='categoryExist' style="text-align: center; display: none">
 						<div
 							style="width: 1100px; height: 150px; margin-left: 20px; margin-right: 20px; padding-bottom: 20px">
@@ -526,7 +532,14 @@
 
 				</div>
 			</div>
-
+			
+			<hr>
+			
+			<div style="text-align: center; padding-bottom: 70px;margin-top: 70px">
+				<h3 class="hanna text-center">더욱 많은 교육정보를 알고싶으세요?</h3>
+				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
+			
 		</div>
 	</section>
 
@@ -535,9 +548,16 @@
 	<!-- Contact Section -->
 	<section id="myInfo" style="margin-bottom: 120px">
 		<div class="container">
-			<h2 style="padding-top: 80px;"
+		
+			<div style="text-align: center">
+				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">${login_info.emm }님의
 				정보</h2>
+				<h3 class="hanna text-center">${login_info.emm }님이 신청하고 들었던 교육정보를 확인하세요!</h3>
+				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
+			
+			
 			<hr class="star-dark2 mb-5">
 			<div class="row">
 				<div style="float: left; width: 100%; margin-bottom: 50px">
@@ -575,11 +595,14 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
+							
 						</div>
 					</div>
 					<div style="float: left; width: 6%;">
@@ -618,11 +641,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo2" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 						
 					</div>
@@ -664,11 +689,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 					<div style="float: left; width: 6%;">
@@ -715,11 +742,13 @@
 							
 						</div>
 						<div class="infoList" id="moreInfo4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">	
+							<a href="myInfomation">	
 							<div style="float: left; width: 100%;height: 30px; display: table;">
 								<div style=" vertical-align: middle; display: table-cell;">
 									<img width="20px" src="resources/main_page_resource/img/more.png" alt="">
 								</div>
 							</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -727,6 +756,11 @@
 
 			</div>
 			<hr>
+			
+			<div style="text-align: center; margin-top: 70px">
+				<h3 class="hanna text-center">${login_info.emm }님의 더욱 자세한 정보를 알고 싶으세요?</h3>
+				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+			</div>
 		</div>
 	</section>
 
