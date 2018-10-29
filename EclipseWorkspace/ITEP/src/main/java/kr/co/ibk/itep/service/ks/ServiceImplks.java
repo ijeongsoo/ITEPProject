@@ -242,4 +242,10 @@ public class ServiceImplks implements Service {
 		List<Ecd007m> ecd007m = dao.selectEcd007mList();
 		return ecd007m;
 	}
+
+	@Override
+	public void insertGridToDB(ArrayList<Edu001m> gridList) {
+		// TODO Auto-generated method stub
+		dao.insertCourseList(gridList);
+	}
 }

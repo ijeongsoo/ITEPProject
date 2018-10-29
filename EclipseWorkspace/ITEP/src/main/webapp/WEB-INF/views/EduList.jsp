@@ -67,7 +67,13 @@
 		<!-- <section class="section_div_1" style="padding-top:140px; padding-bottom:350px">
 			
 		</section> -->
-		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="top" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
+		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" style="margin-top:87px; padding-top:260px; padding-bottom:260px; color:#ffffff; text-align: center">
+			<h1>
+				Education is the best provision for old age.
+			</h1>
+            <h4>
+            	Aristoteles <span>&#8213; ancient Greece</span>
+            </h4>
 		</section>
 
 
@@ -75,6 +81,10 @@
 		<!-- 현재 신청가능한 목록 출력 -->
 		<section style="padding-top:40px; padding-bottom:90px">
 		<div class="container">
+		<div style="text-align: center">
+				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 가능 교육</h2>
+				<hr class="star-dark mb-5">
+		</div>
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -118,17 +128,32 @@
 
 
 
-		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="top" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
-
-				<h1>Education is the best provision for old age.</h1>
-
-                <h4>Aristoteles <span>&#8213; ancient Greece</span></h4>
+ 		<section style="  background-attachment: fixed;
+  				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-image: url(resources/image/books-2596809_1920_2.jpg);
+				padding-top: 130px;
+				padding-bottom: 130px;
+				text-align: center;
+				color: #ffffff;"
+		>
+			<h1>
+				Education is the best provision for old age.
+			</h1>
+            <h4>
+            	Aristoteles <span>&#8213; ancient Greece</span>
+            </h4>
 		</section>
 
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
 		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
 		<div class="container">
+		<div style="text-align: center">
+				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 접수 예정 강의</h2>
+				<hr class="star-dark mb-5">
+		</div>
 			<table id="postedulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -167,7 +192,7 @@
 		</div>
 		</section>
 		
-				<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="bottom" style="padding-top:100px; padding-bottom:100px; color:#ffffff; text-align: center">
+		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="bottom" style="padding-top:500px; padding-bottom:300px; color:#ffffff; text-align: center">
 
 				<h1>Education is the best provision for old age.</h1>
 
