@@ -10,9 +10,9 @@
 <meta name="author" content="GeeksLabs">
 <meta name="keyword"
 	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-<link rel="shortcut icon" href="img/favicon.png">
 
 <title>교육등록</title>
+
 
 <!-- Bootstrap CSS -->
 <link
@@ -27,17 +27,22 @@
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css"
 	rel="stylesheet" />
+	<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+	
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css"
 	rel="stylesheet" />
 	
 <!-- Custom styles -->
+
 <link
 	href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css"
 	rel="stylesheet">
+	
 <link
 	href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css"
 	rel="stylesheet">
+	
 
 <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
@@ -47,6 +52,14 @@
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+<style>
+.uploadContent{
+width:700px;
+background:#fff;
+margin: auto;
+}
+
+</style>
 </head>
 
 <script>
@@ -66,22 +79,32 @@
 		});
 	});
 </script>
+
 <body>
 	<!-- 엑셀 업로드 화면 구성 20181015 이기석 -->
-
+	
 	<!--main content start-->
-	<section id="excel-main">
+	<section id="excel-main" style="margin-top: 90px;">
 		<section class="wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h3 class="page-header" style="color: #333333">
-						<i class="fa fa fa-bars"></i> 교육등록
-					</h3>
-					<br />
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header hanna">교육등록 </h3>
+          </div>
+        </div>
+		</section>
+			<!-- page start-->
+			
+			<!-- 그리드 영역 -->
+			<!-- 
+			<div style="position: relative">
+				<div style="width: 1200px; overflow: auto; padding: 20px;">
+					<div id="myGrid" style="width: 100%; height: 500px;"></div>
 				</div>
 			</div>
-			<!-- page start-->
-			<div
+			 -->
+			<!-- 엑셀 업로드 구역 -->
+			<div class="uploadContent"
 				style="height: 340px; width: 500px; overflow: auto; padding: 20px;">
 				<a href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">양식 다운</a>
 				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
@@ -109,7 +132,6 @@
 
 			<!-- 결과 출력 -->
 			<!-- page end-->
-		</section>
 	</section>
 
 </body>

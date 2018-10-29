@@ -14,9 +14,9 @@
 
 body {
 
-    color: #797979;
+    color: #171717;
 
-    background: #eeeeee;
+    background: #fafafa;
 
     font-family: 'Lato', sans-serif;
 
@@ -509,13 +509,13 @@ table tr th { color: #688a7e;}
 
 #sidebar {
 
-    width: 180px;
+    width: 135px;
 
     height: 100%;
 
     position: fixed;
 
-    background: #394a59;
+    background: #fafafa;
 
 }
 
@@ -565,7 +565,7 @@ ul.sidebar-menu {
 
 ul.sidebar-menu li ul.sub li{
 
-    background: #394a59;
+    background: #fafafa;
 
     margin-bottom: 0;
 
@@ -607,7 +607,7 @@ ul.sidebar-menu li ul.sub li a {
 
     transition: all 0.3s ease;
 
-    color: #d0d8df;
+    color: ##2c3e50;
 
     font-size: 14px;
 
@@ -675,13 +675,13 @@ ul.sidebar-menu li a span{
 
 ul.sidebar-menu li a{
 
-    color: #d0d8df;
+    color: #2c3e50;
 
     text-decoration: none;
 
     display: block;
 
-    padding: 15px 0 15px 10px;
+    padding: 20px 0 20px 10px;
 
     font-size: 16px;
 
@@ -699,9 +699,9 @@ ul.sidebar-menu li a{
 
     transition: all 0.3s ease;
 
-    border-right: 1px solid #D7D7D7;
+    /*border-right: 1px solid #D7D7D7;
 
-    border-bottom: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7; */
 
 }
 
@@ -1021,7 +1021,7 @@ ul.sidebar-menu li.active a i {
 
 .dark-bg {
 
-    background: rgba(54,66,74,1);
+    background: #2c3e50!important;
 
     border-bottom: 1px solid #f1f2f7;
 
@@ -1053,7 +1053,7 @@ a.logo {
 	
 	font-weight: 300;
 	
-    color: #fed189;
+    color: #fff;
 
     float: left;
 
@@ -1063,6 +1063,21 @@ a.logo {
 
 }
 
+a.logo2 {
+
+    font-size: 22px;
+	
+	font-weight: 300;
+	
+    color: yellow;
+
+    float: left;
+
+    margin-top: 15px;
+
+    text-transform: uppercase;
+
+}
 
 
 a.logo:hover, a.logo:focus {

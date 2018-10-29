@@ -34,6 +34,13 @@
 		SET AUTH_CD = #{auth_cd}
 		WHERE EMN = #{emn}
 	</update>
+	
+	<select id= "selectAuth" resultType="kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri" parameterType="kr.co.ibk.itep.dto.AthJoinedEmpJoinedBri" >
+	SELECT AUTH_CD
+	FROM TB_IEP_EMP001M
+	WHERE EMN = #{emn}  	
+  	 <!--  <include refid="search"/> -->	
+	</select>
 		
 </mapper>
 

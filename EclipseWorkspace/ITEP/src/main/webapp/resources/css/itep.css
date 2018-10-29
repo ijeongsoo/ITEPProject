@@ -110,6 +110,7 @@ src:local(※),
     border-radius: 3px;
 }
 
+<<<<<<< HEAD
 
 .starR{
   background: url('../image/starGray.png') no-repeat right 0;
@@ -143,4 +144,12 @@ src:local(※),
   cursor: pointer;
   width: 16px; height: 16px;
   object-fit: cover;
+=======
+.section_div_1{
+	background-image:url(../image/books-2596809_640_4.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+	/*background-attachment: fixed;*/
+>>>>>>> 463535e7fd2aa8fc84e856baa6fd08b30099f545
 }

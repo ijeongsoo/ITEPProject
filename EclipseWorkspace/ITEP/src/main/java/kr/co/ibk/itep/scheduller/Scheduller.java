@@ -138,7 +138,7 @@ public class Scheduller {
 
 	}
 	
-	@Scheduled(cron="0 57 13 * * *")
+	@Scheduled(cron="0 0 1 * * *")
 	public void eduStatUpdate(){
 		service_main.updateEduEndStatCd();
 		service_main.updateEduStartStatCd();

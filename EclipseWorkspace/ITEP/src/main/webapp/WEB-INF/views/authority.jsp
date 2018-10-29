@@ -6,50 +6,44 @@
 <html>
 	<head>
 	
-	  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
-  <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
-  
-  <title>Creative - Bootstrap Admin Template</title>
-<script
-	src="<%=application.getContextPath()%>/resources/main_page_resource/js/jquery.js"></script>
-  <!-- Bootstrap CSS -->
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
-  <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>  
-  <!-- font icon -->
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- full calendar css-->
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-  <!-- easy pie chart-->
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-  <!-- owl carousel -->
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/fullcalendar.css">
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/widgets.css" rel="stylesheet">
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style-responsive.css" rel="stylesheet" />
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/xcharts.min.css" rel=" stylesheet">
-  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-	<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
-  <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
+<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<title>Education List</title>
+		<link href="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+		<script src="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+		<link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
+		<link href="<%=application.getContextPath()%>/resources/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
+	   
+	    <!-- Custom styles for this template -->
+	    <!-- css 추가 정재희  -->
+	    		<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
+	    <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet"> 
+	    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
+	    <script src="//code.jquery.com/jquery.min.js"></script>
+				<!-- 테이블 자동 검색을 위한 css end -->
+		<!-- css 추가 정재희  end -->
+		
+		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/fullcalendar.css">
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/widgets.css" rel="stylesheet">
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style.css" rel="stylesheet">
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/style-responsive.css" rel="stylesheet" />
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/xcharts.min.css" rel=" stylesheet">
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
+  		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>   	
+    	<!-- Bootstrap CSS -->
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap.min.css" rel="stylesheet">
+  		<!-- bootstrap theme -->
+  		<!--  <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/bootstrap-theme.css" rel="stylesheet"> -->
+  		<!--external css-->
+  		  <!-- font icon -->
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/elegant-icons-style.css" rel="stylesheet" />
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
+  		<!-- owl carousel -->
+  		<link rel="stylesheet" href="<%=application.getContextPath()%>/resources/admin_page_resource/css/owl.carousel.css" type="text/css">
+  		<link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">	
 
-	<!-- chart.js  -->
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.min.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
 	
 	<style>
 	
@@ -118,7 +112,7 @@
 		 
 		 //체크되어 있는 관리자 정보 파라미터 넘기기 
 		 function checkAuthArr(){
-			 			
+
 			 checkArrInfo();
 			 
 			 var checkboxValues = [];
@@ -135,12 +129,12 @@
 			 if(chk_use != 1){
 				 alert("권한을 변경할 대상자를 1명 선택하세요.");
 			 }else{
-				 
+				 	
 					// 모달창 인스턴트 생성
 					var myModal = new Example.Modal({
+
 					    id: "modal" // 모달창 아이디 지정
 					});
-					
 				 jQuery.ajaxSettings.traditional = true;
 				 myModal.show();
 				 window.opener.location.reload();
@@ -242,7 +236,7 @@
 			<div class="modal_content">
 			
 			<div class="img" align="center" style="margin_bottom:50px">
-			<img src= "<%=application.getContextPath()%>/resources/admin_page_resource/img/check.png" width="80px" hight="80px">
+			<img src= "<%=application.getContextPath()%>/resources/admin_page_resource/img/check.png" width="80px" height="80px">
 			</div>
     		
     		<form role="form">
@@ -269,9 +263,6 @@
     				<button class="js_close">닫기</button>
     			</div>
     		</form>
-    		
-
-    	
     		</div>
 		</div>
 		<!-- 모달창 end -->

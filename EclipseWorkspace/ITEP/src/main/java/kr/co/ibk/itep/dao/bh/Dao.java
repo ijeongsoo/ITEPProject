@@ -27,4 +27,10 @@ public interface Dao {
 	public List<Map<String, Integer>> selectYearEduCount();
 	
 	public List<Map<String, Integer>> selectYearCTEduCount();
+	
+	public int selectAllEduCount();
+	
+	public int selectYearAppEduCount();
+	
+	public int selectMonthAppEduCount();
 }

@@ -45,6 +45,8 @@ public class ServiceImpljh implements Service {
 		// TODO Auto-generated method stub
 		dao.changeAuthorityList(authinfo);
 	}
+	
+
 
 
 

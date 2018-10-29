@@ -211,11 +211,22 @@ public class SessionedControllerbh {
 			}			
 		}
 		
+		//대시보드 상단 정보표(전체 교육 등록 수, 전체 교육 신청 수, 당월 교육 신청 수)
+		int selectAllEduCount = service.selectAllEduCount();
+		
+		int selectYearAppEduCount = service.selectYearAppEduCount();
+		
+		int selectMonthAppEduCount = service.selectMonthAppEduCount();
 		
 		try {
+			model.addAttribute("selectAllEduCount", selectAllEduCount);
+			model.addAttribute("selectYearAppEduCount", selectYearAppEduCount);
+			model.addAttribute("selectMonthAppEduCount", selectMonthAppEduCount);
+			
 			model.addAttribute("BrCount", BrCount);	
 			model.addAttribute("YrCount", YrCount);
 			model.addAttribute("YrCTCount", YrCTCount);
+			
 			model.addAttribute("empJoinedDep_info", empJoinedDep);		
 		}
 		catch(Exception e){

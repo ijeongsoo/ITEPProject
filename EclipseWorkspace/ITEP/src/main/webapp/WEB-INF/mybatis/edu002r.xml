@@ -91,6 +91,31 @@
 		   AND COURSE_CD = #{course_cd}      
 	</update>
 	
+	<select id="selectAllEduCount" resultType="Long">
+		SELECT TO_NUMBER(COUNT(*))
+		  FROM TB_IEP_EDU001M
+		 WHERE TO_CHAR(SYSDATE, 'YYYY') = SUBSTR(EDU_ST_DT, 1,4)
+	</select>
+	
+	<select id="selectYearAppEduCount" resultType="Long">
+		SELECT TO_NUMBER(COUNT(*))
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.STEP_CD = '40'
+		   AND EDU002R.STAT_CD in ('02', '03', '04', '05')
+		   AND EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYY') = SUBSTR(EDU001M.EDU_ST_DT, 1, 4)
+	</select>
+
+	<select id="selectMonthAppEduCount" resultType="Long">
+		SELECT TO_NUMBER(COUNT(*))
+		  FROM TB_IEP_EDU002R EDU002R, TB_IEP_EDU001M EDU001M
+		 WHERE EDU002R.STEP_CD = '40'
+		   AND EDU002R.STAT_CD in ('02', '03', '04', '05')
+		   AND EDU002R.COURSE_CD = EDU001M.COURSE_CD
+		   AND TO_CHAR(SYSDATE, 'YYYYMM') = SUBSTR(EDU001M.EDU_ST_DT, 1, 6)
+	</select>
+
+	
 	<update id="updateEduEndStat">
 		UPDATE TB_IEP_EDU002R
 		   SET STAT_CD = '03'
