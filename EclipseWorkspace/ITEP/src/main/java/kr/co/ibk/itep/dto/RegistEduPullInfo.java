@@ -34,6 +34,22 @@ public class RegistEduPullInfo {
 	private String high_cls_nm; 
 	private String mid_cls_nm; 
 	private String low_cls_nm;
+	private int sur_point;
+	private String opinion;
+
+	public int getSur_point() {
+		return sur_point;
+	}
+	public void setSur_point(int sur_point) {
+		this.sur_point = sur_point;
+	}
+	public String getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
+	}
+	
 	public String getEmn() {
 		return emn;
 	}

@@ -34,6 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.Edu002rAttach;
+import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
 import kr.co.ibk.itep.dto.EduPullInfo;
@@ -123,7 +124,7 @@ public class SessionedControllerjs {
 	
 	
 	@RequestMapping("/file")
-	public void download(String svr_img_file_nm, String img_file_type, HttpServletResponse r,
+	public void download(String svr_img_file_nm, String img_file_type, String source, HttpServletResponse r,
 			@RequestHeader("User-Agent") String userAgent) throws IOException {
 		logger.info(svr_img_file_nm);
 		String fileName = svr_img_file_nm;
@@ -140,7 +141,17 @@ public class SessionedControllerjs {
 		r.addHeader(fileName, fileName);
 		File file = null;
 
-		file = new File(servletContext.getRealPath("/WEB-INF/upload/eduImg/" + fileName));
+		if(source == null){
+			file = new File(servletContext.getRealPath("/WEB-INF/upload/eduImg/" + fileName));
+
+		}else if(source.equals("reg")){
+			file = new File(servletContext.getRealPath("/WEB-INF/upload/reg/" + fileName));
+
+		}else if(source.equals("plan")){
+			file = new File(servletContext.getRealPath("/WEB-INF/upload/plan/" + fileName));
+
+		}
+		
 
 		long fileSize = file.length();
 		r.addHeader("Content-Length", String.valueOf(fileSize));
@@ -178,6 +189,76 @@ public class SessionedControllerjs {
 		return "eduDetail";
 	} 
 	
+	@RequestMapping("/infoDetail")
+	public String infoDetail( String course_cd, Model model) {
+		
+		logger.info(course_cd);
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		RegistEduPullInfo myEdu = new RegistEduPullInfo();
+		myEdu.setEmn(empJoinedDep.getEmn());
+		myEdu.setCourse_cd(course_cd);
+		
+		RegistEduPullInfo edu = service.getEdu(myEdu);
+		
+		model.addAttribute("edu", edu);
+
+		
+		return "infoDetail";
+	}
+	
+	@RequestMapping("/recentDetail")
+	public String recentDetail( String course_cd, Model model) {
+		
+		logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		RegistEduPullInfo myEdu = new RegistEduPullInfo();
+		myEdu.setEmn(empJoinedDep.getEmn());
+		myEdu.setCourse_cd(course_cd);
+		
+		RegistEduPullInfo edu = service.getFinishedEdu(myEdu);
+		
+		logger.info(edu.getEmn());
+		logger.info(edu.getCourse_nm());
+		logger.info(String.valueOf(edu.getSur_point()));
+		
+		
+		model.addAttribute("edu", edu);
+
+		
+		return "recentDetail";
+	}
+
+	@RequestMapping("/survayDetail")
+	public String survayDetail( String course_cd, Model model) {
+		
+		logger.info(course_cd);
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		RegistEduPullInfo myEdu = new RegistEduPullInfo();
+		myEdu.setEmn(empJoinedDep.getEmn());
+		myEdu.setCourse_cd(course_cd);
+		
+		RegistEduPullInfo edu = service.getEdu(myEdu);
+		
+		model.addAttribute("edu", edu);
+
+		
+		return "survayDetail";
+	} 
+	
+	
+	
 	@RequestMapping(value = "/regEdu", method = RequestMethod.POST)
 	public String regEdu( Edu002rAttach edu, Model model ) throws IllegalStateException, IOException {
 		edu.setOrigin_reg_file_nm(edu.getRegAttach().getOriginalFilename()); 
@@ -209,6 +290,28 @@ public class SessionedControllerjs {
 		return "redirect:/home";
 
 	}
+	
+	
+	@RequestMapping("/survay")
+	public String survay( Edu003r edu003r, Model model) {
+				
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		edu003r.setEmn(empJoinedDep.getEmn());
+		
+		try{
+			service.survay(edu003r);
+
+		}catch(Exception e){
+			model.addAttribute("result", 0);
+		}
+		
+		model.addAttribute("result", 1);
+		
+		return "redirect:/home";
+	} 
 
 	
 }

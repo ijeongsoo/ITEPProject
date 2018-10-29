@@ -110,3 +110,37 @@ src:local(※),
     border-radius: 3px;
 }
 
+
+.starR{
+  background: url('../image/starGray.png') no-repeat right 0;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+  width: 100px; height: 100px;
+  object-fit: cover;
+}
+.starR.on{
+	background: url('../image/starYellow.png') no-repeat right 0;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+  width: 100px; height: 100px;
+  object-fit: cover;
+}
+
+.starMini{
+  background: url('../image/starGray.png') no-repeat right 0;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+  width: 16px; height: 16px;
+  object-fit: cover;
+}
+.starMini.on{
+	background: url('../image/starYellow.png') no-repeat right 0;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+  width: 16px; height: 16px;
+  object-fit: cover;
+}
