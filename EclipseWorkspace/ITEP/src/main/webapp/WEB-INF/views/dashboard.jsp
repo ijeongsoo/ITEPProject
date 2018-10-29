@@ -191,6 +191,9 @@ jQuery(document).ready(function($) {
 	
 	    // Configuration options go here
 	    options: {
+	        legend: {
+	            display: false,
+	        },	   	    	
 	        scales: {
 	            xAxes: [{
 	                gridLines: {
