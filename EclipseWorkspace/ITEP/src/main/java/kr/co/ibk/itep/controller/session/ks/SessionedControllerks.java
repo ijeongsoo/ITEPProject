@@ -117,6 +117,18 @@ public class SessionedControllerks {
 		return "eduUploadExcel";
 	}
 	
+	@RequestMapping(value = "/uploadGrid", method = RequestMethod.POST)
+	public String uploadGrid(String edu001m) {
+		JSONArray jArr = new JSONArray(edu001m);
+		ArrayList<Edu001m> gridList = new ArrayList<Edu001m>();
+		for(int i=0; i<jArr.length(); i++) {
+			JSONObject obj = jArr.getJSONObject(i);
+			
+			//gridList.add()
+		}
+		return "redirect:eduEdit";
+	}
+	
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException, NotFoundException {
 		// 등록자 사번 가져오기

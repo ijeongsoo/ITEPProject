@@ -1,5 +1,7 @@
 package kr.co.ibk.itep.dto;
 
+import org.json.JSONObject;
+
 public class Edu001m {
 	private String course_cd;
 	private String org_cd;
@@ -22,6 +24,15 @@ public class Edu001m {
 	private String reg_dt;
 	private String chg_id;
 	private String chg_dt;
+	
+	public Edu001m() {}
+	
+	public Edu001m(JSONObject obj) {
+		this.course_cd = "";
+		this.org_cd = obj.getString("org_cd");
+		this.high_cls_cd = obj.getString("high_cls_cd");
+		this.mid_cls_cd = obj.getString("mid_cls_cd");
+	}
 	
 	public String getCourse_cd() {
 		return course_cd;

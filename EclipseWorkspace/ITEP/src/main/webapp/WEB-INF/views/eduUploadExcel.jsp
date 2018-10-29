@@ -113,6 +113,10 @@ margin: auto;
 			<div class="code-html contents">
 				<div id="grid"></div>
 			</div>
+			<div style="padding-left: 55px; padding-bottom: 30px">
+				<button id="uploadGrid" class="btn btn-primary" onclick="uploadGrid()" style="float: left;">등록</button>
+			</div>
+			<br/>
 			
 			<!-- 엑셀 업로드 구역 -->
 			<div 
@@ -128,9 +132,9 @@ margin: auto;
 				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
 					<div style="padding-left: 35px">
 						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
-							엑셀 추가
+							엑셀 첨부
 						</label>
-						<button id="submitBtn" type="submit" class="btn btn-primary">등록</button>
+						<button id="submitBtn" type="submit" class="btn btn-primary">엑셀 업로드</button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
 					</div>
 				</form>
@@ -324,7 +328,6 @@ margin: auto;
               name: 'edu_cost',
               onBeforeChange: function(ev){
                   console.log('Before change:' + ev);
-                  ev.stop();
               },
               onAfterChange: function(ev){
                   console.log('After change:' + ev);
@@ -382,6 +385,30 @@ margin: auto;
   }
 	function addRowClick() {	//행추가 
 		grid.appendRow();
+	}
+	function uploadGrid() {
+		console.log("dddd: ", grid.getRows());
+		for(var i=0; i<grid.getRowCount(); i++) {	// 빈값 제거 기능
+			if(grid.getRowAt(i).org_cd == ""){
+				grid.removeRow(grid.getRowAt(i));
+				i--;
+			}
+		}
+		console.log("dddd: ", grid.getRows());
+		
+		// 정합성 검사
+		var edu001m = JSON.stringify(grid.getRows());
+		// post 전송
+		$.ajax({
+			'url' : "uploadGrid",
+			'data' : {
+				'edu001m' : edu001m
+			},
+			'type' : "POST",
+			'success' : function(data) {
+				//location.href = "redirect:eduEdit";
+			}
+		});
 	}
 </script>
 </html>
