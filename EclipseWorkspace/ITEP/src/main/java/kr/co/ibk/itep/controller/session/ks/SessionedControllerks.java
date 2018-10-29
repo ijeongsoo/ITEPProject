@@ -23,6 +23,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.extractor.XSSFExcelExtractor;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Ecd002m;
+import kr.co.ibk.itep.dto.Ecd005m;
+import kr.co.ibk.itep.dto.Ecd006m;
+import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduEditList;
@@ -68,6 +74,46 @@ public class SessionedControllerks {
 
 	@RequestMapping("/eduUploadExcel")
 	public String eduUploadExcel(Model model) {
+		ArrayList<Edu001m> eduList = new ArrayList<Edu001m>();
+
+		List<Ecd002m> ecd002m = service.selectEcd002mList();
+		JSONArray jArr002 = new JSONArray();
+		for(int i=0; i<ecd002m.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("text", ecd002m.get(i).getOrg_nm());
+			obj.put("value", ecd002m.get(i).getOrg_cd());
+			jArr002.put(obj);
+		}
+		List<Ecd005m> ecd005m = service.selectEcd005mList();
+		JSONArray jArr005 = new JSONArray();
+		for(int i=0; i<ecd005m.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("text", ecd005m.get(i).getHigh_cls_nm());
+			obj.put("value", ecd005m.get(i).getHigh_cls_cd());
+			jArr005.put(obj);
+		}
+		List<Ecd006m> ecd006m = service.selectEcd006mList();
+		JSONArray jArr006 = new JSONArray();
+		for(int i=0; i<ecd006m.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("text", ecd006m.get(i).getMid_cls_nm());
+			obj.put("value", ecd006m.get(i).getMid_cls_cd());
+			jArr006.put(obj);
+		}
+		List<Ecd007m> ecd007m = service.selectEcd007mList();
+		JSONArray jArr007 = new JSONArray();
+		for(int i=0; i<ecd007m.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("text", ecd007m.get(i).getLow_cls_nm());
+			obj.put("value", ecd007m.get(i).getLow_cls_cd());
+			jArr007.put(obj);
+		}
+		
+		model.addAttribute("ecd002m", jArr002.toString());
+		model.addAttribute("ecd005m", jArr005.toString());
+		model.addAttribute("ecd006m", jArr006.toString());
+		model.addAttribute("ecd007m", jArr007.toString());
+		
 		return "eduUploadExcel";
 	}
 	

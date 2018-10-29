@@ -8,6 +8,10 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Ecd002m;
+import kr.co.ibk.itep.dto.Ecd005m;
+import kr.co.ibk.itep.dto.Ecd006m;
+import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
@@ -25,6 +29,14 @@ public interface Service {
 	Edu001m selectEduInfo(String course_cd);
 
 	void updateEduInfo(Edu001m edu);
+
+	List<Ecd002m> selectEcd002mList();
+
+	List<Ecd005m> selectEcd005mList();
+
+	List<Ecd006m> selectEcd006mList();
+
+	List<Ecd007m> selectEcd007mList();
 
 
 }
