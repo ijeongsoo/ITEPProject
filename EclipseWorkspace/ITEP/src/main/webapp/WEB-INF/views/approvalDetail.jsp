@@ -44,13 +44,9 @@
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
 	<!-- 테이블 자동 검색을 위한 css css파일 line 75 수정  -->
   <link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">  
-
-	<!-- chart.js  -->
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.min.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
-  <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
 	
+	<!-- 모달 -->
+    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
 
   <!-- =======================================================
     Theme Name: NiceAdmin
@@ -60,6 +56,17 @@
   ======================================================= -->
 
 <style>
+
+	#modal {
+	display:none;
+	background-color:#FFFFFF;
+	position:absolute;
+	width : 500px;
+	height : 600px;
+	top:300px;
+	left:200px;
+	z-Index:9999}
+
 	/*yellow/ROUGE BUTTON STYLES*/     
 	#adminPM{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
 	#adminPM:hover{background-color:#dd9003;}
@@ -67,70 +74,72 @@
 </style>
 </head>
 	<script type="text/javascript">
-		$( function () {
-	    	$('#approvalTable').DataTable();
-		});
-		
-		//교육 List 체크박스 전체 선택/해제
-		function chekc_All(){
-	        if( $("#allCheck").is(':checked') ){
-	            $("input[name=listCheckbox]").prop("checked", true);
-	          }else{
-	            $("input[name=listCheckbox]").prop("checked", false);
-	          }
-		}
-			
-		//버튼 클릭시 결재 Update 및 교육List 갱신
-		function fn_pmApproval(){
-			if (confirm("정말 결재 하시겠습니까??") == true){    //확인
-				document.form.submit();
-				checkboxArr();
-			}else{   //취소
-			}
-			location.href="JavaScript:window.location.reload()";
-		}
-		
-		//체크되어 있는 교육들 파라미터 넘기기
-		function checkboxArr(){
-			
-			//체크되어 있는 value들 가져올 배열 선언
-			var checkboxValues = [];
-		    var chk_obj = document.getElementsByName("listCheckbox");
-		    var chk_use = false;
-		    
-		    for (i=0; i < chk_obj.length; i++) {
-		        if (chk_obj[i].checked == true) { 
-		        	chk_use = true;
-		        	checkboxValues.push(chk_obj[i].value);
-		        }
-		    }
+	$( function () {
+    	$('#approvalTable').DataTable();
+    	
+	});
+	
+	$(document).ready( function () {
+    	$('#approvalTable').click(function(event){
 
-		    
-		    if(chk_use == false){
-		    	alert("선택하신 강의가 없습니다.");
-		    }else{
-		    	jQuery.ajaxSettings.traditional = true;
+			// 모달창 인스턴트 생성
+			var myModal = new Example.Modal({
 
-		    	 $.ajax({
-		    	        'url':"updateApproval.do",
-		    	        'type':'GET',
-		    	        'data': { 'pmlist' : checkboxValues},
-		    	        'success':function(data){
-		    	            alert("성공적으로 결재되었습니다.");
-		    	            window.opener.location.reload();
-		    	        },
-		    	        'error':function(jqXHR, textStatus, errorThrown){
-		    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+			    id: "modal" // 모달창 아이디 지정
+			});    		
 
-		    	        }
-		    	    });
-		    }
+      		myModal.show();	
 
-		}
-				
+    	});
+	} );
+	
+
+
+
 	</script>
 	
 	<body>
+	
+		<!-- 모달창 -->
+		<div id="modal">
+			<div class="modal-header" style="background-color: #237fbc">
+				   <h1 align="center" class="hanna" style="color:#fff">교육 신청 상세 정보 </h1>	
+			</div>
+			
+			<div class="modal_content">
+			
+			<div class="img" align="center" style="margin_bottom:50px">
+			<img src= "<%=application.getContextPath()%>/resources/image/cloud-computing.png" width="80px" height="80px">
+			</div>
+    		
+    		<form role="form">
+    			<div class = "hanna" align = "left" style="font-size:18px; padding-top:80px">
+    				<label for="level" class="control-label"> 별점 : </label>
+    				<label for="name" id ="labelid1" class="control-label">  </label><br>
+    				<label for="content" class="control-label"> 코멘트 : </label>
+    				<label for="name" id ="labelid2" class="control-label">  </label><br>
+    			</div>
+    			<div class="hanna" align = "center" style="font-size:20px; padding-top:20px; padding-top:80px; width:250px;float:left;">
+    				<label for="authority" class="control-label"> 신청서 : </label>
+    			    <input class="confirm_button" type="button" value="다운로드" onclick="selectValue();">  	
+    			</div>
+    			<div class="hanna" align = "center" style="font-size:20px; padding-top:20px; padding-top:80px; width:250px;float:right;">
+    				<label for="authority" class="control-label"> 계획서 : </label>
+    			    <input class="confirm_button" type="button" value="다운로드" onclick="selectValue();">  	
+    			</div>    			
+    			<br>
+    			<br>
+    			
+    			<div id="button" class="hanna" align="center" style="padding-top:150px">	
+    				<button class="js_close">확인</button> 		
+    				<button class="js_close">닫기</button>
+    			</div>
+    		</form>
+    		</div>
+		</div>
+
+		<!-- 모달창 end -->	
+	
 		<section class="wrapper">
       		<!--overview start-->
     		<div class="row">
@@ -139,13 +148,11 @@
       			</div>
       		</div>
       		<div class="headerConets" align="center">
-      		결재 단계 <br>
       		테스트테스트
      		</div>
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">
-		<input id="adminPM" type="button" value="결재" onclick="fn_pmApproval()">
 	</div>
 	<div class="container">
 		<div class="hanna">
@@ -169,7 +176,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
-					<tr>
+   					 <tr>
 						<td align="center">${adminApprovalList.emn}</td>
 						<td align="center">${adminApprovalList.emm}</td>
 						<td align="center">${adminApprovalList.krn_brm}</td>
