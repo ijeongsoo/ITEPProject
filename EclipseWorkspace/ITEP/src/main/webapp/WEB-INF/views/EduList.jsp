@@ -65,7 +65,7 @@
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
 	       <!-- <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>-->
-	        <a href="/myapp/home"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
+	        <a href="<%=application.getContextPath()%>/home"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
 	        </div>
 	      
 	    </nav>

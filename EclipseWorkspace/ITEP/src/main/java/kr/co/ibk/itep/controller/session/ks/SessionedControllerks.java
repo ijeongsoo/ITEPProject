@@ -232,8 +232,8 @@ public class SessionedControllerks {
 		return "redirect:eduEdit";
 	}
 	
-	@RequestMapping("/grid")
-	public String grid(){
-		return "grid";
+	@RequestMapping("/eduCode")
+	public String eduCode(){
+		return "eduCode";
 	}
 }

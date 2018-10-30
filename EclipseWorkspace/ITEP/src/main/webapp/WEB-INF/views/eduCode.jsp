@@ -13,7 +13,7 @@
 	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
 <link rel="shortcut icon" href="img/favicon.png">
 
-<title>교육수정</title>
+<title>교육코드관리</title>
 
 <!-- Bootstrap CSS -->
 <link
@@ -68,19 +68,18 @@
 </script>
 <!-- 넘어오는거 확인 -->
 <body>
-	<!-- 교육 수정 화면 구성 20181023 이기석 -->
+	<!-- 교육코드관리 화면 구성 20181030 이기석 -->
 		<section id="excel-main">
 		<section class="wrapper">
         <!--overview start-->
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header hanna">교육수정  <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
+            <h3 class="page-header hanna">교육코드관리  <br> <img width="120px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
         </div>
 		</section>
 			<!-- Table 출력 -->
 		<div class="container">
-			<div class="hanna">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -107,7 +106,6 @@
 					</c:forEach>
 				</tbody>					
 			</table>
-			</div>
 		</div>
 		
 		<!-- Modal -->
