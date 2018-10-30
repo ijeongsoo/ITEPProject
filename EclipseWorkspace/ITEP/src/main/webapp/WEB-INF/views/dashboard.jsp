@@ -121,7 +121,9 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">올해 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash2"></div>
+                        <div>
+                        	<canvas id="greenChart" width="50px" height="50px"></canvas>
+                        </div>
                     </li>
                     <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectYearAppEduCount}</span></li>
                 </ul>
@@ -169,7 +171,15 @@ jQuery(document).ready(function($) {
     </div>            
 	
 <script>
+/*
+	var image_greenChart = new image();
+	image_greenChart.src = "resources/image/greenChart.png";
 
+	var ctx_greenChart = document.getElementById('greenChart').getContext('2d');
+	
+	ctx_greenChart.drawImage(image_greenChart, 50, 50);
+	
+*/
 	var ctx_bar = document.getElementById('myChart_1').getContext('2d');
 	
 	var chart = new Chart(ctx_bar, {
