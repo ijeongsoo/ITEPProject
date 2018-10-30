@@ -19,7 +19,12 @@ public class EduApproval {
 	private String loc;
 	private String refund_yn;
 	private String step_nm;
+	private String stat_nm;
 	private String course_cd;
+    private String svr_reg_file_nm;
+    private String svr_plan_file_nm;
+    private String reg_file_type;
+    private String plan_file_type;	
 	
 	public String getEmn() {
 		return emn;
@@ -123,11 +128,41 @@ public class EduApproval {
 	public void setStep_nm(String step_nm) {
 		this.step_nm = step_nm;
 	}
+	public String getStat_nm() {
+		return stat_nm;
+	}
+	public void setStat_nm(String stat_nm) {
+		this.stat_nm = stat_nm;
+	}
 	public String getCourse_cd() {
 		return course_cd;
 	}
 	public void setCourse_cd(String course_cd) {
 		this.course_cd = course_cd;
+	}
+	public String getSvr_reg_file_nm() {
+		return svr_reg_file_nm;
+	}
+	public void setSvr_reg_file_nm(String svr_reg_file_nm) {
+		this.svr_reg_file_nm = svr_reg_file_nm;
+	}
+	public String getSvr_plan_file_nm() {
+		return svr_plan_file_nm;
+	}
+	public void setSvr_plan_file_nm(String svr_plan_file_nm) {
+		this.svr_plan_file_nm = svr_plan_file_nm;
+	}
+	public String getReg_file_type() {
+		return reg_file_type;
+	}
+	public void setReg_file_type(String reg_file_type) {
+		this.reg_file_type = reg_file_type;
+	}
+	public String getPlan_file_type() {
+		return plan_file_type;
+	}
+	public void setPlan_file_type(String plan_file_type) {
+		this.plan_file_type = plan_file_type;
 	}	
 	
 	

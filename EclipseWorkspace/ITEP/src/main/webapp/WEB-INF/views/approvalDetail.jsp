@@ -82,10 +82,12 @@
 			
 		//버튼 클릭시 결재 Update 및 교육List 갱신
 		function fn_pmApproval(){
-			checkboxArr();
-
+			if (confirm("정말 결재 하시겠습니까??") == true){    //확인
+				document.form.submit();
+				checkboxArr();
+			}else{   //취소
+			}
 			location.href="JavaScript:window.location.reload()";
-
 		}
 		
 		//체크되어 있는 교육들 파라미터 넘기기
@@ -150,40 +152,37 @@
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>
 				<tr>
-					<th><input type='checkbox' id="allCheck" value="ALL" onClick="chekc_All()"></th>
 					<th style="text-align: center;">직원번호</th>
 					<th style="text-align: center;">직원명</th>
 					<th style="text-align: center;">직원부서</th>										
 					<th style="text-align: center;">기관명</th>
 					<th style="text-align: center;">소분류</th>
 					<th style="text-align: center;">과정명</th>
-					<th style="text-align: center;">교육시간</th>
 					<th style="text-align: center;">교육시작일</th>
 					<th style="text-align: center;">교육종료일</th>
 					<th style="text-align: center;">교육비</th>
 					<th style="text-align: center;">교육장소</th>
 					<th style="text-align: center;">환급여부</th>
 					<th style="text-align: center;">결재 상황</th>
+					<th style="text-align: center;">수강 상태</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
 					<tr>
-						<td><input type='checkbox' name="listCheckbox" value="${adminApprovalList.emn};${adminApprovalList.course_cd}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
 						<td align="center">${adminApprovalList.emn}</td>
 						<td align="center">${adminApprovalList.emm}</td>
 						<td align="center">${adminApprovalList.krn_brm}</td>
 						<td align="center">${adminApprovalList.org_nm}</td>
 						<td align="center">${adminApprovalList.low_cls_nm}</td>
 						<td align="center">${adminApprovalList.course_nm}</td>
-						<td align="center">${adminApprovalList.edu_hour}</td>
 						<td align="center">${adminApprovalList.edu_st_dt}</td>
 						<td align="center">${adminApprovalList.edu_ed_dt}</td>
 						<td align="center">${adminApprovalList.edu_cost}</td>
 						<td align="center">${adminApprovalList.loc}</td>
 						<td align="center">${adminApprovalList.refund_yn}</td>
 						<td align="center">${adminApprovalList.step_nm}</td>
-													
+						<td align="center">${adminApprovalList.stat_nm}</td>													
 					</tr>
 				</c:forEach>
 			</tbody>					
