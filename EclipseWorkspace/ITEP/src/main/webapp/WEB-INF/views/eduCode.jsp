@@ -67,21 +67,53 @@
 		</section>
 		
 		<div style=" float: left; width: 50%; padding-right: 10px; padding-left: 20px">
-			<h3 class="hanna">교육기관코드 </h3>
+			<div style="float: left; width:84%">
+				<h3 class="hanna" style="font-size: 20px">교육기관코드 </h3>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">신규</button>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">저장</button>
+			</div>
 			<div id="orgGrid">
 			</div>
 			<br/>
-			<h3 class="hanna">대분류코드</h3>
+			<div style="float: left; width:84%">
+				<h3 class="hanna" style="font-size: 20px">대분류코드</h3>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">신규</button>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">저장</button>
+			</div>
 			<div id="highGrid">
 			</div>
 		</div>
 			
 		<div style=" float: left; width: 50%; padding-left: 10px; padding-right: 20px">
-			<h3 class="hanna">중분류코드</h3>
+			<div style="float: left; width:84%">
+				<h3 class="hanna" style="font-size: 20px">중분류코드</h3>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">신규</button>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">저장</button>
+			</div>
 			<div id="midGrid">
 			</div>
 			<br/>
-			<h3 class="hanna">소분류코드</h3>
+			<div style="float: left; width:84%">
+				<h3 class="hanna" style="font-size: 20px">소분류코드</h3>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">신규</button>
+			</div>
+			<div style="float: right; width:7% ;padding-top: 7px">
+				<button style="float: right;">저장</button>
+			</div>
 			<div id="lowGrid">
 			</div>
 		</div>
@@ -280,8 +312,12 @@
       ]
   });
   
-  for(var i=0; i<5; i++) {	// 입력칸 생성
+	//입력칸 생성
+  for(var i=0; i<5; i++) {	
 	  orgGrid.appendRow();
+	  highGrid.appendRow();
+	  midGrid.appendRow();
+	  lowGrid.appendRow();
   }
 	function addRowClick() {	//행추가 
 		orgGrid.appendRow();

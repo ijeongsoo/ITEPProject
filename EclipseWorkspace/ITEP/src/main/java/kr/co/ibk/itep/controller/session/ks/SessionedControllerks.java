@@ -243,7 +243,13 @@ public class SessionedControllerks {
 	}
 	
 	@RequestMapping("/eduCode")
-	public String eduCode(){
+	public String eduCode(Model model){
+		// 기존 코드값 정보 리스트 불러오기
+		List<Ecd002m> org = service.selectEcd002mList();
+		List<Ecd005m> high = service.selectEcd005mList();
+		List<Ecd006m> mid = service.selectEcd006mList();
+		List<Ecd007m> low = service.selectEcd007mList();
+		
 		return "eduCode";
 	}
 }
