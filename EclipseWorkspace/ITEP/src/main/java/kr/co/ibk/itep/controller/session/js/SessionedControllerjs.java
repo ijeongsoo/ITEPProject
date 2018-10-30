@@ -322,8 +322,30 @@ public class SessionedControllerjs {
 				RequestAttributes.SCOPE_SESSION);
 		
 		String emn = empJoinedDep.getEmn();
-		
 		long totalAmount = service.getTotalAmount(emn);
+
+		
+		List<RegistEduPullInfo> myRegistList = new ArrayList<>();
+		List<RegistEduPullInfo> myStudyList = new ArrayList<>();
+		List<RegistEduPullInfo> mySurveyList = new ArrayList<>();
+		List<RegistEduPullInfo> myRecentList = new ArrayList<>();
+		
+		myRegistList = service.getMyRegistList(emn);
+		myStudyList = service.getMyStudyList(emn);
+		mySurveyList = service.getMySurveyList(emn);
+		myRecentList = service.getMyRecentList(emn);
+		
+		model.addAttribute("myRegistList", myRegistList);
+		model.addAttribute("myStudyList", myStudyList);
+		model.addAttribute("mySurveyList", mySurveyList);
+		model.addAttribute("myRecentList", myRecentList);
+		
+		model.addAttribute("myRegistListCount", myRegistList.size());
+		model.addAttribute("myStudyListCount", myStudyList.size());
+		model.addAttribute("mySurveyListCount", mySurveyList.size());
+		model.addAttribute("myRecentListCount", myRecentList.size());
+		
+		logger.info("###########################################"+myStudyList.size());
 		
 		model.addAttribute("totalAmount", totalAmount);
 

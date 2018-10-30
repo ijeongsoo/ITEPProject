@@ -50,6 +50,15 @@ src:local(※),
 			  
 			 }
 			 
+			 .hidden-large { 
+			display: inline-block; 
+			width: 500px; 
+			white-space:nowrap;
+			 overflow: hidden;
+			  text-overflow: ellipsis; 
+			  
+			 }
+			 
 			 
 
 .gallery-title
@@ -149,4 +158,8 @@ src:local(※),
 	background-repeat:no-repeat;
 	background-position:center;
 	background-size:cover;
+}
+
+.current{
+	background-color: #FF4F60;
 }
