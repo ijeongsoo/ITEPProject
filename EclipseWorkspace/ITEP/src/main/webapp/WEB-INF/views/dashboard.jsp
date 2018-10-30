@@ -141,7 +141,7 @@ jQuery(document).ready(function($) {
             </div>
         </div>
         <div style="float:left; padding-rignt:20px;"> 
-            <div class="white-box analytics-info" style="width: 320px; height: 120px;  border-bottom: 1px double #A0A0A0;">
+            <div class="white-box analytics-info" style="width: 320px; height: 120px; border-bottom: 1px double #A0A0A0;">
                 <h4 class="hanna">이번달 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
@@ -156,27 +156,27 @@ jQuery(document).ready(function($) {
     </div>
     
     <!-- 대시보드 항목 2 -->
-    <div>
-        <div class="col-xs-12" style="padding-top:160px ;padding-bottom:50px;">
-            <div class="white-box" style="width:1000px; height:500px; margin:auto;">
+    
+        <div class="col-xs-12" style="padding-top:160px ;padding-bottom:50px; padding-left:170px;">
+            <div class="white-box" style="width:1000px; height:500px;">
                 <h3 class="hanna">2018년 월별 교육 수강 현황</h3>
                 <div id="ct-visits" style="width:950px; height:500px; padding-top:50px; padding-left:20px; padding-right:20px;">
                  	<canvas id="myChart_2" width="200px" height="800px"></canvas>
                 </div>
             </div>
         </div>
-    </div>
+    
     
     <!-- 대시보드 항목3 -->
     <div style="float:fixed; padding-bottom:50px;">   
     <div style="padding-left:170px;">
-	     <div class="white-box" style="padding-top:20px;width:40%;height:40%;float:left;">  
+	     <div class="white-box" style="padding-top:20px;width:470px;height:40%;float:left;">  
 	                     <h3 class="hanna">당월 부서별 교육 수강 현황</h3>
 	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
 	    </div>   
     </div>    
-    <div style="padding-right:170px;">
-	     <div class="white-box" style="padding-top:20px;width:40%;height:40%;float:right;">
+    <div style="padding-right:225px;">
+	     <div class="white-box" style="padding-top:20px;width:470px;height:40%;float:right;">
 	                     <h3 class="hanna">분야별 연간 교육 수강 현황</h3>  
 	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
 	    </div>   
