@@ -61,7 +61,9 @@
 	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
+	        <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
 	        </div>
+	      
 	    </nav>
 
 		<!-- <section class="section_div_1" style="padding-top:140px; padding-bottom:350px">
@@ -132,18 +134,12 @@
   				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
-				background-image: url(resources/image/books-2596809_1920_2.jpg);
-				padding-top: 130px;
-				padding-bottom: 130px;
+				background-image: url(resources/image/science-1182713_1920.jpg);
+				padding-top: 150px;
+				padding-bottom: 150px;
 				text-align: center;
 				color: #ffffff;"
 		>
-			<h1>
-				Education is the best provision for old age.
-			</h1>
-            <h4>
-            	Aristoteles <span>&#8213; ancient Greece</span>
-            </h4>
 		</section>
 
 		
@@ -192,13 +188,11 @@
 		</div>
 		</section>
 		
-		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="bottom" style="padding-top:500px; padding-bottom:300px; color:#ffffff; text-align: center">
-
-				<h1>Education is the best provision for old age.</h1>
-
-                <h4>Aristoteles <span>&#8213; ancient Greece</span></h4>
-		</section>
-		
+			<div class="copyright py-4 text-center text-white">
+		<div class="container">
+			<small>Copyright &copy; IBK기업은행 2018</small>
+		</div>
+		</div>
 		
 
 		<div id="detailInfoModal" class="modal fade bs-example-modal-lg" tabindex="-1"
