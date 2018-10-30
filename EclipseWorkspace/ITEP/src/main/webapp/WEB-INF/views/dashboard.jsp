@@ -120,9 +120,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">전체 교육 등록 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash"></div>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/greenChart.png" alt="">
+                        </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter hanna" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectAllEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter hanna" style="font-size:30px; font-weight:bold; color:#3c763d;">${selectAllEduCount}</span></li>
                 </ul>
             </div>
         </div>
@@ -131,11 +133,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">올해 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div>
-                        	<canvas id="greenChart" width="50px" height="50px"></canvas>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/blueChart.png" alt="">
                         </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectYearAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#31708f;">${selectYearAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
@@ -144,9 +146,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">이번달 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash3"></div>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/purpleChart.png" alt="">
+                        </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectMonthAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#707cd2;">${selectMonthAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
