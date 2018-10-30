@@ -80,6 +80,7 @@
 		</section>
 			<!-- Table 출력 -->
 		<div class="container">
+			<div class="hanna">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
 					<tr>
@@ -106,6 +107,7 @@
 					</c:forEach>
 				</tbody>					
 			</table>
+			</div>
 		</div>
 		
 		<!-- Modal -->

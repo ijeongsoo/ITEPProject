@@ -66,6 +66,7 @@
 	#adminPM:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 </style>
 </head>
+
 	<script type="text/javascript">
 		$( function () {
 	    	$('#approvalTable').DataTable();
@@ -82,10 +83,11 @@
 			
 		//버튼 클릭시 결재 Update 및 교육List 갱신
 		function fn_pmApproval(){
-			checkboxArr();
-
+			if (confirm("정말 결재 하시겠습니까??") == true){    //확인
+				checkboxArr();
+			}else{   //취소
+			}
 			location.href="JavaScript:window.location.reload()";
-
 		}
 		
 		//체크되어 있는 교육들 파라미터 넘기기
@@ -133,13 +135,10 @@
       		<!--overview start-->
     		<div class="row">
       			<div class="col-lg-12">
-        			<h3 class="page-header hanna"> 결재   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
+        			<h3 class="page-header hanna"> 결재진행   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
       			</div>
       		</div>
-      		<div class="headerConets" align="center">
-      		결재 단계 <br>
-      		이미지 -> 이미지 -> 이미지 
-     		</div>
+
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">

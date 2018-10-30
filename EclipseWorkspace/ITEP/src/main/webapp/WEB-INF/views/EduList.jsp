@@ -7,6 +7,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Education List</title>
+		<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+		
 		<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 		<link
 			href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
@@ -30,7 +34,6 @@
 		<link href="<%=application.getContextPath()%>/resources/css/itep.css"
 			rel="stylesheet" type="text/css">
 		<script src="<%=application.getContextPath()%>/resources/parallax.js-1.5.0/parallax.js"></script>
-	
 	
 
 
@@ -61,7 +64,10 @@
 	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
+	       <!-- <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>-->
+	        <a href="<%=application.getContextPath()%>/home"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
 	        </div>
+	      
 	    </nav>
 
 		<!-- <section class="section_div_1" style="padding-top:140px; padding-bottom:350px">
@@ -83,7 +89,7 @@
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 가능 교육</h2>
-				<hr class="star-dark mb-5">
+				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -132,27 +138,21 @@
   				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
-				background-image: url(resources/image/books-2596809_1920_2.jpg);
-				padding-top: 130px;
-				padding-bottom: 130px;
+				background-image: url(resources/image/science-1182713_1920.jpg);
+				padding-top: 150px;
+				padding-bottom: 150px;
 				text-align: center;
 				color: #ffffff;"
 		>
-			<h1>
-				Education is the best provision for old age.
-			</h1>
-            <h4>
-            	Aristoteles <span>&#8213; ancient Greece</span>
-            </h4>
 		</section>
 
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
-		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
+		<section style="background-color:#ffffff; padding-top:40px; padding-bottom:30px">
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 접수 예정 강의</h2>
-				<hr class="star-dark mb-5">
+				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="postedulistTable" class="display" style="width:100%">
 				<thead>
@@ -192,13 +192,11 @@
 		</div>
 		</section>
 		
-		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" data-positionY="bottom" style="padding-top:500px; padding-bottom:300px; color:#ffffff; text-align: center">
-
-				<h1>Education is the best provision for old age.</h1>
-
-                <h4>Aristoteles <span>&#8213; ancient Greece</span></h4>
-		</section>
-		
+			<div class="copyright py-4 text-center text-white">
+		<div class="container">
+			<small>Copyright &copy; IBK기업은행 2018</small>
+		</div>
+		</div>
 		
 
 		<div id="detailInfoModal" class="modal fade bs-example-modal-lg" tabindex="-1"

@@ -65,6 +65,10 @@ background:#fff;
 margin: auto;
 }
 
+	/*yellow/ROUGE BUTTON STYLES*/     
+	#uploadGrid{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#uploadGrid:hover{background-color:#dd9003;}
+	#uploadGrid:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 </style>
 </head>
 
@@ -104,37 +108,49 @@ margin: auto;
 		
 			<!-- page start-->
 			
-			<div style="padding-left: 55px; padding-bottom: 30px">
-				<button id="addRow" class="btn btn-primary" onclick="addRowClick()" style="float: left;">행추가</button>
-			</div>
-			<br/>
-			<span style="padding-left: 55px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+			<div class="hanna" style="padding-left: 55px; padding-bottom: 20px">
+				<button id="addRow" class="" onclick="addRowClick()" style="float: left;">+행추가</button>
+				<span class="hanna" style="padding-left: 30px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+			</div> 
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
 				<div id="grid"></div>
 			</div>
-			<div style="padding-left: 55px; padding-bottom: 30px">
-				<button id="uploadGrid" class="btn btn-primary" onclick="uploadGrid()" style="float: left;">등록</button>
+			<div class="hanna" style="padding-left: 55px; padding-bottom: 30px">
+				<button id="uploadGrid" class="" onclick="uploadGrid()" style="float: left;">등록</button>
 			</div>
 			<br/>
 			
 			<!-- 엑셀 업로드 구역 -->
-			<div 
-				style="height: 180px; overflow: auto; padding: 20px;">
+		<section class="wrapper">
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header hanna">교육일괄등록  <br> <img width="115px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
+          </div>
+        </div>
+		</section>
+			<div style="height: 180px; overflow: auto; padding: 20px;">
 				<div id="load" style="text-align: center;">
 					<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
-				</div>
-				<a style="padding-left: 35px" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
-				<label style="padding-left: 20px"> 
-					<span>파일경로: </span> 
-					<span id="filePath"> 파일 미선택</span>
-				</label> 
-				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
+			</div>
+
+			<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
+				<label style="padding-left: 35px"> 
+					<span class="hanna">파일경로: </span> 
+					<span class="hanna" id="filePath"> 파일 미선택</span>
+				</label><br>
+				
 					<div style="padding-left: 35px">
 						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
-							엑셀 첨부
+							<img width="15px" src="resources/admin_page_resource/img/download.png" alt=""> <a class="hanna" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
 						</label>
-						<button id="submitBtn" type="submit" class="btn btn-primary">엑셀 업로드</button>
+						
+						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
+							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt=""> <a class="hanna"> 엑셀 첨부 </a>
+						</label>
+						
+						<button id="submitBtn" type="submit" class="btn btn-primary"> <a class="hanna"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt="">  엑셀 업로드 </a> </button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
 					</div>
 				</form>
@@ -142,6 +158,7 @@ margin: auto;
 			</div>
 
 			<!-- 결과 출력 -->
+
 			<!-- page end-->
 	</section>
 
@@ -248,22 +265,6 @@ margin: auto;
               minWidth: 200
           },
           {
-              title: '교육시간',	// 화면 제목
-              name: 'edu_hour',		// 키 이름
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {	// 타입
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 60
-          },
-          {
 	            title: '신청시작일',
 	            name: 'reg_st_dt',
 	            editOptions: {
@@ -323,6 +324,22 @@ margin: auto;
 	              width: 'auto',
 	              minWidth: 80
 	      },
+	      {
+              title: '교육시간',	// 화면 제목
+              name: 'edu_hour',		// 키 이름
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {	// 타입
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 60
+          },
           {
               title: '교육비용',
               name: 'edu_cost',
@@ -398,6 +415,7 @@ margin: auto;
 		
 		// 정합성 검사
 		var edu001m = JSON.stringify(grid.getRows());
+		
 		// post 전송
 		$.ajax({
 			'url' : "uploadGrid",
@@ -406,7 +424,7 @@ margin: auto;
 			},
 			'type' : "POST",
 			'success' : function(data) {
-				//location.href = "redirect:eduEdit";
+				location.href = "eduEdit";
 			}
 		});
 	}
