@@ -175,8 +175,8 @@ public class DaoImpljs implements Dao {
 
 	@Override
 	public long selectTotalAmount(String emn) {
-		//long totalAmount = sst.selectOne("edu002r.selectTotalAmount", emn );
-		return 10000;
+		long totalAmount = sst.selectOne("edu002r.selectTotalAmount", emn );
+		return totalAmount;
 	}
 
 

@@ -246,6 +246,30 @@ public class ServiceImplks implements Service {
 	@Override
 	public void insertGridToDB(ArrayList<Edu001m> gridList) {
 		// TODO Auto-generated method stub
+		List<Ecd007m> ecd007m = dao.selectEcd007mList();
+		
+		// 서버 이미지 디폴트 값 생성, 날짜 값 포맷 수정, 키값 세팅
+		for(int i=0; i<gridList.size(); i++) {
+			// 이미지 디폴트
+    		for(int j=0; j<ecd007m.size(); j++) {
+    			if(gridList.get(i).getLow_cls_cd().equals(ecd007m.get(j).getLow_cls_cd())) {
+    				gridList.get(i).setOrigin_img_file_nm(ecd007m.get(j).getDefault_origin_img_nm());
+    				gridList.get(i).setSvr_img_file_nm(ecd007m.get(j).getDefault_svr_img_nm());
+    				gridList.get(i).setImg_file_type(ecd007m.get(j).getDefault_img_type());
+    				break;
+    			}
+    		}
+    		// 날짜 값 포맷 수정
+    		Edu001m edu = gridList.get(i);
+    		gridList.get(i).setReg_st_dt(edu.getReg_st_dt().replace("-", ""));
+    		gridList.get(i).setReg_ed_dt(edu.getReg_ed_dt().replace("-", ""));
+    		gridList.get(i).setEdu_st_dt(edu.getEdu_st_dt().replace("-", ""));
+    		gridList.get(i).setEdu_ed_dt(edu.getEdu_ed_dt().replace("-", ""));
+    		
+    		// pk 세팅
+    		gridList.get(i).setCourse_cd(dao.selectCourseSeq());
+		}
+		
 		dao.insertCourseList(gridList);
 	}
 }

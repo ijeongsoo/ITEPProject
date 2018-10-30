@@ -69,6 +69,15 @@
 	.two-part li span{font-size:50px;font-weight:100;font-family:Rubik,sans-serif}	
 	.text-purple{color:#707cd2}
     
+    .title{
+    padding-top:50px; 
+    padding-left:70px; 
+    padding-bottom:50px; 
+    width:100%; 
+    height:200px;
+    color:#fff; 
+    background-image:url("resources/admin_page_resource/img/workspace.png");
+    }
     </style>
 
 
@@ -98,8 +107,9 @@ jQuery(document).ready(function($) {
       </div>
     </div>
     <br>
-    <div style="padding-top:50px; padding-left:70px; padding-bottom:50px; width:100%;">
+    <div class = "title">
 		<h2 class="hanna" align="center" style="">안녕하세요 <br> ${empJoinedDep_info.krn_brm}  ${empJoinedDep_info.emm} 관리자님♥</h2>
+		
 	</div>
 	<div align="center"> <h4 class="hanna"> 대시보드에서 교육 신청 데이터를 한눈에!! </h4></div> <br><br>
 	
@@ -110,9 +120,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">전체 교육 등록 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash"></div>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/greenChart.png" alt="">
+                        </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter hanna" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectAllEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter hanna" style="font-size:30px; font-weight:bold; color:#3c763d;">${selectAllEduCount}</span></li>
                 </ul>
             </div>
         </div>
@@ -121,9 +133,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">올해 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash2"></div>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/blueChart.png" alt="">
+                        </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectYearAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#31708f;">${selectYearAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
@@ -132,9 +146,11 @@ jQuery(document).ready(function($) {
                 <h4 class="hanna">이번달 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
-                        <div id="sparklinedash3"></div>
+                        <div style="padding-bottom:10px; padding-top:5px; padding-left:10px">
+							<img width="100px" height="40px" src="resources/image/purpleChart.png" alt="">
+                        </div>
                     </li>
-                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#bb2d26;">${selectMonthAppEduCount}</span></li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter" style="font-size:30px; font-weight:bold; color:#707cd2;">${selectMonthAppEduCount}</span></li>
                 </ul>
             </div>
         </div>
@@ -169,7 +185,15 @@ jQuery(document).ready(function($) {
     </div>            
 	
 <script>
+/*
+	var image_greenChart = new image();
+	image_greenChart.src = "resources/image/greenChart.png";
 
+	var ctx_greenChart = document.getElementById('greenChart').getContext('2d');
+	
+	ctx_greenChart.drawImage(image_greenChart, 50, 50);
+	
+*/
 	var ctx_bar = document.getElementById('myChart_1').getContext('2d');
 	
 	var chart = new Chart(ctx_bar, {
