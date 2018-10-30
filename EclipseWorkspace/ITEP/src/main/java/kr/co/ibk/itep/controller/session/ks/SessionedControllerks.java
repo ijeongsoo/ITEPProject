@@ -75,7 +75,8 @@ public class SessionedControllerks {
 	@RequestMapping("/eduUploadExcel")
 	public String eduUploadExcel(Model model) {
 		ArrayList<Edu001m> eduList = new ArrayList<Edu001m>();
-
+		
+		// 교육 관련 코드 json으로 만들어서 내려주기
 		List<Ecd002m> ecd002m = service.selectEcd002mList();
 		JSONArray jArr002 = new JSONArray();
 		for(int i=0; i<ecd002m.size(); i++) {
@@ -120,11 +121,18 @@ public class SessionedControllerks {
 	// 그리드 업로드
 	@RequestMapping(value = "/uploadGrid", method = RequestMethod.POST)
 	public String uploadGrid(String edu001m) {
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
 		JSONArray jArr = new JSONArray(edu001m);
 		ArrayList<Edu001m> gridList = new ArrayList<Edu001m>();
 		for(int i=0; i<jArr.length(); i++) {
 			JSONObject obj = jArr.getJSONObject(i);
-			gridList.add(new Edu001m(obj));
+			Edu001m edu = new Edu001m(obj);
+			edu.setReg_id(ssoid);
+			gridList.add(edu);
 		}
 		service.insertGridToDB(gridList);
 		return "redirect:eduEdit";
