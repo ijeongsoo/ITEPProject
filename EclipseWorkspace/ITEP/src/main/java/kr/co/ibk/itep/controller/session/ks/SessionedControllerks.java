@@ -210,10 +210,20 @@ public class SessionedControllerks {
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
 		String ssoid = empJoinedDep.getEmn();
 		
-		// 해당 교육 정보 읽어와서 정보 뿌려주기
+		// 해당 교육 정보 읽어오기
 		Edu001m edu = service.selectEduInfo(course_cd);
+		// 코드값 정보 리스트 불러오기
+		List<Ecd002m> org = service.selectEcd002mList();
+		List<Ecd005m> high = service.selectEcd005mList();
+		List<Ecd006m> mid = service.selectEcd006mList();
+		List<Ecd007m> low = service.selectEcd007mList();
+		
 		model.addAttribute("edu", edu);
 		model.addAttribute("ssoid", ssoid);
+		model.addAttribute("org", org);
+		model.addAttribute("high", high);
+		model.addAttribute("mid", mid);
+		model.addAttribute("low", low);
 		
 		return "eduEditDetail";
 	}
