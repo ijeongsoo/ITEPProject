@@ -149,7 +149,8 @@ margin: auto;
 						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
 							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt=""> <a class="hanna"> 엑셀 첨부 </a>
 						</label>
-						<button id="submitBtn" type="submit" class="btn btn-primary">엑셀 업로드</button>
+						
+						<button id="submitBtn" type="submit" class="btn btn-primary"> <a class="hanna"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt="">  엑셀 업로드 </a> </button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
 					</div>
 				</form>

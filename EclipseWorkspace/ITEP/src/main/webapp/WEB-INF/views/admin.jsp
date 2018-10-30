@@ -79,6 +79,7 @@
 	function changeIframeUrl(url) {
 		document.getElementById("main-container").src = url;
 	}
+
 	
 	function changeIframeUrlAdmin(url) {
 			if("${login_info.auth_cd}" == 1){
@@ -132,9 +133,9 @@
 					</a>
 						<ul class="sub">
 
-							<li><a class="hanna" onclick="changeIframeUrlAdmin('eduUploadExcel')" style="cursor:pointer">교육등록</a></li>
-							<li><a class="hanna" onclick="changeIframeUrlAdmin('eduEdit')" style="cursor:pointer">교육수정</a></li>
-							<li><a class="hanna" onclick="changeIframeUrlAdmin('eduCode')" style="cursor:pointer">교육코드관리</a></li>
+							<li><a class="hanna" onclick="changeIframeUrl('eduUploadExcel')" style="cursor:pointer">교육등록</a></li>
+							<li><a class="hanna" onclick="changeIframeUrl('eduEdit')" style="cursor:pointer">교육수정</a></li>
+							<li><a class="hanna" onclick="changeIframeUrl('eduCode')" style="cursor:pointer">교육코드관리</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
 							class="icon_toolbox_alt"></i> <span class="hanna">결재함</span> <span

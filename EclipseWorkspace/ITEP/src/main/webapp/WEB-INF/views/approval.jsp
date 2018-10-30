@@ -138,10 +138,7 @@
         			<h3 class="page-header hanna"> 결재진행   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
       			</div>
       		</div>
-      		<div class="headerConets" align="center">
-      		<img src="" width="90px" alt="">
-      		</div>
-      		
+
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">
