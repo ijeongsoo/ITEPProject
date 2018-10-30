@@ -69,6 +69,15 @@
 	.two-part li span{font-size:50px;font-weight:100;font-family:Rubik,sans-serif}	
 	.text-purple{color:#707cd2}
     
+    .title{
+    padding-top:50px; 
+    padding-left:70px; 
+    padding-bottom:50px; 
+    width:100%; 
+    height:200px;
+    color:#fff; 
+    background-image:url("resources/admin_page_resource/img/workspace.png");
+    }
     </style>
 
 
@@ -98,8 +107,9 @@ jQuery(document).ready(function($) {
       </div>
     </div>
     <br>
-    <div style="padding-top:50px; padding-left:70px; padding-bottom:50px; width:100%;">
+    <div class = "title">
 		<h2 class="hanna" align="center" style="">안녕하세요 <br> ${empJoinedDep_info.krn_brm}  ${empJoinedDep_info.emm} 관리자님♥</h2>
+		
 	</div>
 	<div align="center"> <h4 class="hanna"> 대시보드에서 교육 신청 데이터를 한눈에!! </h4></div> <br><br>
 	

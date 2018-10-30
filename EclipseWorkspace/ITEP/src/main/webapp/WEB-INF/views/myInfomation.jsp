@@ -121,7 +121,7 @@
 				}
 				
 				setTimeout(function(){
-				    odometer.innerHTML = 10000;
+				    odometer.innerHTML = ${totalAmount};
 				}, 0);
 				
 			});
@@ -193,190 +193,24 @@
 			<div style="text-align: center">
 				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">내가 신청한 모든 교육</h2>
-				<h3 class="hanna text-center">신청할 수 있는 다양한 교육 정보를 확인하세요!</h3>
-				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
+				<h3 class="hanna text-center">내가 신청한 교육의 정보와 관련 내용을 확인하세요!</h3>
+				<div style="display: inline-block; width: 70%">
+					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
+						신청한 총 갯수
+						<h2 class ="hanna" style="padding: 0px">8</h2>
+					</div>
+					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
+						승인된 총 갯수
+						<h2 class ="hanna" style="padding: 0px">8</h2>
+					</div>
+					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
+						반려된 총 갯수
+						<h2 class ="hanna" style="padding: 0px">8</h2>
+					</div>
+				</div>
+				
 				<hr class="star-dark mb-5">
-			</div>
-			
-
-			<h3 class="hanna text-uppercase text-secondary mb-0">인기 교육 Top 8</h3>
-
-			<div class="row flyIn"  id="services2">
-				<div class="col-lg-12">
-					<div class="testimonialslide  ">
-						<ul class="slides" id="top8List1">
-							<li style="text-align: center;"><c:forEach var="d"
-									items="${top8List1}" varStatus="status">
-									<a onclick="eduDetail('${d.course_cd}');" data-toggle="modal"
-										data-target="#eduModal">
-
-										<div class="top8List1ContentCount animated-fast service-box"
-											style="display: inline-table; width: 20%; padding: 30px">
-
-											<p style="font-size: 20pt" class="hanna text-center mb-0">${d.rownum }위</p>
-											<div style="text-align: center;">
-												<img
-													src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}"
-													class="photo3" alt="img">
-											</div>
-											<div style="text-align: center;">
-												<h4 class="hanna  text-secondary hidden text-center"
-													style="padding-bottom: 0px">${d.course_nm}</h4>
-											</div>
-											<div style="text-align: center;">
-												<p class="hanna  text-secondary hidden text-center"
-													style="padding: 0px">${d.org_nm}</p>
-											</div>
-											<div style="text-align: center;">
-												<p class="hanna  text-secondary hidden text-center"
-													style="padding-top: 0px">${d.edu_st_dt}~${d.edu_ed_dt }</p>
-											</div>
-										</div>
-									</a>
-								</c:forEach></li>
-							<li id="top8List2" style="text-align: center;"><c:forEach
-									var="d" items="${top8List2}" varStatus="status">
-									<a onclick="eduDetail('${d.course_cd}');" data-toggle="modal"
-										data-target="#eduModal">
-
-										<div class="top8List2ContentCount"
-											style="display: inline-table; width: 23%; padding: 20px">
-
-											<p style="font-size: 20pt" class="hanna text-center mb-0">${d.rownum }위</p>
-											<div style="text-align: center;">
-												<img
-													src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}"
-													class="photo3" alt="img">
-											</div>
-											<div style="text-align: center;">
-												<h4 class="hanna  text-secondary hidden text-center"
-													style="padding-bottom: 0px">${d.course_nm}</h4>
-											</div>
-											<div style="text-align: center;">
-												<p class="hanna  text-secondary hidden text-center"
-													style="padding: 0px">${d.org_nm}</p>
-											</div>
-											<div style="text-align: center;">
-												<p class="hanna  text-secondary hidden text-center"
-													style="padding-top: 0px">${d.edu_st_dt}~${d.edu_ed_dt }</p>
-											</div>
-										</div>
-									</a>
-								</c:forEach></li>
-
-
-						</ul>
-
-						<div id='top8Exist' style="text-align: center; display: none">
-							<div
-								style="width: 1100px; height: 150px; margin-left: 20px; margin-right: 20px; margin-bottom: 20px">
-								<h1 class='hanna'>현재 신청가능한 교육이 없습니다.</h1>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-			<h3 class="hanna text-uppercase text-secondary mb-0">신청 마감 임박!!</h3>
-
-
-			<div class="row flyIn" id="services2">
-				<div class="col-xl-12">
-					<div class="">
-						<div id="owl-works" class="">
-							<c:forEach var="d" items="${ddayList }" varStatus="status">
-								<a onclick="eduDetail('${d.course_cd}');" data-toggle="modal"
-									data-target="#eduModal">
-
-									<div class=" animated-fast ddayCount service-box" >
-
-										<h4 class="hanna text-center mb-0">D-${d.dday }</h4>
-										<div style="text-align: center;">
-											<img
-												src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}"
-												class="photo3" alt="img">
-										</div>
-										<div style="text-align: center;">
-											<h4 class="hanna  text-secondary hidden text-center"
-												style="padding-bottom: 0px">${d.course_nm}</h4>
-										</div>
-										<div style="text-align: center;">
-											<p class="hanna  text-secondary hidden text-center"
-												style="padding: 0px">${d.org_nm}</p>
-										</div>
-										<div style="text-align: center;">
-											<p class="hanna  text-secondary hidden text-center"
-												style="padding-top: 0px">${d.edu_st_dt}~${d.edu_ed_dt }</p>
-										</div>
-									</div>
-								</a>
-
-							</c:forEach>
-
-						</div>
-						<div id='ddayExist' style="text-align: center; display: none">
-							<div
-								style="width: 1100px; height: 150px; margin-left: 20px; margin-right: 20px; margin-bottom: 20px">
-								<h1 class='hanna'>1주일 이내로 마감되는 교육이 없습니다.</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<h3 class="hanna text-uppercase text-secondary mb-0">카테고리별 교육</h3>
-			<div class="">
-
-
-				<div style="text-align: center; margin-bottom: 0px">
-					<div>
-						<button class="btn hanna filter-button" data-filter="all">모든교육</button>
-						<button class="btn hanna filter-button" data-filter="3">신입</button>
-						<button class="btn hanna filter-button" data-filter="2">내부</button>
-						<button class="btn hanna filter-button" data-filter="1">외부</button>
-					</div>
-				</div>
-				<br />
-
-
-				<div class="row flyIn" id="services"
-					style="padding-bottom: 30px; margin-bottom: 0px">
-					<c:forEach var="d" items="${categoryList}" varStatus="status">
-						<a onclick="eduDetail('${d.course_cd}');" data-toggle="modal"
-							data-target="#eduModal">
-							<div class="span3 animated-fast  filter ${d.high_cls_cd}"
-								style="width: 240px; height: 320px; margin-left: 20px; margin-right: 20px; margin-bottom: 40px">
-								<div class="service-box" style="width: 240px; height: 320px;">
-									<img class="photo3" style="width: 150px; height: 150px"
-										src="<%=application.getContextPath()%>/file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}"
-										alt="" />
-									<h2 class="hanna hidden">${d.course_nm}</h2>
-									<p class="hanna hidden" style="padding-top: 0px">
-										${d.org_nm} <br> ${d.edu_st_dt}~ ${d.edu_ed_dt }
-									</p>
-								</div>
-							</div>
-						</a>
-					</c:forEach>
-					
-					<div id='categoryExist' style="text-align: center; display: none">
-						<div
-							style="width: 1100px; height: 150px; margin-left: 20px; margin-right: 20px; padding-bottom: 20px">
-							<h1 class='hanna'>해당 카테고리 신청가능한 교육이 없습니다.</h1>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			
-			<hr>
-			
-			<div style="text-align: center; padding-bottom: 70px;margin-top: 70px">
-				<h3 class="hanna text-center">더욱 많은 교육정보를 알고싶으세요?</h3>
-				<a href="EduList" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "교육정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
-			</div>
-			
+				
 		</div>
 	</section>
 

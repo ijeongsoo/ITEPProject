@@ -514,6 +514,18 @@
  	
  	</update>
  	
+ 	<select id="selectTotalAmount"
+		resultType="long" parameterType="string">
+		SELECT sum(edu_cost)
+		FROM TB_IEP_EDU002R a
+    		, TB_IEP_EDU001M b
+		where a.course_cd = b.course_cd 
+		and a.emn = #{emn}
+		and a.step_cd = '40'
+		and a.stat_cd = '04'
+		order by a.reg_dt desc
+		
+	</select>
 
 
 </mapper>
