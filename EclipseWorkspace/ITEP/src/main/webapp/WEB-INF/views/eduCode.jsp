@@ -46,30 +46,17 @@
       <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
       <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
-
+<!-- tui 그리드 css -->
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/css/tui-example-style.css" />
+<link rel="stylesheet" type="text/css" href="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/dist/tui-grid.css" />
 
 </head>
 
-<script>
-	$(document).ready(function() {
-		$('#edulistTable').DataTable();
-	});
-	
-	function eduEditDetail(course_cd, course_nm) {
-		$.get(
-			    "eduEditDetail?course_cd="+course_cd,
-			    function(data) {
-			        $("#modalBody").html(data);
-			    }
-			);
-		$("#modalHeader").html(course_nm);
-		
-	}
-</script>
+
 <!-- 넘어오는거 확인 -->
 <body>
 	<!-- 교육코드관리 화면 구성 20181030 이기석 -->
-		<section id="excel-main">
+	<section id="edu-code">
 		<section class="wrapper">
         <!--overview start-->
         <div class="row">
@@ -78,52 +65,252 @@
           </div>
         </div>
 		</section>
-			<!-- Table 출력 -->
-		<div class="container">
-			<table id="edulistTable" class="display" style="width:100%">
-				<thead>
-					<tr>
-						<th style="text-align: center;">번호</th>
-						<th style="text-align: center;">교육구분</th>
-						<th style="text-align: center;">분류</th>
-						<th style="text-align: center;">교육명</th>
-						<th style="text-align: center;">교육시작일</th>
-						<th style="text-align: center;">교육종료일</th>
-						<th style="text-align: center;">교육기관</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="edu" items="${edulist}" varStatus="status">
-						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal">
-							<td style="text-align: center;">${edu.rownum}</td>
-							<td style="text-align: center;">${edu.high_cls_nm}</td>
-							<td style="text-align: center;">${edu.mid_cls_nm}</td>
-							<td >${edu.course_nm}</td>
-							<td style="text-align: center;">${edu.edu_st_dt}</td>
-							<td style="text-align: center;">${edu.edu_ed_dt}</td>
-							<td style="text-align: center;">${edu.org_nm}</td>
-						</tr>
-					</c:forEach>
-				</tbody>					
-			</table>
+		
+		<div style=" float: left; width: 50%; padding-right: 10px; padding-left: 20px">
+			<h3 class="hanna">교육기관코드 </h3>
+			<div id="orgGrid">
+			</div>
+			<br/>
+			<h3 class="hanna">대분류코드</h3>
+			<div id="highGrid">
+			</div>
+		</div>
+			
+		<div style=" float: left; width: 50%; padding-left: 10px; padding-right: 20px">
+			<h3 class="hanna">중분류코드</h3>
+			<div id="midGrid">
+			</div>
+			<br/>
+			<h3 class="hanna">소분류코드</h3>
+			<div id="lowGrid">
+			</div>
 		</div>
 		
-		<!-- Modal -->
-		<div class="modal fade" id="editEduModal" role="dialog">
-			<div class="modal-dialog" style="margin-top: 60px;">
+	</section>
 		
-			<!-- Modal content-->
-			<div class="modal-content">
-				
-				<div id="modalHeader" class="modal-header" >
-				</div>
-				<div id="modalBody" class="modal-body"> </div>
-				
-	      	</div>
-	      	</div>
-		</div>
 		
-		</section>
 
 </body>
+
+<!-- tui 그리드 스크립트  -->
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/jquery.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/underscore.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/backbone.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/tui-code-snippet.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/src/js/tui-date-picker.js"></script>
+<script type="text/javascript" src="<%=application.getContextPath()%>/resources/tui.grid-3.2.0/dist/tui-grid.js"></script>
+
+<!-- tui 그리드 스크립트 -->
+<script type="text/javascript" class="code-js">
+
+  var orgGrid = new tui.Grid({
+      el: $('#orgGrid'),
+      scrollX: true,
+      scrollY: true,
+      columns: [
+    	  {
+              title: '기관코드',
+              name: 'org_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 150
+          },
+          {
+              title: '기관명',
+              name: 'org_nm',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 450
+          }
+      ]
+  });
+  
+  var highGrid = new tui.Grid({
+      el: $('#highGrid'),
+      scrollX: true,
+      scrollY: true,
+      columns: [
+    	  {
+              title: '대분류코드',
+              name: 'high_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 150
+          },
+          {
+              title: '대분류명',
+              name: 'org_nm',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 450
+          }
+      ]
+  });
+  
+  var midGrid = new tui.Grid({
+      el: $('#midGrid'),
+      scrollX: true,
+      scrollY: true,
+      columns: [
+    	  {
+              title: '중분류코드',
+              name: 'mid_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 150
+          },
+          {
+              title: '중분류명',
+              name: 'mid_cls_nm',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 450
+          }
+      ]
+  });
+  
+  var lowGrid = new tui.Grid({
+      el: $('#lowGrid'),
+      scrollX: true,
+      scrollY: true,
+      columns: [
+    	  {
+              title: '소분류코드',
+              name: 'low_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 150
+          },
+          {
+              title: '소분류명',
+              name: 'low_cls_nm',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 300
+          },
+          {
+              title: '상위중분류',
+              name: 'mid_cls_cd',
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {
+                  type: 'select',
+                  listItems: [],
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 150
+          }
+      ]
+  });
+  
+  for(var i=0; i<5; i++) {	// 입력칸 생성
+	  orgGrid.appendRow();
+  }
+	function addRowClick() {	//행추가 
+		orgGrid.appendRow();
+	}
+	
+	function saveOrgGrid() {
+		console.log("dddd: ", orgGrid.getRows());
+		for(var i=0; i<orgGrid.getRowCount(); i++) {	// 빈값 제거 기능
+			if(orgGrid.getRowAt(i).org_cd == ""){
+				orgGrid.removeRow(orgGrid.getRowAt(i));
+				i--;
+			}
+		}
+		console.log("dddd: ", orgGrid.getRows());
+		
+		// 정합성 검사
+		var ecd002m = JSON.stringify(orgGrid.getRows());
+		
+		// post 전송
+		$.ajax({
+			'url' : "saveOrgCode",
+			'data' : {
+				'ecd002m' : ecd002m
+			},
+			'type' : "POST",
+			'success' : function(data) {
+				location.href = "eduCode";
+			}
+		});
+	}
+</script>
 </html>
