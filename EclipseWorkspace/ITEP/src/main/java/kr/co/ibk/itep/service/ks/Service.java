@@ -38,6 +38,8 @@ public interface Service {
 
 	List<Ecd007m> selectEcd007mList();
 
+	void insertGridToDB(ArrayList<Edu001m> gridList);
+
 
 }
 

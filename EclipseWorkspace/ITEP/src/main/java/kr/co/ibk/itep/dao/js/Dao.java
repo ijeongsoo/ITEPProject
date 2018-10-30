@@ -61,6 +61,8 @@ public interface Dao {
 
 	public RegistEduPullInfo selectMyFinishedEdu(RegistEduPullInfo myEdu);
 
+	public long selectTotalAmount(String emn);
+
 	
 
 }

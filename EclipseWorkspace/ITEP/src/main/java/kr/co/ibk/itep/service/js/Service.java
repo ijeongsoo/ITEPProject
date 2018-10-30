@@ -51,6 +51,8 @@ public interface Service {
 
 	public RegistEduPullInfo getFinishedEdu(RegistEduPullInfo myEdu);
 
+	public long getTotalAmount(String emn);
+
 
 }
 
