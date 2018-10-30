@@ -50,6 +50,15 @@ src:local(※),
 			  
 			 }
 			 
+			 .hidden-large { 
+			display: inline-block; 
+			width: 500px; 
+			white-space:nowrap;
+			 overflow: hidden;
+			  text-overflow: ellipsis; 
+			  
+			 }
+			 
 			 
 
 .gallery-title
@@ -143,4 +152,15 @@ src:local(※),
   cursor: pointer;
   width: 16px; height: 16px;
   object-fit: cover;
+}
+.section_div_1{
+	background-image:url(../image/books-2596809_640_4.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+}
+
+.current{
+	background-color: #FF4F60;
+
 }
