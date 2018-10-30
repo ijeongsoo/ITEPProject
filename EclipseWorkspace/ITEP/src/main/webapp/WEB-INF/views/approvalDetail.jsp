@@ -78,9 +78,18 @@
     	$('#approvalTable').DataTable();
     	
 	});
-	
+	/*
 	$(document).ready( function () {
-    	$('#approvalTable').click(function(event){
+    	$('#approvalTable').click(function(){
+
+    		var table = $(this);
+    		var td = table.children().children().children();
+    		
+    	    var point = td.eq(0).text();
+    	    var opinion = td.eq(1).text();
+    	    
+			$("#labelid1").html(point);			
+			$("#labelid2").html(opinion);		
 
 			// 모달창 인스턴트 생성
 			var myModal = new Example.Modal({
@@ -89,10 +98,19 @@
 			});    		
 
       		myModal.show();	
-
+			
     	});
 	} );
-	
+	*/
+	function fn_TbClickCall(e){
+		// 모달창 인스턴트 생성
+		var myModal = new Example.Modal({
+
+		    id: "modal" // 모달창 아이디 지정
+		});    		
+
+  		myModal.show();	
+	}
 
 
 
@@ -175,21 +193,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
-   					 <tr>
-						<td align="center">${adminApprovalList.emn}</td>
-						<td align="center">${adminApprovalList.emm}</td>
-						<td align="center">${adminApprovalList.krn_brm}</td>
-						<td align="center">${adminApprovalList.org_nm}</td>
-						<td align="center">${adminApprovalList.low_cls_nm}</td>
-						<td align="center">${adminApprovalList.course_nm}</td>
-						<td align="center">${adminApprovalList.edu_st_dt}</td>
-						<td align="center">${adminApprovalList.edu_ed_dt}</td>
-						<td align="center">${adminApprovalList.edu_cost}</td>
-						<td align="center">${adminApprovalList.loc}</td>
-						<td align="center">${adminApprovalList.refund_yn}</td>
-						<td align="center">${adminApprovalList.step_nm}</td>
-						<td align="center">${adminApprovalList.stat_nm}</td>													
+				<c:forEach var="adminApprovalDetailList" items="${adminDetailApproval_List}" varStatus="status">
+   					 <tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;">
+						<td align="center">${adminApprovalDetailList.emn}</td>
+						<td align="center">${adminApprovalDetailList.emm}</td>
+						<td align="center">${adminApprovalDetailList.krn_brm}</td>
+						<td align="center">${adminApprovalDetailList.org_nm}</td>
+						<td align="center">${adminApprovalDetailList.low_cls_nm}</td>
+						<td align="center">${adminApprovalDetailList.course_nm}</td>
+						<td align="center">${adminApprovalDetailList.edu_st_dt}</td>
+						<td align="center">${adminApprovalDetailList.edu_ed_dt}</td>
+						<td align="center">${adminApprovalDetailList.edu_cost}</td>
+						<td align="center">${adminApprovalDetailList.loc}</td>
+						<td align="center">${adminApprovalDetailList.refund_yn}</td>
+						<td align="center">${adminApprovalDetailList.step_nm}</td>
+						<td align="center">${adminApprovalDetailList.stat_nm}</td>							
 					</tr>
 				</c:forEach>
 			</tbody>					

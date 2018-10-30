@@ -45,6 +45,22 @@ public class ServiceImplbh implements Service{
 	}
 	
 	@Override
+	public ArrayList<EduApproval> selectDetailDepApprovalList(String emn){
+		
+		List<EduApproval> eduList = admindao.selectDetailDepApprovalList(emn);
+		
+		return (ArrayList<EduApproval>)eduList;
+	}
+	
+	@Override
+	public ArrayList<EduApproval> selectDetailAllApprovalList(){
+		
+		List<EduApproval> eduList = admindao.selectDetailAllApprovalList();
+		
+		return (ArrayList<EduApproval>)eduList;
+	}
+	
+	@Override
 	public void updateDepApproval(Map<String, String> eduinfo){
 		admindao.updateDepApproval(eduinfo);
 	}

@@ -17,6 +17,10 @@ public interface Service {
 	
 	public ArrayList<EduApproval> selectDepApprovalList(String emn);
 	
+	public ArrayList<EduApproval> selectDetailAllApprovalList();
+	
+	public ArrayList<EduApproval> selectDetailDepApprovalList(String emn);
+	
 	public void updateDepApproval(Map<String, String> eduinfo);
 	
 	//대시보드

@@ -43,6 +43,25 @@ public class DaoImplbh implements Dao{
 		return (ArrayList<EduApproval>)eduList;
 	}
 	
+	//IT기획부 관리자 검색 결재 이력 검색
+	@Override
+	public ArrayList<EduApproval> selectDetailAllApprovalList() {
+		
+		List<EduApproval> eduList = sst.selectList("edu002r.selectDetailAll");
+		
+		return (ArrayList<EduApproval>)eduList;
+	}
+	
+	//각 부서별 담당자가 볼 수 있는 결재 이력(교육 List) 출력
+	@Override
+	public ArrayList<EduApproval> selectDetailDepApprovalList(String emn) {
+		
+		List<EduApproval> eduList = sst.selectList("edu002r.selectDetailDep", emn);
+		
+		return (ArrayList<EduApproval>)eduList;
+	}
+	
+	
 	//관리자가 결재 Update
 	@Override
 	public void updateDepApproval(Map<String, String> eduinfo) {

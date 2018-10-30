@@ -25,6 +25,8 @@ public class EduApproval {
     private String svr_plan_file_nm;
     private String reg_file_type;
     private String plan_file_type;	
+    private int sur_point;
+    private String opinion;
 	
 	public String getEmn() {
 		return emn;
@@ -163,6 +165,18 @@ public class EduApproval {
 	}
 	public void setPlan_file_type(String plan_file_type) {
 		this.plan_file_type = plan_file_type;
+	}
+	public int getSur_point() {
+		return sur_point;
+	}
+	public void setSur_point(int sur_point) {
+		this.sur_point = sur_point;
+	}
+	public String getOpinion() {
+		return opinion;
+	}
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
 	}	
 	
 	

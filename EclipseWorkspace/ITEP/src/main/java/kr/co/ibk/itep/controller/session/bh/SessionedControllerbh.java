@@ -96,11 +96,11 @@ public class SessionedControllerbh {
 			//관리자 또는 서무만 접속 가능
 			if(!auth.equals("04")) {
 				if(auth.equals("01")){
-					List<EduApproval> adminApprovalList = service.selectAllApprovalList();
-					model.addAttribute("adminApproval_List", adminApprovalList);
+					List<EduApproval> adminApprovalDetailList = service.selectDetailAllApprovalList();
+					model.addAttribute("adminDetailApproval_List", adminApprovalDetailList);
 				}else {
-					List<EduApproval> adminApprovalList = service.selectDepApprovalList(ssoid);
-					model.addAttribute("adminApproval_List", adminApprovalList);
+					List<EduApproval> adminApprovalDetailList = service.selectDetailDepApprovalList(ssoid);
+					model.addAttribute("adminDetailApproval_List", adminApprovalDetailList);
 				}
 				
 				return "approvalDetail";
