@@ -247,7 +247,7 @@
     				<label for="name" id ="labelid3" class="control-label">  </label><br>
     				<label for="name" id ="labelid4" class="control-label">  </label>
     			</div>
-    			<div  align = "center" style="font-size:20px;">
+    			<div class="hanna" align = "center" style="font-size:20px;">
     				<label for="authority" class="control-label"> 변경 후 권한: </label>
     				<select name="authority_select" style="width:200px"  >
     					<option value="교육관리자"> 교육관리자 </option>    				

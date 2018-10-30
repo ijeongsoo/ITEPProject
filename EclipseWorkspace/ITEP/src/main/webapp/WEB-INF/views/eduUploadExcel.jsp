@@ -65,26 +65,10 @@ background:#fff;
 margin: auto;
 }
 
-/*yellow/ROUGE BUTTON STYLES*/     
-#addRow{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 100px; height: 40px;}
-#addRow:hover{background-color:#dd9003;}
-#addRow:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
-/*yellow/ROUGE BUTTON STYLES*/     
-#uploadGrid{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 100px; height: 40px;}
-#uploadGrid:hover{background-color:#dd9003;}
-#uploadGrid:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
-/*yellow/ROUGE BUTTON STYLES*/     
-#submitBtn{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
-#submitBtn:hover{background-color:#dd9003;}
-#submitBtn:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
-/*white/ROUGE BUTTON STYLES*/     
-#excelFileBtn{background-color: #F0F4F7; color : #686466; border: 0px solid #8D8787;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 2px 4px 0 #D9DAD5; font-size: 20px; width: 150px; height: 40px; padding-top: 7px; text-align: center}
-#excelFileBtn:hover{background-color:#8D8787; color : #fff;}
-#excelFileBtnactive{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
+	/*yellow/ROUGE BUTTON STYLES*/     
+	#uploadGrid{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#uploadGrid:hover{background-color:#dd9003;}
+	#uploadGrid:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 </style>
 </head>
 
@@ -123,47 +107,57 @@ margin: auto;
 		</section>
 		
 			<!-- page start-->
-			<div class="hanna">
-			<div style="padding-left: 55px; padding-bottom: 30px">
-				<button id="addRow" onclick="addRowClick()" style="float: left;">행추가</button>
-			</div>
-			<br/>
-			<span style="padding-left: 55px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+			
+			<div class="hanna" style="padding-left: 55px; padding-bottom: 20px">
+				<button id="addRow" class="" onclick="addRowClick()" style="float: left;">+행추가</button>
+				<span class="hanna" style="padding-left: 30px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+			</div> 
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
 				<div id="grid"></div>
 			</div>
-			<div style="padding-left: 55px; padding-bottom: 30px">
-				<button id="uploadGrid" onclick="uploadGrid()" style="float: left;">등록</button>
+			<div class="hanna" style="padding-left: 55px; padding-bottom: 30px">
+				<button id="uploadGrid" class="" onclick="uploadGrid()" style="float: left;">등록</button>
 			</div>
 			<br/>
-			</div>
+			
 			<!-- 엑셀 업로드 구역 -->
-			<div class="hanna">
-			<div 
-				style="height: 180px; overflow: auto; padding: 20px;">
+		<section class="wrapper">
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header hanna">교육일괄등록  <br> <img width="115px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
+          </div>
+        </div>
+		</section>
+			<div style="height: 180px; overflow: auto; padding: 20px;">
 				<div id="load" style="text-align: center;">
 					<img src="<%=application.getContextPath()%>/resources/admin_page_resource/img/loading.gif" alt="loading"/>
-				</div>
-				<a style="padding-left: 35px; font-size: 20px" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
-				<label style="padding-left: 20px"> 
-					<span style="font-size: 20px">파일경로: </span> 
-					<span id="filePath" style="font-size: 20px"> 파일 미선택</span>
-				</label> 
-				<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
+			</div>
+
+			<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
+				<label style="padding-left: 35px"> 
+					<span class="hanna">파일경로: </span> 
+					<span class="hanna" id="filePath"> 파일 미선택</span>
+				</label><br>
+				
 					<div style="padding-left: 35px">
-						<label for="excelFile" id="excelFileBtn" onclick=>
-							엑셀 첨부
+						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
+							<img width="15px" src="resources/admin_page_resource/img/download.png" alt=""> <a class="hanna" href="<%=application.getContextPath()%>/resources/admin_page_resource/download/sample.xlsx">엑셀 양식 다운</a>
 						</label>
-						<button id="submitBtn" type="submit">엑셀 업로드</button>
+						
+						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
+							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt=""> <a class="hanna"> 엑셀 첨부 </a>
+						</label>
+						<button id="submitBtn" type="submit" class="btn btn-primary">엑셀 업로드</button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
 					</div>
 				</form>
 
 			</div>
-			</div>
 
 			<!-- 결과 출력 -->
+
 			<!-- page end-->
 	</section>
 
