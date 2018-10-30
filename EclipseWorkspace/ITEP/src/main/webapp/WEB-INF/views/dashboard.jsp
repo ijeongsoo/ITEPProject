@@ -108,15 +108,14 @@ jQuery(document).ready(function($) {
     </div>
     <br>
     <div class = "title">
-		<h2 class="hanna" align="center" style="">안녕하세요 <br> ${empJoinedDep_info.krn_brm}  ${empJoinedDep_info.emm} 관리자님♥</h2>
-		
+		<h2 class="hanna" align="center" style="background-color:rgba(051, 051, 051, 0.5); width:400px; margin-left:400px;">안녕하세요 <br> ${empJoinedDep_info.krn_brm}  ${empJoinedDep_info.emm} 관리자님♥</h2>	
 	</div>
-	<div align="center"> <h4 class="hanna"> 대시보드에서 교육 신청 데이터를 한눈에!! </h4></div> <br><br>
+	<br><div align="center"> <h4 class="hanna"> 대시보드에서 교육 신청 데이터를 한눈에 확인하세요! </h4></div><br>
 	
 	<!-- 대시보드 항목 1: 신청수 및 등록수  -->       
     <div style="margin:auto">
-        <div style="float:left; padding-left: 6%; padding-right: 20px;">
-            <div class="white-box analytics-info" style="width: 380px; height: 120px; border-bottom: 1px double #A0A0A0;  ">
+        <div style="float:left; padding-left: 170px; padding-right: 20px;">
+            <div class="white-box analytics-info" style="width: 320px; height: 120px; border-bottom: 1px double #A0A0A0;  ">
                 <h4 class="hanna">전체 교육 등록 수</h4>
                 <ul class="list-inline two-part">
                     <li>
@@ -129,7 +128,7 @@ jQuery(document).ready(function($) {
             </div>
         </div>
         <div style="float:left; padding-right: 20px;">
-            <div class="white-box analytics-info" style="width: 380px; height: 120px;  border-bottom: 1px double #A0A0A0;">
+            <div class="white-box analytics-info" style="width: 320px; height: 120px;  border-bottom: 1px double #A0A0A0;">
                 <h4 class="hanna">올해 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
@@ -142,7 +141,7 @@ jQuery(document).ready(function($) {
             </div>
         </div>
         <div style="float:left; padding-rignt:20px;"> 
-            <div class="white-box analytics-info" style="width: 380px; height: 120px;  border-bottom: 1px double #A0A0A0;">
+            <div class="white-box analytics-info" style="width: 320px; height: 120px;  border-bottom: 1px double #A0A0A0;">
                 <h4 class="hanna">이번달 교육 신청 수</h4>
                 <ul class="list-inline two-part">
                     <li>
@@ -242,7 +241,7 @@ jQuery(document).ready(function($) {
 	var myLineChart = new Chart(ctx_line, {
 	    type: 'line',
 	    data: {
-	    	labels : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	    	labels : ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	        datasets: [{
 	            label: "2018년 월별 교육 수강 현황",
 	            backgroundColor: "rgba(255, 99, 132, 0.2)",
