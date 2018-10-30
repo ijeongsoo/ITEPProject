@@ -248,22 +248,6 @@ margin: auto;
               minWidth: 200
           },
           {
-              title: '교육시간',	// 화면 제목
-              name: 'edu_hour',		// 키 이름
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {	// 타입
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 60
-          },
-          {
 	            title: '신청시작일',
 	            name: 'reg_st_dt',
 	            editOptions: {
@@ -323,6 +307,22 @@ margin: auto;
 	              width: 'auto',
 	              minWidth: 80
 	      },
+	      {
+              title: '교육시간',	// 화면 제목
+              name: 'edu_hour',		// 키 이름
+              onBeforeChange: function(ev){
+                  console.log('Before change:' + ev);
+              },
+              onAfterChange: function(ev){
+                  console.log('After change:' + ev);
+              },
+              editOptions: {	// 타입
+                  type: 'text',
+                  useViewMode: true
+              },
+              width: 'auto',
+              minWidth: 60
+          },
           {
               title: '교육비용',
               name: 'edu_cost',
@@ -398,6 +398,7 @@ margin: auto;
 		
 		// 정합성 검사
 		var edu001m = JSON.stringify(grid.getRows());
+		
 		// post 전송
 		$.ajax({
 			'url' : "uploadGrid",
@@ -406,7 +407,7 @@ margin: auto;
 			},
 			'type' : "POST",
 			'success' : function(data) {
-				//location.href = "redirect:eduEdit";
+				location.href = "eduEdit";
 			}
 		});
 	}
