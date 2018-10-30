@@ -7,6 +7,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Education List</title>
+		<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+		
 		<script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 		<link
 			href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
@@ -30,7 +34,6 @@
 		<link href="<%=application.getContextPath()%>/resources/css/itep.css"
 			rel="stylesheet" type="text/css">
 		<script src="<%=application.getContextPath()%>/resources/parallax.js-1.5.0/parallax.js"></script>
-	
 	
 
 
@@ -61,7 +64,8 @@
 	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
 	      <div class="container">
 	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
-	        <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
+	       <!-- <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>-->
+	        <a href="/myapp/home"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
 	        </div>
 	      
 	    </nav>
@@ -85,7 +89,7 @@
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 가능 교육</h2>
-				<hr class="star-dark mb-5">
+				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -144,11 +148,11 @@
 
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
-		<section style="background-color:#f9f9f9; padding-top:40px; padding-bottom:30px">
+		<section style="background-color:#ffffff; padding-top:40px; padding-bottom:30px">
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 접수 예정 강의</h2>
-				<hr class="star-dark mb-5">
+				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="postedulistTable" class="display" style="width:100%">
 				<thead>
