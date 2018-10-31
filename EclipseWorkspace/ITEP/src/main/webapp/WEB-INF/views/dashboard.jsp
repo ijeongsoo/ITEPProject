@@ -26,6 +26,7 @@
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/css/font-awesome.min.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/css/hannafont.css" rel="stylesheet" type="text/css">
   <!-- full calendar css-->
+  
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
   <link href="<%=application.getContextPath()%>/resources/admin_page_resource/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
   <!-- easy pie chart-->
@@ -175,7 +176,7 @@ jQuery(document).ready(function($) {
 	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
 	    </div>   
     </div>    
-    <div style="padding-right:225px;">
+    <div style="padding-right:175px;">
 	     <div class="white-box" style="padding-top:20px;width:470px;height:40%;float:right;">
 	                     <h3 class="hanna">분야별 연간 교육 수강 현황</h3>  
 	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>

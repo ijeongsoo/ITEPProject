@@ -66,7 +66,7 @@ margin: auto;
 }
 
 	/*yellow/ROUGE BUTTON STYLES*/     
-	#uploadGrid{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#uploadGrid{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 15px; width: 150px; height: 40px;}
 	#uploadGrid:hover{background-color:#dd9003;}
 	#uploadGrid:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 </style>
@@ -117,7 +117,7 @@ margin: auto;
 				<div id="grid"></div>
 			</div>
 			<div class="hanna" style="padding-left: 55px; padding-bottom: 30px">
-				<button id="uploadGrid" class="" onclick="uploadGrid()" style="float: left;">등록</button>
+				<button id="" class="btn btn-primary2" onclick="uploadGrid()" style="float: left;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">등록</button>
 			</div>
 			<br/>
 			
@@ -150,7 +150,7 @@ margin: auto;
 							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt=""> <a class="hanna"> 엑셀 첨부 </a>
 						</label>
 						
-						<button id="submitBtn" type="submit" class="btn btn-primary"> <a class="hanna"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt="">  엑셀 업로드 </a> </button>
+						<button id="submitBtn" type="submit" class="btn btn-primary"> <a class="hanna" style="color:black;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt="">  엑셀 업로드 </a> </button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
 					</div>
 				</form>

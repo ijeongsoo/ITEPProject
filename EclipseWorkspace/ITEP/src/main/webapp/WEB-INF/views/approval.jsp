@@ -60,10 +60,8 @@
   ======================================================= -->
 
 <style>
-	/*yellow/ROUGE BUTTON STYLES*/     
-	#adminPM{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
-	#adminPM:hover{background-color:#dd9003;}
-	#adminPM:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+
+	
 </style>
 </head>
 
@@ -140,10 +138,17 @@
       		</div>
 
     </section>
-
-	<div class="hanna" align="center" style="height:40px;">
-		<input id="adminPM" type="button" value="결재" onclick="fn_pmApproval()">
+	
+	<div style="padding-left:35%">
+		<div>
+			<img width="350px" src="resources/admin_page_resource/img/flow.PNG" style="" alt="">				
+		</div>
 	</div>
+	
+	<div class="hanna" style="padding-right: 130px; padding-bottom: 30px">
+		<button id="" class="btn btn-primary2" onclick="fn_pmApproval()" style="float: right;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">결재</button>
+	</div>
+			
 	<div class="container">
 		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >

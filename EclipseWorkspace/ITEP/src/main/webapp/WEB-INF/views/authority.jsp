@@ -224,10 +224,9 @@
         
 		</section>
 		<!-- 모달 창을 여는 버튼 -->
-		<div class="hanna" align="center">
-		<input id="changebutton" type="button" value="권한수정" onclick="checkAuthArr();">
-		</div>
-		
+			<div class="hanna" style="padding-right: 130px; padding-bottom: 30px">
+				<button id="" class="btn btn-primary2" onclick="checkAuthArr();" style="float: right;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">권한수정</button>
+			</div>
 		<!-- 모달창 -->
 		<div id="modal">
 			<div class="modal-header" style="background-color: #237fbc">
