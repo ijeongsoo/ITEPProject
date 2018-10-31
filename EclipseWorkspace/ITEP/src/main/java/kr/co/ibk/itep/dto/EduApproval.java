@@ -27,6 +27,7 @@ public class EduApproval {
     private String plan_file_type;	
     private int sur_point;
     private String opinion;
+    private String sur_point_star;
 	
 	public String getEmn() {
 		return emn;
@@ -177,6 +178,12 @@ public class EduApproval {
 	}
 	public void setOpinion(String opinion) {
 		this.opinion = opinion;
+	}
+	public String getSur_point_star() {
+		return sur_point_star;
+	}
+	public void setSur_point_star(String sur_point_star) {
+		this.sur_point_star = sur_point_star;
 	}	
 	
 	

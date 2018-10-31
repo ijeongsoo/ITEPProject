@@ -103,6 +103,25 @@
 	} );
 	*/
 	function fn_TbClickCall(e){
+
+		
+	    var point = "";
+	    var opinion = "";
+
+		
+		$(e).find("td").each(function(i, item){ 
+		
+			//컬럼인덱스로 데이터 확인 
+			if(i==13){ 
+				point = $(item).html(); 
+				
+			}else if(i==14){ 
+				opinion = $(item).html();
+			}
+		}); 
+		
+		$("#labelid1").html(point);			
+		$("#labelid2").html(opinion);	
 		// 모달창 인스턴트 생성
 		var myModal = new Example.Modal({
 
@@ -131,7 +150,7 @@
 			</div>
     		
     		<form role="form">
-    			<div class = "hanna" align = "left" style="font-size:18px; padding-top:80px">
+    			<div class = "hanna" align = "left" style="font-size:25px; padding-left:20px; padding-top:80px">
     				<label for="level" class="control-label"> 별점 : </label>
     				<label for="name" id ="labelid1" class="control-label">  </label><br>
     				<label for="content" class="control-label"> 코멘트 : </label>
@@ -190,11 +209,13 @@
 					<th style="text-align: center;">환급여부</th>
 					<th style="text-align: center;">결재 상황</th>
 					<th style="text-align: center;">수강 상태</th>
+					<th style="text-align: center; display:none;">평점</th>
+					<th style="text-align: center; display:none;">평가 의견</th>										
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="adminApprovalDetailList" items="${adminDetailApproval_List}" varStatus="status">
-   					 <tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;">
+   					 <tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;" >
 						<td align="center">${adminApprovalDetailList.emn}</td>
 						<td align="center">${adminApprovalDetailList.emm}</td>
 						<td align="center">${adminApprovalDetailList.krn_brm}</td>
@@ -207,7 +228,9 @@
 						<td align="center">${adminApprovalDetailList.loc}</td>
 						<td align="center">${adminApprovalDetailList.refund_yn}</td>
 						<td align="center">${adminApprovalDetailList.step_nm}</td>
-						<td align="center">${adminApprovalDetailList.stat_nm}</td>							
+						<td align="center">${adminApprovalDetailList.stat_nm}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.sur_point_star}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.opinion}</td>													
 					</tr>
 				</c:forEach>
 			</tbody>					
