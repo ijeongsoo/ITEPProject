@@ -333,7 +333,7 @@
 			<div style="text-align: left;">
 
 				<h2 id="secondHeaderName" class="hanna animated fadeInLeftBig"
-					style="font-size: 60px; z-index: 5; margin-top: -90px; margin-bottom: 30px; margin-left: 215px;">재희야,
+					style="font-size: 60px; z-index: 5; margin-top: -90px; margin-bottom: 30px; margin-left: 215px;">,
 					넌</h2>
 			</div>
 			<div>

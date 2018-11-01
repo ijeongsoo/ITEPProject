@@ -182,7 +182,7 @@
     			</div>
     			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
     				<label for="authority" class="control-label"> 신청서 : </label>
-    			    <a id="regFile" href="file?svr_img_file_nm='${file_name}'&img_file_type='${file_type}'&source=reg">다운로드</a>  	
+    			    <a id="regFile" href="">다운로드</a>  	
     			</div>
     			
     			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
@@ -208,14 +208,13 @@
         			<h3 class="page-header hanna"> 결재  완료 <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
       			</div>
       		</div>
-      		<div class="headerConets" align="center">
-      		테스트테스트 
-     		</div>
+
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">
 	</div>
 	<div class="container">
+		<span class="hanna" style="padding-left: 30px; color:red;"> ※ 리스트를 클릭하시면, 첨부파일 및 설문내용 확인이 가능합니다.</span>
 		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>

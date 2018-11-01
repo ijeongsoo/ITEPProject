@@ -280,6 +280,22 @@
 
 	</delete>
 
+	
 
+	
+	<select id="selectRecommendEdu" resultType="kr.co.ibk.itep.dto.Edu001m">
+		select course_cd, course_nm
+		from
+		(
+			select a.course_cd, a.course_nm , count(*)
+			from TB_IEP_EDU001M a, TB_IEP_EDU002R b
+			where a.course_cd  = b.course_cd(+)
+			and b.emn(+) != #{emn}
+			and sysdate between a.reg_st_dt and a.reg_ed_dt 
+			and rownum=1
+			GROUP BY a.course_cd, a.course_nm
+			 order by count(*) desc
+		)
+	</select>
 
 </mapper>
