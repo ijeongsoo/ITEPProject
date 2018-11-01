@@ -14,6 +14,33 @@
 			CHG_ID,
 			CHG_DT
 		FROM TB_IEP_ECD002M
+		ORDER BY ORG_CD
 	</select>
+	
+	<insert id="insertCode" parameterType="kr.co.ibk.itep.dto.Ecd002m">
+		INSERT 
+		INTO TB_IEP_ECD002M
+		(
+			ORG_CD,
+			ORG_NM,
+			REG_ID,
+			REG_DT
+		)
+		VALUES
+		(
+			#{org_cd},
+			#{org_nm},
+			#{reg_id},
+			SYSDATE
+		)
+	</insert>
+	
+	<update id="updateCode" parameterType="kr.co.ibk.itep.dto.Ecd002m">
+		UPDATE TB_IEP_ECD002M
+		SET ORG_NM = #{org_nm},
+			CHG_ID = #{chg_id},
+			CHG_DT = SYSDATE
+		WHERE ORG_CD = #{org_cd}
+	</update>
 	
 </mapper>

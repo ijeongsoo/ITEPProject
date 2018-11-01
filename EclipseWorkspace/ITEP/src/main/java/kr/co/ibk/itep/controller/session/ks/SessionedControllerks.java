@@ -45,6 +45,7 @@ import kr.co.ibk.itep.dto.Ecd002m;
 import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
+import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduEditList;
@@ -65,13 +66,14 @@ public class SessionedControllerks {
 	@Autowired
 	private ServletContext servletContext;
 	
+	// 관리자페이지 호출
 	@RequestMapping("/admin")
 	public String admin(String ssoid, Model model) {
 		model.addAttribute("ssoid", ssoid);
 		return "admin";
 	} 
 	
-
+	// 교육등록 페이지 호출
 	@RequestMapping("/eduUploadExcel")
 	public String eduUploadExcel(Model model) {
 		ArrayList<Edu001m> eduList = new ArrayList<Edu001m>();
@@ -118,7 +120,7 @@ public class SessionedControllerks {
 		return "eduUploadExcel";
 	}
 	
-	// 그리드 업로드
+	// 그리드 업로드로 교육등록
 	@RequestMapping(value = "/uploadGrid", method = RequestMethod.POST)
 	public String uploadGrid(String edu001m) {
 		// 등록자 사번 가져오기
@@ -138,6 +140,7 @@ public class SessionedControllerks {
 		return "redirect:eduEdit";
 	}
 	
+	// 엑셀 파일 업로드로 교육 등록 기능
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public String upload(EduExcelUpload excel) throws IllegalStateException, IOException, NotFoundException {
 		// 등록자 사번 가져오기
@@ -184,6 +187,7 @@ public class SessionedControllerks {
 		return "redirect:eduEdit";
 	}
 	
+	// 교육수정 리스트 페이지 호출
 	@RequestMapping("/eduEdit")
 	public String eduChange(Model model) {
 		try{
@@ -203,6 +207,7 @@ public class SessionedControllerks {
 		}
 	}
 	
+	// 교육수정 모달 페이지 호출
 	@RequestMapping("/eduEditDetail")
 	public String eduEditDetail(String course_cd, Model model){
 		// 등록자 사번 가져오기
@@ -228,6 +233,7 @@ public class SessionedControllerks {
 		return "eduEditDetail";
 	}
 	
+	// 교육수정 모달에서 저장 기능
 	@RequestMapping(value = "/eduSave", method = RequestMethod.POST)
 	public String eduSave(Edu001m edu) {
 		// 등록자 사번 가져오기
@@ -242,6 +248,7 @@ public class SessionedControllerks {
 		return "redirect:eduEdit";
 	}
 	
+	// 교육코드관리 페이지 호출
 	@RequestMapping("/eduCode")
 	public String eduCode(Model model){
 		// 등록자 사번 가져오기
@@ -305,6 +312,130 @@ public class SessionedControllerks {
 		model.addAttribute("midList", midJsonArr.toString());
 		model.addAttribute("lowList", lowJsonArr.toString());
 		model.addAttribute("midCombo", midCombo.toString());
+		
+		return "eduCode";
+	}
+	
+	// 교육코드관리 저장 기능
+	@RequestMapping(value = "/saveCode", method = RequestMethod.POST)
+	public String saveCode(String ecd002m, String ecd005m, String ecd006m, String ecd007m) {
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
+		// 기존데이터 리스트 세팅
+		List<Ecd002m> orgOldList = service.selectEcd002mList();
+		List<Ecd005m> highOldList = service.selectEcd005mList();
+		List<Ecd006m> midOldList = service.selectEcd006mList();
+		List<Ecd007m> lowOldList = service.selectEcd007mList();
+		
+		// 교육기관 파싱
+		JSONArray jArr002 = new JSONArray(ecd002m);
+		ArrayList<Ecd002m> orgNewList = new ArrayList<Ecd002m>();
+		for(int i=0; i<jArr002.length(); i++) {
+			JSONObject obj = jArr002.getJSONObject(i);
+			Ecd002m org = new Ecd002m(obj);
+			orgNewList.add(org);
+		}
+		// 대분류 파싱
+		JSONArray jArr005 = new JSONArray(ecd005m);
+		ArrayList<Ecd005m> highNewList = new ArrayList<Ecd005m>();
+		for(int i=0; i<jArr005.length(); i++) {
+			JSONObject obj = jArr005.getJSONObject(i);
+			Ecd005m high = new Ecd005m(obj);
+			highNewList.add(high);
+		}
+		// 중분류 파싱
+		JSONArray jArr006 = new JSONArray(ecd006m);
+		ArrayList<Ecd006m> midNewList = new ArrayList<Ecd006m>();
+		for(int i=0; i<jArr006.length(); i++) {
+			JSONObject obj = jArr006.getJSONObject(i);
+			Ecd006m mid = new Ecd006m(obj);
+			midNewList.add(mid);
+		}
+		// 소분류 파싱
+		JSONArray jArr007 = new JSONArray(ecd007m);
+		ArrayList<Ecd007m> lowNewList = new ArrayList<Ecd007m>();
+		for(int i=0; i<jArr007.length(); i++) {
+			JSONObject obj = jArr007.getJSONObject(i);
+			Ecd007m low = new Ecd007m(obj);
+			lowNewList.add(low);
+		}
+		
+		// 교육기관 리스트 insert + update
+		ArrayList<EcdCode> insertCodeList = new ArrayList<EcdCode>();
+		ArrayList<EcdCode> updateCodeList = new ArrayList<EcdCode>();
+		for(int i=orgOldList.size(); i<orgNewList.size(); i++) {
+			Ecd002m org = orgNewList.get(i);
+			org.setReg_id(ssoid);
+			org.setEcdName("Ecd002m");
+			insertCodeList.add(org);
+		}
+		for(int i=0; i<orgOldList.size(); i++) {
+			if(!orgOldList.get(i).isEqual(orgNewList.get(i))) {
+				// 동일하지 않다면
+				Ecd002m org = orgNewList.get(i);
+				org.setChg_id(ssoid);
+				org.setEcdName("Ecd002m");
+				updateCodeList.add(org);
+			}
+		}
+		
+		// 대분류 리스트 insert + update
+		for(int i=highOldList.size(); i<highNewList.size(); i++) {
+			Ecd005m high = highNewList.get(i);
+			high.setReg_id(ssoid);
+			high.setEcdName("Ecd005m");
+			insertCodeList.add(high);
+		}
+		for(int i=0; i<highOldList.size(); i++) {
+			if(!highOldList.get(i).isEqual(highNewList.get(i))) {
+				// 동일하지 않다면
+				Ecd005m high = highNewList.get(i);
+				high.setChg_id(ssoid);
+				high.setEcdName("Ecd005m");
+				updateCodeList.add(high);
+			}
+		}
+		
+		// 중분류 리스트 insert + update
+		for(int i=midOldList.size(); i<midNewList.size(); i++) {
+			Ecd006m mid = midNewList.get(i);
+			mid.setReg_id(ssoid);
+			mid.setEcdName("Ecd006m");
+			insertCodeList.add(mid);
+		}
+		for(int i=0; i<midOldList.size(); i++) {
+			if(!midOldList.get(i).isEqual(midNewList.get(i))) {
+				// 동일하지 않다면
+				Ecd006m mid = midNewList.get(i);
+				mid.setChg_id(ssoid);
+				mid.setEcdName("Ecd006m");
+				updateCodeList.add(mid);
+			}
+		}
+		
+		// 소분류 리스트 insert + update
+		for(int i=lowOldList.size(); i<lowNewList.size(); i++) {
+			Ecd007m low = lowNewList.get(i);
+			low.setReg_id(ssoid);
+			low.setEcdName("Ecd007m");
+			insertCodeList.add(low);
+		}
+		for(int i=0; i<lowOldList.size(); i++) {
+			if(!lowOldList.get(i).isEqual(lowNewList.get(i))) {
+				// 동일하지 않다면
+				Ecd007m low = lowNewList.get(i);
+				low.setChg_id(ssoid);
+				low.setEcdName("Ecd007m");
+				updateCodeList.add(low);
+			}
+		}
+		
+		// 서비스 호출
+		service.insertCodeAll(insertCodeList);
+		service.updateCodeAll(updateCodeList);
 		
 		return "eduCode";
 	}

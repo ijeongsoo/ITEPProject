@@ -1,6 +1,8 @@
 package kr.co.ibk.itep.dto;
 
-public class Ecd007m {
+import org.json.JSONObject;
+
+public class Ecd007m extends EcdCode{
 	private String low_cls_cd;
 	private String low_cls_nm;
 	private String mid_cls_cd;
@@ -11,6 +13,24 @@ public class Ecd007m {
 	private String reg_dt;
 	private String chg_id;
 	private String chg_dt;
+	public Ecd007m() {}
+	public Ecd007m(JSONObject obj) {
+		// TODO Auto-generated constructor stub
+		this.low_cls_cd = "";
+		this.mid_cls_cd = "";
+		int low = obj.getInt("low_cls_cd");
+		if(low < 10) {
+			this.low_cls_cd = "0";
+		}
+		this.low_cls_cd += Integer.toString(low);
+		this.low_cls_nm = obj.getString("low_cls_nm");
+		
+		int mid = obj.getInt("mid_cls_cd");
+		if(mid < 10) {
+			this.mid_cls_cd = "0";
+		}
+		this.mid_cls_cd += Integer.toString(mid);
+	}
 	public String getLow_cls_cd() {
 		return low_cls_cd;
 	}
@@ -70,6 +90,17 @@ public class Ecd007m {
 	}
 	public void setDefault_img_type(String default_img_type) {
 		this.default_img_type = default_img_type;
+	}
+	public boolean isEqual(Ecd007m ecd007m) {
+		// TODO Auto-generated method stub
+		if(this.low_cls_cd.equals(ecd007m.getLow_cls_cd()) &&
+				this.low_cls_nm.equals(ecd007m.getLow_cls_nm()) &&
+				this.mid_cls_cd.equals(ecd007m.getMid_cls_cd())) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 }

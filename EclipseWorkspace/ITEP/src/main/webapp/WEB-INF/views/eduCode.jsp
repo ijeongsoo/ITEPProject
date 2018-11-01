@@ -52,6 +52,12 @@
 
 </head>
 
+<style>
+	/*yellow/ROUGE BUTTON STYLES*/     
+	#saveCode{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#saveCode:hover{background-color:#dd9003;}
+	#saveCode:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+</style>
 
 <!-- 넘어오는거 확인 -->
 <body>
@@ -60,9 +66,13 @@
 		<section class="wrapper">
         <!--overview start-->
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12" style=" float: left; width: 86%;">
             <h3 class="page-header hanna">교육코드관리  <br> <img width="120px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
+          <div style=" float: right; width: 14%; padding-top: 30px; padding-right: 20px" >
+				<input id="saveCode" type="button" value="저장" onclick="saveCode()"/>
+		  </div>
+          
         </div>
 		</section>
 		
@@ -70,10 +80,7 @@
 			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">교육기관코드 </h3>
 			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
-				<input type="button" value="저장" style="float: right;"/>
-			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
+			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
 				<input id="orgNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="orgGrid">
@@ -82,10 +89,7 @@
 			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">대분류코드</h3>
 			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
-				<input type="button" value="저장" style="float: right;"/>
-			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
+			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
 				<input id="highNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="highGrid">
@@ -94,10 +98,7 @@
 			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">중분류코드</h3>
 			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
-				<input type="button" value="저장" style="float: right;"/>
-			</div>
-			<div style="float: right; width:9% ;padding-top: 7px">
+			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
 				<input id="midNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="midGrid">
@@ -108,10 +109,7 @@
 			<div style="float: left; width:86%">
 				<h3 class="hanna" style="font-size: 20px">소분류코드</h3>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<input type="button" value="저장" style="float: right;"/>
-			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
+			<div class="hanna" style="float: right; width:14% ;padding-top: 7px">
 				<input id="lowNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="lowGrid">
@@ -146,10 +144,6 @@
 			onAfterChange : function(ev) {
 				console.log('After change:' + ev);
 			},
-			editOptions : {
-				type : 'text',
-				useViewMode : true
-			},
 			width : 'auto',
 			minWidth : 150
 		}, {
@@ -166,7 +160,7 @@
 				useViewMode : true
 			},
 			width : 'auto',
-			minWidth : 450
+			minWidth : 400
 		} ]
 	});
 
@@ -182,10 +176,6 @@
 			},
 			onAfterChange : function(ev) {
 				console.log('After change:' + ev);
-			},
-			editOptions : {
-				type : 'text',
-				useViewMode : true
 			},
 			width : 'auto',
 			minWidth : 150
@@ -203,7 +193,7 @@
 				useViewMode : true
 			},
 			width : 'auto',
-			minWidth : 450
+			minWidth : 400
 		} ]
 	});
 
@@ -219,10 +209,6 @@
 			},
 			onAfterChange : function(ev) {
 				console.log('After change:' + ev);
-			},
-			editOptions : {
-				type : 'text',
-				useViewMode : true
 			},
 			width : 'auto',
 			minWidth : 150
@@ -240,7 +226,7 @@
 				useViewMode : true
 			},
 			width : 'auto',
-			minWidth : 450
+			minWidth : 400
 		} ]
 	});
 
@@ -257,10 +243,6 @@
 			onAfterChange : function(ev) {
 				console.log('After change:' + ev);
 			},
-			editOptions : {
-				type : 'text',
-				useViewMode : true
-			},
 			width : 'auto',
 			minWidth : 150
 		}, {
@@ -270,7 +252,7 @@
 				console.log('Before change:' + ev);
 			},
 			onAfterChange : function(ev) {
-				console.log('After change:' + ev);
+				console.log('After change:' + ev.data);
 			},
 			editOptions : {
 				type : 'text',
@@ -309,15 +291,41 @@
 		switch(btn.id) {
 		case 'orgNew':
 			orgGrid.appendRow();
+			var maxIndex = orgGrid.getRowCount()-1;
+			var maxValue = Number(orgGrid.getRowAt(maxIndex-1).org_cd) + 1;
+			if(maxValue < 10)
+				orgGrid.setValue(maxIndex, "org_cd", "0" + maxValue);
+			else
+				orgGrid.setValue(maxIndex, "org_cd", maxValue);			
 			break;
 		case 'highNew':
-			highGrid.appendRow();
+			var maxIndex = highGrid.getRowCount();
+			var maxValue = Number(highGrid.getRowAt(maxIndex-1).high_cls_cd) + 1;
+			if(maxValue < 10) {
+				highGrid.appendRow();
+				highGrid.setValue(maxIndex, "high_cls_cd", maxValue);
+			}
+			else {
+				alert("대분류는 10보다 클 수 없습니다.");
+			}
 			break;
 		case 'midNew':
 			midGrid.appendRow();
+			var maxIndex = midGrid.getRowCount()-1;
+			var maxValue = Number(midGrid.getRowAt(maxIndex-1).mid_cls_cd) + 1;
+			if(maxValue < 10)
+				midGrid.setValue(maxIndex, "mid_cls_cd", "0" + maxValue);
+			else
+				midGrid.setValue(maxIndex, "mid_cls_cd", maxValue);
 			break;
 		case 'lowNew':
 			lowGrid.appendRow();
+			var maxIndex = lowGrid.getRowCount()-1;
+			var maxValue = Number(lowGrid.getRowAt(maxIndex-1).low_cls_cd) + 1;
+			if(maxValue < 10)
+				lowGrid.setValue(maxIndex, "low_cls_cd", "0" + maxValue);
+			else
+				lowGrid.setValue(maxIndex, "low_cls_cd", maxValue);
 			break;
 		default:
 			break;
@@ -325,28 +333,42 @@
 	}
 	
 	// 저장 버튼
-	function saveGrig(btn) {
-		
-	}
-
-	function saveOrgGrid() {
-		console.log("dddd: ", orgGrid.getRows());
+	function saveCode() {
 		for (var i = 0; i < orgGrid.getRowCount(); i++) { // 빈값 제거 기능
-			if (orgGrid.getRowAt(i).org_cd == "") {
-				orgGrid.removeRow(orgGrid.getRowAt(i));
-				i--;
+			if (orgGrid.getRowAt(i).org_nm == "") {
+				orgGrid.removeRow(orgGrid.getRowAt(i--));
 			}
 		}
-		console.log("dddd: ", orgGrid.getRows());
+		for (var i = 0; i < highGrid.getRowCount(); i++) { // 빈값 제거 기능
+			if (highGrid.getRowAt(i).high_cls_nm == "") {
+				highGrid.removeRow(highGrid.getRowAt(i--));
+			}
+		}
+		for (var i = 0; i < midGrid.getRowCount(); i++) { // 빈값 제거 기능
+			if (midGrid.getRowAt(i).mid_cls_nm == "") {
+				midGrid.removeRow(midGrid.getRowAt(i--));
+			}
+		}
+		for (var i = 0; i < lowGrid.getRowCount(); i++) { // 빈값 제거 기능
+			if (lowGrid.getRowAt(i).low_cls_nm == "") {
+				lowGrid.removeRow(lowGrid.getRowAt(i--));
+			}
+		}
 
-		// 정합성 검사
+		// json 변환
 		var ecd002m = JSON.stringify(orgGrid.getRows());
+		var ecd005m = JSON.stringify(highGrid.getRows());
+		var ecd006m = JSON.stringify(midGrid.getRows());
+		var ecd007m = JSON.stringify(lowGrid.getRows());
 
 		// post 전송
 		$.ajax({
-			'url' : "saveOrgCode",
+			'url' : "saveCode",
 			'data' : {
-				'ecd002m' : ecd002m
+				'ecd002m' : ecd002m,
+				'ecd005m' : ecd005m,
+				'ecd006m' : ecd006m,
+				'ecd007m' : ecd007m
 			},
 			'type' : "POST",
 			'success' : function(data) {

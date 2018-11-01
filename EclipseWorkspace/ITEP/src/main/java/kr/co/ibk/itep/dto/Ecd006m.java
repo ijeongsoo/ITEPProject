@@ -1,12 +1,25 @@
 package kr.co.ibk.itep.dto;
 
-public class Ecd006m {
+import org.json.JSONObject;
+
+public class Ecd006m extends EcdCode{
 	private String mid_cls_cd;
 	private String mid_cls_nm;
 	private String reg_id;
 	private String reg_dt;
 	private String chg_id;
 	private String chg_dt;
+	public Ecd006m() {}
+	public Ecd006m(JSONObject obj) {
+		// TODO Auto-generated constructor stub
+		this.mid_cls_cd = "";
+		int code = obj.getInt("mid_cls_cd");
+		if(code < 10) {
+			this.mid_cls_cd = "0";
+		}
+		this.mid_cls_cd += Integer.toString(code);
+		this.mid_cls_nm = obj.getString("mid_cls_nm");
+	}
 	public String getMid_cls_cd() {
 		return mid_cls_cd;
 	}
@@ -42,6 +55,15 @@ public class Ecd006m {
 	}
 	public void setChg_dt(String chg_dt) {
 		this.chg_dt = chg_dt;
+	}
+	public boolean isEqual(Ecd006m ecd006m) {
+		// TODO Auto-generated method stub
+		if(this.mid_cls_cd.equals(ecd006m.getMid_cls_cd()) && this.mid_cls_nm.equals(ecd006m.getMid_cls_nm())) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 }
