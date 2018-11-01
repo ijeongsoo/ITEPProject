@@ -13,6 +13,32 @@
 			CHG_ID,
 			CHG_DT
 		FROM TB_IEP_ECD005M
+		ORDER BY HIGH_CLS_CD
 	</select>
 	
+	<insert id="insertCode" parameterType="kr.co.ibk.itep.dto.Ecd005m">
+		INSERT 
+		INTO TB_IEP_ECD005M
+		(
+			HIGH_CLS_CD,
+			HIGH_CLS_NM,
+			REG_ID,
+			REG_DT
+		)
+		VALUES
+		(
+			#{high_cls_cd},
+			#{high_cls_nm},
+			#{reg_id},
+			SYSDATE
+		)
+	</insert>
+	
+	<update id="updateCode" parameterType="kr.co.ibk.itep.dto.Ecd005m">
+		UPDATE TB_IEP_ECD005M
+		SET HIGH_CLS_NM = #{high_cls_nm},
+			CHG_ID = #{chg_id},
+			CHG_DT = SYSDATE
+		WHERE HIGH_CLS_CD = #{high_cls_cd}
+	</update>
 </mapper>

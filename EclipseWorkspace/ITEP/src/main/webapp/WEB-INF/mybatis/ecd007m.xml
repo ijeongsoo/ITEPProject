@@ -17,6 +17,35 @@
 			CHG_ID,
 			CHG_DT
 		FROM TB_IEP_ECD007M
+		ORDER BY LOW_CLS_CD
 	</select>
 	
+	<insert id="insertCode" parameterType="kr.co.ibk.itep.dto.Ecd007m">
+		INSERT 
+		INTO TB_IEP_ECD007M
+		(
+			LOW_CLS_CD,
+			LOW_CLS_NM,
+			MID_CLS_CD,
+			REG_ID,
+			REG_DT
+		)
+		VALUES
+		(
+			#{low_cls_cd},
+			#{low_cls_nm},
+			#{mid_cls_cd},
+			#{reg_id},
+			SYSDATE
+		)
+	</insert>
+	
+	<update id="updateCode" parameterType="kr.co.ibk.itep.dto.Ecd007m">
+		UPDATE TB_IEP_ECD007M
+		SET LOW_CLS_NM = #{low_cls_nm},
+			MID_CLS_CD = #{mid_cls_cd},
+			CHG_ID = #{chg_id},
+			CHG_DT = SYSDATE
+		WHERE LOW_CLS_CD = #{low_cls_cd}
+	</update>
 </mapper>

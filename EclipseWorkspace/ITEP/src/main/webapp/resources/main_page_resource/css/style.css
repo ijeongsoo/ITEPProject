@@ -1088,10 +1088,11 @@ i.icon-white {
   border-bottom-color: none;
 }
 .btn-reg:link, .btn-reg:visited {
-	color: #fff;
+	color: #000;
 }
 .btn-reg:hover {
 	background:  #92F5A2 !important;
+	color: white
 }
 .btn-reg:hover,
 .btn-reg:focus,

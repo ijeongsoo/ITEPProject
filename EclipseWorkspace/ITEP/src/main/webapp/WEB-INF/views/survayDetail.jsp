@@ -7,14 +7,12 @@
 	
 	$(function() {
 		
-		 $(this).parent().children('span').removeClass('on');
-		 $(this).addClass('on').prevAll('span').addClass('on');
-		 $('#sur_point').val( $('.on').length );
-	
+		 $('#sur_point').val( $('.onto').length );
+		 	
 		$('.starRev span').click(function(){
-			  $(this).parent().children('span').removeClass('on');
-			  $(this).addClass('on').prevAll('span').addClass('on');
-			  $('#sur_point').val( $('.on').length );
+			  $(this).parent().children('span').removeClass('onto');
+			  $(this).addClass('onto').prevAll('span').addClass('onto');
+			  $('#sur_point').val( $('.onto').length );
 			  return false;
 			});
 	});
@@ -55,12 +53,22 @@
 			</div>
 			</div>
 			<hr>
+			
+			<div class="col-lg-12" style="margin-bottom: 15px">
+				<a href="file?svr_img_file_nm=${edu.svr_reg_file_nm}&img_file_type=${edu.reg_file_type}&source=reg" id="regAttachLabel" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+						class="col-lg-12 btn-reg hanna" >(${edu.origin_reg_file_nm}) 신청서 다운로드</a>
+				</div>
+				
+				<div class=" col-lg-12 "  style="padding-top: 0; margin-top: 0">
+					<a href="file?svr_img_file_nm=${edu.svr_plan_file_nm}&img_file_type=${edu.plan_file_type}&source=plan" id="planAttachLabel" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+						class="col-lg-12 btn-reg hanna">(${edu.origin_plan_file_nm}) 계획서 다운로드</a>
+				</div>
 			<div style="text-align:left; float: left; width: 100%; padding:10px;">	
 				<h1 class="hanna">별점을 선택해 주세요!</h1>
 			</div>
 			<div style="text-align:center; float: left; width: 100%; padding:10px;">	
 				<div class="starRev">
- 					 <span class="starR on"></span>
+ 					 <span class="starR onto"></span>
  					 <span class="starR"></span>
  					 <span class="starR"></span>
  					 <span class="starR"></span>

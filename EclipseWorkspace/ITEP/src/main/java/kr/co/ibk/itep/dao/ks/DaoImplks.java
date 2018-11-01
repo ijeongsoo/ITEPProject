@@ -78,5 +78,53 @@ public class DaoImplks implements Dao {
 		// TODO Auto-generated method stub
 		sst.update("edu001m.updateEduInfo", edu);
 	}
+
+	@Override
+	public void insertEcd002m(Ecd002m code) {
+		// TODO Auto-generated method stub
+		sst.insert("ecd002m.insertCode", code);
+	}
+
+	@Override
+	public void insertEcd005m(Ecd005m code) {
+		// TODO Auto-generated method stub
+		sst.insert("ecd005m.insertCode", code);
+	}
+
+	@Override
+	public void insertEcd006m(Ecd006m code) {
+		// TODO Auto-generated method stub
+		sst.insert("ecd006m.insertCode", code);
+	}
+
+	@Override
+	public void insertEcd007m(Ecd007m code) {
+		// TODO Auto-generated method stub
+		sst.insert("ecd007m.insertCode", code);
+	}
+
+	@Override
+	public void updateEcd002m(Ecd002m code) {
+		// TODO Auto-generated method stub
+		sst.update("ecd002m.updateCode", code);
+	}
+
+	@Override
+	public void updateEcd005m(Ecd005m code) {
+		// TODO Auto-generated method stub
+		sst.update("ecd005m.updateCode", code);
+	}
+
+	@Override
+	public void updateEcd006m(Ecd006m code) {
+		// TODO Auto-generated method stub
+		sst.update("ecd006m.updateCode", code);
+	}
+
+	@Override
+	public void updateEcd007m(Ecd007m code) {
+		// TODO Auto-generated method stub
+		sst.update("ecd007m.updateCode", code);
+	}
 }
 

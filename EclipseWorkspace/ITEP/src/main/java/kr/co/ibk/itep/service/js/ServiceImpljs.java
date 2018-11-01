@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.co.ibk.itep.dao.js.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
+import kr.co.ibk.itep.dto.CountInfo;
 import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.Edu003r;
@@ -304,7 +305,7 @@ public class ServiceImpljs implements Service {
 	@Override
 	@Transactional
 	public void survay(Edu003r edu003r) {		
-		
+
 		dao.insertSurvay(edu003r);
 		dao.updateStat(edu003r);
 				
@@ -322,6 +323,14 @@ public class ServiceImpljs implements Service {
 	public long getTotalAmount(String emn) {
 		long totalAmount = dao.selectTotalAmount(emn);
 		return totalAmount;
+	}
+
+
+	@Override
+	public CountInfo getCountInfo(String emn) {
+		CountInfo countInfo = dao.selectCountInfo(emn);
+		
+		return countInfo;
 	}
 
 

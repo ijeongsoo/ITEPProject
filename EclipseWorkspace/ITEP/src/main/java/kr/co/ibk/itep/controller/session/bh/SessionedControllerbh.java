@@ -1,19 +1,24 @@
 ﻿package kr.co.ibk.itep.controller.session.bh;
 
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.RequestAttributes;
@@ -98,6 +103,7 @@ public class SessionedControllerbh {
 				if(auth.equals("01")){
 					List<EduApproval> adminApprovalDetailList = service.selectDetailAllApprovalList();
 					for(int i=0; i<adminApprovalDetailList.size(); i++) {
+						
 						switch(adminApprovalDetailList.get(i).getSur_point()) {
 						case 1:
 							adminApprovalDetailList.get(i).setSur_point_star("★☆☆☆☆");
@@ -115,7 +121,7 @@ public class SessionedControllerbh {
 							adminApprovalDetailList.get(i).setSur_point_star("★★★★★");
 							break;
 						default:
-							adminApprovalDetailList.get(i).setSur_point_star("평가 전입니다.");
+							adminApprovalDetailList.get(i).setSur_point_star("평가 전입니다!");
 							break;
 						}
 
@@ -207,6 +213,30 @@ public class SessionedControllerbh {
 		}
 
 	} 	
+	
+	//결재 페이지
+	@RequestMapping(value = "downladFile", method = RequestMethod.POST)
+	public void downloadFile( String svr_img_file_nm, String img_file_type, HttpServletResponse response) {
+		
+		try {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("file_nm", svr_img_file_nm);
+			jsonObject.put("file_type", img_file_type);
+			String json = jsonObject.toString();
+			response.setContentType("application/json; charset=UTF-8");
+			PrintWriter pw;
+			
+			pw=response.getWriter();
+			pw.write(json);
+			pw.flush();
+			pw.close();
+
+
+		}catch(Exception e){
+			logger.error(e.getStackTrace().toString());
+		}
+	}
+	
 	
 	//대시보드
 	@RequestMapping("/dashboard")

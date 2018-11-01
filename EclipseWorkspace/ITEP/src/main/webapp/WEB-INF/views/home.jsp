@@ -103,15 +103,9 @@
 			}
     		
 			$( function() {
-					if('${result}a' == '0a'){
-						alert("이미 신청한 교육입니다.");
-					}else if('${result}a' == '2a'){
-						alert("설문을 미등록한 교육이 존재합니다.");
-					}else if('${result}a' == '1a'){
-						alert("신청이 완료되었습니다.");
-					}
+							
 				
-				
+			
 
 				if(${login_info.auth_cd} !='04'){
 					$("#adminButton").attr('style', 'visiblity:show');
@@ -257,6 +251,21 @@
 			});
 			
 			
+			window.onload=function(){
+				if('${result}a' == '0a'){
+					alert("이미 신청한 교육입니다.");
+					location.href = "#myInfo";
+				}else if('${result}a' == '2a'){
+					alert("설문을 미등록한 교육이 존재합니다.");
+					location.href = "#myInfo";
+				}else if('${result}a' == '1a'){
+					alert("완료되었습니다.");
+					
+						
+			}
+			
+
+		}
 			
 
 
@@ -284,7 +293,7 @@
 						href="#portfolio">교육 정보</a></li>
 					<li class="nav-item mx-0 mx-sm-1"><a
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#myInfo">${login_info.emm}님의 정보</a></li>
+						id="navInfo" href="#myInfo">${login_info.emm}님의 정보</a></li>
 
 				</ul>
 			</div>
@@ -548,7 +557,7 @@
 	<section id="myInfo" style="margin-bottom: 120px">
 		<div class="container">
 		
-			<div style="text-align: center">
+			<div id="aa" style="text-align: center">
 				<h2 style="padding-top: 80px;"
 				class="hanna text-center text-uppercase text-secondary mb-0">${login_info.emm }님의
 				정보</h2>
@@ -761,6 +770,11 @@
 				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
 			</div>
 		</div>
+	</section>
+	
+	
+	<section id="myInfo2" style="margin-bottom: 120px">
+		
 	</section>
 
 	<!-- Footer -->
