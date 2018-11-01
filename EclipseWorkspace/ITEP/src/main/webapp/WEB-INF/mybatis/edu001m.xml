@@ -270,6 +270,8 @@
     		, EDU_COST = #{edu_cost}
     		, LOC = #{loc}
     		, REFUND_YN = #{refund_yn}
+    		, CHG_ID = #{chg_id}
+    		, CHG_DT = SYSDATE
 		WHERE COURSE_CD = #{course_cd}
 	</update>
 

@@ -136,6 +136,14 @@ src:local(※),
   width: 100px; height: 100px;
   object-fit: cover;
 }
+.starR.onto{
+	background: url('../image/starYellow.png') no-repeat right 0;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+  width: 100px; height: 100px;
+  object-fit: cover;
+}
 
 .starMini{
   background: url('../image/starGray.png') no-repeat right 0;

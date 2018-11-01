@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.CountInfo;
 import kr.co.ibk.itep.dto.Edu002r;
 import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.Edu003r;
@@ -114,11 +115,10 @@ public class SessionedControllerjs {
 		model.addAttribute("mySurveyListCount", mySurveyList.size());
 		model.addAttribute("myRecentListCount", myRecentList.size());
 
-		
 		if(result != null){
 			model.addAttribute("result", result);
 		}
-
+		
 		return "home";
 	} 
 	
@@ -126,7 +126,6 @@ public class SessionedControllerjs {
 	@RequestMapping("/file")
 	public void download(String svr_img_file_nm, String img_file_type, String source, HttpServletResponse r,
 			@RequestHeader("User-Agent") String userAgent) throws IOException {
-		logger.info(svr_img_file_nm);
 		String fileName = svr_img_file_nm;
 		String encFileName;
 		if (userAgent.contains("MSIE") || userAgent.contains("Trident") || userAgent.contains("Edge")) {
@@ -156,9 +155,11 @@ public class SessionedControllerjs {
 		long fileSize = file.length();
 		r.addHeader("Content-Length", String.valueOf(fileSize));
 
+		
 		OutputStream os = r.getOutputStream();
 		FileInputStream fis = new FileInputStream(file);
 		FileCopyUtils.copy(fis, os);
+		
 		os.flush();
 		fis.close();
 		os.close();
@@ -315,7 +316,7 @@ public class SessionedControllerjs {
 	
 	
 	@RequestMapping("/myInfomation")
-	public String myInfomation( Model model, String result) {
+	public String myInfomation( Model model) {
 		
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
@@ -330,10 +331,14 @@ public class SessionedControllerjs {
 		List<RegistEduPullInfo> mySurveyList = new ArrayList<>();
 		List<RegistEduPullInfo> myRecentList = new ArrayList<>();
 		
+		CountInfo countInfo = new CountInfo();
+		
 		myRegistList = service.getMyRegistList(emn);
 		myStudyList = service.getMyStudyList(emn);
 		mySurveyList = service.getMySurveyList(emn);
 		myRecentList = service.getMyRecentList(emn);
+		countInfo = service.getCountInfo(emn);
+		
 		
 		model.addAttribute("myRegistList", myRegistList);
 		model.addAttribute("myStudyList", myStudyList);
@@ -344,10 +349,11 @@ public class SessionedControllerjs {
 		model.addAttribute("myStudyListCount", myStudyList.size());
 		model.addAttribute("mySurveyListCount", mySurveyList.size());
 		model.addAttribute("myRecentListCount", myRecentList.size());
-		
-		logger.info("###########################################"+myStudyList.size());
-		
+				
 		model.addAttribute("totalAmount", totalAmount);
+		model.addAttribute("countInfo", countInfo);
+		
+		
 
 		return "myInfomation";
 	} 

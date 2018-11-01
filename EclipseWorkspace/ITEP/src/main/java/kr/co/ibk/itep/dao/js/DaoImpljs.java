@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.controller.session.js.SessionedControllerjs;
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.CountInfo;
 import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.Edu003r;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
@@ -151,8 +152,17 @@ public class DaoImpljs implements Dao {
 
 	@Override
 	public void insertSurvay(Edu003r edu003r) {
+		logger.info(edu003r.getEmn());
+		logger.info(edu003r.getOpinion());
 
-		sst.insert("edu003r.insert", edu003r);
+
+		logger.info(edu003r.getCourse_cd());
+
+		logger.info(String.valueOf(edu003r.getSur_point()));
+
+
+
+		sst.insert("edu003r.insertSurvay", edu003r);
 		
 	}
 
@@ -183,6 +193,13 @@ public class DaoImpljs implements Dao {
 
 		}
 		return totalAmount;
+	}
+
+
+	@Override
+	public CountInfo selectCountInfo(String emn) {
+		CountInfo countInfo = sst.selectOne("edu002r.selectCountInfo", emn);
+		return countInfo;
 	}
 
 

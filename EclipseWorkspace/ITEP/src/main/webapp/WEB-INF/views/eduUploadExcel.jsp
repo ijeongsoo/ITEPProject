@@ -83,6 +83,11 @@ margin: auto;
 			$('#filePath').html(fn);
 		});
 		$('#excel').submit(function() {
+			var fn = document.getElementById('excelFile').value;
+			if(fn == '') {
+				alert("엑셀 파일을 첨부해 주세요!!");
+				return false;
+			}
 			$('#load').show();
 			$('#excelFileBtn').attr('disable', true);
 			$('#submitBtn').attr('disable', true);
@@ -110,7 +115,7 @@ margin: auto;
 			
 			<div class="hanna" style="padding-left: 55px; padding-bottom: 20px">
 				<button id="addRow" class="" onclick="addRowClick()" style="float: left;">+행추가</button>
-				<span class="hanna" style="padding-left: 30px;"> ※ 대량의 교육 등록 시, 하단의 엑셀 업로드 기능을 활용하면 편리합니다.</span>
+				<span class="hanna" style="padding-left: 30px;"> ※ 대량의 교육 등록 시, 하단의 일괄 등록 기능을 활용하면 편리합니다.</span>
 			</div> 
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
@@ -137,8 +142,8 @@ margin: auto;
 
 			<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
 				<label style="padding-left: 35px"> 
-					<span class="hanna">파일경로: </span> 
-					<span class="hanna" id="filePath"> 파일 미선택</span>
+					<span class="hanna">파일경로 : </span> 
+					<span class="hanna" id="filePath"> 파일 미첨부</span>
 				</label><br>
 				
 					<div style="padding-left: 35px">
@@ -397,36 +402,40 @@ margin: auto;
           }
       ]
   });
-  for(var i=0; i<5; i++) {	// 입력칸 생성
+  for(var i=0; i<2; i++) {	// 입력칸 생성
 	  grid.appendRow();
   }
 	function addRowClick() {	//행추가 
 		grid.appendRow();
 	}
 	function uploadGrid() {
-		console.log("dddd: ", grid.getRows());
 		for(var i=0; i<grid.getRowCount(); i++) {	// 빈값 제거 기능
 			if(grid.getRowAt(i).org_cd == ""){
 				grid.removeRow(grid.getRowAt(i));
 				i--;
 			}
 		}
-		console.log("dddd: ", grid.getRows());
 		
 		// 정합성 검사
-		var edu001m = JSON.stringify(grid.getRows());
+		if(grid.getRowCount() == 0) {
+			alert("교육정보를 입력해 주세요!");
+		}
+		else {
+			// 데이터 JSON화
+			var edu001m = JSON.stringify(grid.getRows());
 		
-		// post 전송
-		$.ajax({
-			'url' : "uploadGrid",
-			'data' : {
-				'edu001m' : edu001m
-			},
-			'type' : "POST",
-			'success' : function(data) {
-				location.href = "eduEdit";
-			}
-		});
+			// post 전송
+			$.ajax({
+				'url' : "uploadGrid",
+				'data' : {
+					'edu001m' : edu001m
+				},
+				'type' : "POST",
+				'success' : function(data) {
+					location.href = "eduEdit";
+				}
+			});
+		}
 	}
 </script>
 </html>

@@ -5,13 +5,15 @@
 
 <mapper namespace="edu003r">
 	
+	<insert id="insertSurvay">
+  	insert into tb_iep_edu003r (emn, course_cd, sur_point, opinion, reg_id, reg_dt, chg_id, chg_dt )
+ 	 values (#{emn},#{course_cd},#{sur_point},#{opinion},#{emn},sysdate,#{emn},sysdate )
+	</insert>
+	
+	
 	<select id= "selectSurveyCountByCourse_cdEmn" resultType="int" parameterType="kr.co.ibk.itep.dto.Edu002rAttach">
 		select count(*) from TB_IEP_EDU002R where emn = #{emn} and stat_cd = '03'
 	</select>
 	
-	<insert id="insert" parameterType="kr.co.ibk.itep.dto.Edu003r" >
-		insert into TB_IEP_EDU003R(emn,course_cd,sur_point,opinion, reg_id, reg_dt, chg_id, chg_dt) 
-		values (#{emn},#{course_cd},#{sur_point},#{opinion},#{emn}, sysdate, #{emn}, sysdate)
-	</insert>
-	
+
 </mapper>
