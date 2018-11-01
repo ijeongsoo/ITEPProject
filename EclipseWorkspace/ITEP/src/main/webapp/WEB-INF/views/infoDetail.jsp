@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-
 	<div class="modal-header" style="background-color: #FFDCE6">
 			<div style=" margin: 0 auto;">
 						<h1 align="center" class="hanna" style="margin-left : 30px; color: black" id="modal-register-label">교육 상세</h1>
@@ -35,12 +34,12 @@
 			</div>
 			
 				<div class="col-lg-12" style="margin-bottom: 15px">
-				<a href="file?svr_img_file_nm=${edu.svr_reg_file_nm}&img_file_type=${edu.reg_file_type}&source=reg" id="regAttachLabel" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+				<a id="regDownloadLink" href="" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
 						class="col-lg-12 btn-reg hanna" >(${edu.origin_reg_file_nm}) 신청서 다운로드</a>
 				</div>
 				
 				<div class=" col-lg-12 "  style="padding-top: 0; margin-top: 0">
-					<a href="file?svr_img_file_nm=${edu.svr_plan_file_nm}&img_file_type=${edu.plan_file_type}&source=plan" id="planAttachLabel" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+					<a id="planDownloadLink" href="" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
 						class="col-lg-12 btn-reg hanna">(${edu.origin_plan_file_nm}) 계획서 다운로드</a>
 				</div>
 			<br>
@@ -67,6 +66,15 @@
 		}else{
 			$('#statStatus').attr('style', 'display:none');
 		}
+		
+		var reg_file_nm = encodeURI('${edu.svr_reg_file_nm}');
+		var reg_file_type = encodeURI('${edu.reg_file_type}');
+		var plan_file_nm = encodeURI('${edu.svr_plan_file_nm}');
+		var plan_file_type = encodeURI('${edu.plan_file_type}');
+		
+		$('#regDownloadLink').attr("href", "file?svr_img_file_nm="+reg_file_nm+"&img_file_type="+reg_file_type+"&source=reg")
+		$('#planDownloadLink').attr("href", "file?svr_img_file_nm="+plan_file_nm+"&img_file_type="+plan_file_type+"&source=plan")
+
 	});
 	
 	</script>
