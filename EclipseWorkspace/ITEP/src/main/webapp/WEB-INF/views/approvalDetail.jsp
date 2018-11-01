@@ -124,7 +124,7 @@
 			$(document).ready(function(){
 
 				$.ajax({
-					'url' : "downladFile",
+					'url' : "downloadFile",
 					'data' : {
 						'svr_img_file_nm' : encodeURI(reg_file_nm),
 						'img_file_type' : encodeURI(reg_file_type)
@@ -140,7 +140,7 @@
 			$(document).ready(function(){
 
 				$.ajax({
-					'url' : "downladFile",
+					'url' : "downloadFile",
 					'data' : {
 						'svr_img_file_nm' : encodeURI(plan_file_nm),
 						'img_file_type' : encodeURI(plan_file_type)

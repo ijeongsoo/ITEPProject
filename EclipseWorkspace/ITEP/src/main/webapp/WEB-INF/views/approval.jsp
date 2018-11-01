@@ -51,7 +51,8 @@
   <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.js" rel="stylesheet">  
   <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
 	
-
+	<!-- 모달 -->
+    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -61,82 +62,200 @@
 
 <style>
 
-	
+	#modal {
+	display:none;
+	background-color:#FFFFFF;
+	position:absolute;
+	width : 500px;
+	height : 600px;
+	top:300px;
+	left:200px;
+	z-Index:9999}
+
+	/*yellow/ROUGE BUTTON STYLES*/     
+	#adminPM{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
+	#adminPM:hover{background-color:#dd9003;}
+	#adminPM:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 </style>
 </head>
 
-	<script type="text/javascript">
-		$( function () {
-	    	$('#approvalTable').DataTable();
-		});
-		
-		//교육 List 체크박스 전체 선택/해제
-		function chekc_All(){
-	        if( $("#allCheck").is(':checked') ){
-	            $("input[name=listCheckbox]").prop("checked", true);
-	          }else{
-	            $("input[name=listCheckbox]").prop("checked", false);
-	          }
-		}
-			
-		//버튼 클릭시 결재 Update 및 교육List 갱신
-		function fn_pmApproval(){
-			if (confirm("정말 결재 하시겠습니까??") == true){    //확인
-				checkboxArr();
-			}else{   //취소
-			}
-			location.href="JavaScript:window.location.reload()";
-		}
-		
-		//체크되어 있는 교육들 파라미터 넘기기
-		function checkboxArr(){
-			
-			//체크되어 있는 value들 가져올 배열 선언
-			var checkboxValues = [];
-		    var chk_obj = document.getElementsByName("listCheckbox");
-		    var chk_use = false;
-		    
-		    for (i=0; i < chk_obj.length; i++) {
-		        if (chk_obj[i].checked == true) { 
-		        	chk_use = true;
-		        	checkboxValues.push(chk_obj[i].value);
-		        }
-		    }
-
-		    
-		    if(chk_use == false){
-		    	alert("선택하신 강의가 없습니다.");
-		    }else{
-		    	jQuery.ajaxSettings.traditional = true;
-
-		    	 $.ajax({
-		    	        'url':"updateApproval.do",
-		    	        'type':'GET',
-		    	        'data': { 'pmlist' : checkboxValues},
-		    	        'success':function(data){
-		    	            alert("성공적으로 결재되었습니다.");
-		    	            window.opener.location.reload();
-		    	        },
-		    	        'error':function(jqXHR, textStatus, errorThrown){
-		    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-
-		    	        }
-		    	    });
-		    }
-
-		}
-				
-	</script>
+<script type="text/javascript">
+	$( function () {
+    	$('#approvalTable').DataTable();
+	});
 	
-	<body>
-		<section class="wrapper">
-      		<!--overview start-->
-    		<div class="row">
-      			<div class="col-lg-12">
-        			<h3 class="page-header hanna"> 결재진행   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
-      			</div>
-      		</div>
+    var reg_file_nm = "";
+    var reg_file_type = "";
+    var plan_file_nm = "";
+    var plan_file_type = "";
+	
+	//리스트 선택하면 계획서, 신청서 다운로드 가능한 모달 창 오픈
+	function fn_TbClickCall(e){
 
+		
+		$(e).find("td").each(function(i, item){ 
+		
+			//컬럼인덱스로 데이터 확인 
+			if(i==14){ 
+				reg_file_nm = $(item).html();
+			}else if(i==15){ 
+				plan_file_nm = $(item).html();
+			}else if(i==16){ 
+				reg_file_type = $(item).html();
+			}else if(i==17){ 
+				plan_file_type = $(item).html();
+			}
+		}); 
+
+		// 모달창 인스턴트 생성
+		var myModal = new Example.Modal({
+
+		    id: "modal" // 모달창 아이디 지정
+		});    		
+		alert(reg_file_nm);
+		downloadFile("reg");
+		downloadFile("plan");
+  		myModal.show();
+	}		
+
+	function downloadFile(source){
+		if(source=="reg"){
+			$(document).ready(function(){
+
+				$.ajax({
+					'url' : "downloadFile",
+					'data' : {
+						'svr_img_file_nm' : encodeURI(reg_file_nm),
+						'img_file_type' : encodeURI(reg_file_type)
+					},
+					'type' : "POST",
+					'success' : function(data) {
+						$("#regFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+					}
+				});
+			});
+
+		}else if(source=="plan"){
+			
+			$(document).ready(function(){
+
+				$.ajax({
+					'url' : "downloadFile",
+					'data' : {
+						'svr_img_file_nm' : encodeURI(plan_file_nm),
+						'img_file_type' : encodeURI(plan_file_type)
+					},
+					'type' : "POST",
+					'success' : function(data) {
+						$("#planFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+					}
+				});
+			});
+		}
+
+	}		
+	
+	//교육 List 체크박스 전체 선택/해제
+	function chekc_All(){
+        if( $("#allCheck").is(':checked') ){
+            $("input[name=listCheckbox]").prop("checked", true);
+          }else{
+            $("input[name=listCheckbox]").prop("checked", false);
+          }
+	}
+		
+	//버튼 클릭시 결재 Update 및 교육List 갱신
+	function fn_pmApproval(){
+		if (confirm("정말 결재 하시겠습니까??") == true){    //확인
+			checkboxArr();
+		}else{   //취소
+		}
+		location.href="JavaScript:window.location.reload()";
+	}
+	
+	//체크되어 있는 교육들 파라미터 넘기기
+	function checkboxArr(){
+		
+		//체크되어 있는 value들 가져올 배열 선언
+		var checkboxValues = [];
+	    var chk_obj = document.getElementsByName("listCheckbox");
+	    var chk_use = false;
+	    
+	    for (i=0; i < chk_obj.length; i++) {
+	        if (chk_obj[i].checked == true) { 
+	        	chk_use = true;
+	        	checkboxValues.push(chk_obj[i].value);
+	        }
+	    }
+
+	    
+	    if(chk_use == false){
+	    	alert("선택하신 강의가 없습니다.");
+	    }else{
+	    	jQuery.ajaxSettings.traditional = true;
+
+	    	 $.ajax({
+    	        'url':"updateApproval.do",
+    	        'type':'GET',
+    	        'data': { 'pmlist' : checkboxValues},
+    	        'success':function(data){
+    	            alert("성공적으로 결재되었습니다.");
+    	            window.opener.location.reload();
+    	        },
+    	        'error':function(jqXHR, textStatus, errorThrown){
+    	            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+
+    	        }
+    	    });
+	    }
+	}
+			
+</script>
+	
+<body>
+
+	<!-- 모달창 -->
+	<div id="modal">
+		<div class="modal-header" style="background-color: #237fbc">
+			   <h1 align="center" class="hanna" style="color:#fff">교육 신청 상세 정보 </h1>	
+		</div>
+		
+		<div class="modal_content">
+		
+		<div class="img" align="center" style="margin_bottom:50px; padding-top:20px">
+		<img src= "<%=application.getContextPath()%>/resources/image/cloud-computing.png" width="80px" height="80px">
+		</div>
+   		
+   		<form role="form">
+   			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
+   				<label for="authority" class="control-label"> 신청서 : </label>
+   			    <a id="regFile" href="">다운로드</a>  	
+   			</div>
+   			
+   			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
+   				<label for="authority" class="control-label"> 계획서 : </label>
+   			    <a id="planFile" href="">다운로드</a>  	
+   			</div>    			
+   			<br>
+   			<br> 			
+   			<div id="button" class="hanna" align="center" style="padding-top:70px">	
+   				<button class="js_close" style="width:100px; height:30px;">확인</button> 		
+   			</div>
+   		</form>
+   		</div>
+	</div>
+
+	<!-- 모달창 end -->		
+	
+	
+	
+	<section class="wrapper">
+     		<!--overview start-->
+   		<div class="row">
+     			<div class="col-lg-12">
+       			<h3 class="page-header hanna"> 결재진행   <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
+     			</div>
+     		</div>
     </section>
 	
 	<div style="padding-left:32%">
@@ -168,11 +287,15 @@
 					<th style="text-align: center;">교육장소</th>
 					<th style="text-align: center;">환급여부</th>
 					<th style="text-align: center;">결재 상황</th>
+					<th style="text-align: center; display:none;">신청서 파일 이름</th>
+					<th style="text-align: center; display:none;">신청서 파일 타입</th>					
+					<th style="text-align: center; display:none;">계획서 파일 이름</th>
+					<th style="text-align: center; display:none;">계획서 파일 타입</th>					
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="adminApprovalList" items="${adminApproval_List}" varStatus="status">
-					<tr>
+					<tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;" >
 						<td><input type='checkbox' name="listCheckbox" value="${adminApprovalList.emn};${adminApprovalList.course_cd}"><!--onClick="selectCheckBox(tdis, 'listCheckbox');">--></td>
 						<td align="center">${adminApprovalList.emn}</td>
 						<td align="center">${adminApprovalList.emm}</td>
@@ -187,7 +310,10 @@
 						<td align="center">${adminApprovalList.loc}</td>
 						<td align="center">${adminApprovalList.refund_yn}</td>
 						<td align="center">${adminApprovalList.step_nm}</td>
-													
+						<td align="center" style="display:none;">${adminApprovalList.svr_reg_file_nm}</td>
+						<td align="center" style="display:none;">${adminApprovalList.svr_plan_file_nm}</td>	
+						<td align="center" style="display:none;">${adminApprovalList.reg_file_type}</td>
+						<td align="center" style="display:none;">${adminApprovalList.plan_file_type}</td>														
 					</tr>
 				</c:forEach>
 			</tbody>					

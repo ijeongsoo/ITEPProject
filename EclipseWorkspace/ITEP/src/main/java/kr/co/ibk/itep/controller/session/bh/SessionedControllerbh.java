@@ -215,7 +215,7 @@ public class SessionedControllerbh {
 	} 	
 	
 	//결재 페이지
-	@RequestMapping(value = "downladFile", method = RequestMethod.POST)
+	@RequestMapping(value = "downloadFile", method = RequestMethod.POST)
 	public void downloadFile( String svr_img_file_nm, String img_file_type, HttpServletResponse response) {
 		
 		try {
