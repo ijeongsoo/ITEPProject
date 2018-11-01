@@ -82,6 +82,10 @@
 <script type="text/javascript">
 	$( function () {
     	$('#approvalTable').DataTable();
+    	$("input[type=checkbox]").click(function(event) {
+
+			event.stopPropagation();
+		});
 	});
 	
     var reg_file_nm = "";
@@ -265,7 +269,7 @@
 	</div>
 	
 	<div class="hanna" style="padding-right: 130px; padding-bottom: 30px">
-		<button id="" class="btn btn-primary2" onclick="fn_pmApproval()" style="float: right;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">결재</button>
+		<button name="button_app" class="btn btn-primary2" onclick="fn_pmApproval()" style="float: right;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">결재</button>
 	</div>
 			
 	<div class="container">
