@@ -12,6 +12,7 @@ import kr.co.ibk.itep.dto.Ecd002m;
 import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
+import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
@@ -40,6 +41,9 @@ public interface Service {
 
 	void insertGridToDB(ArrayList<Edu001m> gridList);
 
+	void insertCodeAll(ArrayList<EcdCode> insertCodeList);
+
+	void updateCodeAll(ArrayList<EcdCode> updateCodeList);
 
 }
 

@@ -40,6 +40,22 @@ public interface Dao {
 	Edu001m selectEduInfo(String course_cd);
 
 	void updateEduInfo(Edu001m edu);
+
+	void insertEcd002m(Ecd002m code);
+
+	void insertEcd005m(Ecd005m code);
+
+	void insertEcd006m(Ecd006m code);
+
+	void insertEcd007m(Ecd007m code);
+
+	void updateEcd002m(Ecd002m code);
+
+	void updateEcd005m(Ecd005m code);
+
+	void updateEcd006m(Ecd006m code);
+
+	void updateEcd007m(Ecd007m code);
 	
 
 	

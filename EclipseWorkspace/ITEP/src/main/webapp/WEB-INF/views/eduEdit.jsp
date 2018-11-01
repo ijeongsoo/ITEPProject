@@ -43,8 +43,8 @@
 
       <script src="<%=application.getContextPath()%>/resources/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
       <script src="<%=application.getContextPath()%>/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-      <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-      <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+      <link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
+      <script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>
 
 
 
@@ -77,9 +77,10 @@
             <h3 class="page-header hanna">교육수정  <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
         </div>
-		</section>
+		</section>		
 			<!-- Table 출력 -->
 		<div class="container">
+		<span class="hanna" style="padding-left: 30px; color: red"> ※ 교육 리스트를 클릭하시면 교육정보 수정이 가능합니다.</span>
 			<div class="hanna">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>
@@ -95,7 +96,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="edu" items="${edulist}" varStatus="status">
-						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal">
+						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal" style="cursor: pointer;">
 							<td style="text-align: center;">${edu.rownum}</td>
 							<td style="text-align: center;">${edu.high_cls_nm}</td>
 							<td style="text-align: center;">${edu.mid_cls_nm}</td>
@@ -117,7 +118,7 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				
-				<div id="modalHeader" class="modal-header" >
+				<div id="modalHeader" class="modal-header">
 				</div>
 				<div id="modalBody" class="modal-body"> </div>
 				

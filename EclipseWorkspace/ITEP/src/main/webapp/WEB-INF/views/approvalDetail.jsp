@@ -106,35 +106,59 @@
 				plan_file_type = $(item).html();
 			}
 		}); 
-		
+
 		$("#labelid1").html(point);			
-		$("#labelid2").html(opinion);	
+		$("#labelid2").html(opinion);
 		// 모달창 인스턴트 생성
 		var myModal = new Example.Modal({
 
 		    id: "modal" // 모달창 아이디 지정
 		});    		
-
-  		myModal.show();	
+		downloadFile("reg");
+		downloadFile("plan");
+  		myModal.show();
 	}
 	
 	function downloadFile(source){
-		if(source="reg"){
-			$.get(
-				    "file?svr_img_file_nm="+reg_file_nm+"&img_file_type="+reg_file_type+"&source="+source
-				);
-		}else if(source="plan"){
-			$.get(
-				    "file?svr_img_file_nm="+plan_file_nm+"&img_file_type="+plan_file_type+"&source="+source
-				);		
+		if(source=="reg"){
+			$(document).ready(function(){
+
+				$.ajax({
+					'url' : "downloadFile",
+					'data' : {
+						'svr_img_file_nm' : encodeURI(reg_file_nm),
+						'img_file_type' : encodeURI(reg_file_type)
+					},
+					'type' : "POST",
+					'success' : function(data) {
+						$("#regFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+					}
+				});
+			});
+
+		}else if(source=="plan"){
+			$(document).ready(function(){
+
+				$.ajax({
+					'url' : "downloadFile",
+					'data' : {
+						'svr_img_file_nm' : encodeURI(plan_file_nm),
+						'img_file_type' : encodeURI(plan_file_type)
+					},
+					'type' : "POST",
+					'success' : function(data) {
+						$("#planFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+					}
+				});
+			});
 		}
+
 	}
 
-
-
+	
 	</script>
 	
-	<body>
+	<body >
 	
 		<!-- 모달창 -->
 		<div id="modal">
@@ -158,11 +182,12 @@
     			</div>
     			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
     				<label for="authority" class="control-label"> 신청서 : </label>
-    			    <input class="confirm_button" type="button" value="다운로드" onclick="downloadFile('reg')">  	
+    			    <a id="regFile" href="file?svr_img_file_nm='${file_name}'&img_file_type='${file_type}'&source=reg">다운로드</a>  	
     			</div>
+    			
     			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
     				<label for="authority" class="control-label"> 계획서 : </label>
-    			    <input class="confirm_button" type="button" value="다운로드" onclick="downloadFile('plan')">  	
+    			    <a id="planFile" href="">다운로드</a>  	
     			</div>    			
     			<br>
     			<br>
@@ -184,7 +209,7 @@
       			</div>
       		</div>
       		<div class="headerConets" align="center">
-      		테스트테스트
+      		테스트테스트 
      		</div>
     </section>
 

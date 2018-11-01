@@ -19,6 +19,7 @@ import kr.co.ibk.itep.dto.Ecd002m;
 import kr.co.ibk.itep.dto.Ecd005m;
 import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
+import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -272,4 +273,62 @@ public class ServiceImplks implements Service {
 		
 		dao.insertCourseList(gridList);
 	}
+
+	@Override
+	public void insertCodeAll(ArrayList<EcdCode> insertCodeList) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<insertCodeList.size(); i++) {
+			EcdCode code = insertCodeList.get(i);
+			switch(code.getEcdName()) {
+			case "Ecd002m":
+				// 교육기관코드 신규
+				dao.insertEcd002m((Ecd002m)code);
+				break;
+			case "Ecd005m":
+				// 대분류코드 신규
+				dao.insertEcd005m((Ecd005m)code);
+				break;
+			case "Ecd006m":
+				// 중분류코드 신규				
+				dao.insertEcd006m((Ecd006m)code);
+				break;
+			case "Ecd007m":
+				// 소분류코드 신규				
+				dao.insertEcd007m((Ecd007m)code);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void updateCodeAll(ArrayList<EcdCode> updateCodeList) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<updateCodeList.size(); i++) {
+			EcdCode code = updateCodeList.get(i);
+			switch(code.getEcdName()) {
+			case "Ecd002m":
+				// 교육기관코드 변경
+				dao.updateEcd002m((Ecd002m)code);
+				break;
+			case "Ecd005m":
+				// 대분류코드 변경
+				dao.updateEcd005m((Ecd005m)code);
+				break;
+			case "Ecd006m":
+				// 중분류코드 변경				
+				dao.updateEcd006m((Ecd006m)code);
+				break;
+			case "Ecd007m":
+				// 소분류코드 변경				
+				dao.updateEcd007m((Ecd007m)code);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	
 }

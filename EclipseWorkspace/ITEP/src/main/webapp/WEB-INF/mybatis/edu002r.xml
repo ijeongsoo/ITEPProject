@@ -67,8 +67,8 @@
 	       AND EDU002R.EMN = EMP001M.EMN
 	       AND EMP001M.BLNG_BRCD = BRI001M.BRCD
 	       AND EDU002R.STAT_CD = ECD004M.STAT_CD
-	       AND EDU003R.COURSE_CD = EDU002R.COURSE_CD
-	       AND EDU003R.EMN = EDU002R.EMN 	
+	       AND EDU003R.COURSE_CD(+) = EDU002R.COURSE_CD
+	       AND EDU003R.EMN(+) = EDU002R.EMN
 	</select>
 	
 	<select id="selectDetailDep" resultType="kr.co.ibk.itep.dto.EduApproval" parameterType="String">
@@ -92,8 +92,8 @@
 	                                     FROM TB_IEP_EMP001M
 	                                    WHERE EMN = #{emn}))       
 	       AND EDU002R.STAT_CD = ECD004M.STAT_CD
-	       AND EDU003R.COURSE_CD = EDU002R.COURSE_CD
-	       AND EDU003R.EMN = EDU002R.EMN     
+	       AND EDU003R.COURSE_CD(+) = EDU002R.COURSE_CD
+	       AND EDU003R.EMN(+) = EDU002R.EMN
 	</select>
 	
 	<select id="dashboardBrcdEduCountMonth" resultType="Map">

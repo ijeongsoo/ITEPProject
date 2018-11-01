@@ -73,18 +73,6 @@ function chageRefundSelect() {
 }
 </script>
 
-<style>
-/*yellow/ROUGE BUTTON STYLES*/     
-#save_btn{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 100px; height: 40px;}
-#save_btn:hover{background-color:#dd9003;}
-#save_btn:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
-/*white/ROUGE BUTTON STYLES*/    
-#cancel_btn{background-color: #F0F4F7; color : #686466; border-color: #F0F4F7;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 100px; height: 40px;}
-#cancel_btn:hover{background-color:#8D8787; color : #fff;}
-#cancel_btnactive{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-
-</style>
 <body>
 	<form id="editForm" name="editFrom" method="post" action="eduSave">
 		<div style="padding:3px">	
@@ -135,7 +123,7 @@ function chageRefundSelect() {
 		
 		<div style="padding:3px">	
 			<span style="font-size: 15px; margin-bottom : 0.3 ; padding-bottom : 0" class="hanna"> 교육명:   </span>
-			<input name="course_nm" type="text" style="font-size: 15px; border: 0px" value="${edu.course_nm}" class="hanna"/>
+			<input name="course_nm" type="text" style="font-size: 15px; border: 0px; width: 250px" value="${edu.course_nm}" class="hanna"/>
 		</div>
 		
 		<div style="padding:3px">	
@@ -178,8 +166,10 @@ function chageRefundSelect() {
 		</div>
 
 		<div class="wrap" style="overflow: hidden">
-			<input id="cancel_btn" type="reset" value="취소" 	style="float: right;" data-dismiss="modal"/>
-			<input id="save_btn" type="submit" value="저장" style="float: right;"/>
+			<div class="hanna">
+				<button class="btn btn-default" id="cancel_btn" type="reset" style="float: right; margin-left: 10px" data-dismiss="modal">취소</button>
+				<button class="btn btn-primary2" id="save_btn" type="submit" style="float: right;"><img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">저장</button>
+			</div>
 		</div>
 	</form>
 <!-- 로딩 이미지, 업데이트 쿼리, 콤보박스 등 작성 -->
