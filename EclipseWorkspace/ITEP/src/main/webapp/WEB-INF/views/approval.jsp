@@ -52,7 +52,7 @@
   <link href="<%=application.getContextPath()%>/resources/js/Chart.bundle.min.js" rel="stylesheet">  
 	
 	<!-- 모달 -->
-    <script src="<c:url value="/resources/main_page_resource/js/authority.modal.js" />"></script>
+    <script src="<c:url value="/resources/main_page_resource/js/approval.modal.js" />"></script>
   <!-- =======================================================
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -67,7 +67,7 @@
 	background-color:#FFFFFF;
 	position:absolute;
 	width : 500px;
-	height : 600px;
+	height : 360px;
 	top:300px;
 	left:200px;
 	z-Index:9999}
