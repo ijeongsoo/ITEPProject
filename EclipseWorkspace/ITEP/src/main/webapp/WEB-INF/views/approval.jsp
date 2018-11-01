@@ -285,8 +285,8 @@
 					<th style="text-align: center;">종료일</th>
 					<th style="text-align: center;">교육비</th>
 					<th style="text-align: center;">교육장소</th>
-					<th style="text-align: center;">환급여부</th>
-					<th style="text-align: center;">결재 상황</th>
+					<th style="text-align: center;">환급</th>
+					<th style="text-align: center;">결재상황</th>
 					<th style="text-align: center; display:none;">신청서 파일 이름</th>
 					<th style="text-align: center; display:none;">신청서 파일 타입</th>					
 					<th style="text-align: center; display:none;">계획서 파일 이름</th>
