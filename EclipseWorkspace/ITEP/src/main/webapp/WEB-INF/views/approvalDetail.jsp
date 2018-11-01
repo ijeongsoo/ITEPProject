@@ -131,7 +131,8 @@
 					},
 					'type' : "POST",
 					'success' : function(data) {
-						$("#regFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+						alert(reg_file_nm);
+						$("#regFile").attr("href", "file?svr_img_file_nm="+data.file_nm+"&img_file_type="+data.file_type+"&source="+source)
 					}
 				});
 			});
@@ -147,7 +148,7 @@
 					},
 					'type' : "POST",
 					'success' : function(data) {
-						$("#planFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+						$("#planFile").attr("href", "file?svr_img_file_nm="+data.file_nm+"&img_file_type="+data.file_type+"&source="+source)
 					}
 				});
 			});
