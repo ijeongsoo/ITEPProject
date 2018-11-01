@@ -147,7 +147,7 @@
 					},
 					'type' : "POST",
 					'success' : function(data) {
-						$("#planFile").attr("href", "file?svr_img_file_nm="+encodeURI(data.file_nm)+"&img_file_type="+encodeURI(data.file_type)+"&source="+encodeURI(source))
+						$("#planFile").attr("href", "file?svr_img_file_nm="+data.file_nm+"&img_file_type="+data.file_type+"&source="+source)
 					}
 				});
 			});

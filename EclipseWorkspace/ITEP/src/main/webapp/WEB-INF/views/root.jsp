@@ -28,6 +28,7 @@
 
 	<div class="loading hanna">
 		WELCOME TO <br> IBK IT 교육 포탈 <br>
+		
 		<img width="100px" src="resources/image/Disqus-1s-200px.gif" alt="">
 	</div>
 		
