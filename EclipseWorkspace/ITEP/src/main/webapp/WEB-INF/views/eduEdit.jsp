@@ -77,9 +77,10 @@
             <h3 class="page-header hanna">교육수정  <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
         </div>
-		</section>
+		</section>		
 			<!-- Table 출력 -->
 		<div class="container">
+		<span class="hanna" style="padding-left: 30px; color: red"> ※ 교육 리스트를 클릭하시면 교육정보 수정이 가능합니다.</span>
 			<div class="hanna">
 			<table id="edulistTable" class="display" style="width:100%">
 				<thead>

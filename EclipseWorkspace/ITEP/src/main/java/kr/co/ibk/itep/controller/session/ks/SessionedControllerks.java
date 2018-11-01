@@ -134,6 +134,7 @@ public class SessionedControllerks {
 			JSONObject obj = jArr.getJSONObject(i);
 			Edu001m edu = new Edu001m(obj);
 			edu.setReg_id(ssoid);
+			edu.setRefund_yn(edu.getRefund_yn().toUpperCase());
 			gridList.add(edu);
 		}
 		service.insertGridToDB(gridList);

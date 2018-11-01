@@ -135,7 +135,7 @@ function chageRefundSelect() {
 		
 		<div style="padding:3px">	
 			<span style="font-size: 15px; margin-bottom : 0.3 ; padding-bottom : 0" class="hanna"> 교육명:   </span>
-			<input name="course_nm" type="text" style="font-size: 15px; border: 0px" value="${edu.course_nm}" class="hanna"/>
+			<input name="course_nm" type="text" style="font-size: 15px; border: 0px; width: 250px" value="${edu.course_nm}" class="hanna"/>
 		</div>
 		
 		<div style="padding:3px">	
