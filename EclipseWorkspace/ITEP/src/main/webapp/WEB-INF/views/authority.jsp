@@ -286,7 +286,7 @@
         <c:choose>
             <c:when test="${fn:length(auth_list) > 0}">
                 <c:forEach items="${auth_list}" var="row">
-                    <tr style="border-top : 1px solid #ccc;">
+                    <tr>
 						<td><input type='checkbox' name="listCheckBox"  value="${row.emm}"> </td>              
                         <td>${row.emn}</td>
                         <td>${row.emm}</td>

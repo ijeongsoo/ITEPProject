@@ -171,13 +171,13 @@ jQuery(document).ready(function($) {
     <!-- 대시보드 항목3 -->
     <div style="float:fixed; padding-bottom:50px;">   
     <div style="padding-left:170px;">
-	     <div class="white-box" style="padding-top:20px;width:470px;height:40%;float:left;">  
+	     <div class="white-box" style="padding-top:20px;width:460px;height:40%;float:left;">  
 	                     <h3 class="hanna">당월 부서별 교육 수강 현황</h3>
 	  		<canvas id="myChart_1" width="600px" height="600px"></canvas>
 	    </div>   
     </div>    
     <div style="padding-right:175px;">
-	     <div class="white-box" style="padding-top:20px;width:470px;height:40%;float:right;">
+	     <div class="white-box" style="padding-top:20px;width:460px;height:40%;float:right;">
 	                     <h3 class="hanna">분야별 연간 교육 수강 현황</h3>  
 	  		<canvas id="myChart_3" width="600px" height="600px"></canvas>
 	    </div>   
