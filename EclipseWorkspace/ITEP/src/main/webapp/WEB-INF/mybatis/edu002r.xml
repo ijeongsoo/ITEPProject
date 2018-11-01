@@ -138,7 +138,7 @@
                             END),
                STAT_CD = (CASE WHEN #{auth} = '01' THEN '01'
                             WHEN #{auth} = '02' THEN '00'
-                            WHEN #{auth} = '01' THEN '00'
+                            WHEN #{auth} = '03' THEN '00'
                             END)                                     
 		 WHERE EMN = #{emn}
 		   AND COURSE_CD = #{course_cd}      
