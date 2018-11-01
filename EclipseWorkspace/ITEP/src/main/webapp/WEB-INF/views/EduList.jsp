@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Education List</title>
+		<title>상세 교육</title>
 		<link
 	href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
@@ -25,7 +25,12 @@
              <!-- Custom styles for this template -->
 		<link href="<%=application.getContextPath()%>/resources/main_page_resource/css/freelancer.min.css" rel="stylesheet">
 
-
+<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/main_page_resource/sub/color/default.css"
+	rel="stylesheet">
 
 		<link
 			href="<%=application.getContextPath()%>/resources/main_page_resource/sub/css/style.css"
@@ -58,29 +63,96 @@
 			);
 	}
 	</script>
+	<script>
+	
+	$( function() {
+		
+		
+
+		if(${login_info.auth_cd} !='04'){
+			$("#adminButton").attr('style', 'visiblity:show');
+		}
+		
+		if ( '${recommendEdu.course_nm}0' == '0' ){
+			$("#secondHeader").attr('style', 'position:relative');
+
+		}else{
+			$("#firstHeader").attr('style', 'position:relative');
+
+		}
+		
+		
+	});
+	</script>
 
 
 	<body id="edupage-top">
-	    <nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase" id="mainNav">
-	      <div class="container">
-	        <a class="hanna navbar-brand js-scroll-trigger" href="#edupage-top">교육 리스트</a>
-	       <!-- <a href="javascript:history.back()"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>-->
-	        <a href="<%=application.getContextPath()%>/home"><img src="resources/image/if_Arrow_doodle_04_3847908.png"></a>
-	        </div>
-	      
-	    </nav>
+		<nav class="navbar navbar-expand bg-secondary fixed-top "
+			id="mainNav">
+			<div class="container">
+				<a class="hanna navbar-brand js-scroll-trigger" href="home">IBK IT
+					교육 포탈<span style="font-size: 15px">  &nbsp;-상세 교육정보-</span></a>
+				<div class=" " id="">
+					<ul class="navbar-nav ml-auto">
+						
+						<li class="nav-item mx-0 mx-sm-1"><a id='adminButton'
+							style="visibility: hidden;"
+							class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+							href="admin">관리자</a></li>
+						<li class="nav-item mx-0 mx-sm-1"><a
+							class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+							href="home">홈으로</a></li>
+						<li class="nav-item mx-0 mx-sm-1"><a
+							class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+							href="myInfomation">나의 정보</a></li>
+	
+					</ul>
+				</div>
+			</div>
+		</nav>
+
 
 		<!-- <section class="section_div_1" style="padding-top:140px; padding-bottom:350px">
 			
 		</section> -->
-		<section class="parallax-window" data-parallax="scroll" data-image-src="resources/image/books-2596809_1920_2.jpg" style="margin-top:87px; padding-top:260px; padding-bottom:260px; color:#ffffff; text-align: center">
-			<h1>
-				Education is the best provision for old age.
-			</h1>
-            <h4>
-            	Aristoteles <span>&#8213; ancient Greece</span>
-            </h4>
-		</section>
+			<!-- Header -->
+	<header class="masthead text-white text-center"
+		style="background-color: #FBE4FF;">
+
+		<div id="firstHeader" class="container animated fadeInUp" style=" display: none; ">
+
+			<div style="z-index: 5; position:relative; ">
+				<h1  class="hanna "
+					style="color :#444444; font-size: 100px; z-index: 5; padding: 25px ; margin: 0">${login_info.emm}님! 이번에는</h1>
+			</div>
+
+			<div  style=" z-index: 5; position:relative">
+				<a href="" onclick="eduDetail('${recommendEdu.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal"><h1 class="hanna "
+					style="color :#444444;   z-index: 5; padding: 0;"><span class="hidden-recd" style="text-decoration: underline; height: 80px; vertical-align: middle" >${recommendEdu.course_nm }</span></a>교육</h1>			
+			</div>
+			<div  style="z-index: 5; position:relative">
+
+				<h1 class="hanna "
+					style=" color :#444444; font-size: 100px;  z-index: 5; padding: 25px ">어떠신가요??<span  style=" vertical-align:text-bottom; ; ; margin-top: 10px ">😘🙈</span></h1>
+
+			</div>
+		</div>
+		
+		<div id="secondHeader" class="container animated fadeInUp" style=" display: none; ">
+
+			<div  style="z-index: 5; position:relative">
+				<h1 class="hanna "
+					style=" color :#444444; font-size: 100px;  z-index: 5; ">더욱 좋은 교육으로</h1>
+
+			</div>
+			<div  style="z-index: 5; position:relative">
+				<h1 class="hanna "
+					style=" color :#444444; font-size: 100px;  z-index: 5; padding: 30px ">준비하겠습니다!!<span  style=" vertical-align:text-bottom; ; ; margin-top: 10px ">😘🙈</span></h1>
+
+			</div>
+		</div>
+
+	</header>
 
 
 
@@ -89,6 +161,8 @@
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 가능 교육</h2>
+				<h3 class="hanna text-center">지금 신청할수 있는 모든 교육의 정보를 확인하세요!</h3>
+				
 				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="edulistTable" class="display" style="width:100%">
@@ -134,17 +208,28 @@
 
 
 
- 		<section style="  background-attachment: fixed;
-  				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-image: url(resources/image/science-1182713_1920.jpg);
-				padding-top: 150px;
-				padding-bottom: 150px;
-				text-align: center;
-				color: #ffffff;"
-		>
-		</section>
+	<!-- Header -->
+	<section class="text-center"
+		style="background-color: #FFDCE6;padding-top : 100px; padding-bottom: 100px">
+
+		<div id="secondHeader" class="container" style="position:relative">
+
+			<div style="z-index: 5; position:relative; ">
+				<h1  class="hanna flyLeft"
+					style="color :#444444; font-size: 60px; z-index: 5; padding: 0 ; margin: 0">이번달에 마음에 드는 교육이 없으신가요?</h1>
+			</div>
+
+			<div  style="z-index: 5; position:relative">
+
+				<h1 class="hanna "
+					style="color :#444444; font-size: 60px;  z-index: 5; padding: 0 ">신청 예정 교육을 미리 확인하세요!!</h1>
+
+			</div>
+
+
+		</div>
+		
+	</section>
 
 		
 		<!-- 교육시작월이 2개월 후인 목록 출력 -->
@@ -152,6 +237,8 @@
 		<div class="container">
 		<div style="text-align: center">
 				<h2 class="hanna text-center text-uppercase text-secondary mb-0">신청 접수 예정 강의</h2>
+				<h3 class="hanna text-center">곧 신청접수가 시작되는 모든 교육의 정보를 확인하세요!</h3>
+				
 				<hr class="star-dark2 mb-5"></hr>
 		</div>
 			<table id="postedulistTable" class="display" style="width:100%">
@@ -191,6 +278,40 @@
 			</table>
 		</div>
 		</section>
+		
+		
+		<!-- Footer -->
+	<footer class="footer text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4 hanna">위치</h4>
+					<p class="lead mb-0">
+						본점 : 서울 중구 을지로 79 기업은행<br>IT센터 : 경기 용인시 수지구 신수로 799
+					</p>
+				</div>
+				<div class="col-md-4 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4 hanna">담당자</h4>
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item">
+							<p class="lead mb-0">
+								IT기획부 오세웅 대리(Tel. 2977)<br>
+								IT기획부 김광진 계장(Tel. 2828)<br>
+							</p>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h4 class="text-uppercase mb-4 hanna">IBK IT 교육포털에 관하여</h4>
+					<p class="lead mb-0">
+						IBK IT 교육포털은 다양한 교육을 편리하게 신청할 수 있는 사이트로 
+						기업은행 IT신입행원 프로젝트를 통해 제작되었습니다.
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+		
 		
 			<div class="copyright py-4 text-center text-white">
 		<div class="container">
@@ -252,13 +373,30 @@
 	</div>
 		
 		
+		    <script src="vendor/jquery/jquery.min.js"></script>
 		
 		<script
 		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
-		
-		
-		
+		    <!-- Bootstrap core JavaScript -->
+
+	<!-- Plugin JavaScript -->
+	<script
+		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/main_page_resource/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+	<!-- Contact Form JavaScript -->
+	<script
+		src="<%=application.getContextPath()%>/resources/main_page_resource/js/jqBootstrapValidation.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script
+		src="<%=application.getContextPath()%>/resources/main_page_resource/js/freelancer.min.js"></script>
+
+
+	<!-- Plugin JavaScript -->
+
 		
 	</body>
 </html>

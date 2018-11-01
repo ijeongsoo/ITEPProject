@@ -22,7 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.co.ibk.itep.dao.kj.Dao;
 import kr.co.ibk.itep.dto.Ath001m;
 import kr.co.ibk.itep.dto.Bri001m;
+import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -47,6 +49,11 @@ public class ServiceImplkj implements Service {
 		List<JoinForPostEdulist> joinForPostEdulist = dao.selectAllPostEdulist();
 
 		return joinForPostEdulist;
+	}
+	@Override
+	public Edu001m getRecommendEdu(String emn) {
+		Edu001m eduPullInfo = dao.selectRecommentEdu(emn);
+		return eduPullInfo;
 	}
 
 }

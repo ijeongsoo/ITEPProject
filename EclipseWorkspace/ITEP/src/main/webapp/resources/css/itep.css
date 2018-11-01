@@ -59,6 +59,14 @@ src:local(※),
 			  
 			 }
 			 
+			 .hidden-recd { 
+			display: inline-block; 
+			width: 600px; 
+			white-space:nowrap;
+			 overflow: hidden;
+			  text-overflow: ellipsis;
+			 }
+			 
 			 
 
 .gallery-title
