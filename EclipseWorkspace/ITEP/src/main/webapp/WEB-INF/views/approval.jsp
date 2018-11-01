@@ -139,9 +139,9 @@
 
     </section>
 	
-	<div style="padding-left:35%">
+	<div style="padding-left:32%">
 		<div>
-			<img width="350px" src="resources/admin_page_resource/img/flow.PNG" style="" alt="">				
+			<img width="420px" src="resources/admin_page_resource/img/flow.PNG" style="" alt="">				
 		</div>
 	</div>
 	
