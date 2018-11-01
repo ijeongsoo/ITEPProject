@@ -71,13 +71,13 @@
 
 
 		<div class="col-lg-12" style="margin-bottom: 15px">
-				<button onclick="download('${edu.svr_reg_file_nm}', '${edu.reg_file_type}', 'reg' ); " id="regAttachLabel" style="text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
-						class="col-lg-12 btn-reg hanna" >(${edu.origin_reg_file_nm}) 신청서 다운로드</button>
+				<a href="file?svr_img_file_nm=${edu.svr_reg_file_nm}&img_file_type=${edu.reg_file_type}&source=reg" id="regAttachLabel" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+						class="col-lg-12 btn-reg hanna" >(${edu.origin_reg_file_nm}) 신청서 다운로드</a>
 				</div>
 				
 				<div class=" col-lg-12 "  style="padding-top: 0; margin-top: 0">
-					<button onclick="download('${edu.svr_plan_file_nm}', '${edu.plan_file_type}', 'plan' ); " id="planAttachLabel" style="text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
-						class="col-lg-12 btn-reg hanna">(${edu.origin_plan_file_nm}) 계획서 다운로드</button>
+					<a href="file?svr_img_file_nm=${edu.svr_plan_file_nm}&img_file_type=${edu.plan_file_type}&source=plan" id="planAttachLabel" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+						class="col-lg-12 btn-reg hanna">(${edu.origin_plan_file_nm}) 계획서 다운로드</a>
 				</div>
 			<br>
 

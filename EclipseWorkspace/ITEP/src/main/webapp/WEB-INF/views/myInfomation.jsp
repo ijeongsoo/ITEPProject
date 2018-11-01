@@ -97,18 +97,15 @@
 			}
     		
 			$( function() {
-					if('${result}a' == '0a'){
-						alert("이미 신청한 교육입니다.");
-					}else if('${result}a' == '2a'){
-						alert("설문을 미등록한 교육이 존재합니다.");
-					}else if('${result}a' == '1a'){
-						alert("신청이 완료되었습니다.");
-					}
-				
+					
 				
 
 				if(${login_info.auth_cd} !='04'){
 					$("#adminButton").attr('style', 'visiblity:show');
+				}
+				
+				if(${mySurveyListCount} != 0){
+					$("#survayButton").attr('style', 'visiblity:show');
 				}
 				
 				setTimeout(function(){
@@ -168,13 +165,17 @@
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase"
+	<nav class="navbar navbar-expand bg-secondary fixed-top "
 		id="mainNav">
 		<div class="container">
 			<a class="hanna navbar-brand js-scroll-trigger" href="home">IBK IT
-				교육 포탈</a>
+				교육 포탈<span style="font-size: 15px">  &nbsp;-상세 내정보-</span></a>
 			<div class=" " id="">
 				<ul class="navbar-nav ml-auto">
+					<li class="nav-item mx-0 mx-sm-1"><a id='survayButton'
+						style="visibility: hidden;"
+						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+						href="#survay">설문해주세요!!</a></li>
 					<li class="nav-item mx-0 mx-sm-1"><a id='adminButton'
 						style="visibility: hidden;"
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
@@ -231,17 +232,17 @@
 				class="hanna text-center text-uppercase text-secondary mb-0">내가 신청한 모든 교육</h2>
 				<h3 class="hanna text-center">내가 신청한 교육의 정보와 관련 내용을 확인하세요!</h3>
 				<div style="display: inline-block; width: 70%">
-					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
-						신청한 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+					<div style="margin:20px; float: left ; background-color: #FF9A8A; width: 28%; color:white; padding : 20px" class=" text-center hanna">
+						서무담당대기
+						<h3 class ="hanna" style="padding: 0px">${countInfo.step10count}개</h3>
 					</div>
 					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						승인된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+						서무차장대기
+						<h3 class ="hanna" style="padding: 0px">${countInfo.step20count}개</h3>
 					</div>
-					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						반려된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+					<div style="margin:20px;float: left; background-color: #6a9ad0; width: 28%; color:white; padding: 20px" class=" text-center hanna">
+						교육담당대기
+						<h3 class ="hanna" style="padding: 0px">${countInfo.step30count}개</h3>
 					</div>
 				</div>
 				
@@ -260,11 +261,17 @@
 							<p class="hanna">정보</p>
 						</div>
 					</div>
+					<div style=" display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">시간</p>
+						</div>
+					</div>
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
 							<p class="hanna">신청날짜</p>
 						</div>
 					</div>
+					
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
 							<p class="hanna">신청상태</p>
@@ -281,12 +288,17 @@
 					<div style=" display:inline-table ;  width: 10% ">
 						<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 					</div>
-					<div style=" display:inline-table;  width: 50%; padding-left: 40px">
+					<div style=" display:inline-table;  width: 40%; padding-left: 40px">
 						<div style="vertical-align: middle; text-align: left; ">
 							<p style="font-size: 22px; padding: 0; " class="hanna hidden-large" >${d.course_nm}</p>
 							<p style="font-size: 15px; padding : 0;" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>	
 						</div>
 											
+					</div>
+					<div style="vertical-align: middle; display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.edu_hour}h</p>
+						</div>
 					</div>
 					<div style="vertical-align: middle; display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
@@ -336,18 +348,15 @@
 				class="hanna text-center text-uppercase text-secondary mb-0">내가 수강중인 모든 교육</h2>
 				<h3 class="hanna text-center">내가 수강하고 있는 교육의 정보와 관련 내용을 확인하세요!</h3>
 				<div style="display: inline-block; width: 70%">
-					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
-						신청한 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+					<div style="margin:20px;margin-left:40px; float: left ; background-color: #74B147; width: 42%; color:white; padding : 20px" class=" text-center hanna">
+						교육대기
+						<h3 class ="hanna" style="padding: 0px">${countInfo.stat01count}개</h3>
 					</div>
-					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						승인된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+					<div style="margin:20px;float: left; background-color:#6a9ad0; width: 42%; color:white; padding: 20px" class=" text-center hanna">
+						교육중
+						<h3 class ="hanna" style="padding: 0px">${countInfo.stat02count}개</h3>
 					</div>
-					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						반려된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
-					</div>
+
 				</div>
 				
 				
@@ -365,6 +374,11 @@
 							<p class="hanna">정보</p>
 						</div>
 					</div>
+					<div style=" display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">시간</p>
+						</div>
+					</div>
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
 							<p class="hanna">신청날짜</p>
@@ -372,7 +386,7 @@
 					</div>
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
-							<p class="hanna">신청상태</p>
+							<p class="hanna">상태</p>
 						</div>
 					</div>
 				</div>
@@ -395,6 +409,11 @@
 							<p style="font-size: 15px; padding : 0;" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>	
 						</div>
 											
+					</div>
+					<div style="vertical-align: middle; display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.edu_hour}h</p>
+						</div>
 					</div>
 					<div style="vertical-align: middle; display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
@@ -432,24 +451,16 @@
 	</section>
 
 
-	<section id="myInfo" style="padding-bottom: 50px; background-color: #FBE4FF">
+	<section id="survay" style="padding-bottom: 50px; background-color: #FBE4FF">
 		<div class="container" >
 			<div style="text-align: center">
 				<h2 style="padding-top: 80px;"
-				class="hanna text-center text-uppercase text-secondary mb-0">내가 수강완료한 모든 교육</h2>
-				<h3 class="hanna text-center">지금까지 들어온 교육의 정보와 관련 내용을 확인하세요!</h3>
+				class="hanna text-center text-uppercase text-secondary mb-0">설문 대상 교육</h2>
+				<h3 class="hanna text-center">수강완료한 교육들을 확인하고 평가해주세요!</h3>
 				<div style="display: inline-block; width: 70%">
-					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
-						신청한 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
-					</div>
-					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						승인된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
-					</div>
-					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
-						반려된 총 갯수
-						<h2 class ="hanna" style="padding: 0px">8</h2>
+					
+					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 95%; color:white; padding: 20px" class=" text-center hanna">
+						! 설문 미참여시 교육신청이 제한됩니다.
 					</div>
 				</div>
 				
@@ -468,6 +479,11 @@
 							<p class="hanna">정보</p>
 						</div>
 					</div>
+					<div style=" display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">시간</p>
+						</div>
+					</div>
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
 							<p class="hanna">신청날짜</p>
@@ -475,7 +491,119 @@
 					</div>
 					<div style=" display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
-							<p class="hanna">신청상태</p>
+							<p class="hanna">상태</p>
+						</div>
+					</div>
+				</div>
+				
+				<hr>
+				
+				
+				
+				
+				<c:forEach var="d" items="${mySurveyList}"  varStatus="status">
+				<a onclick="survayDetail('${d.course_cd}');" data-toggle="modal"
+							data-target="#survayModal">
+				<div class="infoList " style=" width: 100%; padding: 10px">
+					<div style=" display:inline-table ;  width: 10% ">
+						<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
+					</div>
+					<div style=" display:inline-table;  width: 50%; padding-left: 40px">
+						<div style="vertical-align: middle; text-align: left; ">
+							<p style="font-size: 22px; padding: 0; " class="hanna hidden-large" >${d.course_nm}</p>
+							<p style="font-size: 15px; padding : 0;" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>	
+						</div>
+											
+					</div>
+					<div style="vertical-align: middle; display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.edu_hour}h</p>
+						</div>
+					</div>
+					<div style="vertical-align: middle; display:inline-table;  width: 15%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.reg_dt}</p>
+						</div>
+					</div>
+					<div style=" display:inline-table;  width: 15%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.stat_nm }</p>
+						</div>
+					</div>
+				</div>
+				</a>
+				</c:forEach>
+				
+				
+				
+				
+				<div id="info3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">				
+					<div style="float: left; width: 100%;height: 72px; display: table;">
+						<div style=" vertical-align: middle; display: table-cell;">
+							<p style="font-size: 22px; padding: 0 " class="hanna hidden" >해당 내역이 없습니다. </p>
+						</div>
+					</div>			
+				</div>
+
+				<hr>
+				
+				<ul class="slides" id="pagin">
+       
+				</ul>
+				
+			</div>		
+		</div>
+	</section>
+
+<section id="myInfo" style="padding-bottom: 50px;">
+		<div class="container" >
+			<div style="text-align: center">
+				<h2 style="padding-top: 80px;"
+				class="hanna text-center text-uppercase text-secondary mb-0">내가 수강완료한 모든 교육</h2>
+				<h3 class="hanna text-center">지금까지 들어온 교육의 정보와 관련 내용을 확인하세요!</h3>
+				<div style="display: inline-block; width: 70%">
+					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
+						신청한 총 갯수
+						<h3 class ="hanna" style="padding: 0px">${countInfo.totalCount}개</h3>
+					</div>
+					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
+						총 이수 시간
+						<h3 class ="hanna" style="padding: 0px">${countInfo.totalHour}시간</h3>
+					</div>
+					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
+						총 이수 금액
+						<h3 class ="hanna" style="padding: 0px">${countInfo.totalAmount}원</h3>
+					</div>
+				</div>
+				
+				
+				
+				<hr class="star-dark2 mb-5">
+				
+				<div style=" ;width: 100%; padding: 10px">
+					<div style=" display:inline-table;  width: 10%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">이미지</p>
+						</div>
+					</div>
+					<div style=" display:inline-table;  width: 50%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">정보</p>
+						</div>
+					</div>
+					<div style=" display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">시간</p>
+						</div>
+					</div>
+					<div style=" display:inline-table;  width: 15%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">신청날짜</p>
+						</div>
+					</div>
+					<div style=" display:inline-table;  width: 15%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">내 평가</p>
 						</div>
 					</div>
 				</div>
@@ -498,6 +626,11 @@
 							<p style="font-size: 15px; padding : 0;" class="hanna" >${d.org_nm} / ${d.edu_st_dt}~${d.edu_ed_dt}</p>	
 						</div>
 											
+					</div>
+					<div style="vertical-align: middle; display:inline-table;  width: 6%">
+						<div style="vertical-align: middle; ">
+							<p class="hanna">${d.edu_hour}h</p>
+						</div>
 					</div>
 					<div style="vertical-align: middle; display:inline-table;  width: 15%">
 						<div style="vertical-align: middle; ">
@@ -538,6 +671,7 @@
 			</div>		
 		</div>
 	</section>
+
 
 	<!-- Footer -->
 	<footer class="footer text-center">
