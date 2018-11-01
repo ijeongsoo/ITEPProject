@@ -97,9 +97,55 @@ public class SessionedControllerbh {
 			if(!auth.equals("04")) {
 				if(auth.equals("01")){
 					List<EduApproval> adminApprovalDetailList = service.selectDetailAllApprovalList();
+					for(int i=0; i<adminApprovalDetailList.size(); i++) {
+						switch(adminApprovalDetailList.get(i).getSur_point()) {
+						case 1:
+							adminApprovalDetailList.get(i).setSur_point_star("★☆☆☆☆");
+							break;
+						case 2:
+							adminApprovalDetailList.get(i).setSur_point_star("★★☆☆☆");
+							break;
+						case 3:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★☆☆");
+							break;
+						case 4:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★★☆");
+							break;
+						case 5:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★★★");
+							break;
+						default:
+							adminApprovalDetailList.get(i).setSur_point_star("평가 전입니다.");
+							break;
+						}
+
+					}
 					model.addAttribute("adminDetailApproval_List", adminApprovalDetailList);
 				}else {
 					List<EduApproval> adminApprovalDetailList = service.selectDetailDepApprovalList(ssoid);
+					for(int i=0; i<adminApprovalDetailList.size(); i++) {
+						switch(adminApprovalDetailList.get(i).getSur_point()) {
+						case 1:
+							adminApprovalDetailList.get(i).setSur_point_star("★☆☆☆☆");
+							break;
+						case 2:
+							adminApprovalDetailList.get(i).setSur_point_star("★★☆☆☆");
+							break;
+						case 3:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★☆☆");
+							break;
+						case 4:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★★☆");
+							break;
+						case 5:
+							adminApprovalDetailList.get(i).setSur_point_star("★★★★★");
+							break;
+						default:
+							adminApprovalDetailList.get(i).setSur_point_star("평가 전입니다.");
+							break;
+						}
+
+					}					
 					model.addAttribute("adminDetailApproval_List", adminApprovalDetailList);
 				}
 				

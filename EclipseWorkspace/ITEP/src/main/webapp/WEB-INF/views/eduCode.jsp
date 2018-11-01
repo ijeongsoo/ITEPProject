@@ -66,53 +66,53 @@
         </div>
 		</section>
 		
-		<div style=" float: left; width: 50%; padding-right: 10px; padding-left: 20px">
-			<div style="float: left; width:84%">
+		<div style=" float: left; width: 45%; padding-right: 10px; padding-left: 20px">
+			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">교육기관코드 </h3>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">신규</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input type="button" value="저장" style="float: right;"/>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">저장</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input id="orgNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="orgGrid">
 			</div>
 			<br/>
-			<div style="float: left; width:84%">
+			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">대분류코드</h3>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">신규</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input type="button" value="저장" style="float: right;"/>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">저장</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input id="highNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="highGrid">
 			</div>
-		</div>
-			
-		<div style=" float: left; width: 50%; padding-left: 10px; padding-right: 20px">
-			<div style="float: left; width:84%">
+			<br/>
+			<div style="float: left; width:82%">
 				<h3 class="hanna" style="font-size: 20px">중분류코드</h3>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">신규</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input type="button" value="저장" style="float: right;"/>
 			</div>
-			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">저장</button>
+			<div style="float: right; width:9% ;padding-top: 7px">
+				<input id="midNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="midGrid">
 			</div>
-			<br/>
-			<div style="float: left; width:84%">
+		</div>
+			
+		<div style=" float: left; width: 55%; padding-left: 10px; padding-right: 20px">
+			<div style="float: left; width:86%">
 				<h3 class="hanna" style="font-size: 20px">소분류코드</h3>
 			</div>
 			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">신규</button>
+				<input type="button" value="저장" style="float: right;"/>
 			</div>
 			<div style="float: right; width:7% ;padding-top: 7px">
-				<button style="float: right;">저장</button>
+				<input id="lowNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="lowGrid">
 			</div>
@@ -120,8 +120,6 @@
 		
 	</section>
 		
-		
-
 </body>
 
 <!-- tui 그리드 스크립트  -->
@@ -135,207 +133,215 @@
 <!-- tui 그리드 스크립트 -->
 <script type="text/javascript" class="code-js">
 
-  var orgGrid = new tui.Grid({
-      el: $('#orgGrid'),
-      scrollX: true,
-      scrollY: true,
-      columns: [
-    	  {
-              title: '기관코드',
-              name: 'org_cd',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 150
-          },
-          {
-              title: '기관명',
-              name: 'org_nm',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 450
-          }
-      ]
-  });
-  
-  var highGrid = new tui.Grid({
-      el: $('#highGrid'),
-      scrollX: true,
-      scrollY: true,
-      columns: [
-    	  {
-              title: '대분류코드',
-              name: 'high_cls_cd',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 150
-          },
-          {
-              title: '대분류명',
-              name: 'org_nm',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 450
-          }
-      ]
-  });
-  
-  var midGrid = new tui.Grid({
-      el: $('#midGrid'),
-      scrollX: true,
-      scrollY: true,
-      columns: [
-    	  {
-              title: '중분류코드',
-              name: 'mid_cls_cd',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 150
-          },
-          {
-              title: '중분류명',
-              name: 'mid_cls_nm',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 450
-          }
-      ]
-  });
-  
-  var lowGrid = new tui.Grid({
-      el: $('#lowGrid'),
-      scrollX: true,
-      scrollY: true,
-      columns: [
-    	  {
-              title: '소분류코드',
-              name: 'low_cls_cd',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 150
-          },
-          {
-              title: '소분류명',
-              name: 'low_cls_nm',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'text',
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 300
-          },
-          {
-              title: '상위중분류',
-              name: 'mid_cls_cd',
-              onBeforeChange: function(ev){
-                  console.log('Before change:' + ev);
-              },
-              onAfterChange: function(ev){
-                  console.log('After change:' + ev);
-              },
-              editOptions: {
-                  type: 'select',
-                  listItems: [],
-                  useViewMode: true
-              },
-              width: 'auto',
-              minWidth: 150
-          }
-      ]
-  });
-  
-	//입력칸 생성
-  for(var i=0; i<5; i++) {	
-	  orgGrid.appendRow();
-	  highGrid.appendRow();
-	  midGrid.appendRow();
-	  lowGrid.appendRow();
-  }
-	function addRowClick() {	//행추가 
-		orgGrid.appendRow();
+	var orgGrid = new tui.Grid({
+		el : $('#orgGrid'),
+		scrollX : true,
+		scrollY : true,
+		columns : [ {
+			title : '기관코드',
+			name : 'org_cd',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 150
+		}, {
+			title : '기관명',
+			name : 'org_nm',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 450
+		} ]
+	});
+
+	var highGrid = new tui.Grid({
+		el : $('#highGrid'),
+		scrollX : true,
+		scrollY : true,
+		columns : [ {
+			title : '대분류코드',
+			name : 'high_cls_cd',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 150
+		}, {
+			title : '대분류명',
+			name : 'high_cls_nm',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 450
+		} ]
+	});
+
+	var midGrid = new tui.Grid({
+		el : $('#midGrid'),
+		scrollX : true,
+		scrollY : true,
+		columns : [ {
+			title : '중분류코드',
+			name : 'mid_cls_cd',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 150
+		}, {
+			title : '중분류명',
+			name : 'mid_cls_nm',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 450
+		} ]
+	});
+
+	var lowGrid = new tui.Grid({
+		el : $('#lowGrid'),
+		scrollX : true,
+		scrollY : true,
+		columns : [ {
+			title : '소분류코드',
+			name : 'low_cls_cd',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 150
+		}, {
+			title : '소분류명',
+			name : 'low_cls_nm',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'text',
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 300
+		}, {
+			title : '상위중분류',
+			name : 'mid_cls_cd',
+			onBeforeChange : function(ev) {
+				console.log('Before change:' + ev);
+			},
+			onAfterChange : function(ev) {
+				console.log('After change:' + ev);
+			},
+			editOptions : {
+				type : 'select',
+				listItems : ${midCombo},
+				useViewMode : true
+			},
+			width : 'auto',
+			minWidth : 150
+		} ]
+	});
+	
+	// DB 데이터 세팅
+	orgGrid.setData(${orgList});
+	highGrid.setData(${highList});
+	midGrid.setData(${midList});
+	lowGrid.setData(${lowList});
+	
+	// 신규 행 버튼
+	function addRowClick(btn) { 
+		console.log("btn name: ", btn.id);
+		switch(btn.id) {
+		case 'orgNew':
+			orgGrid.appendRow();
+			break;
+		case 'highNew':
+			highGrid.appendRow();
+			break;
+		case 'midNew':
+			midGrid.appendRow();
+			break;
+		case 'lowNew':
+			lowGrid.appendRow();
+			break;
+		default:
+			break;
+		}
 	}
 	
+	// 저장 버튼
+	function saveGrig(btn) {
+		
+	}
+
 	function saveOrgGrid() {
 		console.log("dddd: ", orgGrid.getRows());
-		for(var i=0; i<orgGrid.getRowCount(); i++) {	// 빈값 제거 기능
-			if(orgGrid.getRowAt(i).org_cd == ""){
+		for (var i = 0; i < orgGrid.getRowCount(); i++) { // 빈값 제거 기능
+			if (orgGrid.getRowAt(i).org_cd == "") {
 				orgGrid.removeRow(orgGrid.getRowAt(i));
 				i--;
 			}
 		}
 		console.log("dddd: ", orgGrid.getRows());
-		
+
 		// 정합성 검사
 		var ecd002m = JSON.stringify(orgGrid.getRows());
-		
+
 		// post 전송
 		$.ajax({
 			'url' : "saveOrgCode",

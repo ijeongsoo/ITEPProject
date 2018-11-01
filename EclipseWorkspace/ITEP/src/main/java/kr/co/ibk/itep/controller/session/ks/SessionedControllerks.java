@@ -244,11 +244,67 @@ public class SessionedControllerks {
 	
 	@RequestMapping("/eduCode")
 	public String eduCode(Model model){
+		// 등록자 사번 가져오기
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info", RequestAttributes.SCOPE_SESSION);
+		String ssoid = empJoinedDep.getEmn();
+		
 		// 기존 코드값 정보 리스트 불러오기
 		List<Ecd002m> org = service.selectEcd002mList();
 		List<Ecd005m> high = service.selectEcd005mList();
 		List<Ecd006m> mid = service.selectEcd006mList();
 		List<Ecd007m> low = service.selectEcd007mList();
+		
+		// 교육기관 json
+		JSONArray orgJsonArr = new JSONArray();
+		for(int i=0; i<org.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("org_cd", org.get(i).getOrg_cd());
+			obj.put("org_nm", org.get(i).getOrg_nm());
+			orgJsonArr.put(obj);
+		}
+		
+		// 대분류 json
+		JSONArray highJsonArr = new JSONArray();
+		for(int i=0; i<high.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("high_cls_cd", high.get(i).getHigh_cls_cd());
+			obj.put("high_cls_nm", high.get(i).getHigh_cls_nm());
+			highJsonArr.put(obj);
+		}
+		
+		// 중분류 json
+		JSONArray midJsonArr = new JSONArray();
+		JSONArray midCombo = new JSONArray();
+		for(int i=0; i<mid.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("mid_cls_cd", mid.get(i).getMid_cls_cd());
+			obj.put("mid_cls_nm", mid.get(i).getMid_cls_nm());
+			midJsonArr.put(obj);
+			
+			JSONObject combo = new JSONObject();
+			combo.put("text", mid.get(i).getMid_cls_nm());
+			combo.put("value", mid.get(i).getMid_cls_cd());
+			midCombo.put(combo);
+		}
+		
+		// 소분류 json
+		JSONArray lowJsonArr = new JSONArray();
+
+		for(int i=0; i<low.size(); i++) {
+			JSONObject obj = new JSONObject();
+			obj.put("low_cls_cd", low.get(i).getLow_cls_cd());
+			obj.put("low_cls_nm", low.get(i).getLow_cls_nm());
+			obj.put("mid_cls_cd", low.get(i).getMid_cls_cd());
+			lowJsonArr.put(obj);
+		}
+		
+		model.addAttribute("ssoid", ssoid);
+		model.addAttribute("orgList", orgJsonArr.toString());
+		model.addAttribute("highList", highJsonArr.toString());
+		model.addAttribute("midList", midJsonArr.toString());
+		model.addAttribute("lowList", lowJsonArr.toString());
+		model.addAttribute("midCombo", midCombo.toString());
 		
 		return "eduCode";
 	}

@@ -78,31 +78,37 @@
     	$('#approvalTable').DataTable();
     	
 	});
-	/*
-	$(document).ready( function () {
-    	$('#approvalTable').click(function(){
 
-    		var table = $(this);
-    		var td = table.children().children().children();
-    		
-    	    var point = td.eq(0).text();
-    	    var opinion = td.eq(1).text();
-    	    
-			$("#labelid1").html(point);			
-			$("#labelid2").html(opinion);		
-
-			// 모달창 인스턴트 생성
-			var myModal = new Example.Modal({
-
-			    id: "modal" // 모달창 아이디 지정
-			});    		
-
-      		myModal.show();	
-			
-    	});
-	} );
-	*/
+    var point = "";
+    var opinion = "";
+    var reg_file_nm = "";
+    var reg_file_type = "";
+    var plan_file_nm = "";
+    var plan_file_type = "";
+    
 	function fn_TbClickCall(e){
+
+		
+		$(e).find("td").each(function(i, item){ 
+		
+			//컬럼인덱스로 데이터 확인 
+			if(i==13){ 
+				point = $(item).html(); 
+			}else if(i==14){ 
+				opinion = $(item).html();
+			}else if(i==15){ 
+				reg_file_nm = $(item).html();
+			}else if(i==16){ 
+				plan_file_nm = $(item).html();
+			}else if(i==17){ 
+				reg_file_type = $(item).html();
+			}else if(i==18){ 
+				plan_file_type = $(item).html();
+			}
+		}); 
+		
+		$("#labelid1").html(point);			
+		$("#labelid2").html(opinion);	
 		// 모달창 인스턴트 생성
 		var myModal = new Example.Modal({
 
@@ -110,6 +116,18 @@
 		});    		
 
   		myModal.show();	
+	}
+	
+	function downloadFile(source){
+		if(source="reg"){
+			$.get(
+				    "file?svr_img_file_nm="+reg_file_nm+"&img_file_type="+reg_file_type+"&source="+source
+				);
+		}else if(source="plan"){
+			$.get(
+				    "file?svr_img_file_nm="+plan_file_nm+"&img_file_type="+plan_file_type+"&source="+source
+				);		
+		}
 	}
 
 
@@ -126,31 +144,31 @@
 			
 			<div class="modal_content">
 			
-			<div class="img" align="center" style="margin_bottom:50px">
+			<div class="img" align="center" style="margin_bottom:50px; padding-top:20px">
 			<img src= "<%=application.getContextPath()%>/resources/image/cloud-computing.png" width="80px" height="80px">
 			</div>
     		
     		<form role="form">
-    			<div class = "hanna" align = "left" style="font-size:18px; padding-top:80px">
+    			<div class = "hanna" align = "left" style="font-size:25px; padding-left:20px; padding-top:40px">
     				<label for="level" class="control-label"> 별점 : </label>
     				<label for="name" id ="labelid1" class="control-label">  </label><br>
-    				<label for="content" class="control-label"> 코멘트 : </label>
-    				<label for="name" id ="labelid2" class="control-label">  </label><br>
+    				<label for="content" class="control-label"> 코멘트 : </label><br>
+    				<label for="name" id ="labelid2" class="control-label" style="border:2px solid #237fbc; width:460px; height:120px;
+    						padding-left:10px; padding-top:5px">  </label><br>
     			</div>
-    			<div class="hanna" align = "center" style="font-size:20px; padding-top:20px; padding-top:80px; width:250px;float:left;">
+    			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
     				<label for="authority" class="control-label"> 신청서 : </label>
-    			    <input class="confirm_button" type="button" value="다운로드" onclick="selectValue();">  	
+    			    <input class="confirm_button" type="button" value="다운로드" onclick="downloadFile('reg')">  	
     			</div>
-    			<div class="hanna" align = "center" style="font-size:20px; padding-top:20px; padding-top:80px; width:250px;float:right;">
+    			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
     				<label for="authority" class="control-label"> 계획서 : </label>
-    			    <input class="confirm_button" type="button" value="다운로드" onclick="selectValue();">  	
+    			    <input class="confirm_button" type="button" value="다운로드" onclick="downloadFile('plan')">  	
     			</div>    			
     			<br>
     			<br>
     			
-    			<div id="button" class="hanna" align="center" style="padding-top:150px">	
-    				<button class="js_close">확인</button> 		
-    				<button class="js_close">닫기</button>
+    			<div id="button" class="hanna" align="center" style="padding-top:70px">	
+    				<button class="js_close" style="width:100px; height:30px;">확인</button> 		
     			</div>
     		</form>
     		</div>
@@ -190,11 +208,17 @@
 					<th style="text-align: center;">환급여부</th>
 					<th style="text-align: center;">결재 상황</th>
 					<th style="text-align: center;">수강 상태</th>
+					<th style="text-align: center; display:none;">평점</th>
+					<th style="text-align: center; display:none;">평가 의견</th>	
+					<th style="text-align: center; display:none;">신청서 파일 이름</th>
+					<th style="text-align: center; display:none;">신청서 파일 타입</th>					
+					<th style="text-align: center; display:none;">계획서 파일 이름</th>
+					<th style="text-align: center; display:none;">계획서 파일 타입</th>																			
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="adminApprovalDetailList" items="${adminDetailApproval_List}" varStatus="status">
-   					 <tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;">
+   					 <tr onclick="javascripｔ:fn_TbClickCall(this);" style="cursor: pointer;" >
 						<td align="center">${adminApprovalDetailList.emn}</td>
 						<td align="center">${adminApprovalDetailList.emm}</td>
 						<td align="center">${adminApprovalDetailList.krn_brm}</td>
@@ -207,7 +231,13 @@
 						<td align="center">${adminApprovalDetailList.loc}</td>
 						<td align="center">${adminApprovalDetailList.refund_yn}</td>
 						<td align="center">${adminApprovalDetailList.step_nm}</td>
-						<td align="center">${adminApprovalDetailList.stat_nm}</td>							
+						<td align="center">${adminApprovalDetailList.stat_nm}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.sur_point_star}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.opinion}</td>													
+						<td align="center" style="display:none;">${adminApprovalDetailList.svr_reg_file_nm}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.svr_plan_file_nm}</td>	
+						<td align="center" style="display:none;">${adminApprovalDetailList.reg_file_type}</td>
+						<td align="center" style="display:none;">${adminApprovalDetailList.plan_file_type}</td>	
 					</tr>
 				</c:forEach>
 			</tbody>					
