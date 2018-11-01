@@ -269,6 +269,7 @@
 	</div>
 			
 	<div class="container">
+	<span class="hanna" style="padding-left: 30px; color:red;"> ※ 리스트를 클릭하시면, 신청서 및 계획서를 확인할 수 있습니다.</span>
 		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>

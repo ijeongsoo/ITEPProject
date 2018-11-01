@@ -208,14 +208,13 @@
         			<h3 class="page-header hanna"> 결재  완료 <br> <img width="80px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""> </h3>
       			</div>
       		</div>
-      		<div class="headerConets" align="center">
-      		테스트테스트 
-     		</div>
+
     </section>
 
 	<div class="hanna" align="center" style="height:40px;">
 	</div>
 	<div class="container">
+		<span class="hanna" style="padding-left: 30px; color:red;"> ※ 리스트를 클릭하시면, 첨부파일 및 설문내용 확인이 가능합니다.</span>
 		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>
