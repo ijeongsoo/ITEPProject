@@ -115,7 +115,7 @@ margin: auto;
 			
 			<div class="hanna" style="padding-left: 55px; padding-bottom: 20px">
 				<button id="addRow" class="" onclick="addRowClick()" style="float: left;">+행추가</button>
-				<span class="hanna" style="padding-left: 30px;"> ※ 대량의 교육 등록 시, 하단의 일괄 등록 기능을 활용하면 편리합니다.</span>
+				<span class="hanna" style="padding-left: 30px; color:red;"> ※ 대량의 교육 등록 시, 하단의 일괄 등록 기능을 활용하면 편리합니다.</span>
 			</div> 
 			<!-- 그리드 영역 -->
 			<div class="code-html contents">
