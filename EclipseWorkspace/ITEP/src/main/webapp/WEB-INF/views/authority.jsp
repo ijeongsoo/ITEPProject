@@ -274,7 +274,7 @@
     	<thead>
         <tr>
             <th style="text-align: center;">선택</th>
-            <th style="text-align: center;">사번</th>
+            <th style="text-align: center;">직번</th>
             <th style="text-align: center;">이름</th>
             <th style="text-align: center;">부서명</th>
             <th style="text-align: center;">권한코드</th>
