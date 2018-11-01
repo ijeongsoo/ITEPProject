@@ -182,7 +182,7 @@
     			</div>
     			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
     				<label for="authority" class="control-label"> 신청서 : </label>
-    			    <a id="regFile" href="file?svr_img_file_nm='${file_name}'&img_file_type='${file_type}'&source=reg">다운로드</a>  	
+    			    <a id="regFile" href="">다운로드</a>  	
     			</div>
     			
     			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
