@@ -30,8 +30,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.kj.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -49,14 +51,24 @@ public class SessionedControllerkj {
 	private ServletContext servletContext;
 	
 	@RequestMapping("/EduList")
-	public String EduList(String ssoid, Model model) {
+	public String EduList( Model model) {
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		String emn = empJoinedDep.getEmn();
 		try{
 			
 			List<JoinForEdulist> joinForEdulist = service.selectEdulist();
 			List<JoinForPostEdulist> joinForPostEdulist = service.selectPostEdulist();
+			Edu001m edu001m = service.getRecommendEdu(emn);
+			
 				model.addAttribute("edu_list", joinForEdulist);
 				model.addAttribute("post_edulist",joinForPostEdulist);
-				model.addAttribute("ssoid", ssoid);
+				model.addAttribute("recommendEdu",edu001m);
+
+				
 				return "EduList";
 		}catch(Exception e){
 			

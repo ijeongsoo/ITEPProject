@@ -205,7 +205,7 @@
 			</div>
 
 			<div  style="z-index: 5; position:relative">
-				<h1  style="color :#444444; font-size: 120px;  z-index: 5; padding: 0; margin: 0 " class="hanna"><span id="odometer" class="odometer hanna" style="color :#444444; font-size: 120px;  z-index: 5; padding: 0; margin: 0 " >0</span>원 </h1>
+				<h1  style="color :#444444; font-size: 120px;  z-index: 5; padding: 0px; margin: 0 " class="hanna"><span id="odometer" class="odometer hanna" style="color :#444444; font-size: 120px;  z-index: 5; padding: 0; margin: 0 " >0</span>원 </h1>
 			</div>
 			<div  style="z-index: 5; position:relative">
 
@@ -219,8 +219,8 @@
 					src="resources/image/money.png" alt="">
 			</div>
 
-
 		</div>
+		
 	</header>
 
 	<!-- Portfolio Grid Section -->

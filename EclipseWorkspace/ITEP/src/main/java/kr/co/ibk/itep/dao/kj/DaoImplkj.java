@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.ibk.itep.dto.Ath001m;
+import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 import kr.co.ibk.itep.dto.JoinForPostEdulist;
@@ -34,6 +36,12 @@ public class DaoImplkj implements Dao {
 		
 		List<JoinForPostEdulist> joinForPostEdulist=sst.selectList("edu001m.selectPostAll");
 		return joinForPostEdulist;
+	}
+
+	@Override
+	public Edu001m selectRecommentEdu(String emn) {
+		Edu001m eduPullInfo = sst.selectOne("edu001m.selectRecommendEdu", emn);
+		return eduPullInfo;
 	}
 
 }

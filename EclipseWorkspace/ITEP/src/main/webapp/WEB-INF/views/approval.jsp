@@ -111,8 +111,8 @@
 		var myModal = new Example.Modal({
 
 		    id: "modal" // 모달창 아이디 지정
-		});    		
-		alert(reg_file_nm);
+		});	
+
 		downloadFile("reg");
 		downloadFile("plan");
   		myModal.show();
