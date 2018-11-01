@@ -96,7 +96,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="edu" items="${edulist}" varStatus="status">
-						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal">
+						<tr onclick="eduEditDetail('${edu.course_cd}', '${edu.course_nm}');" data-toggle="modal" data-target="#editEduModal" style="cursor: pointer;">
 							<td style="text-align: center;">${edu.rownum}</td>
 							<td style="text-align: center;">${edu.high_cls_nm}</td>
 							<td style="text-align: center;">${edu.mid_cls_nm}</td>
@@ -118,7 +118,7 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				
-				<div id="modalHeader" class="modal-header" >
+				<div id="modalHeader" class="modal-header">
 				</div>
 				<div id="modalBody" class="modal-body"> </div>
 				

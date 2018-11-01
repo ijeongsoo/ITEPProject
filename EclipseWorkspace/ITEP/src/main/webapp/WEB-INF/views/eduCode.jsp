@@ -52,13 +52,6 @@
 
 </head>
 
-<style>
-	/*yellow/ROUGE BUTTON STYLES*/     
-	#saveCode{background-color: #f59e00; color : #fff; border-color: #f59e00;  -webkit-box-shadow: 0 3px 0 #8f2a1f; box-shadow: 0 3px 0 #b37401; font-size: 20px; width: 150px; height: 40px;}
-	#saveCode:hover{background-color:#dd9003;}
-	#saveCode:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
-</style>
-
 <!-- 넘어오는거 확인 -->
 <body>
 	<!-- 교육코드관리 화면 구성 20181030 이기석 -->
@@ -66,11 +59,11 @@
 		<section class="wrapper">
         <!--overview start-->
         <div class="row">
-          <div class="col-lg-12" style=" float: left; width: 86%;">
+          <div class="col-lg-12" style=" float: left; width: 91%;">
             <h3 class="page-header hanna">교육코드관리  <br> <img width="120px" height="10px" src="resources/admin_page_resource/img/substract.png" alt=""></h3>
           </div>
-          <div style=" float: right; width: 14%; padding-top: 30px; padding-right: 20px" >
-				<input id="saveCode" type="button" value="저장" onclick="saveCode()"/>
+          <div class="hanna" style=" float: right; width: 9%; padding-top: 30px; padding-right: 20px" >
+			<button class="btn btn-primary2" onclick="saveCode()"><img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:7px;" alt="">저장</button>
 		  </div>
           
         </div>
@@ -81,7 +74,7 @@
 				<h3 class="hanna" style="font-size: 20px">교육기관코드 </h3>
 			</div>
 			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
-				<input id="orgNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
+				<input id="orgNew" type="button" value="+신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="orgGrid">
 			</div>
@@ -90,7 +83,7 @@
 				<h3 class="hanna" style="font-size: 20px">대분류코드</h3>
 			</div>
 			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
-				<input id="highNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
+				<input id="highNew" type="button" value="+신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="highGrid">
 			</div>
@@ -99,7 +92,7 @@
 				<h3 class="hanna" style="font-size: 20px">중분류코드</h3>
 			</div>
 			<div class="hanna" style="float: right; width:18% ;padding-top: 7px">
-				<input id="midNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
+				<input id="midNew" type="button" value="+신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="midGrid">
 			</div>
@@ -110,7 +103,7 @@
 				<h3 class="hanna" style="font-size: 20px">소분류코드</h3>
 			</div>
 			<div class="hanna" style="float: right; width:14% ;padding-top: 7px">
-				<input id="lowNew" type="button" value="신규" style="float: right;" onclick="addRowClick(this)"/>
+				<input id="lowNew" type="button" value="+신규" style="float: right;" onclick="addRowClick(this)"/>
 			</div>
 			<div id="lowGrid">
 			</div>

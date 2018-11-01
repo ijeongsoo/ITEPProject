@@ -143,7 +143,7 @@ margin: auto;
 			<form id="excel" action="uploadFile" method="post" enctype="multipart/form-data">
 				<label style="padding-left: 35px"> 
 					<span class="hanna">파일경로 : </span> 
-					<span class="hanna" id="filePath" ="파일미첨부"> 파일 미첨부</span>
+					<span class="hanna" id="filePath"> 파일 미첨부</span>
 				</label><br>
 				
 					<div style="padding-left: 35px">
