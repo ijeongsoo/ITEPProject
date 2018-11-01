@@ -269,21 +269,20 @@
 	</div>
 			
 	<div class="container">
-	<span class="hanna" style="padding-left: 30px; color:red;"> ※ 리스트를 클릭하시면, 신청서 및 계획서를 확인할 수 있습니다.</span>
 		<div class="hanna">
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>
 				<tr>
 					<th><input type='checkbox' id="allCheck" value="ALL" onClick="chekc_All()"></th>
-					<th style="text-align: center;">직원번호</th>
-					<th style="text-align: center;">직원명</th>
+					<th style="text-align: center;">직번</th>
+					<th style="text-align: center;">이름</th>
 					<th style="text-align: center;">직원부서</th>										
 					<th style="text-align: center;">기관명</th>
 					<th style="text-align: center;">소분류</th>
 					<th style="text-align: center;">과정명</th>
 					<th style="text-align: center;">교육시간</th>
-					<th style="text-align: center;">교육시작일</th>
-					<th style="text-align: center;">교육종료일</th>
+					<th style="text-align: center;">시작일</th>
+					<th style="text-align: center;">종료일</th>
 					<th style="text-align: center;">교육비</th>
 					<th style="text-align: center;">교육장소</th>
 					<th style="text-align: center;">환급여부</th>

@@ -219,14 +219,14 @@
 		<table id="approvalTable" class="display" style="width:100%; text-align:center;" >
 			<thead>
 				<tr>
-					<th style="text-align: center;">직원번호</th>
-					<th style="text-align: center;">직원명</th>
+					<th style="text-align: center;">직번</th>
+					<th style="text-align: center;">이름</th>
 					<th style="text-align: center;">직원부서</th>										
 					<th style="text-align: center;">기관명</th>
 					<th style="text-align: center;">소분류</th>
 					<th style="text-align: center;">과정명</th>
-					<th style="text-align: center;">교육시작일</th>
-					<th style="text-align: center;">교육종료일</th>
+					<th style="text-align: center;">시작일</th>
+					<th style="text-align: center;">종료일</th>
 					<th style="text-align: center;">교육비</th>
 					<th style="text-align: center;">교육장소</th>
 					<th style="text-align: center;">환급여부</th>
