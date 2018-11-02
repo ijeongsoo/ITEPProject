@@ -83,8 +83,22 @@
 	$( function () {
     	$('#approvalTable').DataTable();
     	$("input[type=checkbox]").click(function(event) {
-
+            if (event.which  == 13) {
+                
+                // 엔터키가 눌렸을 때 실행할 내용
+           	fn_pmApproval();
+           }
 			event.stopPropagation();
+
+		});
+    	
+    	$("input[type=checkbox]").keyup(function(event) {
+            if (event.which  == 13) {
+                
+                // 엔터키가 눌렸을 때 실행할 내용
+           	fn_pmApproval();
+           }
+
 		});
 	});
 	
@@ -167,10 +181,11 @@
             $("input[name=listCheckbox]").prop("checked", false);
           }
 	}
-		
+			
 	//버튼 클릭시 결재 Update 및 교육List 갱신
 	function fn_pmApproval(){
 		if (confirm("정말 결재 하시겠습니까??") == true){    //확인
+
 			checkboxArr();
 		}else{   //취소
 		}
@@ -324,7 +339,6 @@
 		</table>
 		</div>
 	</div>
-	
 </body>
 
 </html>
