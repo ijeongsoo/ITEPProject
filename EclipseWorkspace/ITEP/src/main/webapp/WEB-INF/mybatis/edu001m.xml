@@ -78,7 +78,7 @@
 	<select id="selectDDayEdu"
 		resultType="kr.co.ibk.itep.dto.EduJoinedEcd">
 		select
-		TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE, 0) as dday ,
+		TRUNC(REG_ED_DT - TO_CHAR(SYSDATE, 'YYYYMMDD'), 0) as dday ,
 		a.course_cd, b.org_nm, a.course_nm, a.edu_st_dt, a.edu_ed_dt,
 		a.svr_img_file_nm, a.img_file_type
 		from tb_iep_edu001m a,TB_IEP_ECD002M
