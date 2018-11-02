@@ -80,9 +80,8 @@
 		document.getElementById("main-container").src = url;
 	}
 
-	
 	function changeIframeUrlAdmin(url) {
-			if("${login_info.auth_cd}" == 1){
+			if("${auth_cd}" == "01"){
 				document.getElementById("main-container").src = url;
 			}
 			else{

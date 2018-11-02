@@ -72,6 +72,7 @@
 		var plan_file_nm = encodeURI('${edu.svr_plan_file_nm}');
 		var plan_file_type = encodeURI('${edu.plan_file_type}');
 		
+		
 		$('#regDownloadLink').attr("href", "file?svr_img_file_nm="+reg_file_nm+"&img_file_type="+reg_file_type+"&source=reg")
 		$('#planDownloadLink').attr("href", "file?svr_img_file_nm="+plan_file_nm+"&img_file_type="+plan_file_type+"&source=plan")
 

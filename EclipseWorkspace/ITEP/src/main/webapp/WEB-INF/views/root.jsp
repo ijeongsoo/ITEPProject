@@ -26,7 +26,7 @@
 	
 	<body>
 
-	<div class="loading hanna">
+	<div class="loading hanna" style="font-size:20px;">
 		WELCOME TO <br> IBK IT 교육 포탈 <br>
 		
 		<img width="100px" src="resources/image/Disqus-1s-200px.gif" alt="">

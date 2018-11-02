@@ -103,7 +103,7 @@ jQuery(document).ready(function($) {
 <script src="<%=application.getContextPath()%>/resources/admin_page_resource/js/jquery.counterup.js"></script>
 
  <div class="row">
-      <div class="col-lg-12">
+      <div class="col-xs-12">
         <h3 class="page-header"><i class="fa fa-laptop"></i></h3>
       </div>
     </div>
