@@ -85,6 +85,16 @@
     	$("input[type=checkbox]").click(function(event) {
 
 			event.stopPropagation();
+
+		});
+    	
+    	$("input[type=checkbox]").keyup(function(event) {
+            if (event.which  == 13) {
+                
+                // 엔터키가 눌렸을 때 실행할 내용
+           	fn_pmApproval();
+           }
+
 		});
 	});
 	
@@ -117,10 +127,18 @@
 		    id: "modal" // 모달창 아이디 지정
 		});	
 
-		downloadFile("reg");
-		downloadFile("plan");
-  		myModal.show();
+		if(reg_file_nm != "" && plan_file_nm != ""){
+			downloadFile("reg");			
+			downloadFile("plan");
+	  		myModal.show();
+		}else{
+			alert("파일 첨부 대상 교육이 아닙니다.");
+		}
 	}		
+	
+	function noDataFile(){
+		alert("첨부된 파일이 없습니다.");
+	}
 
 	function downloadFile(source){
 		if(source=="reg"){
@@ -167,10 +185,11 @@
             $("input[name=listCheckbox]").prop("checked", false);
           }
 	}
-		
+			
 	//버튼 클릭시 결재 Update 및 교육List 갱신
 	function fn_pmApproval(){
 		if (confirm("정말 결재 하시겠습니까??") == true){    //확인
+
 			checkboxArr();
 		}else{   //취소
 		}
@@ -233,12 +252,12 @@
    		<form role="form">
    			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
    				<label for="authority" class="control-label"> 신청서 : </label>
-   			    <a id="regFile" href="">다운로드</a>  	
+   			    <a id="regFile" href="javascript:noDataFile()">다운로드</a>  	
    			</div>
    			
    			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
    				<label for="authority" class="control-label"> 계획서 : </label>
-   			    <a id="planFile" href="">다운로드</a>  	
+   			    <a id="planFile" href="javascript:noDataFile()">다운로드</a>  	
    			</div>    			
    			<br>
    			<br> 			
@@ -324,7 +343,6 @@
 		</table>
 		</div>
 	</div>
-	
 </body>
 
 </html>

@@ -15,6 +15,7 @@ import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.Emp001m;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
@@ -23,6 +24,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 @Component
 public interface Dao {
 
+	public EmpJoinedDep selectByEmn(String emn);
+	
 	void insertCourseList(ArrayList<Edu001m> eduList);
 
 	String selectCourseSeq();
@@ -56,6 +59,8 @@ public interface Dao {
 	void updateEcd006m(Ecd006m code);
 
 	void updateEcd007m(Ecd007m code);
+
+	public EduPullInfo selectPostEduInfo(String course_cd);
 	
 
 	

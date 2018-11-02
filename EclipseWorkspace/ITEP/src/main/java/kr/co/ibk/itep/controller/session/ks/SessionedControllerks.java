@@ -47,10 +47,12 @@ import kr.co.ibk.itep.dto.Ecd006m;
 import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
+import kr.co.ibk.itep.dto.Edu002rAttach;
 import kr.co.ibk.itep.dto.EduApproval;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduExcelUpload;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.service.ks.Service;
 import kr.co.ibk.itep.dto.JoinForEdulist; 
@@ -68,8 +70,22 @@ public class SessionedControllerks {
 	
 	// 관리자페이지 호출
 	@RequestMapping("/admin")
-	public String admin(String ssoid, Model model) {
-		model.addAttribute("ssoid", ssoid);
+	public String admin(Model model) {
+		
+		//사용자의 개인정보
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		//접속한 사용자의 직번 획득
+		String ssoid = empJoinedDep.getEmn();
+
+		EmpJoinedDep empJoinedDep_2 = service.ssoLogin(ssoid);
+		
+		//접속한 사용자의 권한 획득
+		String auth = empJoinedDep_2.getAuth_cd();
+		
+		model.addAttribute("auth_cd", auth);
 		return "admin";
 	} 
 	
@@ -439,5 +455,23 @@ public class SessionedControllerks {
 		service.updateCodeAll(updateCodeList);
 		
 		return "eduCode";
+	}
+	
+	@RequestMapping("/eduPostDetail")
+	public String eduPostDetail(String course_cd, Model model) {
+		
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		Edu002rAttach eduConfirm = new Edu002rAttach();
+		eduConfirm.setEmn(empJoinedDep.getEmn());
+		eduConfirm.setCourse_cd(course_cd);
+		
+		EduPullInfo edu = service.selectPostEduInfo(course_cd);
+		
+		model.addAttribute("edu", edu);
+		
+		return "eduPostDetail";
 	}
 }
