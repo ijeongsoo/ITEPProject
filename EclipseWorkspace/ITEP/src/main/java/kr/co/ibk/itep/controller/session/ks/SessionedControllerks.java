@@ -68,8 +68,22 @@ public class SessionedControllerks {
 	
 	// 관리자페이지 호출
 	@RequestMapping("/admin")
-	public String admin(String ssoid, Model model) {
-		model.addAttribute("ssoid", ssoid);
+	public String admin(Model model) {
+		
+		//사용자의 개인정보
+		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
+				RequestAttributes.SCOPE_SESSION);
+		
+		//접속한 사용자의 직번 획득
+		String ssoid = empJoinedDep.getEmn();
+
+		EmpJoinedDep empJoinedDep_2 = service.ssoLogin(ssoid);
+		
+		//접속한 사용자의 권한 획득
+		String auth = empJoinedDep_2.getAuth_cd();
+		
+		model.addAttribute("auth_cd", auth);
 		return "admin";
 	} 
 	

@@ -22,6 +22,7 @@ import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
+import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
 @Component
@@ -29,6 +30,14 @@ public class ServiceImplks implements Service {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceImplks.class);
 	@Autowired
 	private Dao dao;
+	
+	@Override
+	public EmpJoinedDep ssoLogin(String emn) {
+		// TODO Auto-generated method stub
+		EmpJoinedDep empJoinedDep = dao.selectByEmn(emn);
+
+		return empJoinedDep;
+	}
 	
 	@Override
 	public void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) throws NotFoundException {

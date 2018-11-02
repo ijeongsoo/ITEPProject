@@ -26,6 +26,14 @@ public class DaoImplks implements Dao {
 	private SqlSessionTemplate sst;
 
 	@Override
+	public EmpJoinedDep selectByEmn(String emn) {
+		// TODO Auto-generated method stub
+		
+		EmpJoinedDep empJoinedDep=sst.selectOne("emp001m.selectByEmn", emn);
+		return empJoinedDep;
+	}
+	
+	@Override
 	public void insertCourseList(ArrayList<Edu001m> eduList) {
 		// TODO Auto-generated method stub
 		sst.insert("edu001m.insertExcelList", eduList);

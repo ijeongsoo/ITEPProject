@@ -22,6 +22,8 @@ import kr.co.ibk.itep.dto.JoinForEdulist;
 
 @Component
 public interface Service {
+	
+	public EmpJoinedDep ssoLogin(String emn);
 
 	void insertExcelToDB(Object sheet, String flag, String fileName, String ssoid) throws NotFoundException;
 
