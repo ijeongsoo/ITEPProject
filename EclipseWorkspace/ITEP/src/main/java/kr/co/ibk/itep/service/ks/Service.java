@@ -16,6 +16,7 @@ import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
@@ -46,6 +47,8 @@ public interface Service {
 	void insertCodeAll(ArrayList<EcdCode> insertCodeList);
 
 	void updateCodeAll(ArrayList<EcdCode> updateCodeList);
+
+	public EduPullInfo selectPostEduInfo(String course_cd);
 
 }
 

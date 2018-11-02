@@ -15,8 +15,8 @@
 		<link
 			href="<%=application.getContextPath()%>/resources/main_page_resource/vendor/bootstrap/css/bootstrap.min.css"
 			rel="stylesheet">
-		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+		<link href="<%=application.getContextPath()%>/resources/DataTables-1.10.18/css/jquery.dataTables.min2.css" rel="stylesheet" type="text/css"/>
+		<script src="<%=application.getContextPath()%>/resources/DataTables-1.10.18/js/jquery.dataTables.min2.js" type="text/javascript"></script>
 
 
 		<link
@@ -57,6 +57,15 @@
 	function eduDetail(course_cd) {
 		$.get(
 			    "eduDetail?course_cd="+course_cd ,
+			    function(data) {
+			        $("#eduModalContent").html(data);
+			    }
+			);
+	}
+	
+	function eduPostDetail(course_cd) {
+		$.get(
+			    "eduPostDetail?course_cd="+course_cd ,
 			    function(data) {
 			        $("#eduModalContent").html(data);
 			    }
@@ -254,7 +263,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="postedulist" items="${post_edulist}" varStatus="status">
-						<tr onclick="eduDetail('${postedulist.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal">
+						<tr onclick="eduPostDetail('${postedulist.course_cd}');" data-toggle="modal" class="popupModal" data-target="#detailInfoModal">
 							<th style="text-align: center;">${postedulist.high_cls_nm}</th>
 							<th style="text-align: center;">${postedulist.mid_cls_nm}</th>
 							<th>${postedulist.course_nm}</th>

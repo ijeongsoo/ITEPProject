@@ -16,6 +16,7 @@ import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
 import kr.co.ibk.itep.dto.EduJoinedEcd;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
@@ -133,6 +134,12 @@ public class DaoImplks implements Dao {
 	public void updateEcd007m(Ecd007m code) {
 		// TODO Auto-generated method stub
 		sst.update("ecd007m.updateCode", code);
+	}
+
+	@Override
+	public EduPullInfo selectPostEduInfo(String course_cd) {
+		EduPullInfo edu = sst.selectOne("edu001m.selectEduByCourse_cd", course_cd);
+		return edu;
 	}
 }
 

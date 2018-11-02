@@ -22,6 +22,7 @@ import kr.co.ibk.itep.dto.Ecd007m;
 import kr.co.ibk.itep.dto.EcdCode;
 import kr.co.ibk.itep.dto.Edu001m;
 import kr.co.ibk.itep.dto.EduEditList;
+import kr.co.ibk.itep.dto.EduPullInfo;
 import kr.co.ibk.itep.dto.EmpJoinedDep;
 import kr.co.ibk.itep.dto.JoinForEdulist;
 
@@ -337,6 +338,12 @@ public class ServiceImplks implements Service {
 				break;
 			}
 		}
+	}
+
+	@Override
+	public EduPullInfo selectPostEduInfo(String course_cd) {
+		EduPullInfo edu = dao.selectPostEduInfo(course_cd);
+		return edu;
 	}
 
 	
