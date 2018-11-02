@@ -250,23 +250,6 @@
 
 			});
 			
-			
-			window.onload=function(){
-				if('${result}a' == '0a'){
-					alert("이미 신청한 교육입니다.");
-					location.href = "#myInfo";
-				}else if('${result}a' == '2a'){
-					alert("설문을 미등록한 교육이 존재합니다.");
-					location.href = "#myInfo";
-				}else if('${result}a' == '1a'){
-					alert("완료되었습니다.");
-					
-						
-			}
-			
-
-		}
-			
 
 
     		
@@ -279,8 +262,7 @@
 	<nav class="navbar navbar-expand bg-secondary fixed-top text-uppercase"
 		id="mainNav">
 		<div class="container">
-			<a class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK IT
-				교육 포탈</a>
+			<a id="main_name" class="hanna navbar-brand js-scroll-trigger" href="#page-top">IBK IT 교육 포탈</a>
 
 			<div class=" " id="">
 				<ul class="navbar-nav ml-auto">
@@ -569,10 +551,11 @@
 			<hr class="star-dark2 mb-5">
 			<div class="row">
 				<div style="float: left; width: 100%; margin-bottom: 50px">
-					<div style="float: left; width: 47%; ">
+					<div  style="float: left; width: 47%; ">
 						<h3 class="hanna">신청 정보</h3>
 						<hr>
-						<c:forEach var="d" items="${myRegistList}"  begin="0" end="2" step="1" varStatus="status">
+						<div id="myRegistListView">
+							<c:forEach var="d" items="${myRegistList}"  begin="0" end="2" step="1" varStatus="status">
 						<a onclick="infoDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#infoModal">
 						<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
@@ -592,6 +575,8 @@
 						</div>
 						</a>
 						</c:forEach>
+						</div>
+						
 						
 						<div id="info1" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
@@ -860,22 +845,25 @@
 		tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog modal-md">
-			<div id="eduModalContent" class="modal-content">
+			<div class="modal-content">
 
 
-				<div class="modal-header" style="background-color: #F94164">
-					<div style="margin: 0 auto;">
+				<div id="confirmModalHeader" class="modal-header" style="background-color: #F94164">
+					<div  style="margin: 0 auto;">
 						<h1 align="center" class="hanna"
 							style="margin-left: 30px; color: white" id="modalLabel">정말
 							신청하시겠습니까?</h1>
 
 					</div>
-
-					<button style="margin: 0" type="button" class="close"
+					<div id="confirmModalContent">
+					</div>
+					
+					<button id="btnConfirmClose" style="margin: 0" type="button" class="close"
 						data-dismiss="modal">
 						<span style="margin: -20px; color: white" aria-hidden="true">&times;</span><span
 							class="sr-only">Close</span>
 					</button>
+					
 				</div>
 
 				<div class="modal-body">

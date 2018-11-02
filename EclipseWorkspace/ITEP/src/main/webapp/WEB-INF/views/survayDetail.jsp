@@ -15,7 +15,31 @@
 			  $('#sur_point').val( $('.onto').length );
 			  return false;
 			});
+		
+		
+		var reg_file_nm = encodeURI('${edu.svr_reg_file_nm}');
+		var reg_file_type = encodeURI('${edu.reg_file_type}');
+		var plan_file_nm = encodeURI('${edu.svr_plan_file_nm}');
+		var plan_file_type = encodeURI('${edu.plan_file_type}');
+		
+		$('#regDownloadLink').attr("href", "file?svr_img_file_nm="+reg_file_nm+"&img_file_type="+reg_file_type+"&source=reg")
+		$('#planDownloadLink').attr("href", "file?svr_img_file_nm="+plan_file_nm+"&img_file_type="+plan_file_type+"&source=plan")
+		
+
+
+		
 	});
+	
+	function validation() {
+		if($('#opinion').val() != ''){
+			$('#survayBtn').removeClass('disabled');
+		}else{
+			$('#survayBtn').addClass('disabled');
+
+		}
+		
+	}
+	
 
 </script>
 
@@ -55,12 +79,12 @@
 			<hr>
 			
 			<div class="col-lg-12" style="margin-bottom: 15px">
-				<a href="file?svr_img_file_nm=${edu.svr_reg_file_nm}&img_file_type=${edu.reg_file_type}&source=reg" id="regAttachLabel" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+				<a href="" id="regDownloadLink" style="display:inline-block; ; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
 						class="col-lg-12 btn-reg hanna" >(${edu.origin_reg_file_nm}) 신청서 다운로드</a>
 				</div>
 				
 				<div class=" col-lg-12 "  style="padding-top: 0; margin-top: 0">
-					<a href="file?svr_img_file_nm=${edu.svr_plan_file_nm}&img_file_type=${edu.plan_file_type}&source=plan" id="planAttachLabel" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
+					<a href="" id="planDownloadLink" style="display:inline-block; text-align:center; background-color: #fff;border: 2px solid ; border-color: #92F5A2"
 						class="col-lg-12 btn-reg hanna">(${edu.origin_plan_file_nm}) 계획서 다운로드</a>
 				</div>
 			<div style="text-align:left; float: left; width: 100%; padding:10px;">	
@@ -85,21 +109,15 @@
 			<div style="text-align:center; float: left; width: 100%; padding:10px;">	
 				<div class="control-group">
                 <div  class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <textarea style="background-color:#FFF9D1; padding: 10px"  class="form-control hanna" id="opinion" name="opinion" rows="5" placeholder="여기에 남겨주세요!" required="required" data-validation-required-message="Please enter a message."></textarea>
+                  <textarea  onkeyup="validation();" style="background-color:#FFF9D1; padding: 10px"  class="form-control hanna" id="opinion" name="opinion" rows="5" placeholder="의견을 남기면 등록버튼이 나타납니다." required="required" ></textarea>
                   <p class="help-block text-danger"></p>
-                  <label class="hanna" style="font-size: 20px; color: black">감사합니다!!</label>
+                  <label class="hanna" style="font-size: 20px; color: black"><a id="survayBtn" onclick="submitSurvay();" style=" width: 100%; height: 70px" class="btn disabled"
+					 ><p class="hanna" style="font-size: 20px; color: white">등록하기</p></a></label>
                   
                 </div>
               </div>
 			</div>
 
-				
-			
-			<br>
-			<div class="form-group">
-				<button type="submit" id="registBtn" style=" width: 100%; height: 70px" class="btn "
-					 ><p class="hanna" style="font-size: 20px; color: white">등록하기</p></button>
-			</div>
 			
 		</form>
 	</div>

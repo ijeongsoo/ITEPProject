@@ -328,26 +328,29 @@
 		</div>
 		
 		
-			<div id="confirmModal" class="modal fade bs-example-modal-lg"
+		<div id="confirmModal" class="modal fade bs-example-modal-lg"
 		tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog modal-md">
-			<div id="eduModalContent" class="modal-content">
+			<div class="modal-content">
 
 
-				<div class="modal-header" style="background-color: #F94164">
-					<div style="margin: 0 auto;">
+				<div id="confirmModalHeader" class="modal-header" style="background-color: #F94164">
+					<div  style="margin: 0 auto;">
 						<h1 align="center" class="hanna"
 							style="margin-left: 30px; color: white" id="modalLabel">정말
 							신청하시겠습니까?</h1>
 
 					</div>
-
-					<button style="margin: 0" type="button" class="close"
+					<div id="confirmModalContent">
+					</div>
+					
+					<button id="btnConfirmClose" style="margin: 0" type="button" class="close"
 						data-dismiss="modal">
 						<span style="margin: -20px; color: white" aria-hidden="true">&times;</span><span
 							class="sr-only">Close</span>
 					</button>
+					
 				</div>
 
 				<div class="modal-body">

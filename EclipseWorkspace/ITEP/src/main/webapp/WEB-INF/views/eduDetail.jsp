@@ -50,7 +50,128 @@
 	function submitForm()
 	{	
 		//폼전송 
-		$('#eduForm').submit();
+		//$('#eduForm').submit();
+		var form = $('#eduForm')[0];
+		var formData = new FormData(form);
+		
+		if($('#main_name').text() == 'IBK IT 교육 포탈'){
+			$.ajax({
+				url:'regEdu',
+				processData : false,
+				contentType : false,
+				data: formData,
+				type: 'POST',
+				beforeSend : function(){
+					$('#confirmModalHeader').attr('style','background-color:white;');
+					$('#confirmModalContent').html("<img style='height:50px;' src='resources/image/loading.gif' />");
+				},
+				success : function(data){
+					
+					$('#btnConfirmClose').trigger('click');
+					$('#btnModalClose').trigger('click');
+					if(data.result == '1'){
+						alert("신청이 완료되었습니다.");
+						var arry = data.list;
+						$('#myRegistListView').html(' ');
+						if(data.count>3){
+							for (var i=0; i<3; i++) {
+								var inhtml = '<a data-toggle="modal" data-target="#infoModal" onclick="infoDetail('+ arry[i].course_cd +');">' +
+								'<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">' +
+								'<div style=" float: left; width: 20%; height: 72px">' +
+								'<img class="photo4" src="file?svr_img_file_nm='+ arry[i].svr_img_file_nm +'&mfiletype='+ arry[i].img_file_type +'" alt="">' +
+								'</div>' +
+								'<div style=" float: left; width: 60%;height: 72px; display: table;">' +
+								'<div style=" vertical-align: middle; display: table-cell;">' +
+								'<p style="font-size: 22px; padding: 0 " class="hanna hidden" >'+ arry[i].course_nm +' </p>' +
+								'<p style="font-size: 13px; padding : 0" class="hanna" >'+ arry[i].org_nm +'/ '+ arry[i].edu_st_dt +'~'+ arry[i].edu_ed_dt +'</p>'+
+								'</div>' +
+								'</div>' +
+								'<div style=" float: left; width: 20%; height: 72px; display: table; ">' +
+								'<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >'+ arry[i].step_nm +'</p>' +
+								'</div>'+
+								'</div>'+
+								'</a>';
+								
+								$('#myRegistListView').append(inhtml);
+							}
+						}else{
+							for (var i=0; i<data.count; i++) {
+								var inhtml = '<a onclick="infoDetail("'+ arry[i].course_cd +'");" data-toggle="modal" data-target="#infoModal">' +
+								'<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">' +
+								'<div style=" float: left; width: 20%; height: 72px">' +
+								'<img class="photo4" src="file?svr_img_file_nm='+ arry[i].svr_img_file_nm +'&mfiletype='+ arry[i].img_file_type +'" alt="">' +
+								'</div>' +
+								'<div style=" float: left; width: 60%;height: 72px; display: table;">' +
+								'<div style=" vertical-align: middle; display: table-cell;">' +
+								'<p style="font-size: 22px; padding: 0 " class="hanna hidden" >'+ arry[i].course_nm +' </p>' +
+								'<p style="font-size: 13px; padding : 0" class="hanna" >'+ arry[i].org_nm +'/ '+ arry[i].edu_st_dt +'~'+ arry[i].edu_ed_dt +'</p>'+
+								'</div>' +
+								'</div>' +
+								'<div style=" float: left; width: 20%; height: 72px; display: table; ">' +
+								'<p style="font-size: 18px; padding : 0 ;vertical-align: middle; display: table-cell;" class="hanna" >'+ arry[i].step_nm +'</p>' +
+								'</div>'+
+								'</div>'+
+								'</a>';
+								
+								$('#myRegistListView').append(inhtml);
+							}
+						}
+						
+						
+						
+						if(data.count > 3){
+				        	$("#moreInfo1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;');
+				        }
+						
+						if(data.count != 0){
+				        	$("#info1").attr('style', 'display:none');
+				        }
+						
+						$('#confirmModalHeader').attr('style','background-color: #F94164');
+						$('#confirmModalContent').html("");
+						
+						
+					}else{
+						alert("신청이 실패했습니다. 신청서를 확인해주세요.");
+					}
+
+					
+				}
+
+
+			});
+		}else{
+			$.ajax({
+				url:'regEdu',
+				processData : false,
+				contentType : false,
+				data: formData,
+				type: 'POST',
+				beforeSend : function(){
+					$('#confirmModalHeader').attr('style','background-color:white;');
+					$('#confirmModalContent').html("<img style='height:50px;' src='resources/image/loading.gif' />");
+				},
+				success : function(data){
+					
+					$('#btnConfirmClose').trigger('click');
+					$('#btnModalClose').trigger('click');
+					if(data.result == '1'){
+						alert("신청이 완료되었습니다.");
+
+						$('#confirmModalHeader').attr('style','background-color: #F94164');
+						$('#confirmModalContent').html("");
+						
+						
+					}else{
+						alert("신청이 실패했습니다. 신청서를 확인해주세요.");
+					}
+				}
+
+
+			});
+		}
+		
+		
 	}
 	
 	
@@ -80,7 +201,7 @@
 			
 			</div>
 	
-		<button style="margin: 0" type="button" class="close" data-dismiss="modal">
+		<button id="btnModalClose" style="margin: 0" type="button" class="close" data-dismiss="modal">
 			<span style="margin: -20px ; color: white" aria-hidden="true" >&times;</span><span class="sr-only">Close</span>
 		</button>
 	</div>

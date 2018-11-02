@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -261,7 +263,7 @@ public class SessionedControllerjs {
 	
 	
 	@RequestMapping(value = "/regEdu", method = RequestMethod.POST)
-	public String regEdu( Edu002rAttach edu, Model model ) throws IllegalStateException, IOException {
+	public void regEdu( Edu002rAttach edu, HttpServletResponse response ) throws IllegalStateException, IOException {
 		edu.setOrigin_reg_file_nm(edu.getRegAttach().getOriginalFilename()); 
 		edu.setReg_file_type(edu.getRegAttach().getContentType());
 		String regfileName = new Date().getTime() + "-" + edu.getOrigin_reg_file_nm();
@@ -272,7 +274,10 @@ public class SessionedControllerjs {
 		String planfileName = new Date().getTime() + "-" + edu.getOrigin_plan_file_nm();
 		edu.setSvr_plan_file_nm(planfileName);
 		
+
+		
 		int result = service.registEdu(edu);
+
 
 		if(result == 1){
 			String regfileRealPath = servletContext.getRealPath("/WEB-INF/upload/reg/");
@@ -283,12 +288,28 @@ public class SessionedControllerjs {
 			
 			edu.getRegAttach().transferTo(regfile);
 			edu.getPlanAttach().transferTo(planfile);
+			
+			
+			
+
 		}
 		
+		List<RegistEduPullInfo> myRegistList = service.getMyRegistList(edu.getEmn());
 
-		model.addAttribute("result", result);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", result);
+		jsonObject.put("list",myRegistList );
+		jsonObject.put("count", myRegistList.size());
 
-		return "redirect:/home";
+		String json = jsonObject.toString();
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw;
+		
+		pw=response.getWriter();
+		pw.write(json);
+		pw.flush();
+		pw.close();
+		
 
 	}
 	

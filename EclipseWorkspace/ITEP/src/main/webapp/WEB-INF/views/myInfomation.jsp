@@ -139,6 +139,98 @@
 				}); 
 				
 				
+				
+				
+				
+				pageSize2 = 5;
+
+				var pageCount2 =  $(".line-content2").length / pageSize2;
+			    
+			     for(var i = 0 ; i<pageCount2;i++){
+			        
+			       $("#pagin2").append('<li style="display:inline"><a class="btn hanna" style="border-radius: 50%; width :10px;height :10px; font-size:0px; padding:5px; margin:2px" >'+(i+1)+'</a></li> ');
+			     }
+			        $("#pagin2 li").first().find("a").addClass("current")
+			    showPage2 = function(page) {
+				    $(".line-content2").hide();
+				    $(".line-content2").each(function(n) {
+				        if (n >= pageSize2 * (page - 1) && n < pageSize2 * page)
+				            $(this).show();
+				    });        
+				}
+			    
+				showPage2(1);
+
+				$("#pagin2 li a").click(function() {
+				    $("#pagin2 li a").removeClass("current");
+				    $(this).addClass("current");
+				    showPage2(parseInt($(this).text())) 
+				}); 
+				
+				
+				
+				pageSize3 = 5;
+
+				var pageCount3 =  $(".line-content3").length / pageSize3;
+			    
+			     for(var i = 0 ; i<pageCount3;i++){
+			        
+			       $("#pagin3").append('<li style="display:inline"><a class="btn hanna" style="border-radius: 50%; width :10px;height :10px; font-size:0px; padding:5px; margin:2px" >'+(i+1)+'</a></li> ');
+			     }
+			        $("#pagin3 li").first().find("a").addClass("current")
+			    showPage3 = function(page) {
+				    $(".line-content3").hide();
+				    $(".line-content3").each(function(n) {
+				        if (n >= pageSize3 * (page - 1) && n < pageSize3 * page)
+				            $(this).show();
+				    });        
+				}
+			    
+				showPage3(1);
+
+				$("#pagin3 li a").click(function() {
+				    $("#pagin3 li a").removeClass("current");
+				    $(this).addClass("current");
+				    showPage3(parseInt($(this).text())) 
+				}); 
+				
+				
+				pageSize4 = 5;
+
+				var pageCount4 =  $(".line-content4").length / pageSize4;
+			    
+			     for(var i = 0 ; i<pageCount4;i++){
+			        
+			       $("#pagin4").append('<li style="display:inline"><a class="btn hanna" style="border-radius: 50%; width :10px;height :10px; font-size:0px; padding:5px; margin:2px" >'+(i+1)+'</a></li> ');
+			     }
+			        $("#pagin4 li").first().find("a").addClass("current")
+			    showPage4 = function(page) {
+				    $(".line-content4").hide();
+				    $(".line-content4").each(function(n) {
+				        if (n >= pageSize4 * (page - 1) && n < pageSize4 * page)
+				            $(this).show();
+				    });        
+				}
+			    
+				showPage4(1);
+
+				$("#pagin4 li a").click(function() {
+				    $("#pagin4 li a").removeClass("current");
+				    $(this).addClass("current");
+				    showPage4(parseInt($(this).text())) 
+				}); 
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				if(${myRegistListCount} == 0){
 		        	$("#info1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;')
 		        }
@@ -399,7 +491,7 @@
 				<c:forEach var="d" items="${myStudyList}"  varStatus="status">
 				<a onclick="infoDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#infoModal">
-				<div class="infoList " style=" width: 100%; padding: 10px">
+				<div class="infoList line-content2" style=" width: 100%; padding: 10px">
 					<div style=" display:inline-table ;  width: 10% ">
 						<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 					</div>
@@ -442,7 +534,7 @@
 
 				<hr>
 				
-				<ul class="slides" id="pagin">
+				<ul class="slides" id="pagin2">
        
 				</ul>
 				
@@ -504,7 +596,7 @@
 				<c:forEach var="d" items="${mySurveyList}"  varStatus="status">
 				<a onclick="survayDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#survayModal">
-				<div class="infoList " style=" width: 100%; padding: 10px">
+				<div class="infoList line-content3" style=" width: 100%; padding: 10px">
 					<div style=" display:inline-table ;  width: 10% ">
 						<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 					</div>
@@ -547,7 +639,7 @@
 
 				<hr>
 				
-				<ul class="slides" id="pagin">
+				<ul class="slides" id="pagin3">
        
 				</ul>
 				
@@ -616,7 +708,7 @@
 				<c:forEach var="d" items="${myRecentList}"  varStatus="status">
 				<a onclick="recentDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#recentModal">
-				<div class="infoList " style=" width: 100%; padding: 10px">
+				<div class="infoList line-content4" style=" width: 100%; padding: 10px">
 					<div style=" display:inline-table ;  width: 10% ">
 						<img class="photo4" src="file?svr_img_file_nm=${d.svr_img_file_nm}&mfiletype=${d.img_file_type}" alt="">
 					</div>
@@ -664,7 +756,7 @@
 
 				<hr>
 				
-				<ul class="slides" id="pagin">
+				<ul class="slides" id="pagin4">
        
 				</ul>
 				
