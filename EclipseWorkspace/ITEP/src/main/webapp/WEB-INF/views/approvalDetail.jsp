@@ -113,10 +113,18 @@
 		var myModal = new Example.Modal({
 
 		    id: "modal" // 모달창 아이디 지정
-		});    		
-		downloadFile("reg");
-		downloadFile("plan");
+		});  
+		
+		if(reg_file_nm != "" && plan_file_nm != ""){
+			downloadFile("reg");			
+			downloadFile("plan");
+		}
+		
   		myModal.show();
+	}
+	
+	function noDataFile(){
+		alert("첨부된 파일이 없습니다.");
 	}
 	
 	function downloadFile(source){
@@ -183,12 +191,12 @@
     			</div>
     			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
     				<label for="authority" class="control-label"> 신청서 : </label>
-    			    <a id="regFile" href="">다운로드</a>  	
+    			    <a id="regFile" href="javascript:noDataFile()">다운로드</a>  	
     			</div>
     			
     			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
     				<label for="authority" class="control-label"> 계획서 : </label>
-    			    <a id="planFile" href="">다운로드</a>  	
+    			    <a id="planFile" href="javascript:noDataFile()">다운로드</a>  	
     			</div>    			
     			<br>
     			<br>

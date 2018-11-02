@@ -83,11 +83,7 @@
 	$( function () {
     	$('#approvalTable').DataTable();
     	$("input[type=checkbox]").click(function(event) {
-            if (event.which  == 13) {
-                
-                // 엔터키가 눌렸을 때 실행할 내용
-           	fn_pmApproval();
-           }
+
 			event.stopPropagation();
 
 		});
@@ -131,10 +127,18 @@
 		    id: "modal" // 모달창 아이디 지정
 		});	
 
-		downloadFile("reg");
-		downloadFile("plan");
-  		myModal.show();
+		if(reg_file_nm != "" && plan_file_nm != ""){
+			downloadFile("reg");			
+			downloadFile("plan");
+	  		myModal.show();
+		}else{
+			alert("파일 첨부 대상 교육이 아닙니다.");
+		}
 	}		
+	
+	function noDataFile(){
+		alert("첨부된 파일이 없습니다.");
+	}
 
 	function downloadFile(source){
 		if(source=="reg"){
@@ -248,12 +252,12 @@
    		<form role="form">
    			<div class="hanna" align = "center" style="font-size:20px; padding-left:40px; padding-top:30px; width:250px;float:left;">
    				<label for="authority" class="control-label"> 신청서 : </label>
-   			    <a id="regFile" href="">다운로드</a>  	
+   			    <a id="regFile" href="javascript:noDataFile()">다운로드</a>  	
    			</div>
    			
    			<div class="hanna" align = "center" style="font-size:20px; padding-right:40px; padding-top:30px; width:250px;float:right;">
    				<label for="authority" class="control-label"> 계획서 : </label>
-   			    <a id="planFile" href="">다운로드</a>  	
+   			    <a id="planFile" href="javascript:noDataFile()">다운로드</a>  	
    			</div>    			
    			<br>
    			<br> 			
