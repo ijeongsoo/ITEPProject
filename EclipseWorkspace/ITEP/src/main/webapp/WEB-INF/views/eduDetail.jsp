@@ -99,7 +99,7 @@
 				<p style="font-size: 28px; padding-bottom : 0" class="hanna" >교육기관 : ${edu.org_nm }</p>
 				<p style="font-size: 16px;  padding-top: 0" class="hanna" >위치 : ${edu.loc}</p>
 				<p style="font-size: 28px" class="hanna" >교육기간 : ${edu.edu_st_dt} ~ ${edu.edu_ed_dt}</p>
-				<p style="font-size: 28px" class="hanna" >신청기간 : ${edu.edu_st_dt} ~ ${edu.edu_ed_dt}</p>
+				<p style="font-size: 28px" class="hanna" >신청기간 : ${edu.reg_st_dt} ~ ${edu.reg_ed_dt}</p>
 				<input type="hidden" class="form-control" name="course_cd"
 						value="${edu.course_cd}" />
 				<input type="hidden" class="form-control" name="emn"
