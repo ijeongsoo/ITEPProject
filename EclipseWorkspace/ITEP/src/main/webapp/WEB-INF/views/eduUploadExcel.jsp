@@ -152,11 +152,16 @@ margin: auto;
 						</label>
 						
 						<label for="excelFile" id="excelFileBtn" class="btn btn-default" onclick=>
-							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt=""> <a class="hanna"> 엑셀 첨부 </a>
+							<img width="15px" src="resources/admin_page_resource/img/upload.png" alt="">
+							<span class="hanna" style="color:#18BC9C"> 엑셀 첨부 </span>
 						</label>
-						
-						<button id="submitBtn" type="submit" class="btn btn-primary"> <a class="hanna" style="color:black;"> <img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt="">  엑셀 업로드 </a> </button>
 						<input type="file" id=excelFile style="visibility: hidden" name="excelFile" />
+						
+						<button id="submitBtn" type="submit" class="btn btn-primary">
+							<img width="25px" src="resources/admin_page_resource/img/verified.png" style="padding-right:5px;" alt=""/>
+							<span class="hanna" style="color:black;"> 엑셀 업로드 </span>
+						</button>
+						
 					</div>
 				</form>
 
