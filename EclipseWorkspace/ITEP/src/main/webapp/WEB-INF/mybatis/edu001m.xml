@@ -84,7 +84,7 @@
 		from tb_iep_edu001m a,TB_IEP_ECD002M
 		b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate
+		and to_char(sysdate, 'YYYYMMDD') &gt;= a.REG_ST_DT and to_char(sysdate, 'YYYYMMDD')
 		&lt;= a.reg_ed_dt
 		and TRUNC(TO_DATE(REG_ED_DT, 'yyyymmdd') - SYSDATE,
 		0) &lt; 7
@@ -104,7 +104,7 @@
 		from tb_iep_edu001m a,TB_IEP_ECD002M b,TB_IEP_EDU002R c
 		where a.org_cd = b.org_cd (+)
 		and a.course_cd = c.course_cd (+)
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;= a.reg_ed_dt)
+		and to_char(sysdate, 'YYYYMMDD') &gt;= a.REG_ST_DT and to_char(sysdate, 'YYYYMMDD') &lt;= a.reg_ed_dt)
 		group by course_cd, org_nm, course_nm, edu_st_dt,
 		edu_ed_dt,svr_img_file_nm,img_file_type
 		order by count(emn) desc)
@@ -118,7 +118,7 @@
 		a.edu_st_dt, a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
 		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		and to_char(sysdate, 'YYYYMMDD') &gt;= a.REG_ST_DT and to_char(sysdate, 'YYYYMMDD') &lt;=
 		a.reg_ed_dt
 		and high_cls_cd = '1'
 		and rownum &lt;5
@@ -130,7 +130,7 @@
 		a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
 		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		and to_char(sysdate, 'YYYYMMDD') &gt;= a.REG_ST_DT and to_char(sysdate, 'YYYYMMDD') &lt;=
 		a.reg_ed_dt
 		and high_cls_cd = '2'
 		and rownum &lt;5
@@ -142,7 +142,7 @@
 		a.edu_ed_dt,a.svr_img_file_nm,a.img_file_type
 		from tb_iep_edu001m a,TB_IEP_ECD002M b
 		where a.org_cd = b.org_cd
-		and sysdate &gt;= a.REG_ST_DT and sysdate &lt;=
+		and to_char(sysdate, 'YYYYMMDD') &gt;= a.REG_ST_DT and to_char(sysdate, 'YYYYMMDD') &lt;=
 		a.reg_ed_dt
 		and high_cls_cd = '3'
 		and rownum &lt;5
@@ -291,7 +291,7 @@
 			from TB_IEP_EDU001M a, TB_IEP_EDU002R b
 			where a.course_cd  = b.course_cd(+)
 			and b.emn(+) != #{emn}
-			and sysdate between a.reg_st_dt and a.reg_ed_dt 
+			and to_char(sysdate, 'YYYYMMDD') between a.reg_st_dt and a.reg_ed_dt 
 			and rownum=1
 			GROUP BY a.course_cd, a.course_nm
 			 order by count(*) desc
