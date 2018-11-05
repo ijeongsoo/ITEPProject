@@ -264,7 +264,7 @@
 				교육 포탈<span style="font-size: 15px">  &nbsp;-상세 내정보-</span></a>
 			<div class=" " id="">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item mx-0 mx-sm-1"><a id='survayButton'
+					<li class="nav-item mx-0 mx-sm-1"><a id="survayButton"
 						style="visibility: hidden;"
 						class="hanna nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
 						href="#survay">설문해주세요!!</a></li>
@@ -592,7 +592,7 @@
 				
 				
 				
-				
+				<div id="mySurvayListView">
 				<c:forEach var="d" items="${mySurveyList}"  varStatus="status">
 				<a onclick="survayDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#survayModal">
@@ -625,6 +625,7 @@
 				</div>
 				</a>
 				</c:forEach>
+				</div>
 				
 				
 				
@@ -656,15 +657,15 @@
 				<div style="display: inline-block; width: 70%">
 					<div style="margin:20px; float: left ; background-color: #6a9ad0; width: 28%; color:white; padding : 20px" class=" text-center hanna">
 						신청한 총 갯수
-						<h3 class ="hanna" style="padding: 0px">${countInfo.totalCount}개</h3>
+						<h3 id="totalReg" class ="hanna" style="padding: 0px">${countInfo.totalCount}개</h3>
 					</div>
 					<div style="margin:20px;float: left; background-color: #74B147; width: 28%; color:white; padding: 20px" class=" text-center hanna">
 						총 이수 시간
-						<h3 class ="hanna" style="padding: 0px">${countInfo.totalHour}시간</h3>
+						<h3  id="totalTime" class ="hanna" style="padding: 0px">${countInfo.totalHour}시간</h3>
 					</div>
 					<div style="margin:20px;float: left; background-color: #FF9A8A; width: 28%; color:white; padding: 20px" class=" text-center hanna">
 						총 이수 금액
-						<h3 class ="hanna" style="padding: 0px">${countInfo.totalAmount}원</h3>
+						<h3 id="totalMoney" class ="hanna" style="padding: 0px">${countInfo.totalAmount}원</h3>
 					</div>
 				</div>
 				
@@ -704,7 +705,7 @@
 				
 				
 				
-				
+				<div id="myRecentListView">
 				<c:forEach var="d" items="${myRecentList}"  varStatus="status">
 				<a onclick="recentDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#recentModal">
@@ -742,7 +743,8 @@
 				</div>
 				</a>
 				</c:forEach>
-				
+			</div>
+	
 				
 				
 				

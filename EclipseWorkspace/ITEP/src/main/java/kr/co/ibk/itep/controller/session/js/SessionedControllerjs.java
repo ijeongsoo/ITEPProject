@@ -289,9 +289,6 @@ public class SessionedControllerjs {
 			edu.getRegAttach().transferTo(regfile);
 			edu.getPlanAttach().transferTo(planfile);
 			
-			
-			
-
 		}
 		
 		List<RegistEduPullInfo> myRegistList = service.getMyRegistList(edu.getEmn());
@@ -313,26 +310,52 @@ public class SessionedControllerjs {
 
 	}
 	
-	
-	@RequestMapping("/survay")
-	public String survay( Edu003r edu003r, Model model) {
+	@RequestMapping(value = "/survay", method = RequestMethod.POST)
+	public void survay( Edu003r edu003r, HttpServletResponse response) throws IOException {
 				
 		RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 		EmpJoinedDep empJoinedDep = (EmpJoinedDep) requestAttributes.getAttribute("login_info",
 				RequestAttributes.SCOPE_SESSION);
 		
+
+
 		edu003r.setEmn(empJoinedDep.getEmn());
 		
+		
+		JSONObject jsonObject = new JSONObject();
+
 		try{
 			service.survay(edu003r);
+			jsonObject.put("result", 1);
 
 		}catch(Exception e){
-			model.addAttribute("result", 0);
+			jsonObject.put("result", 0);
+			
+		}finally{
+			List<RegistEduPullInfo> mySurveyList = service.getMySurveyList(empJoinedDep.getEmn());
+			List<RegistEduPullInfo> myRecentList = service.getMyRecentList(empJoinedDep.getEmn());
+			CountInfo countInfo = service.getCountInfo(empJoinedDep.getEmn());
+
+			jsonObject.put("survayList",mySurveyList );
+			jsonObject.put("recentList",myRecentList );
+			jsonObject.put("totalCount",countInfo.getTotalCount() );
+			jsonObject.put("totalHour",countInfo.getTotalHour() );
+			jsonObject.put("totalAmount",countInfo.getTotalAmount() );
+
+			jsonObject.put("survayCount", mySurveyList.size());
+			jsonObject.put("recentCount", myRecentList.size());
+			String json = jsonObject.toString();
+			response.setContentType("application/json; charset=UTF-8");
+			PrintWriter pw;
+			
+			pw=response.getWriter();
+			pw.write(json);
+			pw.flush();
+			pw.close();
+
 		}
-		
-		model.addAttribute("result", 1);
-		
-		return "redirect:/home";
+
+
 	} 
 	
 	

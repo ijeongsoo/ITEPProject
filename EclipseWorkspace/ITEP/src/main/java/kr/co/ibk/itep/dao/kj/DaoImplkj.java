@@ -40,6 +40,7 @@ public class DaoImplkj implements Dao {
 
 	@Override
 	public Edu001m selectRecommentEdu(String emn) {
+		System.out.println("$$$$$$$$$$#######################$$$$$$$$$$$$$$$"+emn);
 		Edu001m eduPullInfo = sst.selectOne("edu001m.selectRecommendEdu", emn);
 		return eduPullInfo;
 	}

@@ -96,7 +96,7 @@
 							}
 						}else{
 							for (var i=0; i<data.count; i++) {
-								var inhtml = '<a onclick="infoDetail("'+ arry[i].course_cd +'");" data-toggle="modal" data-target="#infoModal">' +
+								var inhtml = '<a onclick="infoDetail('+ arry[i].course_cd +');" data-toggle="modal" data-target="#infoModal">' +
 								'<div class="infoList" style="float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">' +
 								'<div style=" float: left; width: 20%; height: 72px">' +
 								'<img class="photo4" src="file?svr_img_file_nm='+ arry[i].svr_img_file_nm +'&mfiletype='+ arry[i].img_file_type +'" alt="">' +
@@ -121,10 +121,14 @@
 						
 						if(data.count > 3){
 				        	$("#moreInfo1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;');
+				        }else{
+				        	$("#moreInfo1").attr('style', 'display:none;');
 				        }
 						
 						if(data.count != 0){
 				        	$("#info1").attr('style', 'display:none');
+				        }else{
+				        	$("#info1").attr('style', 'float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle');
 				        }
 						
 						$('#confirmModalHeader').attr('style','background-color: #F94164');

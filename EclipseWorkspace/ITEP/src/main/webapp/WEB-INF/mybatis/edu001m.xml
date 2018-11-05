@@ -284,18 +284,21 @@
 
 	
 	<select id="selectRecommendEdu" resultType="kr.co.ibk.itep.dto.Edu001m">
-		select course_cd, course_nm
-		from
-		(
-			select a.course_cd, a.course_nm , count(*)
-			from TB_IEP_EDU001M a, TB_IEP_EDU002R b
-			where a.course_cd  = b.course_cd(+)
-			and b.emn(+) != #{emn}
-			and to_char(sysdate, 'YYYYMMDD') between a.reg_st_dt and a.reg_ed_dt 
-			and rownum=1
-			GROUP BY a.course_cd, a.course_nm
-			 order by count(*) desc
-		)
+		select  z.course_cd, z.course_nm, count(*)
+		from 
+		    (select course_cd, course_nm, reg_st_dt, reg_ed_dt 
+		    from TB_IEP_EDU001M
+		    minus
+		    select a.course_cd, a.course_nm, a.reg_st_dt, a.reg_ed_dt
+		    from TB_IEP_EDU001M a, TB_IEP_EDU002R b
+		    where a.course_cd  = b.course_cd
+		    and b.emn = #{emn}) z
+		    , TB_IEP_EDU002R x
+		where z.course_cd = x.course_cd (+)
+		and to_char(sysdate, 'YYYYMMDD') between z.reg_st_dt and z.reg_ed_dt
+		and rownum=1
+		group by z.course_cd, z.course_nm
+		order by count(*) desc
 	</select>
 
 </mapper>

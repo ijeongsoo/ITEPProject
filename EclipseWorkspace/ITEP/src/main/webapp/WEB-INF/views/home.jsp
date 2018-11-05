@@ -652,6 +652,7 @@
 					<div style=" float: left; width: 47%; ">
 						<h3 class="hanna">설문해주세요!!</h3>
 						<hr>
+						<div id="mySurvayListView">
 						<c:forEach var="d" items="${mySurveyList}"  begin="0" end="2" step="1" varStatus="status">
 						<a onclick="survayDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#survayModal">
@@ -672,6 +673,7 @@
 						</div>
 						</a>
 						</c:forEach>
+						</div>
 						<div id="info3" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
@@ -697,6 +699,7 @@
 					<div style=" float: left; width: 47%;">
 						<h3 class="hanna">최근 수강 내역</h3>
 						<hr>
+						<div id="myRecentListView">
 						<c:forEach var="d" items="${myRecentList}"  begin="0" end="2" step="1" varStatus="status">
 						<a onclick="recentDetail('${d.course_cd}');" data-toggle="modal"
 							data-target="#recentModal">
@@ -724,7 +727,7 @@
 						</div>
 						</a>
 						</c:forEach>
-						
+						</div>
 						<div id="info4" style="display:none; float: left; width: 100%; text-align: center; padding: 10px; vertical-align: middle;">
 							
 							<div style="float: left; width: 100%;height: 72px; display: table;">
@@ -743,9 +746,8 @@
 							</div>
 							</a>
 						</div>
-					</div>
 				</div>
-
+			</div>
 
 			</div>
 			<hr>
@@ -755,6 +757,7 @@
 				<a href="myInfomation" class="btn text-center hanna" style="color:white; padding: 15px">더 많은 "나의 정보" 보기 <img style="width: 20px" alt="" src="resources/image/plus.png"></a>
 			</div>
 		</div>
+		
 	</section>
 	
 	
