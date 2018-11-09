@@ -282,7 +282,7 @@
     </section>
 	
 	<div style="padding-left:32%">
-		<div>
+		<div class="hanna" style="font-size:16px;">
 			<img width="420px" src="resources/admin_page_resource/img/flow.PNG" style="" alt="">				
 		</div>
 	</div>
