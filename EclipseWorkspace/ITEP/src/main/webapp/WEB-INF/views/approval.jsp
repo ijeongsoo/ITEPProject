@@ -300,13 +300,13 @@
 					<th style="text-align: center;">직번</th>
 					<th style="text-align: center;">이름</th>
 					<th style="text-align: center;">직원부서</th>										
-					<th style="text-align: center;">기관명</th>
+					<th style="text-align: center; display:none;">기관명</th>
 					<th style="text-align: center;">소분류</th>
 					<th style="text-align: center;">과정명</th>
 					<th style="text-align: center;">교육시간</th>
 					<th style="text-align: center;">시작일</th>
 					<th style="text-align: center;">종료일</th>
-					<th style="text-align: center;">교육비</th>
+					<th style="text-align: center; display:none;">교육비</th>
 					<th style="text-align: center;">교육장소</th>
 					<th style="text-align: center;">환급</th>
 					<th style="text-align: center;">결재상황</th>
@@ -323,13 +323,13 @@
 						<td align="center">${adminApprovalList.emn}</td>
 						<td align="center">${adminApprovalList.emm}</td>
 						<td align="center">${adminApprovalList.krn_brm}</td>
-						<td align="center">${adminApprovalList.org_nm}</td>
+						<td align="center" style="display:none;">${adminApprovalList.org_nm}</td>
 						<td align="center">${adminApprovalList.low_cls_nm}</td>
 						<td align="center">${adminApprovalList.course_nm}</td>
 						<td align="center">${adminApprovalList.edu_hour}</td>
 						<td align="center">${adminApprovalList.edu_st_dt}</td>
 						<td align="center">${adminApprovalList.edu_ed_dt}</td>
-						<td align="center">${adminApprovalList.edu_cost}</td>
+						<td align="center" style="display:none;">${adminApprovalList.edu_cost}</td>
 						<td align="center">${adminApprovalList.loc}</td>
 						<td align="center">${adminApprovalList.refund_yn}</td>
 						<td align="center">${adminApprovalList.step_nm}</td>

@@ -250,7 +250,7 @@
     				<label for="authority" class="control-label"> 변경 후 권한: </label>
     				<select name="authority_select" style="width:200px"  >
     					<option value="교육관리자"> 교육관리자 </option>    				
-    					<option value="서무차장"> 서무차장 </option>
+    					<option value="서무차장"> 서무책임자 </option>
     					<option value="서무담당"> 서무담당 </option>
     					<option value="일반사용자"> 일반사용자 </option>
     				</select>

@@ -877,11 +877,11 @@
 					<div class="row" id="confirmBtnSet">
 						<button data-dismiss="modal" style="width: 50%; height: 70px"
 							class="btn">
-							<p class="hanna" style="font-size: 20px; color: white">아니욥</p>
+							<p class="hanna" style="font-size: 20px; color: white">아니요</p>
 						</button>
 						<button onclick="submitForm()" style="width: 50%; height: 70px"
 							class="btn-yes">
-							<p class="hanna" style="font-size: 20px; color: white">넵</p>
+							<p class="hanna" style="font-size: 20px; color: white">네</p>
 						</button>
 					</div>
 
