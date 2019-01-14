@@ -95,21 +95,24 @@ public class DaoImplbh implements Dao{
 	//당해년도 전체 교육 등록 수
 	@Override
 	public int selectAllEduCount() {
-		int count = Math.toIntExact(sst.selectOne("edu002r.selectAllEduCount"));
+		//int count = Math.toIntExact(sst.selectOne("edu002r.selectAllEduCount"));
+		int count = sst.selectOne("edu002r.selectAllEduCount");
 		return count;
 	}
 	
 	//당해년도 전체 교육 신청 수
 	@Override
 	public int selectYearAppEduCount() {
-		int count = Math.toIntExact(sst.selectOne("edu002r.selectYearAppEduCount"));
+		//int count = Math.toIntExact(sst.selectOne("edu002r.selectYearAppEduCount"));
+		int count = sst.selectOne("edu002r.selectYearAppEduCount");
 		return count;
 	}
 	
 	//해당 월 전체 교육 신청 수
 	@Override
 	public int selectMonthAppEduCount() {
-		int count = Math.toIntExact(sst.selectOne("edu002r.selectMonthAppEduCount"));
+		//int count = Math.toIntExact(sst.selectOne("edu002r.selectMonthAppEduCount"));
+		int count = sst.selectOne("edu002r.selectMonthAppEduCount");
 		return count;
 	}
 	
