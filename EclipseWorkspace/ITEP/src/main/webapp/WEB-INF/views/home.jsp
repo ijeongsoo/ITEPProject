@@ -781,7 +781,7 @@
 						<li class="list-inline-item">
 							<p class="lead mb-0">
 								IT기획부 오세웅 대리(Tel. 2977)<br>
-								IT기획부 김광진 계장(Tel. 2828)<br>
+								IT기획부 서현아 대리(Tel. 2483)<br>
 							</p>
 					</ul>
 				</div>
